@@ -1,0 +1,12 @@
+{
+  "sourceOfTruth": "db/schema.sql",
+  "generatedAt": "2026-04-21T20:55:22.523Z",
+  "migrations": [
+    {
+      "id": "001_initial_schema",
+      "file": "001_initial_schema.sql",
+      "checksum": "589ead459b629b787599e637806334f7150298763c940942881f7a02f9ea8582",
+      "description": "Fyrsta canonical gagnagrunnsskemá Frigg."
+    }
+  ]
+}

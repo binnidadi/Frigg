@@ -45,6 +45,6 @@ Gagnamódelið þarf að vera `database-first` og nægilega sterkt til að halda
 
 ## Næstu skref
 
-1. Spegla þetta skema í TypeScript repository layer í `apps/api`.
+1. Tengja þetta skema við raunverulegan gagnagrunnsdrifara í `apps/api`.
 2. Útbúa seed- eða fixture-gögn fyrir fyrstu golden scenarios.
-3. Festa hvort nota eigi PostgreSQL sem frumskerfi strax með migration runner.
+3. Festa hvort nota eigi PostgreSQL sem frumskerfi strax og skipta þá úr `memory` repository yfir í database driver.

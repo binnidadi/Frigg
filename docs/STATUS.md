@@ -17,6 +17,7 @@ Síðast uppfært: 2026-04-21
 - `apps/web` sækir nú AI health og preview gögn úr API í forsíðu, innskráningu og mælaborð.
 - `apps/web` sækir nú einnig `/snapshot` og `/scenarios` til að birta run model samhengi á mælaborði.
 - Web rendering í `apps/web/script.js` hefur verið hert þannig að listi- og töflusmíði notar DOM í stað `innerHTML`.
+- `apps/api` er nú með afmarkað `repository` lag og migration runner sem undirbýr `db/migrations` og staðbundið migration state.
 - Enginn tengdur production bakendi er kominn í loftið enn.
 
 ## Hvað er lokið
@@ -38,6 +39,8 @@ Síðast uppfært: 2026-04-21
 - Web script lag sem tengir UI við AI snapshot endpointa
 - Dashboard tengt við snapshot run model, validation mismatch og golden scenarios
 - Öruggari rendering í web-lagi fyrir listi- og töfluúttak
+- Fyrsti `repository` driver og `repository/status` endpoint
+- Migration artifacts í `db/migrations` og `apps/api/scripts/migrate.mjs`
 
 ## Hvað er í vinnslu
 
@@ -49,13 +52,14 @@ Síðast uppfært: 2026-04-21
 - Timeout, retry og observability stefna fyrir ytri AI kall
 - Tengja `apps/web` við nýju AI endpointana svo trust center og review yfirborð sýni lifandi stöðu
 - Færa web tengingar úr statískri fetch-grind yfir í skipulegt state/view model
+- Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað memory driver
 
 ## Hvað er næst
 
 1. Byggja repository layer og migration runner yfir `db/schema.sql`.
-2. Tengja provider adapters við lifandi lykla, telemetry og raunveruleg parse/knowledge flows.
-3. Færa web-lagið frá einfaldri fetch-grind yfir í skipulegt state/view model.
-4. Útfæra engine path sem notar pinned routing, statutory og rule set records.
+2. Tengja repository layer við raunverulegan gagnagrunnsdrifara og seed gögn.
+3. Tengja provider adapters við lifandi lykla, telemetry og raunveruleg parse/knowledge flows.
+4. Færa web-lagið frá einfaldri fetch-grind yfir í skipulegt state/view model.
 
 ## Áhætta núna
 

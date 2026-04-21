@@ -1,0 +1,13 @@
+{
+  "driver": "unbound",
+  "updatedAt": "2026-04-21T20:55:22.523Z",
+  "note": "Enginn gagnagrunnsdrifari er tengdur enn. Runner undirbýr migration artifacts og heldur utan um staðbundna stöðu.",
+  "appliedMigrations": [
+    {
+      "id": "001_initial_schema",
+      "checksum": "589ead459b629b787599e637806334f7150298763c940942881f7a02f9ea8582",
+      "preparedAt": "2026-04-21T20:55:22.523Z",
+      "status": "prepared"
+    }
+  ]
+}

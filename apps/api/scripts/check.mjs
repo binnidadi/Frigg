@@ -1,6 +1,10 @@
 import { buildAgreementParsePreview, buildKnowledgePreview, getAIHealthSnapshot } from '../src/ai.js'
-import { goldenScenarios } from '../src/scenarios.js'
-import { payrollDomainSnapshot } from '../src/data.js'
+import { createRepository } from '../src/repository.js'
+
+const repository = createRepository()
+const goldenScenarios = repository.getScenarios()
+const payrollDomainSnapshot = repository.getSnapshot()
+const repositoryStatus = repository.getRepositoryStatus()
 
 if (goldenScenarios.length < 6) {
   throw new Error('Golden scenarios eru of fá.')
@@ -24,6 +28,10 @@ if (buildAgreementParsePreview().parserStages.length !== 5) {
 
 if (!Array.isArray(buildKnowledgePreview('A1').sourceIds)) {
   throw new Error('AI knowledge preview er ekki rétt formgert.')
+}
+
+if (repositoryStatus.driver !== 'memory') {
+  throw new Error('Repository driver er ekki skilgreindur rétt.')
 }
 
 console.log('Frigg api check passed.')

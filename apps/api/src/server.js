@@ -1,7 +1,6 @@
 import { createServer } from 'node:http'
 import { buildAgreementParsePreview, buildKnowledgePreview, getAIHealthSnapshot } from './ai.js'
-import { goldenScenarios } from './scenarios.js'
-import { payrollDomainSnapshot } from './data.js'
+import { createRepository } from './repository.js'
 
 function readJsonBody(request) {
   return new Promise((resolve, reject) => {
@@ -29,6 +28,7 @@ function readJsonBody(request) {
 }
 
 export function startServer(port = 4310) {
+  const repository = createRepository()
   const server = createServer(async (request, response) => {
     response.setHeader('Content-Type', 'application/json; charset=utf-8')
 
@@ -37,19 +37,31 @@ export function startServer(port = 4310) {
         JSON.stringify({
           name: 'frigg-api',
           status: 'ready',
-          endpoints: ['/snapshot', '/scenarios', '/ai/health', '/ai/parse-preview', '/ai/knowledge-preview']
+          endpoints: [
+            '/snapshot',
+            '/scenarios',
+            '/repository/status',
+            '/ai/health',
+            '/ai/parse-preview',
+            '/ai/knowledge-preview'
+          ]
         })
       )
       return
     }
 
     if (request.url === '/snapshot') {
-      response.end(JSON.stringify(payrollDomainSnapshot))
+      response.end(JSON.stringify(repository.getSnapshot()))
       return
     }
 
     if (request.url === '/scenarios') {
-      response.end(JSON.stringify(goldenScenarios))
+      response.end(JSON.stringify(repository.getScenarios()))
+      return
+    }
+
+    if (request.url === '/repository/status') {
+      response.end(JSON.stringify(repository.getRepositoryStatus()))
       return
     }
 

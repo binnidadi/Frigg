@@ -64,6 +64,8 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - AI health endpoint
 - AI parse preview endpoint
 - AI knowledge preview endpoint
+- repository status endpoint
+- migration manifest og local migration state
 
 ## Áfangi 5: Pilot Readiness
 
