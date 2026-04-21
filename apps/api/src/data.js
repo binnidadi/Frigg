@@ -1,0 +1,333 @@
+export const employers = [
+  {
+    id: 'employer_frigg_demo',
+    tenantId: 'tenant_frigg',
+    kennitala: '1234567890',
+    legalName: 'Frigg Demo ehf.',
+    displayName: 'Frigg Demo',
+    municipalityCode: '0000'
+  }
+]
+
+export const employees = [
+  {
+    id: 'employee_gudrun',
+    tenantId: 'tenant_frigg',
+    kennitala: '1111111111',
+    fullName: 'Guðrún S.',
+    dateOfBirth: '1995-04-11'
+  },
+  {
+    id: 'employee_jon',
+    tenantId: 'tenant_frigg',
+    kennitala: '2222222222',
+    fullName: 'Jón B.',
+    dateOfBirth: '1990-11-03'
+  }
+]
+
+export const contracts = [
+  {
+    id: 'contract_gudrun_001',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_gudrun',
+    employmentType: 'monthly',
+    jobTitle: 'Verslunarfulltrúi',
+    jobCode: 'store_assistant',
+    validFrom: '2026-01-01',
+    validTo: null
+  },
+  {
+    id: 'contract_jon_001',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_jon',
+    employmentType: 'hourly',
+    jobTitle: 'Vaktstjóri',
+    jobCode: 'shift_lead',
+    validFrom: '2026-02-01',
+    validTo: null
+  }
+]
+
+export const agreementVersions = [
+  {
+    id: 'agreement_version_vr_2026_2',
+    agreementId: 'agreement_vr_retail',
+    code: 'vr-retail',
+    title: 'VR retail 2026.2',
+    version: '2026.2',
+    validFrom: '2026-04-01',
+    validTo: null,
+    sourceDocumentIds: ['source_vr_collective_2026'],
+    supportedEmploymentGroups: ['retail'],
+    effectivePeriod: { validFrom: '2026-04-01', validTo: null }
+  }
+]
+
+export const ruleSetVersions = [
+  {
+    id: 'rule_set_vr_2026_2',
+    agreementVersionId: 'agreement_version_vr_2026_2',
+    code: 'vr-retail',
+    version: '2026.2',
+    approvalStatus: 'approved',
+    coverageStatus: 'certified',
+    ruleIds: ['rule_base_pay_001', 'rule_evening_001'],
+    reviewNotes: ['Vottað fyrir almenna retail keyrslu og A1 checks.'],
+    effectivePeriod: { validFrom: '2026-04-01', validTo: null }
+  }
+]
+
+export const statutoryParameterSets = [
+  {
+    id: 'statutory_2026',
+    code: 'is-statutory',
+    version: '2026.1',
+    effectivePeriod: { validFrom: '2026-01-01', validTo: null },
+    taxThresholdLevel1: 498122,
+    taxThresholdLevel2: 1398450,
+    taxRateLevel1: 0.3149,
+    taxRateLevel2: 0.3799,
+    taxRateLevel3: 0.4629,
+    monthlyPersonalTaxCredit: 72492,
+    standardInsuranceLevyRate: 0.0635,
+    a1InsuranceLevyRate: 0.00425,
+    fishermanInsuranceLevyRate: 0.07,
+    employeePensionDeductionRate: 0.04,
+    additionalPensionDeductionCapRate: 0.04
+  }
+]
+
+export const pensionRoutingRules = [
+  {
+    id: 'pension_route_live_retail',
+    code: 'live-retail',
+    version: '2026.1',
+    agreementId: 'agreement_vr_retail',
+    unionId: 'union_vr',
+    employerId: null,
+    pensionFundId: 'pension_live',
+    appliesToEmploymentTypes: ['monthly', 'hourly'],
+    minimumEmployeeContributionRate: 0.04,
+    employerContributionRate: 0.115,
+    additionalSavingsEmployerRate: 0.02,
+    requiresManualReview: false,
+    effectivePeriod: { validFrom: '2026-01-01', validTo: null }
+  }
+]
+
+export const unionRoutingRules = [
+  {
+    id: 'union_route_vr_retail',
+    code: 'vr-retail',
+    version: '2026.1',
+    unionId: 'union_vr',
+    agreementId: 'agreement_vr_retail',
+    appliesToLocations: ['IS'],
+    employeeFeeRate: 0.007,
+    employerFundContributionRate: 0.003,
+    sicknessFundContributionRate: 0.01,
+    requiresManualReview: false,
+    effectivePeriod: { validFrom: '2026-01-01', validTo: null }
+  }
+]
+
+export const taxCreditAllocations = [
+  {
+    employeeId: 'employee_gudrun',
+    primaryPayerId: 'employer_frigg_demo',
+    monthlyCreditAmount: 72492,
+    creditPercentage: 1,
+    secondaryPayerIds: [],
+    source: 'employee_instruction'
+  }
+]
+
+export const a1CertificateStatuses = [
+  {
+    employeeId: 'employee_jon',
+    certificateCountryCode: 'PL',
+    validFrom: '2026-04-01',
+    validTo: '2026-10-01',
+    verifiedAt: '2026-04-02T09:00:00Z',
+    status: 'verified'
+  }
+]
+
+export const knowledgeSources = [
+  {
+    id: 'source_statutory_2026',
+    code: 'stadgreidsla-2026',
+    version: '2026.1',
+    sourceType: 'statutory',
+    title: 'Staðgreiðsla og skattþrep 2026',
+    sourceUrl: 'https://www.skatturinn.is/einstaklingar/stadgreidsla/skattthrep/2026/',
+    coverageStatus: 'supported',
+    transformedIntoRules: true,
+    notes: ['Persónuafsláttur og skattþrep fest í statutory parameter set.'],
+    effectivePeriod: { validFrom: '2026-01-01', validTo: null },
+    audit: {
+      createdAt: '2026-04-21T10:00:00Z',
+      createdBy: 'system',
+      reviewedAt: '2026-04-21T11:00:00Z',
+      reviewedBy: 'legal_reviewer'
+    }
+  },
+  {
+    id: 'source_a1_2026',
+    code: 'a1-levy-2026',
+    version: '2026.1',
+    sourceType: 'statutory',
+    title: 'A1 vottorð og tryggingagjald',
+    sourceUrl: 'https://www.skatturinn.is/atvinnurekstur/skattar-og-gjold/tryggingagjald/nr/91',
+    coverageStatus: 'supported',
+    transformedIntoRules: true,
+    notes: ['Notað í A1 levy logic og compliance review.'],
+    effectivePeriod: { validFrom: '2026-01-01', validTo: null },
+    audit: {
+      createdAt: '2026-04-21T10:00:00Z',
+      createdBy: 'system',
+      reviewedAt: '2026-04-21T11:30:00Z',
+      reviewedBy: 'legal_reviewer'
+    }
+  }
+]
+
+export const coverageMatrixEntries = [
+  {
+    code: 'coverage_vr_retail',
+    title: 'VR retail almennar launakeyrslur',
+    sourceType: 'collective_agreement',
+    coverageStatus: 'supported',
+    residualRisk: 'medium',
+    supportedScenarios: ['GS-001', 'GS-005', 'GS-006'],
+    blockedScenarios: ['opinberur markaður', 'sjómenn']
+  },
+  {
+    code: 'coverage_a1',
+    title: 'A1 og tímabundið EES starfsfólk',
+    sourceType: 'statutory',
+    coverageStatus: 'supported',
+    residualRisk: 'medium',
+    supportedScenarios: ['GS-002'],
+    blockedScenarios: ['óstaðfest A1 gögn']
+  }
+]
+
+export const payrollRuns = [
+  {
+    id: 'payroll_run_2026_04',
+    employerId: 'employer_frigg_demo',
+    period: { validFrom: '2026-04-01', validTo: '2026-04-30' },
+    status: 'review_required',
+    ruleSetVersionIds: ['rule_set_vr_2026_2'],
+    statutoryParameterSetId: 'statutory_2026',
+    startedAt: '2026-04-30T09:00:00Z',
+    completedAt: null,
+    reviewTaskIds: ['review_task_a1', 'review_task_parental']
+  }
+]
+
+export const validationResults = [
+  {
+    payrollRunId: 'payroll_run_2026_04',
+    status: 'warning',
+    checkedAt: '2026-04-30T09:30:00Z',
+    mismatches: [
+      {
+        employeeId: 'employee_jon',
+        lineItemCode: 'INSURANCE_LEVY',
+        expectedAmount: 425,
+        actualAmount: 6350,
+        message: 'A1 staða þarf review áður en lækkað tryggingagjald er samþykkt.'
+      }
+    ]
+  }
+]
+
+export const reviewTasks = [
+  {
+    id: 'review_task_a1',
+    taskType: 'tax_credit_review',
+    employerId: 'employer_frigg_demo',
+    relatedEntityId: 'employee_jon',
+    status: 'open',
+    assigneeId: null,
+    reason: 'Staðfesta þarf A1-gögn áður en keyrsla má fara í samþykki.',
+    createdAt: '2026-04-30T09:35:00Z'
+  },
+  {
+    id: 'review_task_parental',
+    taskType: 'retro_review',
+    employerId: 'employer_frigg_demo',
+    relatedEntityId: 'GS-004',
+    status: 'open',
+    assigneeId: null,
+    reason: 'Yfirfara þarf persónuafslátt þegar fæðingarorlof og hlutastarf skarast.',
+    createdAt: '2026-04-30T09:40:00Z'
+  }
+]
+
+export const complianceDeadlines = [
+  {
+    id: 'deadline_withholding_2026_05_15',
+    employerId: 'employer_frigg_demo',
+    category: 'withholding_tax',
+    dueDate: '2026-05-15',
+    title: 'Skil á staðgreiðslu',
+    description: 'Skila þarf staðgreiðslu og tryggingagjaldi vegna aprílmánaðar.',
+    severity: 'critical'
+  },
+  {
+    id: 'deadline_pension_2026_05_10',
+    employerId: 'employer_frigg_demo',
+    category: 'pension_remittance',
+    dueDate: '2026-05-10',
+    title: 'Skil á lífeyrisiðgjöldum',
+    description: 'Skila þarf iðgjöldum og skilagreinum til viðeigandi lífeyrissjóðs.',
+    severity: 'warning'
+  }
+]
+
+export const auditEvents = [
+  {
+    id: 'audit_run_created',
+    employerId: 'employer_frigg_demo',
+    entityType: 'payroll_run',
+    entityId: 'payroll_run_2026_04',
+    action: 'created',
+    performedAt: '2026-04-30T09:00:00Z',
+    performedBy: 'system',
+    summary: 'Aprílkeyrsla stofnuð með pinned statutory og rule set versions.'
+  },
+  {
+    id: 'audit_review_requested',
+    employerId: 'employer_frigg_demo',
+    entityType: 'review_task',
+    entityId: 'review_task_a1',
+    action: 'review_requested',
+    performedAt: '2026-04-30T09:35:00Z',
+    performedBy: 'system',
+    summary: 'A1 review task stofnað vegna mismatch í validation.'
+  }
+]
+
+export const payrollDomainSnapshot = {
+  employers,
+  employees,
+  contracts,
+  agreementVersions,
+  ruleSetVersions,
+  statutoryParameterSets,
+  pensionRoutingRules,
+  unionRoutingRules,
+  taxCreditAllocations,
+  a1CertificateStatuses,
+  knowledgeSources,
+  coverageMatrixEntries,
+  payrollRuns,
+  validationResults,
+  reviewTasks,
+  complianceDeadlines,
+  auditEvents
+}

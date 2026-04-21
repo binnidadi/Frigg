@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frigg | Innskráning</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page-login" data-page="login">
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+
+    <main class="auth-layout">
+      <section class="auth-intro">
+        <a class="brand" href="./index.html">Frigg</a>
+        <p class="eyebrow">Aðgangur að launakerfi</p>
+        <h1>Innskráning fyrir teymi sem bera ábyrgð á réttum launum.</h1>
+        <p class="hero-text">
+          Frigg sameinar reglusett, launakeyrslur, sannprófun og rekjanleika í einu
+          vinnuflæði. Aðgangur og heimildir eru hugsaðar sem hluti af ábyrgðarstýringu.
+        </p>
+
+        <div class="auth-trust">
+          <article class="auth-card">
+            <h2>Vernduð aðgangsstýring</h2>
+            <p>Undirbúið fyrir hlutverk, SSO og síðar rafræn skilríki.</p>
+          </article>
+          <article class="auth-card">
+            <h2>Engin órekjanleg ákvörðun</h2>
+            <p>Yfirferðir, samþykki og breytingar varðveitast í audit trail.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="auth-shell shell">
+        <div class="window-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="auth-panel">
+          <div>
+            <p class="panel-label">Örugg innskráning</p>
+            <h2>Velkomin aftur</h2>
+            <p class="muted">
+              Skráðu þig inn til að halda áfram með launakeyrslur, sannprófun og audit
+              yfirferð.
+            </p>
+          </div>
+
+          <form class="auth-form">
+            <label>
+              Netfang
+              <input type="email" placeholder="nafn@fyrirtaeki.is" />
+            </label>
+            <label>
+              Lykilorð
+              <input type="password" placeholder="••••••••••••" />
+            </label>
+            <button class="button button-primary" type="button">Skrá inn</button>
+          </form>
+
+          <div class="auth-footer">
+            <div>
+              <p class="small-label">Nýjasti aðgangur</p>
+              <p>Reykjavík · Chrome á Windows · í dag 08:14</p>
+            </div>
+            <div>
+              <p class="small-label">Staða vinnusvæðis</p>
+              <p id="login-workspace-status">Sæki stöðu AI og API laga.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

@@ -24,3 +24,28 @@
 
 - Staða: Samþykkt
 - Ástæða: Repo á alltaf að sýna núverandi stöðu, stefnu og næstu skref án gloppna.
+
+## D-006: Almennur vinnumarkaður með A1 er sjálfgefin lagaleg afmörkun
+
+- Staða: Samþykkt
+- Ástæða: Nær raunverulegum SME edge cases með sterku markaðsgildi án þess að teygja fyrstu útgáfur yfir í alla sérheima vinnumarkaðarins.
+
+## D-007: Compliance birtist sem software + review workflow
+
+- Staða: Samþykkt
+- Ástæða: Skalar betur en þjónustudrifið líkan og ver trust moat með skýringum, audit trail og mannlegri yfirferð þar sem óvissa er til staðar.
+
+## D-008: AI veitendur skulu keyrðir í failover röð með telemetry og cooldown
+
+- Staða: Samþykkt
+- Ástæða: AI lagið má ekki velta á einum veitanda og verður að skýra hvaða módel svaraði, hvenær fallback var notað og hvenær rate limit kallar á cooldown.
+
+## D-009: Kjarasamningslestur skal fara í gegnum staged parser pipeline
+
+- Staða: Samþykkt
+- Ástæða: `detect`, `parse`, `normalize`, `preview` og `warnings` gera review workflow, explainability og bilanagreiningu skýrari en eitt svart parse skref.
+
+## D-010: Confidence skal vera samsett úr deterministic og AI merkjum
+
+- Staða: Samþykkt
+- Ástæða: Sjálfsmat líkans eitt og sér er ekki nægilega traust fyrir payroll og compliance. Confidence verður að byggjast líka á heimild, coverage, schema fit og routing skýrleika.

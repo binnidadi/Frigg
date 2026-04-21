@@ -3,10 +3,27 @@ import type {
   Identifier,
   PayrollRunStatus
 } from './domain.js'
+import type {
+  A1CertificateStatus,
+  TaxCreditAllocation
+} from './compliance.js'
 
 export interface MoneyAmount {
   currency: 'ISK'
   amount: number
+}
+
+export interface LeaveAndAbsenceEvent {
+  type:
+    | 'vacation'
+    | 'sickness'
+    | 'child_sickness'
+    | 'parental_leave'
+    | 'unpaid_leave'
+  from: string
+  to: string
+  ratioOfDay: number
+  source: 'timesheet' | 'manual' | 'external_system'
 }
 
 export interface PayrollInput {
@@ -21,6 +38,12 @@ export interface PayrollInput {
   holidayHours: number
   leaveHours: number
   baseRateOverride: MoneyAmount | null
+  municipalityCode: string
+  taxCreditAllocation: TaxCreditAllocation | null
+  a1Certificate: A1CertificateStatus | null
+  leaveEvents: LeaveAndAbsenceEvent[]
+  pensionRoutingRuleId: Identifier | null
+  unionRoutingRuleId: Identifier | null
 }
 
 export interface PayrollLineItem {
@@ -35,6 +58,7 @@ export interface PayrollLineItem {
   amount: MoneyAmount
   explanation: string
   sourceRuleIds: Identifier[]
+  evidenceRecordId: Identifier | null
 }
 
 export interface PayrollResult {
@@ -43,6 +67,28 @@ export interface PayrollResult {
   employeeDeductions: PayrollLineItem[]
   employerCharges: PayrollLineItem[]
   earnings: PayrollLineItem[]
+}
+
+export interface Payslip {
+  id: Identifier
+  employeeId: Identifier
+  payrollRunId: Identifier
+  issuedAt: string
+  grossPay: MoneyAmount
+  netPay: MoneyAmount
+  evidenceRecordIds: Identifier[]
+}
+
+export interface PayrollRun {
+  id: Identifier
+  employerId: Identifier
+  period: EffectivePeriod
+  status: PayrollRunStatus
+  ruleSetVersionIds: Identifier[]
+  statutoryParameterSetId: Identifier
+  startedAt: string
+  completedAt: string | null
+  reviewTaskIds: Identifier[]
 }
 
 export interface PayrollRunSnapshot {

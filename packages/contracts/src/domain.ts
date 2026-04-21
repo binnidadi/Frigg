@@ -16,10 +16,25 @@ export type EmploymentType =
 
 export type PayrollRunStatus =
   | 'draft'
+  | 'review_required'
   | 'validating'
   | 'blocked'
   | 'approved'
   | 'exported'
+
+export type KnowledgeSourceType =
+  | 'statutory'
+  | 'collective_agreement'
+  | 'pension'
+  | 'union'
+  | 'interpretation'
+
+export type CoverageStatus =
+  | 'planned'
+  | 'in_review'
+  | 'supported'
+  | 'partial'
+  | 'unsupported'
 
 export interface EffectivePeriod {
   validFrom: string
@@ -38,4 +53,11 @@ export interface AuditMetadata {
   createdBy: Identifier
   reviewedAt: string | null
   reviewedBy: Identifier | null
+}
+
+export interface VersionedRecord {
+  id: Identifier
+  code: string
+  version: string
+  effectivePeriod: EffectivePeriod
 }

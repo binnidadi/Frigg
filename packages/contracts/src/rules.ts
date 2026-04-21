@@ -3,7 +3,8 @@ import type {
   AuditMetadata,
   EffectivePeriod,
   Identifier,
-  SourceReference
+  SourceReference,
+  VersionedRecord
 } from './domain.js'
 
 export type ConditionOperator =
@@ -77,4 +78,19 @@ export interface RuleDecisionTree {
   actions: RuleAction[]
   source: SourceReference
   audit: AuditMetadata
+}
+
+export interface AgreementVersion extends VersionedRecord {
+  agreementId: Identifier
+  title: string
+  sourceDocumentIds: Identifier[]
+  supportedEmploymentGroups: string[]
+}
+
+export interface RuleSetVersion extends VersionedRecord {
+  agreementVersionId: Identifier
+  approvalStatus: ApprovalStatus
+  coverageStatus: 'draft' | 'reviewed' | 'certified'
+  ruleIds: Identifier[]
+  reviewNotes: string[]
 }

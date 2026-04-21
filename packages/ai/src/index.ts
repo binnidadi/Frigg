@@ -1,5 +1,14 @@
 import type { AIProvider } from '@frigg/contracts'
 
+export * from './agreement-parser.js'
+export * from './confidence.js'
+export * from './failover-provider.js'
+export * from './factory.js'
+export * from './parser-pipeline.js'
+export * from './prompts.js'
+export * from './provider-adapters.js'
+export * from './retrieval-engine.js'
+
 export class AIEngine {
   constructor(private readonly provider: AIProvider) {}
 
@@ -21,5 +30,9 @@ export class AIEngine {
 
   async parseAgreementDocument(text: string) {
     return this.provider.parseAgreementDocument(text)
+  }
+
+  async answerKnowledgeQuestion(message: string, context: string) {
+    return this.provider.answerKnowledgeQuestion(message, context)
   }
 }

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frigg | Mælaborð</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page-dashboard" data-page="dashboard">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">Frigg</a>
+      <nav class="sidebar-nav">
+        <a class="active" href="./dashboard.html">Mælaborð</a>
+        <a href="#">Launakeyrslur</a>
+        <a href="#">Kjarasamningar</a>
+        <a href="#">Afturvirkar leiðréttingar</a>
+        <a href="#">Trust Center</a>
+      </nav>
+      <div class="sidebar-foot">
+        <p class="small-label">Vinnusvæði</p>
+        <p>Frigg Demo ehf.</p>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">Athygli núna</p>
+          <h1 id="dashboard-run-title">Sæki stöðu keyrslu úr API.</h1>
+        </div>
+        <div class="header-actions">
+          <a class="button button-secondary" href="./login.html">Skipta um notanda</a>
+          <a class="button button-primary" href="#">Samþykkja keyrslu</a>
+        </div>
+      </header>
+
+      <section class="dashboard-grid">
+        <article class="status-card shell span-two">
+          <div class="window-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="status-grid">
+            <div>
+              <p class="panel-label">Núverandi staða</p>
+              <h2 id="dashboard-status-title">Sæki yfirlit yfir keyrslu.</h2>
+              <p class="muted" id="dashboard-status-summary">
+                Snapshot gögn úr API munu birtast hér þegar tenging næst.
+              </p>
+            </div>
+            <div class="run-stats">
+              <div class="run-stat">
+                <span>Starfsmenn</span>
+                <strong id="stat-employees">0</strong>
+              </div>
+              <div class="run-stat">
+                <span>Breyttar niðurstöður</span>
+                <strong id="stat-review-tasks">0</strong>
+              </div>
+              <div class="run-stat">
+                <span>Validation frávik</span>
+                <strong class="danger-text" id="stat-validation">0</strong>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel-card">
+          <p class="panel-label">Næstu skil</p>
+          <h2 id="deadline-title">Sæki skilafrest</h2>
+          <p class="metric-value" id="deadline-days">...</p>
+          <p class="muted" id="deadline-description">Næsti skilafrestur birtist hér.</p>
+        </article>
+
+        <article class="panel-card">
+          <p class="panel-label">Reglusett</p>
+          <h2 id="ruleset-title">Sæki virkt reglusett</h2>
+          <p class="metric-value" id="ruleset-status">...</p>
+          <p class="muted" id="ruleset-summary">Samþykkt og coverage staða birtast hér.</p>
+        </article>
+
+        <article class="panel-card" id="ai-health-card">
+          <p class="panel-label">AI health</p>
+          <h2 id="ai-health-title">Sæki stöðu veitenda</h2>
+          <p class="metric-value" id="ai-health-status">...</p>
+          <p class="muted" id="ai-health-summary">
+            Frigg metur nú stöðu GitHub Models, Gemini, SambaNova og Mistral.
+          </p>
+          <ul class="compact-list" id="ai-health-list">
+            <li>AI health gögn eru ekki komin inn enn.</li>
+          </ul>
+        </article>
+
+        <article class="table-card span-two">
+          <div class="table-heading">
+            <div>
+              <p class="panel-label">Breytingar frá síðustu keyrslu</p>
+              <h2>Hvað breyttist?</h2>
+            </div>
+            <a href="#">Sjá allar breytingar</a>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Starfsmaður</th>
+                <th>Breyting</th>
+                <th>Ástæða</th>
+                <th>Áhrif</th>
+              </tr>
+            </thead>
+            <tbody id="change-table-body">
+              <tr>
+                <td colspan="4">Sæki breytingasýn úr snapshot gögnum.</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="table-card">
+          <div class="table-heading">
+            <div>
+              <p class="panel-label">Validation</p>
+              <h2>Frávik sem þarf að leysa</h2>
+            </div>
+          </div>
+          <ul class="issue-list" id="validation-list">
+            <li>
+              <strong>Engin validation gögn komin</strong>
+              <span>Snapshot API mun fylla þetta svæði.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="table-card">
+          <div class="table-heading">
+            <div>
+              <p class="panel-label">Skýrðu þessa krónu</p>
+              <h2>Launalína í fókus</h2>
+            </div>
+          </div>
+          <div class="explain-card">
+            <p class="small-label">Kvöldálag · Guðrún S.</p>
+            <p class="explain-amount">34.860 kr.</p>
+            <ul class="explain-list">
+              <li>17,5 klst eftir kl. 17:00</li>
+              <li>Grein 4.3 í VR retail 2026.2</li>
+              <li>Sannprófun staðfest án fráviks</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="table-card span-two" id="parse-preview-card">
+          <div class="table-heading">
+            <div>
+              <p class="panel-label">Agreement preview</p>
+              <h2>Drög að kjarasamningsreglum</h2>
+            </div>
+            <a href="#">Opna review pipeline</a>
+          </div>
+          <div class="preview-grid">
+            <div class="preview-summary">
+              <p class="small-label">Parser summary</p>
+              <p class="muted" id="parse-preview-summary">
+                Sæki parse preview úr API áður en regludrög eru birt.
+              </p>
+              <div class="badge-row">
+                <span class="status-badge" id="parse-confidence-badge">Í bið</span>
+                <span class="status-badge status-badge-muted" id="parse-review-badge">Review staða óþekkt</span>
+              </div>
+            </div>
+            <div>
+              <p class="small-label">Parser stages</p>
+              <ul class="issue-list compact-issues" id="parse-stage-list">
+                <li>
+                  <strong>Engin parser stage gögn komin</strong>
+                  <span>API parse preview mun birtast hér þegar tenging næst.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="table-card" id="knowledge-preview-card">
+          <div class="table-heading">
+            <div>
+              <p class="panel-label">Knowledge preview</p>
+              <h2>Staðfestar heimildir</h2>
+            </div>
+          </div>
+          <p class="muted" id="knowledge-answer">
+            Sæki yfirlit úr knowledge layer fyrir fyrirspurn um staðgreiðslu og A1.
+          </p>
+          <ul class="compact-list" id="knowledge-source-list">
+            <li>Engar heimildir birtar enn.</li>
+          </ul>
+        </article>
+
+        <article class="table-card span-two" id="scenario-card">
+          <div class="table-heading">
+            <div>
+              <p class="panel-label">Golden scenarios</p>
+              <h2>Forgangstilvik í coverage vinnu</h2>
+            </div>
+          </div>
+          <ul class="issue-list compact-issues" id="scenario-list">
+            <li>
+              <strong>Engin scenario gögn komin</strong>
+              <span>Scenarios úr API birtast hér þegar tenging næst.</span>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
