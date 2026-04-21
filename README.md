@@ -43,14 +43,14 @@ docs/         Source-of-truth skjöl fyrir stöðu, stefnu og ákvarðanir
 
 ## Source of Truth
 
-- [docs/STATUS.md](docs/STATUS.md)
-- [docs/ROADMAP.md](docs/ROADMAP.md)
-- [docs/DECISIONS.md](docs/DECISIONS.md)
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- [docs/PRODUCT-PRINCIPLES.md](docs/PRODUCT-PRINCIPLES.md)
-- [docs/KNOWLEDGE-SOURCES.md](docs/KNOWLEDGE-SOURCES.md)
-- [docs/COMPLIANCE-RESEARCH.md](docs/COMPLIANCE-RESEARCH.md)
-- [docs/GLOSSARY.md](docs/GLOSSARY.md)
+- [Staða verkefnis](docs/STATUS.md)
+- [Vegvísir](docs/ROADMAP.md)
+- [Ákvarðanir](docs/DECISIONS.md)
+- [Arkitektúr](docs/ARCHITECTURE.md)
+- [Vöruviðmið](docs/PRODUCT-PRINCIPLES.md)
+- [Heimildasöfn](docs/KNOWLEDGE-SOURCES.md)
+- [Regluverksrannsóknir](docs/COMPLIANCE-RESEARCH.md)
+- [Orðasafn](docs/GLOSSARY.md)
 
 ## Næstu skref
 
