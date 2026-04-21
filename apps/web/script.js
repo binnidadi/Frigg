@@ -1,6 +1,9 @@
 const API_BASE_URL = 'http://localhost:4310'
 
 function escapeHtml(value) {
+  if (value === null || value === undefined) {
+    return ''
+  }
   return String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
