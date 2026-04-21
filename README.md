@@ -19,7 +19,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - vefyfirborð tengt við AI health og preview endapunkta
 - mælaborð tengt við snapshot og scenarios fyrir run model samhengið
 
-Nánari staða er í [docs/STATUS.md](/C:/Users/PC/Desktop/Frigg/docs/STATUS.md).
+Nánari staða er í [docs/STATUS.md](docs/STATUS.md).
 
 ## Kjarnaforsendur
 
@@ -43,14 +43,14 @@ docs/         Source-of-truth skjöl fyrir stöðu, stefnu og ákvarðanir
 
 ## Source of Truth
 
-- [docs/STATUS.md](/C:/Users/PC/Desktop/Frigg/docs/STATUS.md)
-- [docs/ROADMAP.md](/C:/Users/PC/Desktop/Frigg/docs/ROADMAP.md)
-- [docs/DECISIONS.md](/C:/Users/PC/Desktop/Frigg/docs/DECISIONS.md)
-- [docs/ARCHITECTURE.md](/C:/Users/PC/Desktop/Frigg/docs/ARCHITECTURE.md)
-- [docs/PRODUCT-PRINCIPLES.md](/C:/Users/PC/Desktop/Frigg/docs/PRODUCT-PRINCIPLES.md)
-- [docs/KNOWLEDGE-SOURCES.md](/C:/Users/PC/Desktop/Frigg/docs/KNOWLEDGE-SOURCES.md)
-- [docs/COMPLIANCE-RESEARCH.md](/C:/Users/PC/Desktop/Frigg/docs/COMPLIANCE-RESEARCH.md)
-- [docs/GLOSSARY.md](/C:/Users/PC/Desktop/Frigg/docs/GLOSSARY.md)
+- [docs/STATUS.md](docs/STATUS.md)
+- [docs/ROADMAP.md](docs/ROADMAP.md)
+- [docs/DECISIONS.md](docs/DECISIONS.md)
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [docs/PRODUCT-PRINCIPLES.md](docs/PRODUCT-PRINCIPLES.md)
+- [docs/KNOWLEDGE-SOURCES.md](docs/KNOWLEDGE-SOURCES.md)
+- [docs/COMPLIANCE-RESEARCH.md](docs/COMPLIANCE-RESEARCH.md)
+- [docs/GLOSSARY.md](docs/GLOSSARY.md)
 
 ## Næstu skref
 
