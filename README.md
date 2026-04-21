@@ -19,7 +19,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - vefyfirborð tengt við AI health og preview endapunkta
 - mælaborð tengt við snapshot og scenarios fyrir run model samhengið
 
-Nánari staða er í [docs/STATUS.md](docs/STATUS.md).
+Nánari staða er í [stöðuskjalinu](docs/STATUS.md).
 
 ## Kjarnaforsendur
 
