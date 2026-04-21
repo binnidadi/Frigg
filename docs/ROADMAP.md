@@ -59,6 +59,7 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 
 - SQL-skema og migrations
 - repository layer
+- file-based seed driver
 - snapshot endpoint fyrir dashboard og trust center
 - scenario endpoint fyrir golden tests og coverage vinnu
 - AI health endpoint
@@ -66,6 +67,7 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - AI knowledge preview endpoint
 - repository status endpoint
 - migration manifest og local migration state
+- seed script fyrir `db/seeds`
 
 ## Áfangi 5: Pilot Readiness
 

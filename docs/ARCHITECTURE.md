@@ -17,7 +17,7 @@ Frigg er byggt sem monorepo með skýra aðgreiningu milli vörulaga:
   - sækir nú einnig snapshot og scenario gögn fyrir run model samhengi
 - `apps/api`: API-first bakendi fyrir launainput, keyrslur, review workflows og exports
   - nú einnig með fyrstu AI review endpointum fyrir health, parse preview og knowledge preview
-  - og með `repository` lagi sem getur síðar skipt úr memory driver yfir í raunverulegan gagnagrunn
+  - og með `repository` lagi sem getur skipt milli `memory`, `file` og síðar raunverulegs gagnagrunnsdrifara
 - `packages/contracts`: canonical schemas og domain contracts
 - `packages/engine`: deterministic launavél og sannprófunarvél
 - `packages/ai`: AI provider failover, parser pipeline, confidence engine og deterministic knowledge retrieval

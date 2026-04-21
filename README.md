@@ -20,6 +20,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - mælaborð tengt við snapshot og scenarios fyrir run model samhengi
 - web rendering hert gegn HTML injection í client-laginu
 - repository lag og migration runner ofan á `db/schema.sql`
+- `memory` og `file` repository driver með seed workflow fyrir varanleg demo-gögn
 
 Nánari staða er í [stöðuskjalinu](docs/STATUS.md).
 
@@ -56,7 +57,7 @@ docs/         Source-of-truth skjöl fyrir stöðu, stefnu og ákvarðanir
 
 ## Næstu skref
 
-1. Tengja repository layer við raunverulegan gagnagrunnsdrifara og seed gögn.
+1. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað `file` seed drivers.
 2. Tengja provider adapters við lifandi umhverfislykla, health telemetry og parser workflow.
 3. Byggja deterministic payroll engine með tvöfaldri sannprófun.
 4. Tengja product surface við snapshot API, review workflow og compliance states.

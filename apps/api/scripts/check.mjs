@@ -5,6 +5,8 @@ const repository = createRepository()
 const goldenScenarios = repository.getScenarios()
 const payrollDomainSnapshot = repository.getSnapshot()
 const repositoryStatus = repository.getRepositoryStatus()
+const fileRepository = createRepository({ driver: 'file' })
+const fileRepositoryStatus = fileRepository.getRepositoryStatus()
 
 if (goldenScenarios.length < 6) {
   throw new Error('Golden scenarios eru of fá.')
@@ -32,6 +34,10 @@ if (!Array.isArray(buildKnowledgePreview('A1').sourceIds)) {
 
 if (repositoryStatus.driver !== 'memory') {
   throw new Error('Repository driver er ekki skilgreindur rétt.')
+}
+
+if (fileRepositoryStatus.driver !== 'file') {
+  throw new Error('File repository driver er ekki skilgreindur rétt.')
 }
 
 console.log('Frigg api check passed.')

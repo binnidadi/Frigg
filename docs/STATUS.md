@@ -18,6 +18,7 @@ Síðast uppfært: 2026-04-21
 - `apps/web` sækir nú einnig `/snapshot` og `/scenarios` til að birta run model samhengi á mælaborði.
 - Web rendering í `apps/web/script.js` hefur verið hert þannig að listi- og töflusmíði notar DOM í stað `innerHTML`.
 - `apps/api` er nú með afmarkað `repository` lag og migration runner sem undirbýr `db/migrations` og staðbundið migration state.
+- `apps/api` styður nú bæði `memory` og `file` repository driver og getur skrifað seed gögn í `db/seeds`.
 - Enginn tengdur production bakendi er kominn í loftið enn.
 
 ## Hvað er lokið
@@ -41,6 +42,7 @@ Síðast uppfært: 2026-04-21
 - Öruggari rendering í web-lagi fyrir listi- og töfluúttak
 - Fyrsti `repository` driver og `repository/status` endpoint
 - Migration artifacts í `db/migrations` og `apps/api/scripts/migrate.mjs`
+- `file` repository driver og `apps/api/scripts/seed.mjs`
 
 ## Hvað er í vinnslu
 
@@ -53,11 +55,12 @@ Síðast uppfært: 2026-04-21
 - Tengja `apps/web` við nýju AI endpointana svo trust center og review yfirborð sýni lifandi stöðu
 - Færa web tengingar úr statískri fetch-grind yfir í skipulegt state/view model
 - Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað memory driver
+- Samræma hvernig `repository/status` sýnir virkan driver og uppruna gagna
 
 ## Hvað er næst
 
 1. Byggja repository layer og migration runner yfir `db/schema.sql`.
-2. Tengja repository layer við raunverulegan gagnagrunnsdrifara og seed gögn.
+2. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað `file`/`memory` seed laga.
 3. Tengja provider adapters við lifandi lykla, telemetry og raunveruleg parse/knowledge flows.
 4. Færa web-lagið frá einfaldri fetch-grind yfir í skipulegt state/view model.
 
@@ -69,4 +72,5 @@ Síðast uppfært: 2026-04-21
 - UI er enn statískt yfirborð án raunverulegra gagna eða state management.
 - Lífeyrissjóðir og stéttarfélög eru enn ekki komin með raunveruleg routing records í gagnalíkan.
 - API notar enn in-memory snapshot gögn en ekki gagnagrunn.
+- File driver er enn seed-driven og ekki transaksjónadrifinn gagnagrunnur.
 - AI provider layer er enn án lifandi tenginga við ytri veitendur og án raunverulegra health mælinga.

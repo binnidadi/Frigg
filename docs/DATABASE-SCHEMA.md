@@ -46,5 +46,5 @@ Gagnamódelið þarf að vera `database-first` og nægilega sterkt til að halda
 ## Næstu skref
 
 1. Tengja þetta skema við raunverulegan gagnagrunnsdrifara í `apps/api`.
-2. Útbúa seed- eða fixture-gögn fyrir fyrstu golden scenarios.
-3. Festa hvort nota eigi PostgreSQL sem frumskerfi strax og skipta þá úr `memory` repository yfir í database driver.
+2. Halda seed- og fixture-gögnum samstilltum í `db/seeds` fyrir demo og þróun.
+3. Festa hvort nota eigi PostgreSQL sem frumskerfi strax og skipta þá úr `memory`/`file` repository yfir í database driver.

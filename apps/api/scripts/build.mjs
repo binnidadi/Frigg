@@ -7,6 +7,7 @@ import { createRepository } from '../src/repository.js'
 const root = dirname(dirname(fileURLToPath(import.meta.url)))
 const dist = resolve(root, 'dist')
 const repository = createRepository()
+const fileRepository = createRepository({ driver: 'file' })
 const goldenScenarios = repository.getScenarios()
 const payrollDomainSnapshot = repository.getSnapshot()
 
@@ -18,6 +19,10 @@ mkdirSync(dist, { recursive: true })
 writeFileSync(resolve(dist, 'snapshot.json'), JSON.stringify(payrollDomainSnapshot, null, 2))
 writeFileSync(resolve(dist, 'scenarios.json'), JSON.stringify(goldenScenarios, null, 2))
 writeFileSync(resolve(dist, 'repository-status.json'), JSON.stringify(repository.getRepositoryStatus(), null, 2))
+writeFileSync(
+  resolve(dist, 'repository-file-status.json'),
+  JSON.stringify(fileRepository.getRepositoryStatus(), null, 2)
+)
 writeFileSync(resolve(dist, 'ai-health.json'), JSON.stringify(getAIHealthSnapshot(), null, 2))
 writeFileSync(resolve(dist, 'ai-parse-preview.json'), JSON.stringify(buildAgreementParsePreview(), null, 2))
 writeFileSync(
