@@ -14,15 +14,11 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - compliance- og knowledge-lag fyrir íslenskan vinnumarkað
 - database-first gagnamódel og fyrsta API snapshot lag
 - AI failover grunn, parser pipeline og composite confidence lag
-- provider adaptera fyrir GitHub Models, Gemini, SambaNova og Mistral
-- fyrstu API-endapunkta fyrir AI health, parse preview og knowledge preview
-- vefyfirborð tengt við AI health og preview endapunkta
-- mælaborð tengt við snapshot og scenarios fyrir run model samhengi
-- web rendering hert gegn HTML injection í client-laginu
 - repository lag og migration runner ofan á `db/schema.sql`
 - `memory` og `file` repository driver með seed workflow fyrir varanleg demo-gögn
+- opinbert source registry fyrir lög, Skattinn, lífeyrissjóði og stéttarfélög
 
-Nánari staða er í [stöðuskjalinu](docs/STATUS.md).
+Nánari staða er í `docs/STATUS.md`.
 
 ## Kjarnaforsendur
 
@@ -39,25 +35,29 @@ apps/
   web/        Framendi og stjórnborð
 packages/
   ai/         AI provider failover, parser pipeline, confidence og knowledge retrieval
-  contracts/  Sameiginleg Zod schemas og TypeScript contracts
+  contracts/  Sameiginleg TypeScript contracts
   engine/     Deterministic launavél og sannprófun
 docs/         Source-of-truth skjöl fyrir stöðu, stefnu og ákvarðanir
+db/           SQL-skema, migrations og seed gögnum
 ```
 
 ## Source of Truth
 
-- [Staða verkefnis](docs/STATUS.md)
-- [Vegvísir](docs/ROADMAP.md)
-- [Ákvarðanir](docs/DECISIONS.md)
-- [Arkitektúr](docs/ARCHITECTURE.md)
-- [Vöruviðmið](docs/PRODUCT-PRINCIPLES.md)
-- [Heimildasöfn](docs/KNOWLEDGE-SOURCES.md)
-- [Regluverksrannsóknir](docs/COMPLIANCE-RESEARCH.md)
-- [Orðasafn](docs/GLOSSARY.md)
+- `docs/STATUS.md`
+- `docs/ROADMAP.md`
+- `docs/DECISIONS.md`
+- `docs/ARCHITECTURE.md`
+- `docs/PRODUCT-PRINCIPLES.md`
+- `docs/KNOWLEDGE-SOURCES.md`
+- `docs/PUBLIC-SOURCE-REGISTRY.md`
+- `docs/REMAINING-DATA-REQUEST.md`
+- `docs/HREIN-GOGN-INVENTORY.md`
+- `docs/COMPLIANCE-RESEARCH.md`
+- `docs/GLOSSARY.md`
 
 ## Næstu skref
 
-1. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað `file` seed drivers.
-2. Tengja provider adapters við lifandi umhverfislykla, health telemetry og parser workflow.
-3. Byggja deterministic payroll engine með tvöfaldri sannprófun.
-4. Tengja product surface við snapshot API, review workflow og compliance states.
+1. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
+2. Færa public source registry yfir í versioned knowledge records og coverage matrix.
+3. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
+4. Tengja provider adapters við lifandi umhverfislykla, health telemetry og parser workflow.

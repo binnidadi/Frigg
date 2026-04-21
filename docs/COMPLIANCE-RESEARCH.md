@@ -36,13 +36,12 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Sjómenn
 - Aðrar sérgreinar sem krefjast sérlaga eða djúprar sérútfærslu frá fyrsta degi
 
-## Erlendur innblástur sem á við Frigg
+## Ný staða eftir opinbera söfnunarlotu
 
-- `Rippling`: breytingasýn milli keyrslna
-- `Deel`: compliance sem innbyggt lag
-- `Personio`: payroll prep og review
-- `PayFit`: real-time áhrif breytinga á launaseðla
-- `Ramp` og `Mercury`: premium trust signals og task-first heimasvæði
+- Public corpus hefur verið kortlagt í `docs/PUBLIC-SOURCE-REGISTRY.md`.
+- Véllesanlegt registry hefur verið sett upp í `db/seeds/public-source-registry.json`.
+- Vantalisti yfir private corpus hefur verið afmarkaður í `docs/REMAINING-DATA-REQUEST.md`.
+- Greining á `HREIN_GOGN` hefur verið fest í `docs/HREIN-GOGN-INVENTORY.md`.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 

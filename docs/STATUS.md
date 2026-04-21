@@ -5,21 +5,14 @@ Síðast uppfært: 2026-04-21
 ## Hvar við erum
 
 - Repo hefur verið sett upp sem grunn-monorepo.
-- Source-of-truth skjöl hafa verið stofnuð.
-- Fyrstu canonical TypeScript contracts fyrir AI, reglur og launadomain hafa verið skilgreind.
-- Fyrstu arkitektúr- og vöruprinsippskjöl hafa verið fest.
-- Fyrsta sýnilega product surface fyrir forsíðu, innskráningu og mælaborð hefur verið sett upp í `apps/web`.
-- Fyrsta compliance- og knowledge-lag hefur verið mótað í canonical contracts.
-- Fyrsta database-first SQL-skemað, golden scenarios og API snapshot lag hafa verið sett upp.
-- AI failover grunnur, parser pipeline og confidence contracts hafa verið innleidd í `packages/ai` og `packages/contracts`.
-- Fyrstu provider adapterarnir og deterministic agreement parser adapter hafa verið sett upp í `packages/ai`.
-- `apps/api` birtir nú AI health, parse preview og knowledge preview endapunkta.
-- `apps/web` sækir nú AI health og preview gögn úr API í forsíðu, innskráningu og mælaborð.
-- `apps/web` sækir nú einnig `/snapshot` og `/scenarios` til að birta run model samhengi á mælaborði.
-- Web rendering í `apps/web/script.js` hefur verið hert þannig að listi- og töflusmíði notar DOM í stað `innerHTML`.
-- `apps/api` er nú með afmarkað `repository` lag og migration runner sem undirbýr `db/migrations` og staðbundið migration state.
-- `apps/api` styður nú bæði `memory` og `file` repository driver og getur skrifað seed gögn í `db/seeds`.
-- Enginn tengdur production bakendi er kominn í loftið enn.
+- Source-of-truth skjöl hafa verið stofnuð og samræmd.
+- Fyrstu canonical TypeScript contracts fyrir AI, reglur, compliance og launadomain hafa verið skilgreind.
+- Fyrsta SQL-skema, snapshot API, repository layer og seed workflow hafa verið sett upp.
+- AI failover grunnur, parser pipeline, confidence lag og provider adapterar hafa verið innleidd í `packages/ai`.
+- `apps/api` birtir nú snapshot, scenarios, repository status, AI health, parse preview og knowledge preview.
+- `apps/web` sækir þessi gögn og birtir þau í forsíðu, innskráningu og mælaborði.
+- Fyrsta opinbera source collection lota hefur verið kortlögð í docs og véllesanlegu registry.
+- `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 
 ## Hvað er lokið
 
@@ -29,48 +22,36 @@ Síðast uppfært: 2026-04-21
 - Grunnorðasafn fyrir samræmda íslensku
 - Fyrsti domain contract grunnur
 - Arkitektúrgrunnur og vöruprinsipp
-- Fyrsta UI yfirborð með AI-premium trust-first stefnu
+- Fyrsta UI yfirborð með trust-first stefnu
 - Compliance contracts fyrir skatt, routing, A1, deadlines og audit evidence
 - SQL-skema, golden scenario backlog og fyrsta lesanlega API snapshot lag
 - AI contracts fyrir execution records, parser stages, provider health og confidence
-- Fyrsti grunnur fyrir failover provider, deterministic knowledge retrieval og parser pipeline
 - Provider adapterar fyrir GitHub Models, Gemini, SambaNova og Mistral
-- Deterministic agreement parser adapter fyrir fyrstu review-hæfu regludrög
-- AI snapshot endpointar fyrir health, parse preview og knowledge preview
-- Web script lag sem tengir UI við AI snapshot endpointa
-- Dashboard tengt við snapshot run model, validation mismatch og golden scenarios
-- Öruggari rendering í web-lagi fyrir listi- og töfluúttak
-- Fyrsti `repository` driver og `repository/status` endpoint
-- Migration artifacts í `db/migrations` og `apps/api/scripts/migrate.mjs`
-- `file` repository driver og `apps/api/scripts/seed.mjs`
+- Öruggari rendering í web-lagi fyrir lista- og töfluúttak
+- Repository driver, migration runner og file-based seed workflow
+- Public source registry fyrir lög, Skattinn, sjóði, félög og túlkunarheimildir
+- Vantalisti fyrir private corpus og greining á `HREIN_GOGN`
 
 ## Hvað er í vinnslu
 
-- Canonical architecture fyrir payroll engine, trust center og AI review pipeline
+- Canonical architecture fyrir payroll engine, Trust Center og AI review pipeline
 - Framlenging contracts yfir í gagnamódel fyrir run lifecycle og audit reconstruction
-- Database-first skýrsla fyrir statutory parameters, knowledge records og review tasks
-- Repository layer og raunveruleg persistence strategy yfir SQL-skemuð
-- Tengingar frá AI grunni yfir í raunverulega provider adapters og provider-specific prompts
-- Timeout, retry og observability stefna fyrir ytri AI kall
-- Tengja `apps/web` við nýju AI endpointana svo trust center og review yfirborð sýni lifandi stöðu
-- Færa web tengingar úr statískri fetch-grind yfir í skipulegt state/view model
-- Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað memory driver
-- Samræma hvernig `repository/status` sýnir virkan driver og uppruna gagna
+- Database-first skráning fyrir statutory parameters, knowledge records og review tasks
+- Raunverulegur gagnagrunnsdrifari í stað file/memory drivers
+- Lifandi tengingar við ytri AI veitendur og telemetry
+- Coverage matrix fyrir kjarasamninga, sjóði og félög
+- Trust Center yfirborð sem sýnir coverage og residual risk
 
 ## Hvað er næst
 
-1. Byggja repository layer og migration runner yfir `db/schema.sql`.
-2. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað `file`/`memory` seed laga.
-3. Tengja provider adapters við lifandi lykla, telemetry og raunveruleg parse/knowledge flows.
-4. Færa web-lagið frá einfaldri fetch-grind yfir í skipulegt state/view model.
+1. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
+2. Færa public source registry inn í knowledge records og coverage matrix.
+3. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
+4. Tengja provider adapters við lifandi lykla, health telemetry og raunveruleg parse flows.
 
 ## Áhætta núna
 
-- Repo er nýtt og hefur enga dependency uppsetningu enn.
-- Engin golden scenarios hafa verið skráð enn.
-- Engin formleg coverage matrix fyrir kjarasamninga hefur verið stofnuð enn.
-- UI er enn statískt yfirborð án raunverulegra gagna eða state management.
-- Lífeyrissjóðir og stéttarfélög eru enn ekki komin með raunveruleg routing records í gagnalíkan.
-- API notar enn in-memory snapshot gögn en ekki gagnagrunn.
-- File driver er enn seed-driven og ekki transaksjónadrifinn gagnagrunnur.
+- Enginn production gagnagrunnur er kominn í loftið enn.
+- Public corpus er registry og URL-kortlagning en ekki fullt raw-download archive.
+- Private corpus fyrir launaseðla, tímaskráningu, skilagreinar og routing vantar enn.
 - AI provider layer er enn án lifandi tenginga við ytri veitendur og án raunverulegra health mælinga.

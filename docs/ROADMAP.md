@@ -13,6 +13,7 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - product principles baseline
 - database-first schema baseline
 - golden scenarios baseline
+- public corpus registry baseline
 
 ## Áfangi 2: Core Engine
 
@@ -38,6 +39,8 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - certified rule packs
 - versioned knowledge records
 - coverage matrix og residual risk reporting
+- public corpus registry fyrir lög, Skattinn, sjóði og félög
+- private corpus onboarding fyrir payroll-native gögn
 
 ## Áfangi 4: Product Surface
 
@@ -46,28 +49,7 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - dashboard
 - pay run review
 - payslip explanation view
-- trust center
-
-### Núverandi staða á Product Surface
-
-- fyrstu statísku útgáfur af homepage, innskráningu og dashboardi komnar
-- AI health og preview gögn birtast nú úr API
-- snapshot og scenario gögn birtast nú á mælaborði
-- næst þarf að færa yfirborðið í skipulegt state/view model og síðan Trust Center
-
-## Áfangi 2.5: Persistence og Snapshot API
-
-- SQL-skema og migrations
-- repository layer
-- file-based seed driver
-- snapshot endpoint fyrir dashboard og trust center
-- scenario endpoint fyrir golden tests og coverage vinnu
-- AI health endpoint
-- AI parse preview endpoint
-- AI knowledge preview endpoint
-- repository status endpoint
-- migration manifest og local migration state
-- seed script fyrir `db/seeds`
+- Trust Center
 
 ## Áfangi 5: Pilot Readiness
 

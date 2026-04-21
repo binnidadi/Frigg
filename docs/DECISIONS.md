@@ -33,12 +33,12 @@
 ## D-007: Compliance birtist sem software + review workflow
 
 - Staða: Samþykkt
-- Ástæða: Skalar betur en þjónustudrifið líkan og ver trust moat með skýringum, audit trail og mannlegri yfirferð þar sem óvissa er til staðar.
+- Ástæða: Skalar betur en þjónustudrifið líkan og verður trust moat með skýringum, audit trail og mannlegri yfirferð þar sem óvissa er til staðar.
 
 ## D-008: AI veitendur skulu keyrðir í failover röð með telemetry og cooldown
 
 - Staða: Samþykkt
-- Ástæða: AI lagið má ekki velta á einum veitanda og verður að skýra hvaða módel svaraði, hvenær fallback var notað og hvenær rate limit kallar á cooldown.
+- Ástæða: AI lagið má ekki velta á einum veitanda og verður að skýra hvaða módel svaraði og hvenær fallback var notað.
 
 ## D-009: Kjarasamningslestur skal fara í gegnum staged parser pipeline
 
@@ -48,4 +48,9 @@
 ## D-010: Confidence skal vera samsett úr deterministic og AI merkjum
 
 - Staða: Samþykkt
-- Ástæða: Sjálfsmat líkans eitt og sér er ekki nægilega traust fyrir payroll og compliance. Confidence verður að byggjast líka á heimild, coverage, schema fit og routing skýrleika.
+- Ástæða: Sjálfsmat líkans eitt og sér er ekki nægilega traust fyrir payroll og compliance.
+
+## D-011: Public corpus og private corpus skulu haldin aðskilin
+
+- Staða: Samþykkt
+- Ástæða: Opið efni má skrá og útgáfustýra sjálfstætt, en viðskiptavinagögn og innskráningarvarið efni þurfa sérmeðferð, strangari aðgangsstýringu og skýra rekjanleika.

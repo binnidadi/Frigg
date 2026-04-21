@@ -1,38 +1,37 @@
 # Þekkingarheimildir
 
+Síðast uppfært: 2026-04-21
+
 ## Staða
 
-Þetta skjal heldur utan um hvaða heimildir Frigg byggir á og hvort þær hafi verið umbreyttar í innri þekkingu eða reglur.
+Þetta skjal heldur utan um hvaða heimildir Frigg byggir á og hvort þær hafi verið færðar í formlegt knowledge registry.
 
-## Opinberar heimildir
+Fyrsta opinbera söfnunarlotan er nú skráð í:
 
-| Heimild | Tegund | Hlutverk | Staða |
+- `docs/PUBLIC-SOURCE-REGISTRY.md`
+- `db/seeds/public-source-registry.json`
+- `docs/REMAINING-DATA-REQUEST.md`
+- `docs/HREIN-GOGN-INVENTORY.md`
+
+## Heimildaflokkar
+
+| Heimildaflokkur | Dæmi | Hlutverk | Staða |
 | --- | --- | --- | --- |
-| Alþingi: lög um starfskjör launafólks | statutory | lágmarkskjör og skylduaðild | lesið |
-| Alþingi: lög um orlof | statutory | orlof og lágmarksréttur | lesið |
-| Alþingi: lög um staðgreiðslu opinberra gjalda | statutory | staðgreiðsla, launaskil og ábyrgð launagreiðanda | lesið |
-| Alþingi: lög um skyldutryggingu lífeyrisréttinda | statutory | skylduaðild að lífeyrissjóði og iðgjaldaskylda | lesið |
-| Alþingi: lög um rétt verkafólks til launa í veikindum | statutory | veikindaréttur og lágmarksvernd | lesið |
-| Alþingi: lög um persónuvernd og vinnslu persónuupplýsinga | statutory | vernd launagagna og aðgangsstýring | lesið |
-| Skatturinn: staðgreiðsla 2026 | statutory | skattþrep og persónuafsláttur | lesið |
-| Skatturinn: tryggingagjald | statutory | launatengd gjöld | lesið |
-| Skatturinn: A1 vottorð og lækkað tryggingagjald | statutory | meðferð erlendra starfsmanna í EES | lesið |
-| Skatturinn: reiknað endurgjald 2026 | statutory | eigendur og stjórnendur með eigin launaskyldu | lesið |
-| VR: desemberuppbót | collective agreement | föst uppbót og skilyrði | lesið |
-| VR: orlofsuppbót | collective agreement | föst uppbót og skilyrði | lesið |
-| VR: félagsgjöld og mótframlög | collective agreement | stéttarfélagsgjöld og sjóðir | lesið |
-| Efling: iðgjöld eftir kjarasamningum | collective agreement | félagsgjöld og sjóðir | lesið |
-| LIVE: gagnlegar upplýsingar | pension | lífeyrisframlag og skil | lesið |
-| LIVE: skil iðgjalda | pension | rafræn skil, krafa og gjalddagar | lesið |
-| Gildi: iðgjöld og skilagreinar | pension | skylduaðild, gjalddagar og skilaleiðir | lesið |
-| Frjálsi: launagreiðendur | pension | viðbótarsparnaður, val um sjóð og skil | lesið |
-| ASÍ: launaseðill | interpretation | launaseðill sem sönnunargagn og sundurliðun | lesið |
-| ASÍ: veikindaréttur og veikindi barna | interpretation | vinnuréttarleg edge cases fyrir payroll | lesið |
-| Ísland.is: fæðingarorlof og persónuafsláttur | interpretation | fjölgreiðslutilvik og skattaáhætta | lesið |
+| statutory | Alþingi, Skatturinn | lög, skattar, skil og compliance | registry komið |
+| collective_agreement | VR, Efling | kjarasamningar, uppbætur og samningsbundin gjöld | registry komið |
+| pension | LIVE, Gildi, Frjálsi, Stapi, Festa | lífeyrisrouting, gjalddagar og skil | registry komið |
+| union | VR, Efling, SGS og félagaskrár | félagsgjöld, sjóðir og coverage | registry komið |
+| interpretation | ASÍ og sambærilegar leiðbeiningar | launaseðill, veikindaréttur og edge cases | registry komið |
 
-## Innri næstu skref
+## Mikilvæg niðurstaða
 
-- Umbreyta lesnum heimildum í versioned knowledge records.
-- Merkja hvert atriði sem statutory, collective agreement, pension eða interpretation.
-- Stofna coverage matrix fyrir fyrstu rule packs.
-- Bæta við residual risk mati fyrir A1, fjölgreiðendur, veikindarétt og fæðingarorlof.
+- Frigg hefur nú skýrt `public corpus` fyrir stóran hluta af payroll- og compliance-laginu.
+- `HREIN_GOGN` er ekki payroll-native source-of-truth heldur fyrst og fremst bókhalds- og afstemmingalag.
+- Það sem stendur eftir er að mestu `private corpus`: raunveruleg launagögn, skilagreinar, innskráningarvarið efni og fyrirtækjabundið mapping.
+
+## Næstu skref
+
+- Umbreyta registry í versioned knowledge records í gagnalagi.
+- Stofna coverage matrix fyrir lög, sjóði, félög og samninga.
+- Merkja hvaða heimildir eru `supported`, `partial` eða `review_required`.
+- Bæta private corpus ofan á public corpus þegar notandi útvegar það efni sem vantar.
