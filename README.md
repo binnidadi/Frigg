@@ -14,10 +14,11 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - compliance- og knowledge-lag fyrir íslenskan vinnumarkað
 - database-first gagnamódel og fyrsta API snapshot lag
 - AI failover grunn, parser pipeline og composite confidence lag
-- provider adapterar fyrir GitHub Models, Gemini, SambaNova og Mistral
-- fyrstu API-endapunktar fyrir AI health, parse preview og knowledge preview
+- provider adaptera fyrir GitHub Models, Gemini, SambaNova og Mistral
+- fyrstu API-endapunkta fyrir AI health, parse preview og knowledge preview
 - vefyfirborð tengt við AI health og preview endapunkta
-- mælaborð tengt við snapshot og scenarios fyrir run model samhengið
+- mælaborð tengt við snapshot og scenarios fyrir run model samhengi
+- web rendering hert gegn HTML injection í client-laginu
 
 Nánari staða er í [stöðuskjalinu](docs/STATUS.md).
 

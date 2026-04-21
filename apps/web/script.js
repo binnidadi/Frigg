@@ -1,17 +1,5 @@
 const API_BASE_URL = 'http://localhost:4310'
 
-function escapeHtml(value) {
-  if (value === null || value === undefined) {
-    return ''
-  }
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;')
-}
-
 function setText(id, value) {
   const element = document.getElementById(id)
   if (element) {
@@ -36,7 +24,26 @@ function setList(id, items, formatter) {
 
   for (const entry of items) {
     const item = document.createElement('li')
-    item.innerHTML = formatter(entry)
+    const formatted = formatter(entry)
+
+    if (typeof formatted === 'string') {
+      item.textContent = formatted
+      element.appendChild(item)
+      continue
+    }
+
+    if (formatted.strong) {
+      const strong = document.createElement('strong')
+      strong.textContent = formatted.strong
+      item.appendChild(strong)
+    }
+
+    if (formatted.span) {
+      const span = document.createElement('span')
+      span.textContent = formatted.span
+      item.appendChild(span)
+    }
+
     element.appendChild(item)
   }
 }
@@ -88,7 +95,10 @@ async function loadHealthSnapshot() {
           ? 'vantar lykil'
           : provider.status
 
-    return `<strong>${escapeHtml(provider.name)}</strong><span>${escapeHtml(provider.model)} · ${escapeHtml(stateLabel)}</span>`
+    return {
+      strong: provider.name,
+      span: `${provider.model} · ${stateLabel}`
+    }
   })
 
   setText(
@@ -135,14 +145,16 @@ async function loadDashboardAI() {
       : 'Sjálfvirk review ekki krafist'
   }
 
-  setList('parse-stage-list', parsePreview.parserStages, (stage) => {
-    return `<strong>${escapeHtml(stage.stage)}</strong><span>${escapeHtml(stage.summary)}</span>`
-  })
+  setList('parse-stage-list', parsePreview.parserStages, (stage) => ({
+    strong: stage.stage,
+    span: stage.summary
+  }))
 
   setText('knowledge-answer', knowledgePreview.answer)
-  setList('knowledge-source-list', knowledgePreview.sourceIds, (sourceId) => {
-    return `<strong>${escapeHtml(sourceId)}</strong><span>Staðfest heimild tengd fyrirspurninni.</span>`
-  })
+  setList('knowledge-source-list', knowledgePreview.sourceIds, (sourceId) => ({
+    strong: String(sourceId),
+    span: 'Staðfest heimild tengd fyrirspurninni.'
+  }))
 }
 
 function formatDaysUntil(dateString) {
@@ -163,7 +175,13 @@ function setTableRows(id, rows) {
 
   for (const row of rows) {
     const tr = document.createElement('tr')
-    tr.innerHTML = row
+
+    for (const cell of row) {
+      const td = document.createElement('td')
+      td.textContent = cell
+      tr.appendChild(td)
+    }
+
     element.appendChild(tr)
   }
 }
@@ -184,7 +202,10 @@ async function loadDashboardSnapshot() {
   )[0]
 
   if (currentRun) {
-    setText('dashboard-run-title', `Keyrsla ${currentRun.id.replace('payroll_run_', '').replaceAll('_', ' ')} í stöðu ${currentRun.status}.`)
+    setText(
+      'dashboard-run-title',
+      `Keyrsla ${currentRun.id.replace('payroll_run_', '').replaceAll('_', ' ')} í stöðu ${currentRun.status}.`
+    )
     setText(
       'dashboard-status-title',
       `${validation?.mismatches?.length ?? 0} validation frávik og ${snapshot.reviewTasks?.length ?? 0} review verkefni tengd núverandi keyrslu.`
@@ -215,24 +236,35 @@ async function loadDashboardSnapshot() {
   }
 
   setTableRows('change-table-body', [
-    `<td>${escapeHtml(snapshot.employees?.[0]?.fullName ?? 'Óþekktur starfsmaður')}</td><td>Review task opið</td><td>${
-      escapeHtml(snapshot.reviewTasks?.[0]?.reason ?? 'Engin ástæða skráð')
-    }</td><td>Yfirferð krafist</td>`,
-    `<td>${escapeHtml(snapshot.employees?.[1]?.fullName ?? 'Óþekktur starfsmaður')}</td><td>Validation mismatch</td><td>${
-      escapeHtml(validation?.mismatches?.[0]?.message ?? 'Engin mismatch skráð')
-    }</td><td>Blocker</td>`,
-    `<td>${escapeHtml(activeAgreement?.title ?? 'Virkt reglusett')}</td><td>Coverage stöðumat</td><td>${
-      escapeHtml(snapshot.coverageMatrixEntries?.[0]?.title ?? 'Engin coverage færsla')
-    }</td><td>${escapeHtml(snapshot.coverageMatrixEntries?.[0]?.coverageStatus ?? 'óþekkt')}</td>`
+    [
+      snapshot.employees?.[0]?.fullName ?? 'Óþekktur starfsmaður',
+      'Review task opið',
+      snapshot.reviewTasks?.[0]?.reason ?? 'Engin ástæða skráð',
+      'Yfirferð krafist'
+    ],
+    [
+      snapshot.employees?.[1]?.fullName ?? 'Óþekktur starfsmaður',
+      'Validation mismatch',
+      validation?.mismatches?.[0]?.message ?? 'Engin mismatch skráð',
+      'Blocker'
+    ],
+    [
+      activeAgreement?.title ?? 'Virkt reglusett',
+      'Coverage stöðumat',
+      snapshot.coverageMatrixEntries?.[0]?.title ?? 'Engin coverage færsla',
+      snapshot.coverageMatrixEntries?.[0]?.coverageStatus ?? 'óþekkt'
+    ]
   ])
 
-  setList('validation-list', validation?.mismatches ?? [], (mismatch) => {
-    return `<strong>${escapeHtml(mismatch.lineItemCode)}</strong><span>${escapeHtml(mismatch.employeeId)} · ${escapeHtml(mismatch.message)}</span>`
-  })
+  setList('validation-list', validation?.mismatches ?? [], (mismatch) => ({
+    strong: mismatch.lineItemCode,
+    span: `${mismatch.employeeId} · ${mismatch.message}`
+  }))
 
-  setList('scenario-list', scenarios.slice(0, 4), (scenario) => {
-    return `<strong>${scenario.id} · ${scenario.title}</strong><span>${scenario.expectedOutcome}</span>`
-  })
+  setList('scenario-list', scenarios.slice(0, 4), (scenario) => ({
+    strong: `${scenario.id} · ${scenario.title}`,
+    span: scenario.expectedOutcome
+  }))
 }
 
 async function main() {

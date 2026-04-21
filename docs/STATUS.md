@@ -16,6 +16,7 @@ Síðast uppfært: 2026-04-21
 - `apps/api` birtir nú AI health, parse preview og knowledge preview endapunkta.
 - `apps/web` sækir nú AI health og preview gögn úr API í forsíðu, innskráningu og mælaborð.
 - `apps/web` sækir nú einnig `/snapshot` og `/scenarios` til að birta run model samhengi á mælaborði.
+- Web rendering í `apps/web/script.js` hefur verið hert þannig að listi- og töflusmíði notar DOM í stað `innerHTML`.
 - Enginn tengdur production bakendi er kominn í loftið enn.
 
 ## Hvað er lokið
@@ -36,6 +37,7 @@ Síðast uppfært: 2026-04-21
 - AI snapshot endpointar fyrir health, parse preview og knowledge preview
 - Web script lag sem tengir UI við AI snapshot endpointa
 - Dashboard tengt við snapshot run model, validation mismatch og golden scenarios
+- Öruggari rendering í web-lagi fyrir listi- og töfluúttak
 
 ## Hvað er í vinnslu
 
