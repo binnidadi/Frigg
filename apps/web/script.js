@@ -1,5 +1,14 @@
 const API_BASE_URL = 'http://localhost:4310'
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
+
 function setText(id, value) {
   const element = document.getElementById(id)
   if (element) {
@@ -76,7 +85,7 @@ async function loadHealthSnapshot() {
           ? 'vantar lykil'
           : provider.status
 
-    return `<strong>${provider.name}</strong><span>${provider.model} · ${stateLabel}</span>`
+    return `<strong>${escapeHtml(provider.name)}</strong><span>${escapeHtml(provider.model)} · ${escapeHtml(stateLabel)}</span>`
   })
 
   setText(
@@ -124,12 +133,12 @@ async function loadDashboardAI() {
   }
 
   setList('parse-stage-list', parsePreview.parserStages, (stage) => {
-    return `<strong>${stage.stage}</strong><span>${stage.summary}</span>`
+    return `<strong>${escapeHtml(stage.stage)}</strong><span>${escapeHtml(stage.summary)}</span>`
   })
 
   setText('knowledge-answer', knowledgePreview.answer)
   setList('knowledge-source-list', knowledgePreview.sourceIds, (sourceId) => {
-    return `<strong>${sourceId}</strong><span>Staðfest heimild tengd fyrirspurninni.</span>`
+    return `<strong>${escapeHtml(sourceId)}</strong><span>Staðfest heimild tengd fyrirspurninni.</span>`
   })
 }
 
@@ -203,19 +212,19 @@ async function loadDashboardSnapshot() {
   }
 
   setTableRows('change-table-body', [
-    `<td>${snapshot.employees?.[0]?.fullName ?? 'Óþekktur starfsmaður'}</td><td>Review task opið</td><td>${
-      snapshot.reviewTasks?.[0]?.reason ?? 'Engin ástæða skráð'
+    `<td>${escapeHtml(snapshot.employees?.[0]?.fullName ?? 'Óþekktur starfsmaður')}</td><td>Review task opið</td><td>${
+      escapeHtml(snapshot.reviewTasks?.[0]?.reason ?? 'Engin ástæða skráð')
     }</td><td>Yfirferð krafist</td>`,
-    `<td>${snapshot.employees?.[1]?.fullName ?? 'Óþekktur starfsmaður'}</td><td>Validation mismatch</td><td>${
-      validation?.mismatches?.[0]?.message ?? 'Engin mismatch skráð'
+    `<td>${escapeHtml(snapshot.employees?.[1]?.fullName ?? 'Óþekktur starfsmaður')}</td><td>Validation mismatch</td><td>${
+      escapeHtml(validation?.mismatches?.[0]?.message ?? 'Engin mismatch skráð')
     }</td><td>Blocker</td>`,
-    `<td>${activeAgreement?.title ?? 'Virkt reglusett'}</td><td>Coverage stöðumat</td><td>${
-      snapshot.coverageMatrixEntries?.[0]?.title ?? 'Engin coverage færsla'
-    }</td><td>${snapshot.coverageMatrixEntries?.[0]?.coverageStatus ?? 'óþekkt'}</td>`
+    `<td>${escapeHtml(activeAgreement?.title ?? 'Virkt reglusett')}</td><td>Coverage stöðumat</td><td>${
+      escapeHtml(snapshot.coverageMatrixEntries?.[0]?.title ?? 'Engin coverage færsla')
+    }</td><td>${escapeHtml(snapshot.coverageMatrixEntries?.[0]?.coverageStatus ?? 'óþekkt')}</td>`
   ])
 
   setList('validation-list', validation?.mismatches ?? [], (mismatch) => {
-    return `<strong>${mismatch.lineItemCode}</strong><span>${mismatch.employeeId} · ${mismatch.message}</span>`
+    return `<strong>${escapeHtml(mismatch.lineItemCode)}</strong><span>${escapeHtml(mismatch.employeeId)} · ${escapeHtml(mismatch.message)}</span>`
   })
 
   setList('scenario-list', scenarios.slice(0, 4), (scenario) => {
