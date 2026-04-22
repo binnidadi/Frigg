@@ -11,10 +11,11 @@ Síðast uppfært: 2026-04-22
 - Fyrsta SQL-skema, snapshot API, repository layer og seed workflow hafa verið sett upp.
 - AI failover grunnur, parser pipeline, confidence lag og provider adapterar hafa verið innleidd í `packages/ai`.
 - `apps/api` birtir nú snapshot, scenarios, repository status, AI health, parse preview og knowledge preview.
+- `apps/api` birtir nú einnig rannsóknarvinnusvæði, rannsóknaryfirlit og forgangsgögn úr einkagagnasafni.
 - `apps/web` sækir þessi gögn og birtir þau í forsíðu, innskráningu og mælaborði.
 - Fyrsta opinbera source collection lota hefur verið kortlögð í docs og véllesanlegu registry.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
-- Research operating system baseline hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
+- Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
 
 ## Hvað er lokið
 
@@ -34,7 +35,8 @@ Síðast uppfært: 2026-04-22
 - Repository driver, migration runner og file-based seed workflow
 - Public source registry fyrir lög, Skattinn, sjóði, félög og túlkunarheimildir
 - Vantalisti fyrir private corpus og greining á `HREIN_GOGN`
-- Research workstreams, legal obligations, source acquisition og profile records fyrir sjóði og félög
+- Rannsóknarstraumar, lagaskyldur, skráning heimilda og prófílfærslur fyrir sjóði og félög
+- Rannsóknarvinnusvæði tengt inn í API og mælaborð sem lesanlegt readiness lag
 
 ## Hvað er í vinnslu
 

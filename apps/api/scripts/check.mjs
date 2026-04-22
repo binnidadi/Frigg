@@ -32,12 +32,24 @@ if (!Array.isArray(buildKnowledgePreview('A1').sourceIds)) {
   throw new Error('AI knowledge preview er ekki rétt formgert.')
 }
 
+if (repository.getResearchSummary().workstreamCount === 0) {
+  throw new Error('Research summary vantar workstreams.')
+}
+
+if (repository.getCriticalPrivateCorpus().length === 0) {
+  throw new Error('Research workspace vantar critical private corpus lista.')
+}
+
 if (repositoryStatus.driver !== 'memory') {
   throw new Error('Repository driver er ekki skilgreindur rétt.')
 }
 
 if (fileRepositoryStatus.driver !== 'file') {
   throw new Error('File repository driver er ekki skilgreindur rétt.')
+}
+
+if (fileRepositoryStatus.researchWorkstreamCount === 0) {
+  throw new Error('File repository vantar research workspace gögn.')
 }
 
 console.log('Frigg api check passed.')

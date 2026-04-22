@@ -59,7 +59,7 @@
                 <strong id="stat-review-tasks">0</strong>
               </div>
               <div class="run-stat">
-                <span>Validation frávik</span>
+                <span>Sannprófunarfrávik</span>
                 <strong class="danger-text" id="stat-validation">0</strong>
               </div>
             </div>
@@ -77,18 +77,27 @@
           <p class="panel-label">Reglusett</p>
           <h2 id="ruleset-title">Sæki virkt reglusett</h2>
           <p class="metric-value" id="ruleset-status">...</p>
-          <p class="muted" id="ruleset-summary">Samþykkt og coverage staða birtast hér.</p>
+          <p class="muted" id="ruleset-summary">Samþykkt og þekjustaða birtast hér.</p>
+        </article>
+
+        <article class="panel-card" id="research-summary-card">
+          <p class="panel-label">Rannsóknarstaða</p>
+          <h2 id="research-title">Sæki rannsóknarstöðu</h2>
+          <p class="metric-value" id="research-count">...</p>
+          <p class="muted" id="research-summary">
+            Yfirlit yfir rannsóknarstrauma, lagaskyldur og staðfesta þekjustöðu birtist hér.
+          </p>
         </article>
 
         <article class="panel-card" id="ai-health-card">
-          <p class="panel-label">AI health</p>
+          <p class="panel-label">Staða AI veitenda</p>
           <h2 id="ai-health-title">Sæki stöðu veitenda</h2>
           <p class="metric-value" id="ai-health-status">...</p>
           <p class="muted" id="ai-health-summary">
             Frigg metur nú stöðu GitHub Models, Gemini, SambaNova og Mistral.
           </p>
           <ul class="compact-list" id="ai-health-list">
-            <li>AI health gögn eru ekki komin inn enn.</li>
+            <li>Gögn um stöðu AI veitenda hafa ekki borist enn.</li>
           </ul>
         </article>
 
@@ -120,7 +129,7 @@
         <article class="table-card">
           <div class="table-heading">
             <div>
-              <p class="panel-label">Validation</p>
+              <p class="panel-label">Sannprófun</p>
               <h2>Frávik sem þarf að leysa</h2>
             </div>
           </div>
@@ -153,28 +162,28 @@
         <article class="table-card span-two" id="parse-preview-card">
           <div class="table-heading">
             <div>
-              <p class="panel-label">Agreement preview</p>
+              <p class="panel-label">Forsýning kjarasamnings</p>
               <h2>Drög að kjarasamningsreglum</h2>
             </div>
-            <a href="#">Opna review pipeline</a>
+            <a href="#">Opna yfirferðarferli</a>
           </div>
           <div class="preview-grid">
             <div class="preview-summary">
-              <p class="small-label">Parser summary</p>
+              <p class="small-label">Yfirlit úr lestri</p>
               <p class="muted" id="parse-preview-summary">
-                Sæki parse preview úr API áður en regludrög eru birt.
+                Sæki forsýningu úr lestri API áður en regludrög eru birt.
               </p>
               <div class="badge-row">
                 <span class="status-badge" id="parse-confidence-badge">Í bið</span>
-                <span class="status-badge status-badge-muted" id="parse-review-badge">Review staða óþekkt</span>
+                <span class="status-badge status-badge-muted" id="parse-review-badge">Staða yfirferðar óþekkt</span>
               </div>
             </div>
             <div>
-              <p class="small-label">Parser stages</p>
+              <p class="small-label">Lestrarskref</p>
               <ul class="issue-list compact-issues" id="parse-stage-list">
                 <li>
-                  <strong>Engin parser stage gögn komin</strong>
-                  <span>API parse preview mun birtast hér þegar tenging næst.</span>
+                  <strong>Engin gögn um lestrarskref komin</strong>
+                  <span>Forsýning úr lestri API mun birtast hér þegar tenging næst.</span>
                 </li>
               </ul>
             </div>
@@ -184,7 +193,7 @@
         <article class="table-card" id="knowledge-preview-card">
           <div class="table-heading">
             <div>
-              <p class="panel-label">Knowledge preview</p>
+              <p class="panel-label">Forsýning heimilda</p>
               <h2>Staðfestar heimildir</h2>
             </div>
           </div>
@@ -196,11 +205,26 @@
           </ul>
         </article>
 
+        <article class="table-card" id="private-corpus-card">
+          <div class="table-heading">
+            <div>
+              <p class="panel-label">Einkagagnasafn</p>
+              <h2>Gögn sem vantar fyrst</h2>
+            </div>
+          </div>
+          <ul class="issue-list compact-issues" id="private-corpus-list">
+            <li>
+              <strong>Engin gögn úr einkagagnasafni komin</strong>
+              <span>Forgangslisti úr rannsóknarvinnusvæði birtist hér þegar tenging næst.</span>
+            </li>
+          </ul>
+        </article>
+
         <article class="table-card span-two" id="scenario-card">
           <div class="table-heading">
             <div>
-              <p class="panel-label">Golden scenarios</p>
-              <h2>Forgangstilvik í coverage vinnu</h2>
+              <p class="panel-label">Forgangssviðsmyndir</p>
+              <h2>Forgangstilvik í þekjuvinnu</h2>
             </div>
           </div>
           <ul class="issue-list compact-issues" id="scenario-list">

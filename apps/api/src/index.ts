@@ -15,6 +15,9 @@ export const apiApp = {
     '/snapshot',
     '/scenarios',
     '/repository/status',
+    '/research/workspace',
+    '/research/summary',
+    '/research/private-corpus',
     '/ai/health',
     '/ai/parse-preview',
     '/ai/knowledge-preview'
@@ -22,6 +25,7 @@ export const apiApp = {
   goldenScenarioCount: scenarios.length,
   employerCount: snapshot.employers.length,
   repository: repository.getRepositoryStatus(),
+  research: repository.getResearchSummary(),
   ai: {
     providerCount: health.providers.length,
     sampleParseRuleCount: sampleParse.extractedRules.length,

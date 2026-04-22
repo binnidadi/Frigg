@@ -19,6 +19,12 @@ mkdirSync(dist, { recursive: true })
 writeFileSync(resolve(dist, 'snapshot.json'), JSON.stringify(payrollDomainSnapshot, null, 2))
 writeFileSync(resolve(dist, 'scenarios.json'), JSON.stringify(goldenScenarios, null, 2))
 writeFileSync(resolve(dist, 'repository-status.json'), JSON.stringify(repository.getRepositoryStatus(), null, 2))
+writeFileSync(resolve(dist, 'research-workspace.json'), JSON.stringify(repository.getResearchWorkspace(), null, 2))
+writeFileSync(resolve(dist, 'research-summary.json'), JSON.stringify(repository.getResearchSummary(), null, 2))
+writeFileSync(
+  resolve(dist, 'research-private-corpus.json'),
+  JSON.stringify(repository.getCriticalPrivateCorpus(), null, 2)
+)
 writeFileSync(
   resolve(dist, 'repository-file-status.json'),
   JSON.stringify(fileRepository.getRepositoryStatus(), null, 2)

@@ -41,6 +41,9 @@ export function startServer(port = 4310) {
             '/snapshot',
             '/scenarios',
             '/repository/status',
+            '/research/workspace',
+            '/research/summary',
+            '/research/private-corpus',
             '/ai/health',
             '/ai/parse-preview',
             '/ai/knowledge-preview'
@@ -62,6 +65,21 @@ export function startServer(port = 4310) {
 
     if (request.url === '/repository/status') {
       response.end(JSON.stringify(repository.getRepositoryStatus()))
+      return
+    }
+
+    if (request.url === '/research/workspace') {
+      response.end(JSON.stringify(repository.getResearchWorkspace()))
+      return
+    }
+
+    if (request.url === '/research/summary') {
+      response.end(JSON.stringify(repository.getResearchSummary()))
+      return
+    }
+
+    if (request.url === '/research/private-corpus') {
+      response.end(JSON.stringify(repository.getCriticalPrivateCorpus()))
       return
     }
 
@@ -89,7 +107,7 @@ export function startServer(port = 4310) {
     }
 
     response.statusCode = 404
-    response.end(JSON.stringify({ error: 'Not found' }))
+    response.end(JSON.stringify({ error: 'Leið fannst ekki.' }))
   })
 
   server.listen(port)

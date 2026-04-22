@@ -110,14 +110,14 @@ async function loadHealthSnapshot() {
 
   setText(
     'home-ai-status-summary',
-    `${health.providers.length} veitendur eru skráðir í failover-keðjuna og health snapshot er nú sýnilegt í viðmótinu.`
+    `${health.providers.length} veitendur eru skráðir í failover-keðjuna og stöðumynd þeirra er nú sýnileg í viðmótinu.`
   )
 
   setText(
     'login-workspace-status',
     health.overallStatus === 'red'
-      ? 'AI provider layer bíður eftir umhverfislyklum áður en lifandi köll eru virk.'
-      : 'AI provider layer er tengt og tilbúið fyrir review preview flæði.'
+      ? 'AI veitendalagið bíður eftir umhverfislyklum áður en lifandi köll verða virk.'
+      : 'AI veitendalagið er tengt og tilbúið fyrir forsýningar og yfirferð.'
   )
 }
 
@@ -141,8 +141,8 @@ async function loadDashboardAI() {
       ? 'status-badge status-badge-warning'
       : 'status-badge'
     reviewBadge.textContent = parsePreview.reviewRequired
-      ? 'Handvirk review krafist'
-      : 'Sjálfvirk review ekki krafist'
+      ? 'Handvirk yfirferð krafist'
+      : 'Sjálfvirk yfirferð ekki krafist'
   }
 
   setList('parse-stage-list', parsePreview.parserStages, (stage) => ({
@@ -154,6 +154,30 @@ async function loadDashboardAI() {
   setList('knowledge-source-list', knowledgePreview.sourceIds, (sourceId) => ({
     strong: String(sourceId),
     span: 'Staðfest heimild tengd fyrirspurninni.'
+  }))
+}
+
+async function loadResearchWorkspace() {
+  const [researchSummary, criticalPrivateCorpus] = await Promise.all([
+    fetchJson('/research/summary'),
+    fetchJson('/research/private-corpus')
+  ])
+
+  setText('research-title', 'Rannsóknarvinnusvæði')
+  setText(
+    'research-count',
+    `${researchSummary.workstreamCount} straumar · ${researchSummary.legalObligationCount} skyldur`
+  )
+  setText(
+    'research-summary',
+    `${researchSummary.mappedWorkstreamCount} rannsóknarstraumar eru kortlagðir, ${researchSummary.certifiedCoverageCount} þekjufærslur eru staðfestar og ${
+      researchSummary.criticalPrivateCorpusCount
+    } forgangsgagnasöfn vantar enn.`
+  )
+
+  setList('private-corpus-list', criticalPrivateCorpus, (entry) => ({
+    strong: entry.title,
+    span: `${entry.minimumTarget} · ${entry.whyItMatters}`
   }))
 }
 
@@ -208,7 +232,7 @@ async function loadDashboardSnapshot() {
     )
     setText(
       'dashboard-status-title',
-      `${validation?.mismatches?.length ?? 0} validation frávik og ${snapshot.reviewTasks?.length ?? 0} review verkefni tengd núverandi keyrslu.`
+      `${validation?.mismatches?.length ?? 0} sannprófunarfrávik og ${snapshot.reviewTasks?.length ?? 0} yfirferðarverkefni tengd núverandi keyrslu.`
     )
     setText(
       'dashboard-status-summary',
@@ -231,27 +255,27 @@ async function loadDashboardSnapshot() {
     setText('ruleset-status', String(activeRuleSet.coverageStatus ?? 'óþekkt').toUpperCase())
     setText(
       'ruleset-summary',
-      `${activeRuleSet.approvalStatus} · ${activeRuleSet.reviewNotes?.[0] ?? 'Engar review athugasemdir.'}`
+      `${activeRuleSet.approvalStatus} · ${activeRuleSet.reviewNotes?.[0] ?? 'Engar athugasemdir úr yfirferð.'}`
     )
   }
 
   setTableRows('change-table-body', [
     [
       snapshot.employees?.[0]?.fullName ?? 'Óþekktur starfsmaður',
-      'Review task opið',
+      'Yfirferðarverkefni opið',
       snapshot.reviewTasks?.[0]?.reason ?? 'Engin ástæða skráð',
       'Yfirferð krafist'
     ],
     [
       snapshot.employees?.[1]?.fullName ?? 'Óþekktur starfsmaður',
-      'Validation mismatch',
-      validation?.mismatches?.[0]?.message ?? 'Engin mismatch skráð',
-      'Blocker'
+      'Sannprófunarfrávik',
+      validation?.mismatches?.[0]?.message ?? 'Engin frávik skráð',
+      'Stöðvar samþykki'
     ],
     [
       activeAgreement?.title ?? 'Virkt reglusett',
-      'Coverage stöðumat',
-      snapshot.coverageMatrixEntries?.[0]?.title ?? 'Engin coverage færsla',
+      'Þekjustaða',
+      snapshot.coverageMatrixEntries?.[0]?.title ?? 'Engin þekjufærsla',
       snapshot.coverageMatrixEntries?.[0]?.coverageStatus ?? 'óþekkt'
     ]
   ])
@@ -274,23 +298,26 @@ async function main() {
     await loadHealthSnapshot()
 
     if (page === 'dashboard') {
-      await Promise.all([loadDashboardAI(), loadDashboardSnapshot()])
+      await Promise.all([loadDashboardAI(), loadDashboardSnapshot(), loadResearchWorkspace()])
     }
   } catch (error) {
     const message =
       error instanceof Error
-        ? `Ekki náðist samband við API: ${error.message}.`
-        : 'Ekki náðist samband við API.'
+      ? `Ekki náðist samband við API: ${error.message}.`
+      : 'Ekki náðist samband við API.'
 
-    setText('ai-health-title', 'AI snapshot ekki tiltækt')
-    setText('ai-health-status', 'OFFLINE')
+    setText('ai-health-title', 'Stöðumynd AI veitenda ekki tiltæk')
+    setText('ai-health-status', 'ÓTILTÆKT')
     setText('ai-health-summary', message)
     setText('home-ai-status-title', 'API tenging vantar')
     setText('home-ai-status-summary', message)
     setText('login-workspace-status', message)
-    setText('dashboard-run-title', 'Snapshot API ekki tiltækt')
-    setText('dashboard-status-title', 'Ekki tókst að hlaða run model gögnum')
+    setText('dashboard-run-title', 'Stöðumynd úr API ekki tiltæk')
+    setText('dashboard-status-title', 'Ekki tókst að hlaða gögnum um keyrslulíkan')
     setText('dashboard-status-summary', message)
+    setText('research-title', 'Rannsóknargögn ekki tiltæk')
+    setText('research-count', 'ÓTILTÆKT')
+    setText('research-summary', message)
   }
 }
 

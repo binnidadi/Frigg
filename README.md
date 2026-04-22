@@ -17,6 +17,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - repository lag og migration runner ofan á `db/schema.sql`
 - `memory` og `file` repository driver með seed workflow fyrir varanleg demo-gögn
 - opinbert source registry fyrir lög, Skattinn, lífeyrissjóði og stéttarfélög
+- rannsóknarvinnusvæði með grunnlagi fyrir rannsóknarstrauma, lagaskyldur og readiness á einkagagnasafni
 
 Nánari staða er í `docs/STATUS.md`.
 
@@ -59,7 +60,7 @@ db/           SQL-skema, migrations og seed gögnum
 ## Næstu skref
 
 1. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
-2. Virkja research operating system fyrir lög, sjóði, félög, obligations og source acquisition.
-3. Færa public source registry yfir í versioned knowledge records og coverage matrix.
-4. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
-5. Tengja provider adapters við lifandi umhverfislykla, health telemetry og parser workflow.
+2. Virkja rannsóknarvinnusvæðið fyrir lög, sjóði, félög, lagaskyldur og skráningu heimilda.
+3. Færa opinbera heimildaskrá yfir í útgáfustýrðar þekkingarfærslur og coverage matrix.
+4. Bæta einkagagnasafni við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
+5. Tengja provider adapters við lifandi umhverfislykla, health telemetry og lestur samningsgagna.
