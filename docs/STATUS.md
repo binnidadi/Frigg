@@ -59,6 +59,7 @@ Síðast uppfært: 2026-04-22
 ## Áhætta núna
 
 - Enginn production gagnagrunnur er kominn í loftið enn.
+- Engin `pnpm-lock.yaml`, `.env.example` eða CI keyrsla er komin inn enn, sem dregur úr endurtekningarhæfni og afhendanleika.
 - Public corpus er registry og URL-kortlagning en ekki fullt raw-download archive.
 - Private corpus fyrir launaseðla, tímaskráningu, skilagreinar og routing vantar enn.
 - AI provider layer er enn án lifandi tenginga við ytri veitendur og án raunverulegra health mælinga.

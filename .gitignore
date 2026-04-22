@@ -9,6 +9,5 @@ HREIN_GOGN/
 .env
 .env.*
 !.env.example
-pnpm-lock.yaml
 *.log
 *.tsbuildinfo
