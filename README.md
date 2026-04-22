@@ -50,6 +50,7 @@ db/           SQL-skema, migrations og seed gögnum
 - `docs/PRODUCT-PRINCIPLES.md`
 - `docs/KNOWLEDGE-SOURCES.md`
 - `docs/PUBLIC-SOURCE-REGISTRY.md`
+- `docs/RESEARCH-OPERATING-SYSTEM.md`
 - `docs/REMAINING-DATA-REQUEST.md`
 - `docs/HREIN-GOGN-INVENTORY.md`
 - `docs/COMPLIANCE-RESEARCH.md`
@@ -58,6 +59,7 @@ db/           SQL-skema, migrations og seed gögnum
 ## Næstu skref
 
 1. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
-2. Færa public source registry yfir í versioned knowledge records og coverage matrix.
-3. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
-4. Tengja provider adapters við lifandi umhverfislykla, health telemetry og parser workflow.
+2. Virkja research operating system fyrir lög, sjóði, félög, obligations og source acquisition.
+3. Færa public source registry yfir í versioned knowledge records og coverage matrix.
+4. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
+5. Tengja provider adapters við lifandi umhverfislykla, health telemetry og parser workflow.

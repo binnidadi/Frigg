@@ -165,6 +165,101 @@ CREATE TABLE knowledge_sources (
   reviewed_by TEXT
 );
 
+CREATE TABLE research_workstreams (
+  id TEXT PRIMARY KEY,
+  code TEXT NOT NULL UNIQUE,
+  title TEXT NOT NULL,
+  market_scope TEXT NOT NULL,
+  status TEXT NOT NULL,
+  priority TEXT NOT NULL,
+  owner_role TEXT NOT NULL,
+  notes TEXT NOT NULL
+);
+
+CREATE TABLE source_acquisition_records (
+  id TEXT PRIMARY KEY,
+  source_id TEXT NOT NULL REFERENCES knowledge_sources(id),
+  source_type TEXT NOT NULL,
+  access_level TEXT NOT NULL,
+  acquisition_method TEXT NOT NULL,
+  acquired_at TEXT NOT NULL,
+  acquired_by TEXT NOT NULL,
+  checksum TEXT,
+  storage_reference TEXT,
+  review_status TEXT NOT NULL,
+  notes TEXT NOT NULL
+);
+
+CREATE TABLE legal_obligations (
+  id TEXT PRIMARY KEY,
+  code TEXT NOT NULL,
+  version TEXT NOT NULL,
+  title TEXT NOT NULL,
+  market_scope TEXT NOT NULL,
+  source_category TEXT NOT NULL,
+  legal_domain TEXT NOT NULL,
+  source_ids TEXT NOT NULL,
+  affected_artifacts TEXT NOT NULL,
+  status TEXT NOT NULL,
+  operational_status TEXT NOT NULL,
+  source_depth TEXT NOT NULL,
+  residual_risk TEXT NOT NULL,
+  valid_from TEXT NOT NULL,
+  valid_to TEXT,
+  notes TEXT NOT NULL
+);
+
+CREATE TABLE collective_agreement_packs (
+  id TEXT PRIMARY KEY,
+  code TEXT NOT NULL,
+  version TEXT NOT NULL,
+  title TEXT NOT NULL,
+  market_scope TEXT NOT NULL,
+  union_ids TEXT NOT NULL,
+  source_document_ids TEXT NOT NULL,
+  supported_employment_groups TEXT NOT NULL,
+  coverage_status TEXT NOT NULL,
+  operational_status TEXT NOT NULL,
+  source_depth TEXT NOT NULL,
+  valid_from TEXT NOT NULL,
+  valid_to TEXT,
+  notes TEXT NOT NULL
+);
+
+CREATE TABLE pension_fund_profiles (
+  id TEXT PRIMARY KEY,
+  code TEXT NOT NULL,
+  version TEXT NOT NULL,
+  name TEXT NOT NULL,
+  market_scope TEXT NOT NULL,
+  coverage_status TEXT NOT NULL,
+  operational_status TEXT NOT NULL,
+  source_depth TEXT NOT NULL,
+  remittance_channels TEXT NOT NULL,
+  contribution_summary TEXT NOT NULL,
+  source_ids TEXT NOT NULL,
+  valid_from TEXT NOT NULL,
+  valid_to TEXT,
+  notes TEXT NOT NULL
+);
+
+CREATE TABLE union_profiles (
+  id TEXT PRIMARY KEY,
+  code TEXT NOT NULL,
+  version TEXT NOT NULL,
+  name TEXT NOT NULL,
+  market_scope TEXT NOT NULL,
+  coverage_status TEXT NOT NULL,
+  operational_status TEXT NOT NULL,
+  source_depth TEXT NOT NULL,
+  remittance_channels TEXT NOT NULL,
+  membership_summary TEXT NOT NULL,
+  source_ids TEXT NOT NULL,
+  valid_from TEXT NOT NULL,
+  valid_to TEXT,
+  notes TEXT NOT NULL
+);
+
 CREATE TABLE coverage_matrix_entries (
   id TEXT PRIMARY KEY,
   code TEXT NOT NULL,

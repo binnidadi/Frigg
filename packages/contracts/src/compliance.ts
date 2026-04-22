@@ -1,9 +1,14 @@
 import type {
+  AccessLevel,
   AuditMetadata,
+  CoverageOperationalStatus,
   CoverageStatus,
   EffectivePeriod,
   Identifier,
   KnowledgeSourceType,
+  MarketScope,
+  ResearchStatus,
+  SourceDepth,
   VersionedRecord
 } from './domain.js'
 
@@ -134,6 +139,95 @@ export interface KnowledgeSourceRecord extends VersionedRecord {
   transformedIntoRules: boolean
   notes: string[]
   audit: AuditMetadata
+}
+
+export interface ResearchWorkstream {
+  id: Identifier
+  code: string
+  title: string
+  marketScope: MarketScope
+  status: ResearchStatus
+  priority: 'critical' | 'high' | 'medium' | 'low'
+  ownerRole: string
+  notes: string[]
+}
+
+export interface SourceAcquisitionRecord {
+  id: Identifier
+  sourceId: Identifier
+  sourceType: KnowledgeSourceType
+  accessLevel: AccessLevel
+  acquisitionMethod:
+    | 'registry'
+    | 'manual_download'
+    | 'customer_upload'
+    | 'partner_portal'
+    | 'api'
+    | 'scrape_reviewed'
+  acquiredAt: string
+  acquiredBy: Identifier
+  checksum: string | null
+  storageReference: string | null
+  reviewStatus: ResearchStatus
+  notes: string[]
+}
+
+export interface LegalObligationRecord extends VersionedRecord {
+  title: string
+  marketScope: MarketScope
+  sourceCategory: 'law' | 'tax_rule' | 'agreement_clause' | 'fund_rule' | 'union_rule'
+  legalDomain:
+    | 'employment_terms'
+    | 'leave'
+    | 'tax'
+    | 'pension'
+    | 'union'
+    | 'privacy'
+    | 'retention'
+    | 'reporting'
+  sourceIds: Identifier[]
+  affectedArtifacts: string[]
+  status: ResearchStatus
+  operationalStatus: CoverageOperationalStatus
+  sourceDepth: SourceDepth
+  residualRisk: 'low' | 'medium' | 'high' | 'unknown'
+  notes: string[]
+}
+
+export interface CollectiveAgreementCoveragePack extends VersionedRecord {
+  title: string
+  marketScope: MarketScope
+  unionIds: Identifier[]
+  sourceDocumentIds: Identifier[]
+  supportedEmploymentGroups: string[]
+  coverageStatus: CoverageStatus
+  operationalStatus: CoverageOperationalStatus
+  sourceDepth: SourceDepth
+  notes: string[]
+}
+
+export interface PensionFundProfile extends VersionedRecord {
+  name: string
+  marketScope: MarketScope
+  coverageStatus: CoverageStatus
+  operationalStatus: CoverageOperationalStatus
+  sourceDepth: SourceDepth
+  remittanceChannels: string[]
+  contributionSummary: string
+  sourceIds: Identifier[]
+  notes: string[]
+}
+
+export interface UnionProfile extends VersionedRecord {
+  name: string
+  marketScope: MarketScope
+  coverageStatus: CoverageStatus
+  operationalStatus: CoverageOperationalStatus
+  sourceDepth: SourceDepth
+  remittanceChannels: string[]
+  membershipSummary: string
+  sourceIds: Identifier[]
+  notes: string[]
 }
 
 export interface CoverageMatrixEntry {

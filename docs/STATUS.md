@@ -14,6 +14,7 @@ Síðast uppfært: 2026-04-22
 - `apps/web` sækir þessi gögn og birtir þau í forsíðu, innskráningu og mælaborði.
 - Fyrsta opinbera source collection lota hefur verið kortlögð í docs og véllesanlegu registry.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
+- Research operating system baseline hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
 
 ## Hvað er lokið
 
@@ -33,12 +34,13 @@ Síðast uppfært: 2026-04-22
 - Repository driver, migration runner og file-based seed workflow
 - Public source registry fyrir lög, Skattinn, sjóði, félög og túlkunarheimildir
 - Vantalisti fyrir private corpus og greining á `HREIN_GOGN`
+- Research workstreams, legal obligations, source acquisition og profile records fyrir sjóði og félög
 
 ## Hvað er í vinnslu
 
 - Canonical architecture fyrir payroll engine, Trust Center og AI review pipeline
 - Framlenging contracts yfir í gagnamódel fyrir run lifecycle og audit reconstruction
-- Database-first skráning fyrir statutory parameters, knowledge records og review tasks
+- Database-first skráning fyrir statutory parameters, knowledge records, review tasks og research operating system
 - Raunverulegur gagnagrunnsdrifari í stað file/memory drivers
 - Lifandi tengingar við ytri AI veitendur og telemetry
 - Coverage matrix fyrir kjarasamninga, sjóði og félög
@@ -46,10 +48,11 @@ Síðast uppfært: 2026-04-22
 
 ## Hvað er næst
 
-1. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
-2. Færa public source registry inn í knowledge records og coverage matrix.
-3. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
-4. Tengja provider adapters við lifandi lykla, health telemetry og raunveruleg parse flows.
+1. Fylla research workstreams, legal obligations, pension fund profiles og union profiles með raunverulegri kortlagningu.
+2. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
+3. Færa public source registry inn í knowledge records og coverage matrix.
+4. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
+5. Tengja provider adapters við lifandi lykla, health telemetry og raunveruleg parse flows.
 
 ## Áhætta núna
 

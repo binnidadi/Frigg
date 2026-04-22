@@ -1,0 +1,206 @@
+{
+  "generatedAt": "2026-04-22T00:00:00Z",
+  "researchWorkstreams": [
+    {
+      "id": "workstream_private_general",
+      "code": "private-general",
+      "title": "Almennur vinnumarkaður",
+      "marketScope": "private_general",
+      "status": "mapped",
+      "priority": "critical",
+      "ownerRole": "compliance_research",
+      "notes": [
+        "Myndar grunn fyrir lög, kjarasamninga, lífeyrissjóði og stéttarfélög á almennum markaði.",
+        "Heldur utan um V1 coverage áður en sérgreinar og opinberir markaðir taka við."
+      ]
+    },
+    {
+      "id": "workstream_public_sector",
+      "code": "public-sector",
+      "title": "Opinber markaður",
+      "marketScope": "state",
+      "status": "unresearched",
+      "priority": "high",
+      "ownerRole": "compliance_research",
+      "notes": [
+        "Kallar á sértæka lagagreiningu, samningsumboð og aðgreiningu frá almennum vinnumarkaði."
+      ]
+    },
+    {
+      "id": "workstream_routing",
+      "code": "routing",
+      "title": "Lífeyrissjóðir og stéttarfélög",
+      "marketScope": "cross_market",
+      "status": "mapped",
+      "priority": "critical",
+      "ownerRole": "routing_research",
+      "notes": [
+        "Nær yfir aðild, félagsgjöld, iðgjöld, skilagreinar og operational routing."
+      ]
+    }
+  ],
+  "legalObligations": [
+    {
+      "id": "obligation_withholding_tax",
+      "code": "withholding-tax",
+      "version": "2026.1",
+      "title": "Staðgreiðsla opinberra gjalda",
+      "marketScope": "cross_market",
+      "sourceCategory": "tax_rule",
+      "legalDomain": "tax",
+      "sourceIds": [
+        "source-althingi-45-1987",
+        "source-skatturinn-skattthrep-2026",
+        "source-skatturinn-personuafslattur"
+      ],
+      "affectedArtifacts": [
+        "payroll_run",
+        "payslip",
+        "compliance_deadline",
+        "annual_reporting"
+      ],
+      "status": "mapped",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "residualRisk": "medium",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Þarf fulla meðhöndlun fjölgreiðenda, persónuafsláttar og leiðréttinga til að verða certified."
+      ]
+    },
+    {
+      "id": "obligation_pension_routing",
+      "code": "pension-routing",
+      "version": "2026.1",
+      "title": "Routing lífeyrissjóðsiðgjalda",
+      "marketScope": "cross_market",
+      "sourceCategory": "fund_rule",
+      "legalDomain": "pension",
+      "sourceIds": [
+        "source-althingi-129-1997"
+      ],
+      "affectedArtifacts": [
+        "payroll_input",
+        "payslip",
+        "remittance_batch",
+        "review_task"
+      ],
+      "status": "mapped",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "registry_only",
+      "residualRisk": "high",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Krefst fyrirtækja- og starfsmannasértækra private gagna til að verða operationally rétt."
+      ]
+    }
+  ],
+  "pensionFundProfiles": [
+    {
+      "id": "pension_live_profile",
+      "code": "live",
+      "version": "2026.1",
+      "name": "LIVE",
+      "marketScope": "private_general",
+      "coverageStatus": "partial",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "fyrirtaekjavefur",
+        "skilagrein"
+      ],
+      "contributionSummary": "Grunnrouting kortlagt, en private aðildargögn vantar til fullrar certifieringar.",
+      "sourceIds": [],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Dæmigerður sjóður fyrir almenna SME coverage vinnu."
+      ]
+    }
+  ],
+  "unionProfiles": [
+    {
+      "id": "union_vr_profile",
+      "code": "vr",
+      "version": "2026.1",
+      "name": "VR",
+      "marketScope": "private_general",
+      "coverageStatus": "partial",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "félagavefur",
+        "skilagrein"
+      ],
+      "membershipSummary": "Almenn coverage fyrir verslun og skrifstofufólk, en starfsmannasértæk aðild þarf private sannprófun.",
+      "sourceIds": [],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Myndar grunn fyrir first-wave coverage með retail samningum."
+      ]
+    }
+  ],
+  "collectiveAgreementPacks": [
+    {
+      "id": "agreement_pack_vr_retail",
+      "code": "vr-retail",
+      "version": "2026.2",
+      "title": "VR retail",
+      "marketScope": "private_general",
+      "unionIds": [
+        "union_vr_profile"
+      ],
+      "sourceDocumentIds": [
+        "source_vr_collective_2026"
+      ],
+      "supportedEmploymentGroups": [
+        "retail"
+      ],
+      "coverageStatus": "partial",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "rule_level",
+      "effectivePeriod": {
+        "validFrom": "2026-04-01",
+        "validTo": null
+      },
+      "notes": [
+        "Demo runtime nær aðeins hluta þessa pakka í dag.",
+        "Þarf launaseðla, tíma- og routing sannleiksgögn til fullrar certifieringar."
+      ]
+    }
+  ],
+  "requiredPrivateCorpus": [
+    {
+      "code": "payslips_corpus",
+      "title": "Nafnlausir launaseðlar",
+      "priority": "critical",
+      "minimumTarget": "100-200 skjöl",
+      "whyItMatters": "Nauðsynlegt til að sannreyna line items, launaseðla sem sönnunargagn og raunverulega edge cases."
+    },
+    {
+      "code": "timesheets_and_work_patterns",
+      "title": "Tímaskráningar og vaktamynstur",
+      "priority": "critical",
+      "minimumTarget": "Samhliða öllum lykillaunaseðlum",
+      "whyItMatters": "Gerir deterministic validation á álagi, yfirvinnu, veikindum og fjarvistum mögulega."
+    },
+    {
+      "code": "routing_truth",
+      "title": "Routing sannleiksgögn",
+      "priority": "critical",
+      "minimumTarget": "Per starfsmann og fyrirtæki",
+      "whyItMatters": "Án þessara gagna verður sjóða- og félagarouting aldrei certified."
+    }
+  ]
+}

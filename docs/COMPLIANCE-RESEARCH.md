@@ -1,6 +1,6 @@
 # Compliance Research Frigg
 
-Síðast uppfært: 2026-04-21
+Síðast uppfært: 2026-04-22
 
 ## Markmið
 
@@ -42,9 +42,12 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Véllesanlegt registry hefur verið sett upp í `db/seeds/public-source-registry.json`.
 - Vantalisti yfir private corpus hefur verið afmarkaður í `docs/REMAINING-DATA-REQUEST.md`.
 - Greining á `HREIN_GOGN` hefur verið fest í `docs/HREIN-GOGN-INVENTORY.md`.
+- Research operating system baseline er nú skilgreint í `docs/RESEARCH-OPERATING-SYSTEM.md` og stutt í gagnamódeli og contracts.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 
-1. Database schema fyrir statutory parameters, routing rules, knowledge sources og review tasks.
-2. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar.
-3. Trust Center gagnalíkan og coverage matrix.
+1. Fylla research workstreams, legal obligations, sjóðaprófíla og félagaprófíla með raunverulegum records.
+2. Tengja source acquisition records við public registry og síðar private corpus intake.
+3. Stækka coverage matrix yfir allan markaðinn með `operational status` og `source depth`.
+4. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar.
+5. Trust Center gagnalíkan og certified coverage reporting.
