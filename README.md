@@ -18,6 +18,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - `memory` og `file` repository driver með seed workflow fyrir varanleg demo-gögn
 - opinbert source registry fyrir lög, Skattinn, lífeyrissjóði og stéttarfélög
 - rannsóknarvinnusvæði með grunnlagi fyrir rannsóknarstrauma, lagaskyldur og readiness á einkagagnasafni
+- grunnlag fyrir afhendanleika með `.env.example`, stillanlegu API grunnslóði í vefnum og CI keyrslu
 
 Nánari staða er í `docs/STATUS.md`.
 
@@ -42,6 +43,32 @@ docs/         Source-of-truth skjöl fyrir stöðu, stefnu og ákvarðanir
 db/           SQL-skema, migrations og seed gögnum
 ```
 
+## Ubuntu ræsileið
+
+1. Virkja `corepack` og setja upp workspace:
+   ```bash
+   corepack enable
+   pnpm install
+   ```
+2. Afrita umhverfisgrunn:
+   ```bash
+   cp .env.example .env
+   ```
+3. Ræsa API:
+   ```bash
+   pnpm --filter @frigg/api dev
+   ```
+4. Opna vefskrárnar úr `apps/web/` eða keyra build:
+   ```bash
+   pnpm --filter @frigg/web build
+   ```
+
+## Núverandi runtime-afstaða
+
+- `apps/api` og `apps/web` eru nú JS-first runtime lög með einföldum `node` skriftum.
+- `packages/contracts`, `packages/ai` og `packages/engine` bera áfram TypeScript domain- og arkitektúrgrunn.
+- Næsta skref er að herða tooling og checks áður en runtime apps fara í fulla TypeScript build-keðju.
+
 ## Source of Truth
 
 - `docs/STATUS.md`
@@ -59,8 +86,8 @@ db/           SQL-skema, migrations og seed gögnum
 
 ## Næstu skref
 
-1. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
-2. Virkja rannsóknarvinnusvæðið fyrir lög, sjóði, félög, lagaskyldur og skráningu heimilda.
-3. Færa opinbera heimildaskrá yfir í útgáfustýrðar þekkingarfærslur og coverage matrix.
-4. Bæta einkagagnasafni við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
-5. Tengja provider adapters við lifandi umhverfislykla, health telemetry og lestur samningsgagna.
+1. Búa til `pnpm-lock.yaml` í fyrsta `pnpm install` umhverfi og festa hana í repo.
+2. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
+3. Virkja rannsóknarvinnusvæðið fyrir lög, sjóði, félög, lagaskyldur og skráningu heimilda.
+4. Færa opinbera heimildaskrá yfir í útgáfustýrðar þekkingarfærslur og coverage matrix.
+5. Bæta einkagagnasafni við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.

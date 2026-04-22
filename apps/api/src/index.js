@@ -31,4 +31,4 @@ export const apiApp = {
     sampleParseRuleCount: sampleParse.extractedRules.length,
     sampleKnowledgeSourceCount: sampleKnowledge.sourceIds.length
   }
-} as const
+}

@@ -54,3 +54,8 @@
 
 - Staða: Samþykkt
 - Ástæða: Opið efni má skrá og útgáfustýra sjálfstætt, en viðskiptavinagögn og innskráningarvarið efni þurfa sérmeðferð, strangari aðgangsstýringu og skýra rekjanleika.
+
+## D-012: Runtime apps haldast JS-first þar til foundation-lagið er hert
+
+- Staða: Samþykkt
+- Ástæða: `apps/api` og `apps/web` eru enn á grunnstigi með einföldum `node` skriftum, seed gögnum og léttum checks. Á þessu stigi er skýrara og öruggara að halda runtime-lögunum JS-first, herða config, CI, lock-skrá og afhendanleika fyrst, og fara síðan í samræmda TypeScript build-keðju í einni markvissri lotu.

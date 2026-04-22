@@ -15,6 +15,7 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - golden scenarios baseline
 - public corpus registry baseline
 - research operating system baseline
+- `.env.example`, CI baseline og stillanleg runtime config fyrir API tengingu í vef
 
 ## Áfangi 2: Research Operating System
 

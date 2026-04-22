@@ -1,4 +1,7 @@
-const API_BASE_URL = 'http://localhost:4310'
+const API_BASE_URL =
+  document.querySelector('meta[name="frigg-api-base-url"]')?.getAttribute('content') ??
+  window.FRIGG_API_BASE_URL ??
+  'http://localhost:4310'
 
 function setText(id, value) {
   const element = document.getElementById(id)

@@ -13,6 +13,8 @@ Síðast uppfært: 2026-04-22
 - `apps/api` birtir nú snapshot, scenarios, repository status, AI health, parse preview og knowledge preview.
 - `apps/api` birtir nú einnig rannsóknarvinnusvæði, rannsóknaryfirlit og forgangsgögn úr einkagagnasafni.
 - `apps/web` sækir þessi gögn og birtir þau í forsíðu, innskráningu og mælaborði.
+- `.env.example` og fyrsta CI workflow hafa verið bætt við svo grunnuppsetning og check keyrsla séu skýrari.
+- Vefurinn styður nú stillanlegt API grunnslóð í gegnum `meta` stillingu í stað harðkóðaðrar forsendingar eingöngu í `script.js`.
 - Fyrsta opinbera source collection lota hefur verið kortlögð í docs og véllesanlegu registry.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
@@ -37,6 +39,7 @@ Síðast uppfært: 2026-04-22
 - Vantalisti fyrir private corpus og greining á `HREIN_GOGN`
 - Rannsóknarstraumar, lagaskyldur, skráning heimilda og prófílfærslur fyrir sjóði og félög
 - Rannsóknarvinnusvæði tengt inn í API og mælaborð sem lesanlegt readiness lag
+- Samþykkt afstaða um að runtime apps séu JS-first þar til foundation-lagið er tilbúið fyrir samræmda TypeScript build-keðju
 
 ## Hvað er í vinnslu
 
@@ -51,15 +54,15 @@ Síðast uppfært: 2026-04-22
 ## Hvað er næst
 
 1. Fylla research workstreams, legal obligations, pension fund profiles og union profiles með raunverulegri kortlagningu.
-2. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
-3. Færa public source registry inn í knowledge records og coverage matrix.
-4. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
-5. Tengja provider adapters við lifandi lykla, health telemetry og raunveruleg parse flows.
+2. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
+3. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
+4. Færa public source registry inn í knowledge records og coverage matrix.
+5. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
 
 ## Áhætta núna
 
 - Enginn production gagnagrunnur er kominn í loftið enn.
-- Engin `pnpm-lock.yaml`, `.env.example` eða CI keyrsla er komin inn enn, sem dregur úr endurtekningarhæfni og afhendanleika.
+- `pnpm-lock.yaml` vantar enn þar sem `pnpm` er ekki tiltækt í núverandi vél, svo full endurtekningarhæfni er ekki komin í repo enn.
 - Public corpus er registry og URL-kortlagning en ekki fullt raw-download archive.
 - Private corpus fyrir launaseðla, tímaskráningu, skilagreinar og routing vantar enn.
 - AI provider layer er enn án lifandi tenginga við ytri veitendur og án raunverulegra health mælinga.

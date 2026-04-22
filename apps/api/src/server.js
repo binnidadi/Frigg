@@ -27,7 +27,7 @@ function readJsonBody(request) {
   })
 }
 
-export function startServer(port = 4310) {
+export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
   const repository = createRepository()
   const server = createServer(async (request, response) => {
     response.setHeader('Content-Type', 'application/json; charset=utf-8')
