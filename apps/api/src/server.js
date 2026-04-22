@@ -113,6 +113,7 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
       try {
         if (method !== 'GET' && method !== 'POST') {
           response.statusCode = 405
+          response.setHeader('Allow', 'GET, POST')
           response.end(JSON.stringify({ error: 'Aðferð ekki leyfð á þessari leið.' }))
           return
         }
