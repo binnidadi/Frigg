@@ -173,9 +173,9 @@ async function loadResearchWorkspace() {
   )
   setText(
     'research-summary',
-    `${researchSummary.mappedWorkstreamCount} rannsóknarstraumar eru kortlagðir, ${researchSummary.certifiedCoverageCount} þekjufærslur eru staðfestar og ${
-      researchSummary.criticalPrivateCorpusCount
-    } forgangsgagnasöfn vantar enn.`
+    `${researchSummary.mappedWorkstreamCount} rannsóknarstraumar, ${researchSummary.sourceAcquisitionCount} skráðar heimildir, ${researchSummary.legalObligationCount} lagaskyldur og ${
+      researchSummary.pensionFundProfileCount + researchSummary.unionProfileCount
+    } sjóða- og félagaprófílar eru nú kortlögð. ${researchSummary.criticalPrivateCorpusCount} forgangsgagnasöfn vantar enn.`
   )
 
   setList('private-corpus-list', criticalPrivateCorpus, (entry) => ({

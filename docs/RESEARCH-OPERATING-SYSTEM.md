@@ -123,7 +123,19 @@ Research operating system á að gera þessi gögn sýnileg sem skýran gap-list
 
 ## Næstu skref
 
-1. Fylla `db/seeds/research-workspace.json` með raunverulegri kortlagningu.
+1. Stækka `db/seeds/research-workspace.json` frá fyrstu raunverulegu færslunum yfir í fulla coverage matrix.
 2. Tengja research records við gagnagrunnsdrifara.
 3. Sýna þessi records síðar í Trust Center og internal review surface.
 4. Nota legal obligations sem undirlag fyrir deterministic rule engine og validation engine.
+
+## Fyrsta raunverulega kortlagning
+
+Frigg hefur nú fyrstu rannsóknarfærslur sem byggja á raunverulegu public registry:
+
+- lagaskyldur fyrir staðgreiðslu, tryggingagjald, reiknað endurgjald, orlof, veikindi, routing og launaseðil sem sönnunargagn
+- source acquisition records sem tengja research layer við skráðar heimildir
+- prófíla fyrir `LIVE`, `Gildi`, `Frjálsa`, `Stapa` og `Festu`
+- prófíla fyrir `VR`, `Eflingu`, `SGS` og túlkunarlag `ASÍ`
+- coverage pakka fyrir fyrstu `VR` samningssvið
+
+Þessi staða er enn `research-first` fremur en certified runtime, en hún gerir nú operational status og residual risk sýnilegt á raunverulegum færslum í stað tóms baseline.

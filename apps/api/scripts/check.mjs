@@ -36,6 +36,22 @@ if (repository.getResearchSummary().workstreamCount === 0) {
   throw new Error('Research summary vantar workstreams.')
 }
 
+if (repository.getResearchSummary().sourceAcquisitionCount < 5) {
+  throw new Error('Research summary vantar nægilega skráningu heimilda.')
+}
+
+if (repository.getResearchSummary().legalObligationCount < 6) {
+  throw new Error('Research summary vantar nægilega lagaskyldukortlagningu.')
+}
+
+if (repository.getResearchSummary().pensionFundProfileCount < 4) {
+  throw new Error('Research summary vantar nægilega lífeyrissjóðaprófíla.')
+}
+
+if (repository.getResearchSummary().unionProfileCount < 3) {
+  throw new Error('Research summary vantar nægilega stéttarfélaga- eða túlkunarprófíla.')
+}
+
 if (repository.getCriticalPrivateCorpus().length === 0) {
   throw new Error('Research workspace vantar critical private corpus lista.')
 }

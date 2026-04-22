@@ -11,6 +11,7 @@ function clone(value) {
 
 function buildResearchSummary(workspace) {
   const workstreams = workspace.researchWorkstreams ?? []
+  const sourceAcquisitionRecords = workspace.sourceAcquisitionRecords ?? []
   const obligations = workspace.legalObligations ?? []
   const pensionFundProfiles = workspace.pensionFundProfiles ?? []
   const unionProfiles = workspace.unionProfiles ?? []
@@ -32,6 +33,7 @@ function buildResearchSummary(workspace) {
     workstreamCount: workstreams.length,
     mappedWorkstreamCount: workstreams.filter((entry) => entry.status === 'mapped').length,
     certifiedWorkstreamCount: workstreams.filter((entry) => entry.status === 'certified').length,
+    sourceAcquisitionCount: sourceAcquisitionRecords.length,
     legalObligationCount: obligations.length,
     pensionFundProfileCount: pensionFundProfiles.length,
     unionProfileCount: unionProfiles.length,

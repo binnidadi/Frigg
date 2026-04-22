@@ -16,6 +16,7 @@ Síðast uppfært: 2026-04-22
 - `.env.example` og fyrsta CI workflow hafa verið bætt við svo grunnuppsetning og check keyrsla séu skýrari.
 - Vefurinn styður nú stillanlegt API grunnslóð í gegnum `meta` stillingu í stað harðkóðaðrar forsendingar eingöngu í `script.js`.
 - Fyrsta opinbera source collection lota hefur verið kortlögð í docs og véllesanlegu registry.
+- Research workspace hefur nú verið fyllt með fyrstu raunverulegu kortlagningu fyrir skattaskyldur, lífeyrissjóði, stéttarfélög, túlkunarheimildir og VR coverage pakka.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
 
@@ -40,6 +41,7 @@ Síðast uppfært: 2026-04-22
 - Rannsóknarstraumar, lagaskyldur, skráning heimilda og prófílfærslur fyrir sjóði og félög
 - Rannsóknarvinnusvæði tengt inn í API og mælaborð sem lesanlegt readiness lag
 - Samþykkt afstaða um að runtime apps séu JS-first þar til foundation-lagið er tilbúið fyrir samræmda TypeScript build-keðju
+- Fyrstu raunverulegu prófílar fyrir LIVE, Gildi, Frjálsa, Stapa, Festu, VR, Eflingu og SGS
 
 ## Hvað er í vinnslu
 
@@ -53,7 +55,7 @@ Síðast uppfært: 2026-04-22
 
 ## Hvað er næst
 
-1. Fylla research workstreams, legal obligations, pension fund profiles og union profiles með raunverulegri kortlagningu.
+1. Stækka research-kortlagninguna úr fyrstu færslum yfir í coverage matrix fyrir alla studda markaðshluta.
 2. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
 3. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
 4. Færa public source registry inn í knowledge records og coverage matrix.

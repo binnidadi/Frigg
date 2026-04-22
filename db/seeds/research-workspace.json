@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T00:00:00Z",
+  "generatedAt": "2026-04-22T12:00:00Z",
   "researchWorkstreams": [
     {
       "id": "workstream_private_general",
@@ -11,7 +11,55 @@
       "ownerRole": "compliance_research",
       "notes": [
         "Myndar grunn fyrir lög, kjarasamninga, lífeyrissjóði og stéttarfélög á almennum markaði.",
-        "Heldur utan um V1 coverage áður en sérgreinar og opinberir markaðir taka við."
+        "Heldur utan um fyrstu V1 þekju áður en sérgreinar og opinberir markaðir taka við."
+      ]
+    },
+    {
+      "id": "workstream_tax_and_remittance",
+      "code": "tax-remittance",
+      "title": "Skattar og skil",
+      "marketScope": "cross_market",
+      "status": "mapped",
+      "priority": "critical",
+      "ownerRole": "tax_compliance",
+      "notes": [
+        "Heldur utan um staðgreiðslu, tryggingagjald, reiknað endurgjald og rafræn skil til Skattsins."
+      ]
+    },
+    {
+      "id": "workstream_leave_and_absence",
+      "code": "leave-absence",
+      "title": "Orlof, veikindi og fjarvistir",
+      "marketScope": "private_general",
+      "status": "mapped",
+      "priority": "critical",
+      "ownerRole": "employment_law_research",
+      "notes": [
+        "Nær yfir orlof, veikindarétt, veikindi barna og tengingu við launaseðla og sannprófun."
+      ]
+    },
+    {
+      "id": "workstream_routing",
+      "code": "routing",
+      "title": "Lífeyrissjóðir og stéttarfélög",
+      "marketScope": "cross_market",
+      "status": "mapped",
+      "priority": "critical",
+      "ownerRole": "routing_research",
+      "notes": [
+        "Nær yfir aðild, félagsgjöld, iðgjöld, skilagreinar og operational routing."
+      ]
+    },
+    {
+      "id": "workstream_evidence_and_retention",
+      "code": "evidence-retention",
+      "title": "Launaseðill, varðveisla og persónuvernd",
+      "marketScope": "cross_market",
+      "status": "mapped",
+      "priority": "high",
+      "ownerRole": "audit_and_privacy",
+      "notes": [
+        "Tengir bókhald, persónuvernd, launaseðil sem sönnunargagn og audit reconstruction."
       ]
     },
     {
@@ -25,17 +73,127 @@
       "notes": [
         "Kallar á sértæka lagagreiningu, samningsumboð og aðgreiningu frá almennum vinnumarkaði."
       ]
+    }
+  ],
+  "sourceAcquisitionRecords": [
+    {
+      "id": "acquisition-althingi-45-1987",
+      "sourceId": "source-althingi-45-1987",
+      "sourceType": "statutory",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-althingi-45-1987",
+      "reviewStatus": "mapped",
+      "notes": [
+        "Frumheimild skráð úr opinberu registry fyrir staðgreiðslu."
+      ]
     },
     {
-      "id": "workstream_routing",
-      "code": "routing",
-      "title": "Lífeyrissjóðir og stéttarfélög",
-      "marketScope": "cross_market",
-      "status": "mapped",
-      "priority": "critical",
-      "ownerRole": "routing_research",
+      "id": "acquisition-althingi-113-1990",
+      "sourceId": "source-althingi-113-1990",
+      "sourceType": "statutory",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-althingi-113-1990",
+      "reviewStatus": "mapped",
       "notes": [
-        "Nær yfir aðild, félagsgjöld, iðgjöld, skilagreinar og operational routing."
+        "Frumheimild skráð úr opinberu registry fyrir tryggingagjald."
+      ]
+    },
+    {
+      "id": "acquisition-althingi-129-1997",
+      "sourceId": "source-althingi-129-1997",
+      "sourceType": "statutory",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-althingi-129-1997",
+      "reviewStatus": "mapped",
+      "notes": [
+        "Frumheimild skráð úr opinberu registry fyrir skylduaðild og lágmarksiðgjald."
+      ]
+    },
+    {
+      "id": "acquisition-vr-kjarasamningar",
+      "sourceId": "source-vr-kjarasamningar",
+      "sourceType": "collective_agreement",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-vr-kjarasamningar",
+      "reviewStatus": "mapped",
+      "notes": [
+        "Grunnheimild fyrir VR þekju, retail og office samninga."
+      ]
+    },
+    {
+      "id": "acquisition-live-launagreidendur",
+      "sourceId": "source-live-launagreidendur",
+      "sourceType": "pension",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-live-launagreidendur",
+      "reviewStatus": "mapped",
+      "notes": [
+        "Notað fyrir routing og skilaleiðir LIVE."
+      ]
+    },
+    {
+      "id": "acquisition-gildi-idgjold",
+      "sourceId": "source-gildi-idgjold",
+      "sourceType": "pension",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-gildi-idgjold",
+      "reviewStatus": "mapped",
+      "notes": [
+        "Notað fyrir iðgjaldahlutföll og skylduaðild eftir starfsgreinum."
+      ]
+    },
+    {
+      "id": "acquisition-efling-idgjold",
+      "sourceId": "source-efling-idgjold",
+      "sourceType": "union",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-efling-idgjold",
+      "reviewStatus": "mapped",
+      "notes": [
+        "Notað fyrir gjaldaflokkun og fyrsta routing grunn hjá Eflingu."
+      ]
+    },
+    {
+      "id": "acquisition-asi-launasedill",
+      "sourceId": "source-asi-launasedill",
+      "sourceType": "interpretation",
+      "accessLevel": "public",
+      "acquisitionMethod": "registry",
+      "acquiredAt": "2026-04-22T12:00:00Z",
+      "acquiredBy": "codex",
+      "checksum": null,
+      "storageReference": "db/seeds/public-source-registry.json#source-asi-launasedill",
+      "reviewStatus": "mapped",
+      "notes": [
+        "Nýtist sem túlkunar- og skýringalag fyrir launaseðil sem sönnunargagn."
       ]
     }
   ],
@@ -51,7 +209,8 @@
       "sourceIds": [
         "source-althingi-45-1987",
         "source-skatturinn-skattthrep-2026",
-        "source-skatturinn-personuafslattur"
+        "source-skatturinn-personuafslattur",
+        "source-skatturinn-rafraen-skil-stadgreidsla"
       ],
       "affectedArtifacts": [
         "payroll_run",
@@ -72,6 +231,126 @@
       ]
     },
     {
+      "id": "obligation_insurance_levy",
+      "code": "insurance-levy",
+      "version": "2026.1",
+      "title": "Tryggingagjald og A1 frávik",
+      "marketScope": "cross_market",
+      "sourceCategory": "tax_rule",
+      "legalDomain": "tax",
+      "sourceIds": [
+        "source-althingi-113-1990",
+        "source-skatturinn-tryggingagjald"
+      ],
+      "affectedArtifacts": [
+        "payroll_run",
+        "employer_charges",
+        "compliance_deadline",
+        "review_task"
+      ],
+      "status": "mapped",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "residualRisk": "medium",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Getur orðið certified fyrir staðlaða keyrslu þegar A1 sönnun og undanþágur eru orðnar hluti af deterministic input."
+      ]
+    },
+    {
+      "id": "obligation_calculated_remuneration",
+      "code": "calculated-remuneration",
+      "version": "2026.1",
+      "title": "Reiknað endurgjald eigenda og stjórnenda",
+      "marketScope": "private_general",
+      "sourceCategory": "tax_rule",
+      "legalDomain": "tax",
+      "sourceIds": [
+        "source-althingi-90-2003",
+        "source-skatturinn-reiknad-endurgjald"
+      ],
+      "affectedArtifacts": [
+        "employee_profile",
+        "payroll_run",
+        "review_task"
+      ],
+      "status": "mapped",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "residualRisk": "high",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Krefst fyrirtækja- og eigandasértækra forsenda og fer því enn í review-first flæði."
+      ]
+    },
+    {
+      "id": "obligation_holiday_entitlement",
+      "code": "holiday-entitlement",
+      "version": "2026.1",
+      "title": "Orlof og orlofsuppbót",
+      "marketScope": "private_general",
+      "sourceCategory": "agreement_clause",
+      "legalDomain": "leave",
+      "sourceIds": [
+        "source-althingi-30-1987",
+        "source-vr-orlofsuppbot",
+        "source-vr-kjarasamningar"
+      ],
+      "affectedArtifacts": [
+        "payroll_run",
+        "payslip",
+        "review_task"
+      ],
+      "status": "mapped",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "clause_level",
+      "residualRisk": "medium",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Grunnorlof er kortlagt, en ávinnsla, starfshlutfall og starfslok þurfa raunveruleg launagögn til fullrar sannprófunar."
+      ]
+    },
+    {
+      "id": "obligation_sickness_rights",
+      "code": "sickness-rights",
+      "version": "2026.1",
+      "title": "Veikindaréttur og veikindi barna",
+      "marketScope": "private_general",
+      "sourceCategory": "law",
+      "legalDomain": "leave",
+      "sourceIds": [
+        "source-althingi-19-1979",
+        "source-asi-veikindarettur",
+        "source-asi-veikindi-barna"
+      ],
+      "affectedArtifacts": [
+        "time_entry",
+        "payroll_run",
+        "payslip",
+        "review_task"
+      ],
+      "status": "mapped",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "residualRisk": "high",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Ráðningaraldur, ávinnsla og fyrirtækjasértæk framkvæmd þurfa private sannleiksgögn áður en runtime getur treyst sjálfvirkni."
+      ]
+    },
+    {
       "id": "obligation_pension_routing",
       "code": "pension-routing",
       "version": "2026.1",
@@ -80,7 +359,10 @@
       "sourceCategory": "fund_rule",
       "legalDomain": "pension",
       "sourceIds": [
-        "source-althingi-129-1997"
+        "source-althingi-129-1997",
+        "source-lifeyrismal-sjodirnir",
+        "source-live-gagnlegar-upplysingar",
+        "source-gildi-skilagreinar"
       ],
       "affectedArtifacts": [
         "payroll_input",
@@ -90,14 +372,76 @@
       ],
       "status": "mapped",
       "operationalStatus": "cannot_compute",
-      "sourceDepth": "registry_only",
+      "sourceDepth": "structured_summary",
       "residualRisk": "high",
       "effectivePeriod": {
         "validFrom": "2026-01-01",
         "validTo": null
       },
       "notes": [
-        "Krefst fyrirtækja- og starfsmannasértækra private gagna til að verða operationally rétt."
+        "Krefst fyrirtækja- og starfsmannasértækra routing gagna til að verða operationally rétt."
+      ]
+    },
+    {
+      "id": "obligation_union_routing",
+      "code": "union-routing",
+      "version": "2026.1",
+      "title": "Routing stéttarfélagsgjalda og tengdra sjóða",
+      "marketScope": "cross_market",
+      "sourceCategory": "union_rule",
+      "legalDomain": "union",
+      "sourceIds": [
+        "source-vr-launagreidendur",
+        "source-efling-idgjold",
+        "source-sgs-adildarfelog"
+      ],
+      "affectedArtifacts": [
+        "payroll_input",
+        "payslip",
+        "remittance_batch",
+        "review_task"
+      ],
+      "status": "mapped",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "residualRisk": "high",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Landfræðileg aðild, starfssvið og samningsumboð eru ekki enn fullkortlögð fyrir sjálfvirkan routing dóm."
+      ]
+    },
+    {
+      "id": "obligation_payslip_evidence",
+      "code": "payslip-evidence",
+      "version": "2026.1",
+      "title": "Launaseðill sem sönnunargagn og varðveisla",
+      "marketScope": "cross_market",
+      "sourceCategory": "law",
+      "legalDomain": "retention",
+      "sourceIds": [
+        "source-althingi-145-1994",
+        "source-althingi-90-2018",
+        "source-asi-launasedill"
+      ],
+      "affectedArtifacts": [
+        "payslip",
+        "audit_event",
+        "evidence_record",
+        "retention_policy"
+      ],
+      "status": "mapped",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "residualRisk": "medium",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Kjarninn í trust og ágreiningsmeðferð, en varðveislureglur og aðgangsstýring þurfa enn tæknilega innleiðingu."
       ]
     }
   ],
@@ -106,23 +450,130 @@
       "id": "pension_live_profile",
       "code": "live",
       "version": "2026.1",
-      "name": "LIVE",
+      "name": "Lífeyrissjóður verzlunarmanna",
       "marketScope": "private_general",
       "coverageStatus": "partial",
       "operationalStatus": "compute_with_review",
       "sourceDepth": "structured_summary",
       "remittanceChannels": [
-        "fyrirtaekjavefur",
+        "fyrirtækjavefur",
         "skilagrein"
       ],
-      "contributionSummary": "Grunnrouting kortlagt, en private aðildargögn vantar til fullrar certifieringar.",
-      "sourceIds": [],
+      "contributionSummary": "Grunnrouting kortlagt, en private aðildargögn vantar til fullrar staðfestingar.",
+      "sourceIds": [
+        "source-live-launagreidendur",
+        "source-live-gagnlegar-upplysingar",
+        "source-althingi-129-1997"
+      ],
       "effectivePeriod": {
         "validFrom": "2026-01-01",
         "validTo": null
       },
       "notes": [
-        "Dæmigerður sjóður fyrir almenna SME coverage vinnu."
+        "Sterk fyrsta SME þekja vegna tengingar við VR og opið launagreiðendaefni."
+      ]
+    },
+    {
+      "id": "pension_gildi_profile",
+      "code": "gildi",
+      "version": "2026.1",
+      "name": "Gildi lífeyrissjóður",
+      "marketScope": "private_specialized",
+      "coverageStatus": "partial",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "skilagrein",
+        "bankagreiðsla"
+      ],
+      "contributionSummary": "Iðgjöld og skilagrein kortlögð, en starfsgreinamörk og routing sannleiksgögn vantar enn.",
+      "sourceIds": [
+        "source-gildi-idgjold",
+        "source-gildi-skilagreinar",
+        "source-althingi-129-1997"
+      ],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Mikilvægur sjóður fyrir næstu sérgreinaútvíkkun utan retail."
+      ]
+    },
+    {
+      "id": "pension_frjalsi_profile",
+      "code": "frjalsi",
+      "version": "2026.1",
+      "name": "Frjálsi lífeyrissjóðurinn",
+      "marketScope": "cross_market",
+      "coverageStatus": "partial",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "launagreiðendavefur"
+      ],
+      "contributionSummary": "Styður skyldusparnað og viðbótarsparnað, en runtime routing byggir enn á review.",
+      "sourceIds": [
+        "source-frjalsi-launagreidendur",
+        "source-althingi-129-1997"
+      ],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Mikilvægur fyrir viðbótarsparnað sem er ekki enn certified í runtime."
+      ]
+    },
+    {
+      "id": "pension_stapi_profile",
+      "code": "stapi",
+      "version": "2026.1",
+      "name": "Stapi lífeyrissjóður",
+      "marketScope": "private_specialized",
+      "coverageStatus": "partial",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "launagreiðendavefur"
+      ],
+      "contributionSummary": "Grunnupplýsingar um greiðslu og launagreiðendavef til staðar, en samnings- og aðildargögn vantar.",
+      "sourceIds": [
+        "source-stapi-launagreidendur",
+        "source-althingi-129-1997"
+      ],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Enn of grunnur fyrir sjálfvirka keyrslu."
+      ]
+    },
+    {
+      "id": "pension_festa_profile",
+      "code": "festa",
+      "version": "2026.1",
+      "name": "Festa lífeyrissjóður",
+      "marketScope": "private_specialized",
+      "coverageStatus": "partial",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "skilagrein",
+        "bankagreiðsla"
+      ],
+      "contributionSummary": "Skilagreinar og greiðslur kortlagðar, en innheimta tengdra gjalda kallar á frekari routing vinnu.",
+      "sourceIds": [
+        "source-festa-skilagreinar",
+        "source-althingi-129-1997"
+      ],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Nýtist sem dæmi um flóknari sjóð með tengdum gjöldum og innheimtuhlutverki."
       ]
     }
   ],
@@ -140,14 +591,93 @@
         "félagavefur",
         "skilagrein"
       ],
-      "membershipSummary": "Almenn coverage fyrir verslun og skrifstofufólk, en starfsmannasértæk aðild þarf private sannprófun.",
-      "sourceIds": [],
+      "membershipSummary": "Almenn þekja fyrir verslun og skrifstofufólk, en starfsmannasértæk aðild þarf private sannprófun.",
+      "sourceIds": [
+        "source-vr-kjarasamningar",
+        "source-vr-launagreidendur",
+        "source-vr-orlofsuppbot",
+        "source-vr-desemberuppbot"
+      ],
       "effectivePeriod": {
         "validFrom": "2026-01-01",
         "validTo": null
       },
       "notes": [
-        "Myndar grunn fyrir first-wave coverage með retail samningum."
+        "Myndar grunn fyrir fyrstu retail og office þekjuna."
+      ]
+    },
+    {
+      "id": "union_efling_profile",
+      "code": "efling",
+      "version": "2026.1",
+      "name": "Efling",
+      "marketScope": "private_general",
+      "coverageStatus": "partial",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "launagreiðendavefur"
+      ],
+      "membershipSummary": "Gjaldaflokkun kortlögð úr opnum heimildum, en endanleg routing og aðild er enn review-driven.",
+      "sourceIds": [
+        "source-efling-launagreidendavefur",
+        "source-efling-idgjold"
+      ],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Aðgangur að raunverulegum skilagögnum er enn að hluta innskráningarvarinn."
+      ]
+    },
+    {
+      "id": "union_sgs_profile",
+      "code": "sgs",
+      "version": "2026.1",
+      "name": "Starfsgreinasamband Íslands",
+      "marketScope": "private_specialized",
+      "coverageStatus": "partial",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [
+        "félagaskrá",
+        "handvirk yfirferð"
+      ],
+      "membershipSummary": "Landfræðileg og félagssértæk aðild er kortlögð á reglusniði en ekki enn operationally fullgerð.",
+      "sourceIds": [
+        "source-sgs-adildarfelog"
+      ],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Krefst frekari niðurbrots í einstök aðildarfélög áður en runtime getur stutt þetta svið."
+      ]
+    },
+    {
+      "id": "union_asi_interpretation_profile",
+      "code": "asi-interpretation",
+      "version": "2026.1",
+      "name": "ASÍ Vinnurettarvefur",
+      "marketScope": "cross_market",
+      "coverageStatus": "partial",
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "remittanceChannels": [],
+      "membershipSummary": "Ekki routing prófíll heldur túlkunar- og skýringalag sem styður veikindi, launaseðil og skyldur launagreiðanda.",
+      "sourceIds": [
+        "source-asi-launasedill",
+        "source-asi-veikindarettur",
+        "source-asi-veikindi-barna"
+      ],
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Nýtist í review, skýringum og edge-case greiningu fremur en sjálfvirkan routing."
       ]
     }
   ],
@@ -162,7 +692,9 @@
         "union_vr_profile"
       ],
       "sourceDocumentIds": [
-        "source_vr_collective_2026"
+        "source-vr-kjarasamningar",
+        "source-vr-orlofsuppbot",
+        "source-vr-desemberuppbot"
       ],
       "supportedEmploymentGroups": [
         "retail"
@@ -175,8 +707,34 @@
         "validTo": null
       },
       "notes": [
-        "Demo runtime nær aðeins hluta þessa pakka í dag.",
-        "Þarf launaseðla, tíma- og routing sannleiksgögn til fullrar certifieringar."
+        "Öflugasti pakkinn í repo í dag, en demo runtime nær aðeins hluta hans.",
+        "Þarf launaseðla, tíma- og routing sannleiksgögn til fullrar staðfestingar."
+      ]
+    },
+    {
+      "id": "agreement_pack_vr_office",
+      "code": "vr-office",
+      "version": "2026.1",
+      "title": "VR office",
+      "marketScope": "private_general",
+      "unionIds": [
+        "union_vr_profile"
+      ],
+      "sourceDocumentIds": [
+        "source-vr-kjarasamningar"
+      ],
+      "supportedEmploymentGroups": [
+        "office"
+      ],
+      "coverageStatus": "partial",
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "clause_level",
+      "effectivePeriod": {
+        "validFrom": "2026-01-01",
+        "validTo": null
+      },
+      "notes": [
+        "Kortlagning hafin út frá VR samningum, en line item niðurbrot er ekki komið á rule-level."
       ]
     }
   ],
@@ -186,14 +744,21 @@
       "title": "Nafnlausir launaseðlar",
       "priority": "critical",
       "minimumTarget": "100-200 skjöl",
-      "whyItMatters": "Nauðsynlegt til að sannreyna line items, launaseðla sem sönnunargagn og raunverulega edge cases."
+      "whyItMatters": "Nauðsynlegt til að sannreyna launalínur, launaseðla sem sönnunargagn og raunverulega edge cases."
     },
     {
       "code": "timesheets_and_work_patterns",
       "title": "Tímaskráningar og vaktamynstur",
       "priority": "critical",
       "minimumTarget": "Samhliða öllum lykillaunaseðlum",
-      "whyItMatters": "Gerir deterministic validation á álagi, yfirvinnu, veikindum og fjarvistum mögulega."
+      "whyItMatters": "Gerir deterministic sannprófun á álagi, yfirvinnu, veikindum og fjarvistum mögulega."
+    },
+    {
+      "code": "employment_contracts_and_terms",
+      "title": "Ráðningarsamningar og starfskjör",
+      "priority": "high",
+      "minimumTarget": "Fyrir öll lykiltilvik og sérkjör",
+      "whyItMatters": "Þarf til að tengja starfshlutfall, grunnlaun, sérkjör og samningshópa við raunveruleg payroll input."
     },
     {
       "code": "routing_truth",
@@ -201,6 +766,20 @@
       "priority": "critical",
       "minimumTarget": "Per starfsmann og fyrirtæki",
       "whyItMatters": "Án þessara gagna verður sjóða- og félagarouting aldrei certified."
+    },
+    {
+      "code": "remittance_truth",
+      "title": "Raunverulegar skilagreinar og skil",
+      "priority": "critical",
+      "minimumTarget": "Per sjóð, félag og skilatímabil",
+      "whyItMatters": "Gerir samanburð milli payroll niðurstöðu og raunverulegra skilaskjala mögulegan."
+    },
+    {
+      "code": "review_and_exception_corpus",
+      "title": "Yfirferðir og undantekningatilvik",
+      "priority": "high",
+      "minimumTarget": "Dæmi um ágreining, leiðréttingar og policy exceptions",
+      "whyItMatters": "Nauðsynlegt til að hanna review-first compliance lag sem felur ekki áhættu."
     }
   ]
 }

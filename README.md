@@ -19,6 +19,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - opinbert source registry fyrir lög, Skattinn, lífeyrissjóði og stéttarfélög
 - rannsóknarvinnusvæði með grunnlagi fyrir rannsóknarstrauma, lagaskyldur og readiness á einkagagnasafni
 - grunnlag fyrir afhendanleika með `.env.example`, stillanlegu API grunnslóði í vefnum og CI keyrslu
+- fyrsta raunverulega research-kortlagning fyrir skattaskyldur, routing, VR, Eflingu, SGS og valda lífeyrissjóði
 
 Nánari staða er í `docs/STATUS.md`.
 
