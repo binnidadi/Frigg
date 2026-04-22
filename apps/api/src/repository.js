@@ -52,6 +52,39 @@ function buildResearchSummary(workspace) {
   }
 }
 
+function buildFeaturedCoveragePack(workspace, snapshot) {
+  const coverageEntries = workspace.coverageMatrixEntries ?? []
+  const featuredEntry =
+    coverageEntries.find((entry) => entry.code === 'coverage_vr_retail_foundation') ??
+    coverageEntries.find((entry) => entry.operationalStatus === 'compute_with_review') ??
+    null
+
+  if (!featuredEntry) {
+    return null
+  }
+
+  const ruleSetVersions = snapshot.ruleSetVersions ?? []
+  const statutoryParameterSets = snapshot.statutoryParameterSets ?? []
+  const pensionRoutingRules = snapshot.pensionRoutingRules ?? []
+  const unionRoutingRules = snapshot.unionRoutingRules ?? []
+
+  return {
+    ...clone(featuredEntry),
+    statutoryParameterSets: (featuredEntry.statutoryParameterSetIds ?? [])
+      .map((id) => statutoryParameterSets.find((entry) => entry.id === id))
+      .filter(Boolean),
+    pensionRoutingRules: (featuredEntry.pensionRoutingRuleIds ?? [])
+      .map((id) => pensionRoutingRules.find((entry) => entry.id === id))
+      .filter(Boolean),
+    unionRoutingRules: (featuredEntry.unionRoutingRuleIds ?? [])
+      .map((id) => unionRoutingRules.find((entry) => entry.id === id))
+      .filter(Boolean),
+    ruleSetVersions: (featuredEntry.sampleRuleSetVersionIds ?? [])
+      .map((id) => ruleSetVersions.find((entry) => entry.id === id))
+      .filter(Boolean)
+  }
+}
+
 function buildRepositoryApi({
   driver,
   snapshot,
@@ -121,6 +154,10 @@ function buildRepositoryApi({
           left.code.localeCompare(right.code)
         )
       )
+    },
+
+    getFeaturedCoveragePack() {
+      return clone(buildFeaturedCoveragePack(researchWorkspace, snapshot))
     },
 
     getRepositoryStatus() {

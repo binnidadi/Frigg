@@ -26,6 +26,10 @@ writeFileSync(
   JSON.stringify(repository.getCoverageMatrix(), null, 2)
 )
 writeFileSync(
+  resolve(dist, 'research-featured-coverage.json'),
+  JSON.stringify(repository.getFeaturedCoveragePack(), null, 2)
+)
+writeFileSync(
   resolve(dist, 'research-private-corpus.json'),
   JSON.stringify(repository.getCriticalPrivateCorpus(), null, 2)
 )

@@ -773,6 +773,18 @@
       "relatedPensionProfileIds": [
         "pension_live_profile"
       ],
+      "statutoryParameterSetIds": [
+        "statutory_2026"
+      ],
+      "pensionRoutingRuleIds": [
+        "pension_route_live_retail"
+      ],
+      "unionRoutingRuleIds": [
+        "union_route_vr_retail"
+      ],
+      "sampleRuleSetVersionIds": [
+        "rule_set_vr_2026_2"
+      ],
       "notes": [
         "Fyrsti raunverulegi compute_with_review pakkinn í Frigg.",
         "Styður almenna retail keyrslu með skýru review flaggi á routing og ófullnægjandi private gögnum."
@@ -808,6 +820,15 @@
       "relatedPensionProfileIds": [
         "pension_live_profile"
       ],
+      "statutoryParameterSetIds": [
+        "statutory_2026"
+      ],
+      "pensionRoutingRuleIds": [
+        "pension_route_live_retail"
+      ],
+      "unionRoutingRuleIds": [
+        "union_route_vr_retail"
+      ],
       "notes": [
         "Samningsgrunnur er kominn, en line item niðurbrot og sannprófun vantar."
       ]
@@ -832,6 +853,9 @@
       ],
       "relatedUnionProfileIds": [],
       "relatedPensionProfileIds": [],
+      "statutoryParameterSetIds": [
+        "statutory_2026"
+      ],
       "notes": [
         "Heldur utan um fyrsta statutory coverage-svið sem er ekki bundið við ákveðinn samning."
       ]

@@ -161,9 +161,10 @@ async function loadDashboardAI() {
 }
 
 async function loadResearchWorkspace() {
-  const [researchSummary, coverageMatrix, criticalPrivateCorpus] = await Promise.all([
+  const [researchSummary, coverageMatrix, featuredCoverage, criticalPrivateCorpus] = await Promise.all([
     fetchJson('/research/summary'),
     fetchJson('/research/coverage-matrix'),
+    fetchJson('/research/featured-coverage'),
     fetchJson('/research/private-corpus')
   ])
 
@@ -190,6 +191,40 @@ async function loadResearchWorkspace() {
       entry.blockedScenarios.join(', ') || 'ekkert skráð'
     }`
   }))
+
+  if (featuredCoverage) {
+    setText('featured-coverage-title', featuredCoverage.title)
+    setText(
+      'featured-coverage-summary',
+      `${featuredCoverage.operationalStatus} · ${featuredCoverage.coverageStatus} · residual risk ${featuredCoverage.residualRisk}. Þetta er fyrsti pakkinn sem tengir saman samning, statutory lag og routing í einni lesanlegri vöruafmörkun.`
+    )
+
+    setList(
+      'featured-coverage-details',
+      [
+        ...(featuredCoverage.ruleSetVersions ?? []).map((entry) => ({
+          label: 'Reglusett',
+          value: `${entry.code} ${entry.version}`
+        })),
+        ...(featuredCoverage.statutoryParameterSets ?? []).map((entry) => ({
+          label: 'Statutory lag',
+          value: `${entry.code} ${entry.version}`
+        })),
+        ...(featuredCoverage.pensionRoutingRules ?? []).map((entry) => ({
+          label: 'Lífeyrissjóðsrouting',
+          value: `${entry.code} · ${entry.minimumEmployeeContributionRate * 100}% starfsmannsframlag`
+        })),
+        ...(featuredCoverage.unionRoutingRules ?? []).map((entry) => ({
+          label: 'Stéttarfélagsrouting',
+          value: `${entry.code} · ${(entry.employeeFeeRate ?? 0) * 100}% félagsgjald`
+        }))
+      ],
+      (entry) => ({
+        strong: entry.label,
+        span: entry.value
+      })
+    )
+  }
 }
 
 function formatDaysUntil(dateString) {
@@ -330,6 +365,9 @@ async function main() {
     setText('research-count', 'ÓTILTÆKT')
     setText('research-summary', message)
     setList('coverage-matrix-list', [], () => '')
+    setText('featured-coverage-title', 'Traustmörk ekki tiltæk')
+    setText('featured-coverage-summary', message)
+    setList('featured-coverage-details', [], () => '')
   }
 }
 

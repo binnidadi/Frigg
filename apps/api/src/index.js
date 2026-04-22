@@ -18,6 +18,7 @@ export const apiApp = {
     '/research/workspace',
     '/research/summary',
     '/research/coverage-matrix',
+    '/research/featured-coverage',
     '/research/private-corpus',
     '/ai/health',
     '/ai/parse-preview',

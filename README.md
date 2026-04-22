@@ -21,6 +21,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - grunnlag fyrir afhendanleika með `.env.example`, stillanlegu API grunnslóði í vefnum og CI keyrslu
 - fyrsta raunverulega research-kortlagning fyrir skattaskyldur, routing, VR, Eflingu, SGS og valda lífeyrissjóði
 - fyrsta coverage matrix fyrir studd, review-skyld og blokkuð research-svið
+- fyrsti sýnilegi trust boundary pakkinn fyrir `VR retail + staðgreiðsla + tryggingagjald + LIVE routing`
 
 Nánari staða er í `docs/STATUS.md`.
 

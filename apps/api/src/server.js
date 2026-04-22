@@ -44,6 +44,7 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
             '/research/workspace',
             '/research/summary',
             '/research/coverage-matrix',
+            '/research/featured-coverage',
             '/research/private-corpus',
             '/ai/health',
             '/ai/parse-preview',
@@ -81,6 +82,11 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
 
     if (request.url === '/research/coverage-matrix') {
       response.end(JSON.stringify(repository.getCoverageMatrix()))
+      return
+    }
+
+    if (request.url === '/research/featured-coverage') {
+      response.end(JSON.stringify(repository.getFeaturedCoveragePack()))
       return
     }
 

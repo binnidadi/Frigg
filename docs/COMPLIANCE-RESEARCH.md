@@ -47,6 +47,7 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Fyrstu prófílar fyrir `VR`, `Eflingu`, `SGS`, `LIVE`, `Gildi`, `Frjálsa`, `Stapa` og `Festu` hafa verið festir með operational status og source depth.
 - Fyrsta coverage matrix hefur verið fest með skýrum mörkum milli `compute_with_review`, `cannot_compute` og blokkeraðra sviðsmynda.
 - Fyrsti samsetti pakkinn `VR retail + staðgreiðsla + tryggingagjald + LIVE routing` er nú sýnilegur sem fyrsta raunverulega `compute_with_review` sviðið.
+- Sami pakki er nú tengdur við raunverulegt demo-reglusett, statutory parameter set og routing-reglur svo trust boundary sé lesanlegt í vöruyfirborði.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 

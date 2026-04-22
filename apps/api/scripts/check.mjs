@@ -68,6 +68,28 @@ if (
   throw new Error('Research workspace vantar að minnsta kosti eitt compute_with_review coverage svið.')
 }
 
+const featuredCoveragePack = repository.getFeaturedCoveragePack()
+
+if (!featuredCoveragePack) {
+  throw new Error('Research workspace vantar featured coverage pack.')
+}
+
+if ((featuredCoveragePack.ruleSetVersions ?? []).length === 0) {
+  throw new Error('Featured coverage pack vantar tengt reglusett.')
+}
+
+if ((featuredCoveragePack.statutoryParameterSets ?? []).length === 0) {
+  throw new Error('Featured coverage pack vantar tengt statutory parameter set.')
+}
+
+if ((featuredCoveragePack.pensionRoutingRules ?? []).length === 0) {
+  throw new Error('Featured coverage pack vantar tengda lífeyrissjóðsrouting reglu.')
+}
+
+if ((featuredCoveragePack.unionRoutingRules ?? []).length === 0) {
+  throw new Error('Featured coverage pack vantar tengda stéttarfélagsrouting reglu.')
+}
+
 if (repositoryStatus.driver !== 'memory') {
   throw new Error('Repository driver er ekki skilgreindur rétt.')
 }

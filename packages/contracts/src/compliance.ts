@@ -238,6 +238,17 @@ export interface CoverageMatrixEntry {
   residualRisk: 'low' | 'medium' | 'high'
   supportedScenarios: string[]
   blockedScenarios: string[]
+  operationalStatus?: CoverageOperationalStatus
+  sourceDepth?: SourceDepth
+  relatedAgreementPackIds?: Identifier[]
+  relatedObligationIds?: Identifier[]
+  relatedUnionProfileIds?: Identifier[]
+  relatedPensionProfileIds?: Identifier[]
+  statutoryParameterSetIds?: Identifier[]
+  pensionRoutingRuleIds?: Identifier[]
+  unionRoutingRuleIds?: Identifier[]
+  sampleRuleSetVersionIds?: Identifier[]
+  notes?: string[]
 }
 
 export interface ReviewTask {
