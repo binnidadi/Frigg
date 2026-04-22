@@ -139,5 +139,6 @@ Frigg hefur nú fyrstu rannsóknarfærslur sem byggja á raunverulegu public reg
 - coverage pakka fyrir fyrstu `VR` samningssvið
 - coverage matrix sem sýnir studd, review-skyld og blokkuð svið gegn golden scenarios
 - featured coverage pack sem tengir saman samning, statutory lag og routing í eitt lesanlegt trust boundary
+- line-item boundaries sem gera skýrt hvaða undirflæði í pakka eru certified, review-skyld eða blokkuð
 
 Þessi staða er enn `research-first` fremur en certified runtime, en hún gerir nú operational status og residual risk sýnilegt á raunverulegum færslum í stað tóms baseline.

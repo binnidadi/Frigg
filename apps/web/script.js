@@ -224,6 +224,19 @@ async function loadResearchWorkspace() {
         span: entry.value
       })
     )
+
+    setList(
+      'featured-line-item-boundaries',
+      featuredCoverage.lineItemBoundaries ?? [],
+      (entry) => ({
+        strong: `${entry.label} · ${entry.status}`,
+        span: `${entry.rationale}${
+          entry.requiredPrivateCorpusCodes.length > 0
+            ? ` Vantar: ${entry.requiredPrivateCorpusCodes.join(', ')}.`
+            : ''
+        }`
+      })
+    )
   }
 }
 
@@ -368,6 +381,7 @@ async function main() {
     setText('featured-coverage-title', 'Traustmörk ekki tiltæk')
     setText('featured-coverage-summary', message)
     setList('featured-coverage-details', [], () => '')
+    setList('featured-line-item-boundaries', [], () => '')
   }
 }
 

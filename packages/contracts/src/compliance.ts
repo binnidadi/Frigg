@@ -248,6 +248,14 @@ export interface CoverageMatrixEntry {
   pensionRoutingRuleIds?: Identifier[]
   unionRoutingRuleIds?: Identifier[]
   sampleRuleSetVersionIds?: Identifier[]
+  lineItemBoundaries?: Array<{
+    code: string
+    label: string
+    category: 'earning' | 'premium' | 'bonus' | 'deduction' | 'employer_charge'
+    status: 'certified' | 'review_required' | 'blocked'
+    rationale: string
+    requiredPrivateCorpusCodes: string[]
+  }>
   notes?: string[]
 }
 

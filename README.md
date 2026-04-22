@@ -22,6 +22,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - fyrsta raunverulega research-kortlagning fyrir skattaskyldur, routing, VR, Eflingu, SGS og valda lífeyrissjóði
 - fyrsta coverage matrix fyrir studd, review-skyld og blokkuð research-svið
 - fyrsti sýnilegi trust boundary pakkinn fyrir `VR retail + staðgreiðsla + tryggingagjald + LIVE routing`
+- fyrsta line-item niðurbrotið sem sýnir hvað er vottað, review-skylt og blokkað innan trust boundary pakkans
 
 Nánari staða er í `docs/STATUS.md`.
 

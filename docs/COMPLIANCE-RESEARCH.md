@@ -48,6 +48,7 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Fyrsta coverage matrix hefur verið fest með skýrum mörkum milli `compute_with_review`, `cannot_compute` og blokkeraðra sviðsmynda.
 - Fyrsti samsetti pakkinn `VR retail + staðgreiðsla + tryggingagjald + LIVE routing` er nú sýnilegur sem fyrsta raunverulega `compute_with_review` sviðið.
 - Sami pakki er nú tengdur við raunverulegt demo-reglusett, statutory parameter set og routing-reglur svo trust boundary sé lesanlegt í vöruyfirborði.
+- Nú liggur einnig fyrir fyrsta line-item niðurbrotið fyrir þennan pakka, með skýrum mörkum milli `certified`, `review_required` og `blocked`.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 

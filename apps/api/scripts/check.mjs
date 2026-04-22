@@ -90,6 +90,26 @@ if ((featuredCoveragePack.unionRoutingRules ?? []).length === 0) {
   throw new Error('Featured coverage pack vantar tengda stéttarfélagsrouting reglu.')
 }
 
+if ((featuredCoveragePack.lineItemBoundaries ?? []).length < 5) {
+  throw new Error('Featured coverage pack vantar nægilega launalínumörk.')
+}
+
+if (
+  !featuredCoveragePack.lineItemBoundaries?.some((entry) => entry.status === 'certified')
+) {
+  throw new Error('Featured coverage pack vantar certified launalínu.')
+}
+
+if (
+  !featuredCoveragePack.lineItemBoundaries?.some((entry) => entry.status === 'review_required')
+) {
+  throw new Error('Featured coverage pack vantar review-skylda launalínu.')
+}
+
+if (!featuredCoveragePack.lineItemBoundaries?.some((entry) => entry.status === 'blocked')) {
+  throw new Error('Featured coverage pack vantar blokkaða launalínu.')
+}
+
 if (repositoryStatus.driver !== 'memory') {
   throw new Error('Repository driver er ekki skilgreindur rétt.')
 }

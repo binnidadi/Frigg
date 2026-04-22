@@ -785,6 +785,65 @@
       "sampleRuleSetVersionIds": [
         "rule_set_vr_2026_2"
       ],
+      "lineItemBoundaries": [
+        {
+          "code": "BASE",
+          "label": "Grunnlaun",
+          "category": "earning",
+          "status": "certified",
+          "rationale": "Grunnlaun í retail pakkanum eru bundin við pinned reglusett og statutory parameter set í demo-snapshot.",
+          "requiredPrivateCorpusCodes": []
+        },
+        {
+          "code": "EVENING_PREMIUM",
+          "label": "Kvöldálag",
+          "category": "premium",
+          "status": "review_required",
+          "rationale": "Samningsgrunnur og reglusett eru til staðar, en sannprófun byggir enn á tímaskráningu og raunverulegri vaktamynsturssöfnun.",
+          "requiredPrivateCorpusCodes": [
+            "timesheets_and_work_patterns"
+          ]
+        },
+        {
+          "code": "PENSION_EMPLOYEE",
+          "label": "Lífeyrissjóðsiðgjald starfsmanns",
+          "category": "deduction",
+          "status": "review_required",
+          "rationale": "Hlutföll og routing eru kortlögð, en aðild og sértækt routing þarf enn private sannleiksgögn per starfsmann.",
+          "requiredPrivateCorpusCodes": [
+            "routing_truth"
+          ]
+        },
+        {
+          "code": "UNION_FEE",
+          "label": "Stéttarfélagsgjald",
+          "category": "deduction",
+          "status": "review_required",
+          "rationale": "Félagsgjöld eru kortlögð úr opnum heimildum, en endanleg aðild og landfræðileg tenging krefjast review.",
+          "requiredPrivateCorpusCodes": [
+            "routing_truth"
+          ]
+        },
+        {
+          "code": "INSURANCE_LEVY",
+          "label": "Tryggingagjald",
+          "category": "employer_charge",
+          "status": "review_required",
+          "rationale": "Staðlað tryggingagjald er reiknanlegt, en A1 tilvik fara enn í review áður en lækkað gjald er samþykkt.",
+          "requiredPrivateCorpusCodes": []
+        },
+        {
+          "code": "PARENTAL_LEAVE_OFFSET",
+          "label": "Mótbókun vegna fæðingarorlofs",
+          "category": "deduction",
+          "status": "blocked",
+          "rationale": "Ekki nægileg private gögn og obligation-kortlagning til að styðja þetta line item í fyrsta pakkanum.",
+          "requiredPrivateCorpusCodes": [
+            "employment_contracts_and_terms",
+            "review_and_exception_corpus"
+          ]
+        }
+      ],
       "notes": [
         "Fyrsti raunverulegi compute_with_review pakkinn í Frigg.",
         "Styður almenna retail keyrslu með skýru review flaggi á routing og ófullnægjandi private gögnum."

@@ -19,6 +19,7 @@ Síðast uppfært: 2026-04-22
 - Research workspace hefur nú verið fyllt með fyrstu raunverulegu kortlagningu fyrir skattaskyldur, lífeyrissjóði, stéttarfélög, túlkunarheimildir og VR coverage pakka.
 - Coverage matrix hefur verið bætt við research workspace, API og mælaborð með fyrstu studdu, review-skyldu og blokkuðu sviðunum.
 - Fyrsti featured coverage pakkinn tengir nú saman reglusett, statutory parameter set og routing-reglur í lesanlegt trust boundary.
+- Trust boundary pakkinn er nú brotinn niður í launalínumörk sem sýna hvað er vottað, hvað er review-skylt og hvað er blokkað.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
 
@@ -46,6 +47,7 @@ Síðast uppfært: 2026-04-22
 - Fyrstu raunverulegu prófílar fyrir LIVE, Gildi, Frjálsa, Stapa, Festu, VR, Eflingu og SGS
 - Fyrsti skýri `compute_with_review` pakkinn fyrir `VR retail + staðgreiðsla + tryggingagjald + LIVE routing`
 - Fyrsta sýnilega trust boundary samantektin fyrir þennan pakka í API og mælaborði
+- Fyrsta line-item skýringarlagið fyrir trust boundary pakkann
 
 ## Hvað er í vinnslu
 
@@ -59,7 +61,7 @@ Síðast uppfært: 2026-04-22
 
 ## Hvað er næst
 
-1. Dýpka fyrsta trust boundary pakkann úr `compute_with_review` yfir í skýrt certified-vs-review skil fyrir line items og routing.
+1. Dýpka fyrsta trust boundary pakkann áfram með evidence records og sannprófun á hverri launalínu.
 2. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
 3. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
 4. Færa public source registry inn í knowledge records og coverage matrix.
