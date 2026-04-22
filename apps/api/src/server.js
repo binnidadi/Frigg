@@ -31,8 +31,11 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
   const repository = createRepository()
   const server = createServer(async (request, response) => {
     response.setHeader('Content-Type', 'application/json; charset=utf-8')
+    const requestUrl = new URL(request.url ?? '/', 'http://localhost')
+    const { pathname } = requestUrl
+    const method = request.method ?? 'GET'
 
-    if (!request.url || request.url === '/') {
+    if (pathname === '/') {
       response.end(
         JSON.stringify({
           name: 'frigg-api',
@@ -55,61 +58,66 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
       return
     }
 
-    if (request.url === '/snapshot') {
+    if (pathname === '/snapshot') {
       response.end(JSON.stringify(repository.getSnapshot()))
       return
     }
 
-    if (request.url === '/scenarios') {
+    if (pathname === '/scenarios') {
       response.end(JSON.stringify(repository.getScenarios()))
       return
     }
 
-    if (request.url === '/repository/status') {
+    if (pathname === '/repository/status') {
       response.end(JSON.stringify(repository.getRepositoryStatus()))
       return
     }
 
-    if (request.url === '/research/workspace') {
+    if (pathname === '/research/workspace') {
       response.end(JSON.stringify(repository.getResearchWorkspace()))
       return
     }
 
-    if (request.url === '/research/summary') {
+    if (pathname === '/research/summary') {
       response.end(JSON.stringify(repository.getResearchSummary()))
       return
     }
 
-    if (request.url === '/research/coverage-matrix') {
+    if (pathname === '/research/coverage-matrix') {
       response.end(JSON.stringify(repository.getCoverageMatrix()))
       return
     }
 
-    if (request.url === '/research/featured-coverage') {
+    if (pathname === '/research/featured-coverage') {
       response.end(JSON.stringify(repository.getFeaturedCoveragePack()))
       return
     }
 
-    if (request.url === '/research/private-corpus') {
+    if (pathname === '/research/private-corpus') {
       response.end(JSON.stringify(repository.getCriticalPrivateCorpus()))
       return
     }
 
-    if (request.url === '/ai/health') {
+    if (pathname === '/ai/health') {
       response.end(JSON.stringify(getAIHealthSnapshot()))
       return
     }
 
-    if (request.url.startsWith('/ai/knowledge-preview')) {
-      const requestUrl = new URL(request.url, 'http://localhost')
+    if (pathname === '/ai/knowledge-preview') {
       const query = requestUrl.searchParams.get('q') ?? ''
       response.end(JSON.stringify(buildKnowledgePreview(query)))
       return
     }
 
-    if (request.url === '/ai/parse-preview') {
+    if (pathname === '/ai/parse-preview') {
       try {
-        const payload = request.method === 'POST' ? await readJsonBody(request) : {}
+        if (method !== 'GET' && method !== 'POST') {
+          response.statusCode = 405
+          response.end(JSON.stringify({ error: 'Aðferð ekki leyfð á þessari leið.' }))
+          return
+        }
+
+        const payload = method === 'POST' ? await readJsonBody(request) : {}
         response.end(JSON.stringify(buildAgreementParsePreview(payload)))
       } catch {
         response.statusCode = 400
