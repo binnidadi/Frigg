@@ -1,55 +1,55 @@
-# Godn sem standa eftir fyrir Frigg
+# Gögn sem standa eftir fyrir Frigg
 
-Sidast uppfaert: 2026-04-21
+Síðast uppfært: 2026-04-22
 
 ## Hlutverk
 
-Thetta skjal listar þau gogn sem Frigg getur ekki fengid sjalft af opnum vefjum og tharf thvi ad koma fra notanda, vidskiptavini eda innskradum kerfum.
+Þetta skjal listar þau gögn sem Frigg getur ekki fengið sjálft af opnum vefjum og þurfa því að koma frá notanda, viðskiptavini eða innskráðum kerfum.
 
 ## Það sem stendur eftir
 
-### Payroll-native rekstrargogn
+### Payroll-native rekstrargögn
 
-- Nafnlausir launasedlar ur raunverulegum launakeyrslum.
-- Timaskraningar, vaktaplon og hra vinnustundagogn.
-- Radningarsamningar og vidbaetur vid radningarkjor.
-- Starfsmannaskrar med starfstitli, starfshlutfalli, vinnustad og tengingu vid felag/sjod.
+- Nafnlausir launaseðlar úr raunverulegum launakeyrslum.
+- Tímaskráningar, vaktaplön og hrá vinnustundagögn.
+- Ráðningarsamningar og viðbætur við ráðningarkjör.
+- Starfsmannaskrár með starfstitli, starfshlutfalli, vinnustað og tengingu við félag eða sjóð.
 
-### Routing og adild
+### Routing og aðild
 
-- Hvaða starfsmadur greidir i hvaða lifeyrissjod.
-- Hvaða starfsmadur tilheyrir hvaða stettarfelagi.
-- Hvenær fyrirtæki nota serkjor eda fyrirtækjasamninga sem vikja fra almennri grunnleid.
-- Innri mapping milli starfa, starfsstodva og kjarasamningsumhverfis.
+- Hvaða starfsmaður greiðir í hvaða lífeyrissjóð.
+- Hvaða starfsmaður tilheyrir hvaða stéttarfélagi.
+- Hvenær fyrirtæki nota sérkjör eða fyrirtækjasamninga sem víkja frá almennri grunnleið.
+- Innri mapping milli starfa, starfsstöðva og kjarasamningsumhverfis.
 
 ### Skil og reconciliation
 
-- Raunverulegar skilagreinar til lifeyrissjoda og stettarfelaga.
-- Bankaskrar fyrir utborgun launa.
-- Daemi um leidrettingar, afturvirkar breytingar og endurkeyrslur.
-- Raunveruleg launamanna- og launaframtalsskil ur launakerfi.
+- Raunverulegar skilagreinar til lífeyrissjóða og stéttarfélaga.
+- Bankaskrár fyrir útborgun launa.
+- Dæmi um leiðréttingar, afturvirkar breytingar og endurkeyrslur.
+- Raunveruleg launamiða- og launaframtalsskil úr launakerfi.
 
-### Lokud og innskraningarvord gogn
+### Lokuð og innskráningarvarin gögn
 
-- Godn af launagreidendavefjum sem krefjast innskraningar.
-- Veflyklar, API-lyklar og taeknilegar skilalysingar sem ekki eru birtar opinberlega.
-- Innri handbaekur hja sjodum, felogum eda vidskiptavinum.
+- Gögn af launagreiðendavefjum sem krefjast innskráningar.
+- Veflyklar, API-lyklar og tæknilegar skilalýsingar sem ekki eru birtar opinberlega.
+- Innri handbækur hjá sjóðum, félögum eða viðskiptavinum.
 
-### Tulkun og review
+### Túlkun og review
 
-- Logfraedialit, minnisblod og innri verklagsreglur.
-- Daemi um agreiningsmal, fravik og tulkanir sem ekki birtast a opinberum vef.
-- Stadfesting a thvi hvaða edge cases eru algengust i raunrekstri vidskiptavina.
+- Lögfræðiálit, minnisblöð og innri verklagsreglur.
+- Dæmi um ágreiningsmál, frávik og túlkanir sem ekki birtast á opinberum vef.
+- Staðfesting á því hvaða edge cases eru algengust í raunrekstri viðskiptavina.
 
-## Forgangur fyrir naestu lotu
+## Forgangur fyrir næstu lotu
 
-1. `10-20` nafnlausir launasedlar med mismunandi tilvikum.
-2. `10-20` timaskraningar eda vaktaplon sem tengjast theim launasedlum.
-3. Daemi um `3-5` raunveruleg sjoda- eda stettarfelagaskil.
-4. `5-10` radningarsamningar eda stadladar radningarforsendur i nafnlausri mynd.
-5. Listi yfir hvaða stettarfelog og lifeyrissjodi fyrstu vidskiptavinirnir nota i raun.
+1. `10-20` nafnlausir launaseðlar með mismunandi tilvikum.
+2. `10-20` tímaskráningar eða vaktaplön sem tengjast þeim launaseðlum.
+3. Dæmi um `3-5` raunveruleg sjóða- eða stéttarfélagaskil.
+4. `5-10` ráðningarsamningar eða staðlaðar ráðningarforsendur í nafnlausri mynd.
+5. Listi yfir hvaða stéttarfélög og lífeyrissjóði fyrstu viðskiptavinirnir nota í raun.
 
 ## Athugasemd um HREIN_GOGN
 
-- Nuverandi innihald i `HREIN_GOGN` er mjog verdmaett fyrir bokhald, afstemmingu og framtalsrekjanleika.
-- Það dugar hins vegar ekki eitt og ser til ad byggja payroll rule engine, routing engine eda golden scenario safn fyrir launavel.
+- Núverandi innihald í `HREIN_GOGN` er mjög verðmætt fyrir bókhald, afstemmingu og framtalsrekjanleika.
+- Það dugar hins vegar ekki eitt og sér til að byggja payroll rule engine, routing engine eða golden scenario safn fyrir launavél.

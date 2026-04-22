@@ -1,11 +1,12 @@
 # Staða Frigg
 
-Síðast uppfært: 2026-04-21
+Síðast uppfært: 2026-04-22
 
 ## Hvar við erum
 
 - Repo hefur verið sett upp sem grunn-monorepo.
 - Source-of-truth skjöl hafa verið stofnuð og samræmd.
+- Source-of-truth skjöl fyrir public corpus, private corpus og `HREIN_GOGN` hafa verið leiðrétt þannig að þau standist kröfur um vandað íslenskt málfar.
 - Fyrstu canonical TypeScript contracts fyrir AI, reglur, compliance og launadomain hafa verið skilgreind.
 - Fyrsta SQL-skema, snapshot API, repository layer og seed workflow hafa verið sett upp.
 - AI failover grunnur, parser pipeline, confidence lag og provider adapterar hafa verið innleidd í `packages/ai`.
@@ -19,6 +20,7 @@ Síðast uppfært: 2026-04-21
 - Verkefnaheiti og kjarnaafstaða fest
 - Monorepo grunnur
 - Docs pipeline fyrir stöðu, roadmap og ákvarðanir
+- Grunnstaðfesting á `apps/api`, `apps/web`, migration runner og seed workflow með innbyggðum `node` scripts
 - Grunnorðasafn fyrir samræmda íslensku
 - Fyrsti domain contract grunnur
 - Arkitektúrgrunnur og vöruprinsipp

@@ -1,54 +1,54 @@
-# Opinber heimildaskra Frigg
+# Opinber heimildaskrá Frigg
 
-Sidast uppfaert: 2026-04-21
+Síðast uppfært: 2026-04-22
 
 ## Hlutverk
 
-Thetta skjal heldur utan um fyrstu sofnunarlotu a opnum heimildum fyrir Frigg.
-Markmidid er ad festa hvaoa gogh hafa verid kortlogd, hvaoan þau koma og hvernig þau nytast i payroll- og compliance-lagi vorrunnar.
+Þetta skjal heldur utan um fyrstu söfnunarlotu af opnum heimildum fyrir Frigg.
+Markmiðið er að festa hvaða gögn hafa verið kortlögð, hvaðan þau koma og hvernig þau nýtast í payroll- og compliance-lagi vörunnar.
 
-## Stada
+## Staða
 
-- Fyrsta opinbera sofnunarlotan hefur verid kortlogd og faerd i vellesanlegt registry i `db/seeds/public-source-registry.json`.
-- Heimildirnar na yfir `log`, `Skattinn`, `lifeyrissjodi`, `stettarfelog` og `tulkunarheimildir`.
-- Registry-id geymir adeins opnar heimildir og opinberar slodir, ekki innskraningarvarid efni eda vidskiptavinagoghn.
+- Fyrsta opinbera söfnunarlotan hefur verið kortlögð og færð í véllesanlegt registry í `db/seeds/public-source-registry.json`.
+- Heimildirnar ná yfir `lög`, `Skattinn`, `lífeyrissjóði`, `stéttarfélög` og `túlkunarheimildir`.
+- Registry-ið geymir aðeins opnar heimildir og opinberar slóðir, ekki innskráningarvarið efni eða viðskiptavinagögn.
 
 ## Flokkar
 
-### Log og reglur
+### Lög og reglur
 
-- Althingi: bokhald, stadgreidsla, tryggingagjald, tekjuskattur, orlof, veikindarettur, lagmarkskjor, lifeyrissjodslög, faedingarorlof, personuvernd og jafnrettislog.
-- Thettar heimildir skilgreina lagmarkskrofur, vardveislu, launagreidendaabyrgd og skyldubundin gjold.
+- Alþingi: bókhald, staðgreiðsla, tryggingagjald, tekjuskattur, orlof, veikindaréttur, lágmarkskjör, lífeyrissjóðslög, fæðingarorlof, persónuvernd og jafnréttislög.
+- Þessar heimildir skilgreina lágmarkskröfur, varðveislu, launagreiðendaábyrgð og skyldubundin gjöld.
 
 ### Skatturinn
 
-- Lagasafn Skattsins, skattthrep, personuafslattur, skattmat, reiknad endurgjald, tryggingagjald, launagreidendaskra, launamidar, launaframtal og rafraen skil.
-- Thettar heimildir mynda statutory parameter lagid og skilalagid fyrir Frigg.
+- Lagasafn Skattsins, skattþrep, persónuafsláttur, skattmat, reiknað endurgjald, tryggingagjald, launagreiðendaskrá, launamiðar, launaframtal og rafræn skil.
+- Þessar heimildir mynda statutory parameter lagið og skilalagið fyrir Frigg.
 
-### Lifeyrissjodir
+### Lífeyrissjóðir
 
-- Lifeyrismal.is sem heildarskra yfir sjodi.
-- Opið launagreidendaefni fra `LIVE`, `Gildi`, `Frjalsa`, `Stapa` og `Festu`.
-- Thettar heimildir nytast i routing, gjalddaga, eindaga, sjodsnumer og skilagreinar.
+- Lifeyrismal.is sem heildarskrá yfir sjóði.
+- Opið launagreiðendaefni frá `LIVE`, `Gildi`, `Frjálsa`, `Stapa` og `Festu`.
+- Þessar heimildir nýtast í routing, gjalddaga, eindaga, sjóðsnúmer og skilagreinar.
 
-### Stettarfelog
+### Stéttarfélög
 
-- Opið efni fra `VR`, `Eflingu`, `SGS` og sambærilegum adilum.
-- Thettar heimildir nytast i kjarasamninga, gjold, uppbaetur og skil til felaga og tengdra sjoda.
+- Opið efni frá `VR`, `Eflingu`, `SGS` og sambærilegum aðilum.
+- Þessar heimildir nýtast í kjarasamninga, gjöld, uppbætur og skil til félaga og tengdra sjóða.
 
-### Tulkunarheimildir
+### Túlkunarheimildir
 
-- Vinnurettarvefur ASI og sambærilegar opinberar leidbeiningasidur.
-- Thettar heimildir nytast i skyringar a launasedli, veikindaretti, veikindum barna og sambærilegum edge cases.
+- Vinnurettarvefur ASÍ og sambærilegar opinberar leiðbeiningasíður.
+- Þessar heimildir nýtast í skýringar á launaseðli, veikindarétti, veikindum barna og sambærilegum edge cases.
 
-## Helstu nidurstodur
+## Helstu niðurstöður
 
-- Mjog stor hluti af `statutory` og `open payroll guidance` er adgengilegur an thess ad notast vid vidskiptavinagogn.
-- `Routing` i lifeyrissjodi og stettarfelog er ad hluta opinbert, en endanleg akvordun per starfsmadur og atvinnurekandi krefst private gagna.
-- `HREIN_GOGN` inniheldur einkum afstemmingar, framtol, bankagogn og bokhaldsyfirlit en ekki naegileg payroll-native gogn fyrir fulla launavel.
+- Mjög stór hluti af `statutory` og `open payroll guidance` er aðgengilegur án þess að notast við viðskiptavinagögn.
+- `Routing` í lífeyrissjóðum og stéttarfélögum er að hluta opinbert, en endanleg ákvörðun fyrir hvern starfsmann og atvinnurekanda krefst private gagna.
+- `HREIN_GOGN` inniheldur einkum afstemmingar, framtöl, bankagögn og bókhaldsyfirlit en ekki nægileg payroll-native gögn fyrir fulla launavél.
 
-## Hvernig thetta nytist naest
+## Hvernig þetta nýtist næst
 
-- Registry-id er undirlag fyrir versioned knowledge records.
-- Það er haegt ad nota sem grunn fyrir coverage matrix og Trust Center.
-- Það afmarkar skyrt hvaða gogn Frigg getur fengid sjalft og hvaða gogn notandi thearf ad utvega.
+- Registry-ið er undirlag fyrir versioned knowledge records.
+- Það er hægt að nota sem grunn fyrir coverage matrix og Trust Center.
+- Það afmarkar skýrt hvaða gögn Frigg getur fengið sjálft og hvaða gögn notandi þarf að útvega.

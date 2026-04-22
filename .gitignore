@@ -4,6 +4,8 @@ dist/
 build/
 coverage/
 .turbo/
+.tmp.driveupload/
+HREIN_GOGN/
 .env
 .env.*
 !.env.example

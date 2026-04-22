@@ -1,10 +1,10 @@
 # Yfirlit yfir HREIN_GOGN
 
-Sidast uppfaert: 2026-04-21
+Síðast uppfært: 2026-04-22
 
 ## Samantekt
 
-Greining a `HREIN_GOGN` synir ad mappan inniheldur fyrst og fremst bokhalds-, afstemmingar- og framtalsgogn.
+Greining á `HREIN_GOGN` sýnir að mappan inniheldur fyrst og fremst bókhalds-, afstemmingar- og framtalsgögn.
 
 ## Talning
 
@@ -17,26 +17,26 @@ Greining a `HREIN_GOGN` synir ad mappan inniheldur fyrst og fremst bokhalds-, af
 
 ### Banki
 
-- Bankagogn og yfirlit.
+- Bankagögn og yfirlit.
 
-### Framtol
+### Framtöl
 
-- Tekjuskattur, virdisaukaskattur, fyrningar, samvoskun og arsreikningstengd gogn.
+- Tekjuskattur, virðisaukaskattur, fyrningar, samvöskun og ársreikningstengd gögn.
 
 ### Hreyfingalistar
 
-- Hreyfingalistar ur `BC`, `DK`, `Navision`, `Payday` og `Stolpa`.
+- Hreyfingalistar úr `BC`, `DK`, `Navision`, `Payday` og `Stólpa`.
 
-### Profjofnudir
+### Prófjöfnuðir
 
-- Profjafnadar- og uppgjorsgogn ur morgum kerfum.
+- Prófjafnaðar- og uppgjörsgögn úr mörgum kerfum.
 
 ### Stakar skrár
 
 - `20260219 - Fyrirmynd skattskuldbindingar 2025 1.xlsx`
-- `skattabaeklingur2026-deloittelegal.pdf`
+- `skattabæklingur2026-deloittelegal.pdf`
 
-## Nidurstada
+## Niðurstaða
 
-- Mappan styður vel `reconciliation`, `framtalsvinnu` og `bokhaldsrekjanleika`.
-- Mappan inniheldur ekki naegilegt magn af `launasedlum`, `radningarsamningum`, `timaskraningum`, `kjarasamningum`, `stettarfelagsgognum` eda `lifeyrissjods-routing` gognum til ad vera fullkomid source-of-truth fyrir Frigg.
+- Mappan styður vel `reconciliation`, `framtalsvinnu` og `bókhaldsrekjanleika`.
+- Mappan inniheldur ekki nægilegt magn af `launaseðlum`, `ráðningarsamningum`, `tímaskráningum`, `kjarasamningum`, `stéttarfélagsgögnum` eða `lífeyrissjóðs-routing` gögnum til að vera fullkomið source-of-truth fyrir Frigg.
