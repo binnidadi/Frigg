@@ -17,6 +17,7 @@ export const apiApp = {
     '/repository/status',
     '/research/workspace',
     '/research/summary',
+    '/research/coverage-matrix',
     '/research/private-corpus',
     '/ai/health',
     '/ai/parse-preview',

@@ -137,5 +137,6 @@ Frigg hefur nú fyrstu rannsóknarfærslur sem byggja á raunverulegu public reg
 - prófíla fyrir `LIVE`, `Gildi`, `Frjálsa`, `Stapa` og `Festu`
 - prófíla fyrir `VR`, `Eflingu`, `SGS` og túlkunarlag `ASÍ`
 - coverage pakka fyrir fyrstu `VR` samningssvið
+- coverage matrix sem sýnir studd, review-skyld og blokkuð svið gegn golden scenarios
 
 Þessi staða er enn `research-first` fremur en certified runtime, en hún gerir nú operational status og residual risk sýnilegt á raunverulegum færslum í stað tóms baseline.

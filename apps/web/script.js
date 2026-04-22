@@ -161,8 +161,9 @@ async function loadDashboardAI() {
 }
 
 async function loadResearchWorkspace() {
-  const [researchSummary, criticalPrivateCorpus] = await Promise.all([
+  const [researchSummary, coverageMatrix, criticalPrivateCorpus] = await Promise.all([
     fetchJson('/research/summary'),
+    fetchJson('/research/coverage-matrix'),
     fetchJson('/research/private-corpus')
   ])
 
@@ -175,12 +176,19 @@ async function loadResearchWorkspace() {
     'research-summary',
     `${researchSummary.mappedWorkstreamCount} rannsóknarstraumar, ${researchSummary.sourceAcquisitionCount} skráðar heimildir, ${researchSummary.legalObligationCount} lagaskyldur og ${
       researchSummary.pensionFundProfileCount + researchSummary.unionProfileCount
-    } sjóða- og félagaprófílar eru nú kortlögð. ${researchSummary.criticalPrivateCorpusCount} forgangsgagnasöfn vantar enn.`
+    } sjóða- og félagaprófílar eru nú kortlögð. ${researchSummary.computeWithReviewCount} svið eru komin í compute_with_review. ${researchSummary.criticalPrivateCorpusCount} forgangsgagnasöfn vantar enn.`
   )
 
   setList('private-corpus-list', criticalPrivateCorpus, (entry) => ({
     strong: entry.title,
     span: `${entry.minimumTarget} · ${entry.whyItMatters}`
+  }))
+
+  setList('coverage-matrix-list', coverageMatrix.slice(0, 5), (entry) => ({
+    strong: `${entry.title} · ${entry.operationalStatus}`,
+    span: `Styður ${entry.supportedScenarios.join(', ') || 'engin sviðsmynd'} · Blokkar ${
+      entry.blockedScenarios.join(', ') || 'ekkert skráð'
+    }`
   }))
 }
 
@@ -321,6 +329,7 @@ async function main() {
     setText('research-title', 'Rannsóknargögn ekki tiltæk')
     setText('research-count', 'ÓTILTÆKT')
     setText('research-summary', message)
+    setList('coverage-matrix-list', [], () => '')
   }
 }
 

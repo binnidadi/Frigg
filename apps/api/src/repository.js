@@ -16,6 +16,7 @@ function buildResearchSummary(workspace) {
   const pensionFundProfiles = workspace.pensionFundProfiles ?? []
   const unionProfiles = workspace.unionProfiles ?? []
   const collectiveAgreementPacks = workspace.collectiveAgreementPacks ?? []
+  const coverageMatrixEntries = workspace.coverageMatrixEntries ?? []
   const requiredPrivateCorpus = workspace.requiredPrivateCorpus ?? []
 
   const statusCounts = workstreams.reduce((counts, workstream) => {
@@ -38,6 +39,13 @@ function buildResearchSummary(workspace) {
     pensionFundProfileCount: pensionFundProfiles.length,
     unionProfileCount: unionProfiles.length,
     collectiveAgreementPackCount: collectiveAgreementPacks.length,
+    coverageMatrixCount: coverageMatrixEntries.length,
+    computeWithReviewCount: coverageMatrixEntries.filter(
+      (entry) => entry.operationalStatus === 'compute_with_review'
+    ).length,
+    cannotComputeCount: coverageMatrixEntries.filter(
+      (entry) => entry.operationalStatus === 'cannot_compute'
+    ).length,
     certifiedCoverageCount,
     criticalPrivateCorpusCount: criticalPrivateCorpus.length,
     workstreamStatusCounts: statusCounts
@@ -107,6 +115,14 @@ function buildRepositoryApi({
       )
     },
 
+    getCoverageMatrix() {
+      return clone(
+        [...(researchWorkspace.coverageMatrixEntries ?? [])].sort((left, right) =>
+          left.code.localeCompare(right.code)
+        )
+      )
+    },
+
     getRepositoryStatus() {
       const researchSummary = buildResearchSummary(researchWorkspace)
 
@@ -120,7 +136,8 @@ function buildRepositoryApi({
         payrollRunCount: snapshot.payrollRuns.length,
         validationResultCount: snapshot.validationResults.length,
         researchWorkstreamCount: researchSummary.workstreamCount,
-        legalObligationCount: researchSummary.legalObligationCount
+        legalObligationCount: researchSummary.legalObligationCount,
+        coverageMatrixCount: researchSummary.coverageMatrixCount
       }
     }
   }
@@ -188,6 +205,7 @@ export function createInMemoryRepository(input = {}) {
           pensionFundProfiles: [],
           unionProfiles: [],
           collectiveAgreementPacks: [],
+          coverageMatrixEntries: [],
           requiredPrivateCorpus: []
         })
 

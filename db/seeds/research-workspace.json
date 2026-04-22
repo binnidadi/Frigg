@@ -738,6 +738,149 @@
       ]
     }
   ],
+  "coverageMatrixEntries": [
+    {
+      "code": "coverage_vr_retail_foundation",
+      "title": "VR retail með staðgreiðslu, tryggingagjaldi og LIVE routing",
+      "sourceType": "collective_agreement",
+      "coverageStatus": "partial",
+      "residualRisk": "medium",
+      "supportedScenarios": [
+        "GS-001",
+        "GS-005",
+        "GS-006"
+      ],
+      "blockedScenarios": [
+        "GS-003",
+        "GS-004"
+      ],
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "rule_level",
+      "relatedAgreementPackIds": [
+        "agreement_pack_vr_retail"
+      ],
+      "relatedObligationIds": [
+        "obligation_withholding_tax",
+        "obligation_insurance_levy",
+        "obligation_holiday_entitlement",
+        "obligation_pension_routing",
+        "obligation_union_routing",
+        "obligation_payslip_evidence"
+      ],
+      "relatedUnionProfileIds": [
+        "union_vr_profile"
+      ],
+      "relatedPensionProfileIds": [
+        "pension_live_profile"
+      ],
+      "notes": [
+        "Fyrsti raunverulegi compute_with_review pakkinn í Frigg.",
+        "Styður almenna retail keyrslu með skýru review flaggi á routing og ófullnægjandi private gögnum."
+      ]
+    },
+    {
+      "code": "coverage_vr_office_baseline",
+      "title": "VR office grunnþekja",
+      "sourceType": "collective_agreement",
+      "coverageStatus": "partial",
+      "residualRisk": "high",
+      "supportedScenarios": [
+        "GS-001"
+      ],
+      "blockedScenarios": [
+        "GS-003",
+        "GS-004",
+        "GS-005",
+        "GS-006"
+      ],
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "clause_level",
+      "relatedAgreementPackIds": [
+        "agreement_pack_vr_office"
+      ],
+      "relatedObligationIds": [
+        "obligation_withholding_tax",
+        "obligation_insurance_levy"
+      ],
+      "relatedUnionProfileIds": [
+        "union_vr_profile"
+      ],
+      "relatedPensionProfileIds": [
+        "pension_live_profile"
+      ],
+      "notes": [
+        "Samningsgrunnur er kominn, en line item niðurbrot og sannprófun vantar."
+      ]
+    },
+    {
+      "code": "coverage_a1_and_insurance",
+      "title": "A1 og tryggingagjald",
+      "sourceType": "statutory",
+      "coverageStatus": "partial",
+      "residualRisk": "medium",
+      "supportedScenarios": [
+        "GS-002"
+      ],
+      "blockedScenarios": [
+        "óstaðfest A1 gögn"
+      ],
+      "operationalStatus": "compute_with_review",
+      "sourceDepth": "structured_summary",
+      "relatedAgreementPackIds": [],
+      "relatedObligationIds": [
+        "obligation_insurance_levy"
+      ],
+      "relatedUnionProfileIds": [],
+      "relatedPensionProfileIds": [],
+      "notes": [
+        "Heldur utan um fyrsta statutory coverage-svið sem er ekki bundið við ákveðinn samning."
+      ]
+    },
+    {
+      "code": "coverage_sickness_and_absence",
+      "title": "Veikindi og fjarvistir",
+      "sourceType": "interpretation",
+      "coverageStatus": "unsupported",
+      "residualRisk": "high",
+      "supportedScenarios": [],
+      "blockedScenarios": [
+        "GS-003"
+      ],
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "relatedAgreementPackIds": [],
+      "relatedObligationIds": [
+        "obligation_sickness_rights"
+      ],
+      "relatedUnionProfileIds": [
+        "union_asi_interpretation_profile"
+      ],
+      "relatedPensionProfileIds": [],
+      "notes": [
+        "Túlkunarlag og lagagrunnur eru kortlögð, en private raunveruleg sannleiksgögn vantar enn."
+      ]
+    },
+    {
+      "code": "coverage_parental_leave_partial",
+      "title": "Fæðingarorlof og hlutastarf",
+      "sourceType": "statutory",
+      "coverageStatus": "unsupported",
+      "residualRisk": "high",
+      "supportedScenarios": [],
+      "blockedScenarios": [
+        "GS-004"
+      ],
+      "operationalStatus": "cannot_compute",
+      "sourceDepth": "structured_summary",
+      "relatedAgreementPackIds": [],
+      "relatedObligationIds": [],
+      "relatedUnionProfileIds": [],
+      "relatedPensionProfileIds": [],
+      "notes": [
+        "Lagagrunnur er til í public registry, en explicit obligation og runtime model eru ekki komin í research workspace enn."
+      ]
+    }
+  ],
   "requiredPrivateCorpus": [
     {
       "code": "payslips_corpus",

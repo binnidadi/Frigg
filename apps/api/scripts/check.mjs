@@ -56,6 +56,18 @@ if (repository.getCriticalPrivateCorpus().length === 0) {
   throw new Error('Research workspace vantar critical private corpus lista.')
 }
 
+if (repository.getCoverageMatrix().length < 4) {
+  throw new Error('Research workspace vantar nægilega coverage matrix færslur.')
+}
+
+if (
+  !repository
+    .getCoverageMatrix()
+    .some((entry) => entry.operationalStatus === 'compute_with_review')
+) {
+  throw new Error('Research workspace vantar að minnsta kosti eitt compute_with_review coverage svið.')
+}
+
 if (repositoryStatus.driver !== 'memory') {
   throw new Error('Repository driver er ekki skilgreindur rétt.')
 }

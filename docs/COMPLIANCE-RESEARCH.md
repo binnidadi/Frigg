@@ -45,11 +45,13 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Research operating system baseline er nú skilgreint í `docs/RESEARCH-OPERATING-SYSTEM.md` og stutt í gagnamódeli og contracts.
 - Fyrstu raunverulegu research records hafa verið skráðar í `db/seeds/research-workspace.json` fyrir staðgreiðslu, tryggingagjald, reiknað endurgjald, orlof, veikindi, lífeyrissjóðsiðgjöld, stéttarfélagsrouting og launaseðil sem sönnunargagn.
 - Fyrstu prófílar fyrir `VR`, `Eflingu`, `SGS`, `LIVE`, `Gildi`, `Frjálsa`, `Stapa` og `Festu` hafa verið festir með operational status og source depth.
+- Fyrsta coverage matrix hefur verið fest með skýrum mörkum milli `compute_with_review`, `cannot_compute` og blokkeraðra sviðsmynda.
+- Fyrsti samsetti pakkinn `VR retail + staðgreiðsla + tryggingagjald + LIVE routing` er nú sýnilegur sem fyrsta raunverulega `compute_with_review` sviðið.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 
 1. Tengja source acquisition records við public registry og síðar private corpus intake.
-2. Stækka coverage matrix yfir allan markaðinn með `operational status` og `source depth`.
+2. Stækka coverage matrix yfir allan markaðinn með eiginlegum certified marksviðum.
 3. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar.
 4. Brjóta `SGS` og aðrar heildarskrár niður í einstaklingsbundin félaga- og landfræðiprófíl.
 5. Trust Center gagnalíkan og certified coverage reporting.

@@ -22,6 +22,10 @@ writeFileSync(resolve(dist, 'repository-status.json'), JSON.stringify(repository
 writeFileSync(resolve(dist, 'research-workspace.json'), JSON.stringify(repository.getResearchWorkspace(), null, 2))
 writeFileSync(resolve(dist, 'research-summary.json'), JSON.stringify(repository.getResearchSummary(), null, 2))
 writeFileSync(
+  resolve(dist, 'research-coverage-matrix.json'),
+  JSON.stringify(repository.getCoverageMatrix(), null, 2)
+)
+writeFileSync(
   resolve(dist, 'research-private-corpus.json'),
   JSON.stringify(repository.getCriticalPrivateCorpus(), null, 2)
 )
