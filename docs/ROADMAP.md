@@ -4,6 +4,29 @@
 
 Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-first hugsun.
 
+## Næsta forgangsröð samkvæmt gap-closing greiningu
+
+### Critical now
+
+- fyrsti raunverulegi `VR retail` private corpus pakkinn
+- fyrstu behavioral golden scenario prófanirnar
+- hörðun á `packages/*` checks
+- samningssviðsgreining á raungögnum
+
+### High value next
+
+- signoff workflow tengt intake acceptance og coverage blockers
+- fyrsta Trust Center view fyrir featured pakka
+- normalized knowledge records fyrir public corpus
+- niðurbrot á `repository.js` í minni ábyrgðarsvæði
+
+### Later
+
+- employee mode
+- opinber markaður
+- sérgreinar
+- víðara advisor/partner API lag
+
 ## Áfangi 1: Foundation
 
 - monorepo

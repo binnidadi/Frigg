@@ -36,6 +36,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - formlega afstöðu um að `AI Foundry` sé tvískipt lag: bæði innri vél og sýnilegt enterprise/advisor yfirborð
 
 Nánari staða er í `docs/STATUS.md`.
+Markviss gap-closing greining er í `docs/GAP-CLOSING-ANALYSIS.md`.
 
 ## Kjarnaforsendur
 
@@ -105,12 +106,13 @@ db/           SQL-skema, migrations og seed gögnum
 - `docs/REMAINING-DATA-REQUEST.md`
 - `docs/HREIN-GOGN-INVENTORY.md`
 - `docs/COMPLIANCE-RESEARCH.md`
+- `docs/GAP-CLOSING-ANALYSIS.md`
 - `docs/GLOSSARY.md`
 
 ## Næstu skref
 
 1. Fá fyrsta raunverulega payroll-native gagnapakkann afhentan samkvæmt nýja afhendingarsniðinu: nafnlausa launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
-2. Festa þennan fyrsta gagnapakka inn í samningssviðsgreiningu, frávikagreiningu og review workflow.
-3. Dýpka samningssviðsgreiningu svo kerfið geti valið rétt kjarasamningssvið áður en flóknari útreikningar eru vottaðir á fleiri sviðum.
-4. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
-5. Búa til `pnpm-lock.yaml` í fyrsta `pnpm install` umhverfi og festa hana í repo.
+2. Festa fyrstu 1-2 golden scenarios sem raunverulegar hegðunarprófanir í stað aðeins docs-backlog.
+3. Herða `packages/*` checks svo workspace scripts segi ekki lengur falskt að capability sé staðfest.
+4. Festa fyrsta gagnapakkann inn í samningssviðsgreiningu, frávikagreiningu og review workflow.
+5. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
