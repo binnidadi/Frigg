@@ -34,6 +34,10 @@ export const contracts = [
     employmentType: 'monthly',
     jobTitle: 'Verslunarfulltrúi',
     jobCode: 'store_assistant',
+    agreementScopeCode: 'vr-retail-store',
+    expectedMonthlyBaseSalary: { currency: 'ISK', amount: 590000 },
+    expectedMonthlyHours: 173.33,
+    eveningPremiumRate: { currency: 'ISK', amount: 1000 },
     validFrom: '2026-01-01',
     validTo: null
   },
@@ -44,8 +48,65 @@ export const contracts = [
     employmentType: 'hourly',
     jobTitle: 'Vaktstjóri',
     jobCode: 'shift_lead',
+    agreementScopeCode: 'vr-retail-shift',
+    defaultHourlyRate: { currency: 'ISK', amount: 3950 },
     validFrom: '2026-02-01',
     validTo: null
+  }
+]
+
+export const payrollInputs = [
+  {
+    tenantId: 'tenant_frigg',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_gudrun',
+    contractId: 'contract_gudrun_001',
+    period: { validFrom: '2026-04-01', validTo: '2026-04-30' },
+    hoursWorked: 173.33,
+    eveningHours: 18,
+    weekendHours: 0,
+    holidayHours: 0,
+    leaveHours: 0,
+    baseRateOverride: null,
+    municipalityCode: '0000',
+    taxCreditAllocation: {
+      employeeId: 'employee_gudrun',
+      primaryPayerId: 'employer_frigg_demo',
+      monthlyCreditAmount: 72492,
+      creditPercentage: 1,
+      secondaryPayerIds: [],
+      source: 'employee_instruction'
+    },
+    a1Certificate: null,
+    leaveEvents: [],
+    pensionRoutingRuleId: 'pension_route_live_retail',
+    unionRoutingRuleId: 'union_route_vr_retail'
+  },
+  {
+    tenantId: 'tenant_frigg',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_jon',
+    contractId: 'contract_jon_001',
+    period: { validFrom: '2026-04-01', validTo: '2026-04-30' },
+    hoursWorked: 162,
+    eveningHours: 26,
+    weekendHours: 12,
+    holidayHours: 0,
+    leaveHours: 0,
+    baseRateOverride: { currency: 'ISK', amount: 3950 },
+    municipalityCode: '0000',
+    taxCreditAllocation: null,
+    a1Certificate: {
+      employeeId: 'employee_jon',
+      certificateCountryCode: 'PL',
+      validFrom: '2026-04-01',
+      validTo: '2026-10-01',
+      verifiedAt: '2026-04-02T09:00:00Z',
+      status: 'verified'
+    },
+    leaveEvents: [],
+    pensionRoutingRuleId: 'pension_route_live_retail',
+    unionRoutingRuleId: 'union_route_vr_retail'
   }
 ]
 
@@ -285,7 +346,7 @@ export const payslipEvidenceRecords = [
     ruleSetVersionIds: ['rule_set_vr_2026_2'],
     sourceReferenceIds: ['source_vr_collective_2026'],
     narrative:
-      'Kvöldálag var reiknað út frá 18 skráðum kvöldstundum, en private timesheet sannleiksgögn vantar enn til að votta line item án review.',
+      'Kvöldálag var reiknað út frá 18 skráðum kvöldstundum, en launa-nátengd tímaskrárgögn vantar enn til að votta launalínuna án yfirferðar.',
     calculatedAt: '2026-04-30T09:24:00Z'
   },
   {
@@ -297,7 +358,7 @@ export const payslipEvidenceRecords = [
     ruleSetVersionIds: ['rule_set_vr_2026_2'],
     sourceReferenceIds: ['source-althingi-129-1997', 'source-live-launagreidendur'],
     narrative:
-      'Lífeyrissjóðsiðgjald var dregið með 4% starfsmannsframlagi, en membership og employer-specific routing eru enn í review.',
+      'Lífeyrissjóðsiðgjald var dregið með 4% starfsmannsframlagi, en aðild og atvinnurekandasértækt routing eru enn í yfirferð.',
     calculatedAt: '2026-04-30T09:25:00Z'
   },
   {
@@ -309,7 +370,7 @@ export const payslipEvidenceRecords = [
     ruleSetVersionIds: ['rule_set_vr_2026_2'],
     sourceReferenceIds: ['source-vr-kjarasamningar'],
     narrative:
-      'Stéttarfélagsgjald fylgir VR retail pakkanum, en landfræðileg aðild og möguleg frávik frá almennri grunnleið krefjast enn review.',
+      'Stéttarfélagsgjald fylgir VR retail pakkanum, en landfræðileg aðild og möguleg frávik frá almennri grunnleið krefjast enn yfirferðar.',
     calculatedAt: '2026-04-30T09:25:30Z'
   },
   {
@@ -397,6 +458,7 @@ export const payrollDomainSnapshot = {
   employers,
   employees,
   contracts,
+  payrollInputs,
   agreementVersions,
   ruleSetVersions,
   statutoryParameterSets,

@@ -130,6 +130,16 @@ if (
   throw new Error('Featured coverage pack vantar evidence fyrir grunnlaun.')
 }
 
+if ((featuredCoveragePack.varianceFindings ?? []).length < 2) {
+  throw new Error('Featured coverage pack vantar nægileg frávikagögn.')
+}
+
+if (
+  !featuredCoveragePack.varianceFindings?.some((entry) => entry.status === 'review_required')
+) {
+  throw new Error('Featured coverage pack vantar review-skylt frávik.')
+}
+
 if (repositoryStatus.driver !== 'memory') {
   throw new Error('Repository driver er ekki skilgreindur rétt.')
 }

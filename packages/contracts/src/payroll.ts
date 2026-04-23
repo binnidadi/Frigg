@@ -79,6 +79,23 @@ export interface Payslip {
   evidenceRecordIds: Identifier[]
 }
 
+export type PayrollVarianceStatus = 'aligned' | 'review_required' | 'mismatch' | 'blocked'
+
+export interface PayrollVarianceFinding {
+  id: Identifier
+  employeeId: Identifier
+  contractId: Identifier | null
+  relatedPayslipId: Identifier | null
+  status: PayrollVarianceStatus
+  severity: 'info' | 'warning' | 'critical'
+  title: string
+  summary: string
+  expectedAmount: MoneyAmount | null
+  actualAmount: MoneyAmount | null
+  varianceAmount: MoneyAmount | null
+  requiredPrivateCorpusCodes: string[]
+}
+
 export interface PayrollRun {
   id: Identifier
   employerId: Identifier

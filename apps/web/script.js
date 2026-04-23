@@ -252,6 +252,23 @@ async function loadResearchWorkspace() {
         }`
       })
     )
+
+    setList(
+      'featured-variance-list',
+      featuredCoverage.varianceFindings ?? [],
+      (entry) => ({
+        strong: `${entry.title} · ${entry.status}`,
+        span: `${entry.summary}${
+          entry.expectedAmount && entry.actualAmount
+            ? ` Vænt: ${entry.expectedAmount.amount} ISK · Raun: ${entry.actualAmount.amount} ISK.`
+            : ''
+        }${
+          entry.requiredPrivateCorpusCodes?.length
+            ? ` Vantar: ${entry.requiredPrivateCorpusCodes.join(', ')}.`
+            : ''
+        }`
+      })
+    )
   }
 }
 
@@ -398,6 +415,7 @@ async function main() {
     setList('featured-coverage-details', [], () => '')
     setList('featured-line-item-boundaries', [], () => '')
     setList('featured-evidence-list', [], () => '')
+    setList('featured-variance-list', [], () => '')
   }
 }
 

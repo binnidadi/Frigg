@@ -67,8 +67,12 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
   const statutoryParameterSets = snapshot.statutoryParameterSets ?? []
   const pensionRoutingRules = snapshot.pensionRoutingRules ?? []
   const unionRoutingRules = snapshot.unionRoutingRules ?? []
+  const payrollInputs = snapshot.payrollInputs ?? []
+  const contracts = snapshot.contracts ?? []
   const payslips = snapshot.payslips ?? []
   const payslipEvidenceRecords = snapshot.payslipEvidenceRecords ?? []
+  const validationResults = snapshot.validationResults ?? []
+  const reviewTasks = snapshot.reviewTasks ?? []
 
   const relatedPayslips = payslips.filter((entry) =>
     payslipEvidenceRecords.some(
@@ -92,6 +96,103 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     }
   })
 
+  const varianceFindings = relatedPayslips.flatMap((payslip) => {
+    const contract = contracts.find((entry) => entry.employeeId === payslip.employeeId) ?? null
+    const input = payrollInputs.find((entry) => entry.employeeId === payslip.employeeId) ?? null
+    const validation = validationResults.find((entry) => entry.payrollRunId === payslip.payrollRunId) ?? null
+
+    const findings = []
+
+    if (contract && input && contract.expectedMonthlyBaseSalary) {
+      const expectedGross =
+        contract.expectedMonthlyBaseSalary.amount +
+        Math.round((input.eveningHours ?? 0) * (contract.eveningPremiumRate?.amount ?? 0))
+      const varianceAmount = payslip.grossPay.amount - expectedGross
+
+      findings.push({
+        id: `variance_gross_${payslip.employeeId}`,
+        employeeId: payslip.employeeId,
+        contractId: contract.id,
+        relatedPayslipId: payslip.id,
+        status: varianceAmount === 0 ? 'aligned' : 'review_required',
+        severity: varianceAmount === 0 ? 'info' : 'warning',
+        title: 'Brúttólaun gegn ráðningarkjörum og skráðum stundum',
+        summary:
+          varianceAmount === 0
+            ? 'Brúttólaun á launaseðli stemma við grunnsamning og skráðar kvöldstundir í þessu demótilviki.'
+            : 'Brúttólaun víkja frá væntri niðurstöðu úr grunnsamningi og skráðum kvöldstundum og þurfa yfirferð.',
+        expectedAmount: { currency: 'ISK', amount: expectedGross },
+        actualAmount: payslip.grossPay,
+        varianceAmount: { currency: 'ISK', amount: varianceAmount },
+        requiredPrivateCorpusCodes:
+          varianceAmount === 0 ? [] : ['timesheets_and_work_patterns', 'employment_contracts_and_terms']
+      })
+    }
+
+    if (input && (input.eveningHours ?? 0) > 0) {
+      findings.push({
+        id: `variance_evening_${payslip.employeeId}`,
+        employeeId: payslip.employeeId,
+        contractId: contract?.id ?? null,
+        relatedPayslipId: payslip.id,
+        status: 'review_required',
+        severity: 'warning',
+        title: 'Kvöldálag byggir enn á óvottuðum stundagögnum',
+        summary:
+          'Kvöldálag er reiknað úr skráðum stundum, en launa-nátengd tímaskrárgögn vantar enn til að loka yfirferðarstöðu.',
+        expectedAmount: null,
+        actualAmount: null,
+        varianceAmount: null,
+        requiredPrivateCorpusCodes: ['timesheets_and_work_patterns']
+      })
+    }
+
+    const relatedValidationMismatch = validation?.mismatches?.find(
+      (entry) => entry.employeeId === payslip.employeeId
+    )
+
+    if (relatedValidationMismatch) {
+      findings.push({
+        id: `variance_validation_${payslip.employeeId}`,
+        employeeId: payslip.employeeId,
+        contractId: contract?.id ?? null,
+        relatedPayslipId: payslip.id,
+        status: 'mismatch',
+        severity: 'critical',
+        title: 'Validation mismatch á launaseðli',
+        summary: relatedValidationMismatch.message,
+        expectedAmount: { currency: 'ISK', amount: relatedValidationMismatch.expectedAmount },
+        actualAmount: { currency: 'ISK', amount: relatedValidationMismatch.actualAmount },
+        varianceAmount: {
+          currency: 'ISK',
+          amount: relatedValidationMismatch.actualAmount - relatedValidationMismatch.expectedAmount
+        },
+        requiredPrivateCorpusCodes: []
+      })
+    }
+
+    const relatedReviewCount = reviewTasks.filter((entry) => entry.relatedEntityId === payslip.employeeId).length
+
+    if (relatedReviewCount > 0) {
+      findings.push({
+        id: `variance_review_${payslip.employeeId}`,
+        employeeId: payslip.employeeId,
+        contractId: contract?.id ?? null,
+        relatedPayslipId: payslip.id,
+        status: 'review_required',
+        severity: 'warning',
+        title: 'Opnir review verkliðir tengdir starfsmanni',
+        summary: `${relatedReviewCount} opin yfirferðarverkefni eru enn tengd starfsmanninum og halda keyrslunni í compute_with_review stöðu.`,
+        expectedAmount: null,
+        actualAmount: null,
+        varianceAmount: null,
+        requiredPrivateCorpusCodes: []
+      })
+    }
+
+    return findings
+  })
+
   return {
     ...clone(featuredEntry),
     statutoryParameterSets: (featuredEntry.statutoryParameterSetIds ?? [])
@@ -107,7 +208,8 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
       .map((id) => ruleSetVersions.find((entry) => entry.id === id))
       .filter(Boolean),
     payslips: relatedPayslips,
-    evidenceByLineItem
+    evidenceByLineItem,
+    varianceFindings
   }
 }
 

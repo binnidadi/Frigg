@@ -21,6 +21,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsti featured coverage pakkinn tengir nú saman reglusett, statutory parameter set og routing-reglur í lesanlegt trust boundary.
 - Trust boundary pakkinn er nú brotinn niður í launalínumörk sem sýna hvað er vottað, hvað er review-skylt og hvað er blokkað.
 - Fyrsta evidence-lagið tengir nú launaseðil, evidence records og line-item trust mörk í featured coverage pakkanum.
+- Fyrsta frávikagreiningarlagið ber nú saman ráðningarkjör, skráðar stundir og launaseðil í sama featured pakka.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
 - Heildarúttekt á stefnu, product direction og heimildalandslagi hefur verið framkvæmd og category-afstaða hert: Frigg er labour/payroll compliance operating system, ekki bara launakerfi með AI lagi.
@@ -51,6 +52,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta sýnilega trust boundary samantektin fyrir þennan pakka í API og mælaborði
 - Fyrsta line-item skýringarlagið fyrir trust boundary pakkann
 - Fyrsta sönnunarlagið sem sýnir hvaða launalínur hafa raunverulegar evidence færslur í demo-snapshot
+- Fyrsta contract-vs-timesheet-vs-pay frávikagreiningin í API og mælaborði
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 
 ## Hvað er í vinnslu
@@ -69,7 +71,7 @@ Síðast uppfært: 2026-04-23
 
 1. Fá inn fyrsta payroll-native private corpus pakkann: launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
 2. Byggja samningssviðsgreiningu fyrir rétta flokkun starfa og samningsumhverfis.
-3. Bæta contract-vs-timesheet-vs-pay frávikagreiningu ofan á evidence-lagið.
+3. Festa fyrsta payroll-native private corpus pakkann inn í frávikagreiningu og review workflow.
 4. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
 5. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
 
