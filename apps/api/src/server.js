@@ -34,8 +34,21 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
     const requestUrl = new URL(request.url ?? '/', 'http://localhost')
     const { pathname } = requestUrl
     const method = request.method ?? 'GET'
+    const allowGetOnly = () => {
+      if (method === 'GET') {
+        return true
+      }
+
+      response.statusCode = 405
+      response.setHeader('Allow', 'GET')
+      response.end(JSON.stringify({ error: 'Aðferð ekki leyfð á þessari leið.' }))
+      return false
+    }
 
     if (pathname === '/') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(
         JSON.stringify({
           name: 'frigg-api',
@@ -59,51 +72,81 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
     }
 
     if (pathname === '/snapshot') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getSnapshot()))
       return
     }
 
     if (pathname === '/scenarios') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getScenarios()))
       return
     }
 
     if (pathname === '/repository/status') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getRepositoryStatus()))
       return
     }
 
     if (pathname === '/research/workspace') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getResearchWorkspace()))
       return
     }
 
     if (pathname === '/research/summary') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getResearchSummary()))
       return
     }
 
     if (pathname === '/research/coverage-matrix') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getCoverageMatrix()))
       return
     }
 
     if (pathname === '/research/featured-coverage') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getFeaturedCoveragePack()))
       return
     }
 
     if (pathname === '/research/private-corpus') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(repository.getCriticalPrivateCorpus()))
       return
     }
 
     if (pathname === '/ai/health') {
+      if (!allowGetOnly()) {
+        return
+      }
       response.end(JSON.stringify(getAIHealthSnapshot()))
       return
     }
 
     if (pathname === '/ai/knowledge-preview') {
+      if (!allowGetOnly()) {
+        return
+      }
       const query = requestUrl.searchParams.get('q') ?? ''
       response.end(JSON.stringify(buildKnowledgePreview(query)))
       return
