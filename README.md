@@ -1,6 +1,6 @@
 # Frigg
 
-Frigg er compliance-first launavél fyrir íslenskan vinnumarkað. Markmiðið er að byggja traustasta, skýranlegasta og rekjanlegasta SaaS launakerfi Íslands fyrir lítil og meðalstór fyrirtæki.
+Frigg er compliance-first vinnuréttar-, kjarasamninga- og launavél fyrir íslenskan vinnumarkað. Markmiðið er að byggja traustasta, skýranlegasta og rekjanlegasta SaaS stýrikerfið á Íslandi fyrir laun, kjarasamninga og vinnuréttarlegt compliance.
 
 ## Staða
 
@@ -23,6 +23,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - fyrsta coverage matrix fyrir studd, review-skyld og blokkuð research-svið
 - fyrsti sýnilegi trust boundary pakkinn fyrir `VR retail + staðgreiðsla + tryggingagjald + LIVE routing`
 - fyrsta line-item niðurbrotið sem sýnir hvað er vottað, review-skylt og blokkað innan trust boundary pakkans
+- uppfærða category-afstöðu: Frigg er ekki bara launakerfi heldur labour/payroll compliance operating system
 
 Nánari staða er í `docs/STATUS.md`.
 
@@ -32,6 +33,13 @@ Nánari staða er í `docs/STATUS.md`.
 - Production laun skulu alltaf reiknuð með deterministic regluvél.
 - Hver niðurstaða á að vera útskýrð niður í heimild, reglu og reikniskref.
 - Öll notendamiðuð skjöl og viðmót skulu vera á vandaðri íslensku.
+
+## Núverandi stefna
+
+- Frigg er byggt sem `software + review workflow`, ekki sem þjónustuteymi falið á bak við viðmót.
+- Fyrsta markaðssneið er atvinnurekendur, launafulltrúar, bókarar, ráðgjafar og HR teymi á almennum vinnumarkaði.
+- Starfsmannahamur og víðari réttindagátt eru mikilvæg framtíðarsvið, en ekki rétt fyrsta wedge.
+- Samkeppnisvörnin á að koma úr rekjanleika, skýringum, evidence-lagi, review-stýringum og coverage-sýnileika.
 
 ## Verkefnagrind
 
@@ -90,8 +98,8 @@ db/           SQL-skema, migrations og seed gögnum
 
 ## Næstu skref
 
-1. Búa til `pnpm-lock.yaml` í fyrsta `pnpm install` umhverfi og festa hana í repo.
-2. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
-3. Virkja rannsóknarvinnusvæðið fyrir lög, sjóði, félög, lagaskyldur og skráningu heimilda.
-4. Færa opinbera heimildaskrá yfir í útgáfustýrðar þekkingarfærslur og coverage matrix.
-5. Bæta einkagagnasafni við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
+1. Dýpka fyrsta trust boundary pakkann með `PayslipEvidenceRecord`, sannprófun og frávikagreiningu á launalínu-stigi.
+2. Festa fyrstu payroll-native gögnin: nafnlausa launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
+3. Byggja samningssviðsgreiningu svo kerfið geti valið rétt kjarasamningssvið áður en flóknari útreikningar eru vottaðir.
+4. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
+5. Búa til `pnpm-lock.yaml` í fyrsta `pnpm install` umhverfi og festa hana í repo.

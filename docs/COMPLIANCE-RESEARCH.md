@@ -1,6 +1,6 @@
 # Compliance Research Frigg
 
-Síðast uppfært: 2026-04-22
+Síðast uppfært: 2026-04-23
 
 ## Markmið
 
@@ -23,6 +23,8 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Frigg þarf review workflow, ekki bara sjálfvirkan parse pipeline.
 - Frigg þarf Trust Center sem sýnir coverage og residual risk.
 - Frigg þarf payslip evidence model sem styður ágreining, endurskoðun og skýringar.
+- Frigg þarf samningssviðsgreiningu áður en hægt er að votta kjarasamningsbundna útreikninga í dýpt.
+- Frigg þarf frávikagreiningu milli ráðningarsamnings, tímaskráningar og raunlauna til að verða raunverulegt compliance stýrikerfi.
 
 ## V1 afmörkun
 
@@ -53,7 +55,8 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 ## Næsta vinna sem þessi rannsókn kallar á
 
 1. Tengja source acquisition records við public registry og síðar private corpus intake.
-2. Stækka coverage matrix yfir allan markaðinn með eiginlegum certified marksviðum.
-3. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar.
-4. Brjóta `SGS` og aðrar heildarskrár niður í einstaklingsbundin félaga- og landfræðiprófíl.
-5. Trust Center gagnalíkan og certified coverage reporting.
+2. Fá inn fyrsta payroll-native private corpus pakkann fyrir launaseðla, tímaskráningu, ráðningarsamninga, routing og skil.
+3. Byggja samningssviðsgreiningu og fyrstu clause-to-rule mapping lotuna fyrir þröngt kjarasamningssvið.
+4. Stækka coverage matrix yfir allan markaðinn með eiginlegum certified marksviðum.
+5. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar sem raunverulegar hegðunarprófanir.
+6. Trust Center gagnalíkan og certified coverage reporting.

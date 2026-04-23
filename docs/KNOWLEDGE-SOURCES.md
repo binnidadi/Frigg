@@ -1,10 +1,10 @@
 # Þekkingarheimildir
 
-Síðast uppfært: 2026-04-21
+Síðast uppfært: 2026-04-23
 
 ## Staða
 
-Þetta skjal heldur utan um hvaða heimildir Frigg byggir á og hvort þær hafi verið færðar í formlegt knowledge registry.
+Þetta skjal heldur utan um hvaða heimildir Frigg byggir á, á hvaða þroskastigi þær eru og hvernig þær tengjast research operating system, coverage matrix og síðar certified runtime.
 
 Fyrsta opinbera söfnunarlotan er nú skráð í:
 
@@ -28,10 +28,11 @@ Fyrsta opinbera söfnunarlotan er nú skráð í:
 - Frigg hefur nú skýrt `public corpus` fyrir stóran hluta af payroll- og compliance-laginu.
 - `HREIN_GOGN` er ekki payroll-native source-of-truth heldur fyrst og fremst bókhalds- og afstemmingalag.
 - Það sem stendur eftir er að mestu `private corpus`: raunveruleg launagögn, skilagreinar, innskráningarvarið efni og fyrirtækjabundið mapping.
+- Núverandi public corpus dugar til research, interpretation og fyrstu coverage-færslna, en dugar ekki eitt og sér til certified payroll runtime.
 
 ## Næstu skref
 
 - Umbreyta registry í versioned knowledge records í gagnalagi.
-- Stofna coverage matrix fyrir lög, sjóði, félög og samninga.
-- Merkja hvaða heimildir eru `supported`, `partial` eða `review_required`.
+- Tengja registry við `source acquisition records`, `legal obligations` og coverage matrix.
+- Merkja hvaða heimildir eru aðeins `mapped`, hvaða heimildir styðja `compute_with_review` og hvaða heimildir eru komnar í `validated_runtime`.
 - Bæta private corpus ofan á public corpus þegar notandi útvegar það efni sem vantar.

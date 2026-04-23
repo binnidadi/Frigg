@@ -1,6 +1,6 @@
 # Staða Frigg
 
-Síðast uppfært: 2026-04-22
+Síðast uppfært: 2026-04-23
 
 ## Hvar við erum
 
@@ -22,6 +22,7 @@ Síðast uppfært: 2026-04-22
 - Trust boundary pakkinn er nú brotinn niður í launalínumörk sem sýna hvað er vottað, hvað er review-skylt og hvað er blokkað.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
+- Heildarúttekt á stefnu, product direction og heimildalandslagi hefur verið framkvæmd og category-afstaða hert: Frigg er labour/payroll compliance operating system, ekki bara launakerfi með AI lagi.
 
 ## Hvað er lokið
 
@@ -48,6 +49,7 @@ Síðast uppfært: 2026-04-22
 - Fyrsti skýri `compute_with_review` pakkinn fyrir `VR retail + staðgreiðsla + tryggingagjald + LIVE routing`
 - Fyrsta sýnilega trust boundary samantektin fyrir þennan pakka í API og mælaborði
 - Fyrsta line-item skýringarlagið fyrir trust boundary pakkann
+- Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 
 ## Hvað er í vinnslu
 
@@ -58,14 +60,16 @@ Síðast uppfært: 2026-04-22
 - Lifandi tengingar við ytri AI veitendur og telemetry
 - Coverage matrix fyrir kjarasamninga, sjóði og félög
 - Trust Center yfirborð sem sýnir coverage og residual risk
+- Samningssviðsgreining fyrir rétta flokkun starfa, starfstöðva og kjarasamningsumhverfis
+- Evidence lag fyrir launaseðla, tímaskráningar, ráðningarsamninga og frávikagreiningu
 
 ## Hvað er næst
 
-1. Dýpka fyrsta trust boundary pakkann áfram með evidence records og sannprófun á hverri launalínu.
-2. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
-3. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
-4. Færa public source registry inn í knowledge records og coverage matrix.
-5. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
+1. Dýpka fyrsta trust boundary pakkann áfram með `PayslipEvidenceRecord`, sannprófun og frávikagreiningu á hverri launalínu.
+2. Fá inn fyrsta payroll-native private corpus pakkann: launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
+3. Byggja samningssviðsgreiningu fyrir rétta flokkun starfa og samningsumhverfis.
+4. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
+5. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
 
 ## Áhætta núna
 
@@ -74,3 +78,5 @@ Síðast uppfært: 2026-04-22
 - Public corpus er registry og URL-kortlagning en ekki fullt raw-download archive.
 - Private corpus fyrir launaseðla, tímaskráningu, skilagreinar og routing vantar enn.
 - AI provider layer er enn án lifandi tenginga við ytri veitendur og án raunverulegra health mælinga.
+- Samningssviðsgreining og samanburður milli kjarasamninga eru ekki komin í keyrsluhæft lag enn.
+- Núverandi checks verja foundation og research readiness, en ekki enn raunverulega payroll hegðun eða golden scenarios.

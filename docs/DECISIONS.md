@@ -59,3 +59,18 @@
 
 - Staða: Samþykkt
 - Ástæða: `apps/api` og `apps/web` eru enn á grunnstigi með einföldum `node` skriftum, seed gögnum og léttum checks. Á þessu stigi er skýrara og öruggara að halda runtime-lögunum JS-first, herða config, CI, lock-skrá og afhendanleika fyrst, og fara síðan í samræmda TypeScript build-keðju í einni markvissri lotu.
+
+## D-013: Frigg er labour/payroll compliance operating system
+
+- Staða: Samþykkt
+- Ástæða: Núverandi ambition, research landslag og markaðstækifæri kalla á breiðari category en hreint launakerfi. Frigg á að sameina kjarasamninga, payroll compliance, evidence, review og aðgerðir í einni SaaS platformu.
+
+## D-014: Fyrsta wedge er employer/advisor workflow, ekki employee self-service
+
+- Staða: Samþykkt
+- Ástæða: Sterkasta og skýrasta leiðin að markaði er að leysa employer-, payroll-, HR- og advisor-verðmæti fyrst. Employee mode á að byggjast ofan á sannprófuðu evidence- og skýringarlagi, ekki koma á undan því.
+
+## D-015: Samningssviðsgreining er nauðsynlegt kjarnalag
+
+- Staða: Samþykkt
+- Ástæða: Kerfið getur ekki orðið raunveruleg kjarasamninga launavél nema það geti fyrst flokkað rétt samningssvið eftir starfi, starfsaðstæðum, landfræðisvæði og félagaumhverfi.

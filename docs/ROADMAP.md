@@ -2,7 +2,7 @@
 
 ## Núverandi áfangi
 
-Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
+Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-first hugsun.
 
 ## Áfangi 1: Foundation
 
@@ -33,15 +33,18 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - deterministic payroll engine
 - effective-dated rule sets
 - line item model
+- agreement scope resolver fyrir rétt samningssvið
 - independent validation engine
 - retro calculation batches
 - tax credit allocation og multi-payer checks
 - A1 og routing logic fyrir sjóði og félög
+- payslip evidence records og contract-vs-timesheet-vs-pay frávikagreining
 
 ## Áfangi 4: Agreement Intelligence
 
 - document ingestion
 - clause chunking og provenance
+- clause-to-rule mapping
 - AI structured extraction
 - provider failover og cooldown orchestration
 - provider adapterar fyrir raunveruleg módel
@@ -54,6 +57,7 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - coverage matrix og residual risk reporting
 - public corpus registry fyrir lög, Skattinn, sjóði og félög
 - private corpus onboarding fyrir payroll-native gögn
+- samanburður milli kjarasamninga og issue spotting fyrir rangt samningssvið
 
 ## Áfangi 5: Product Surface
 
@@ -63,6 +67,9 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - pay run review
 - payslip explanation view
 - Trust Center
+- advisor mode
+- employer compliance mode
+- employee rights mode sem byggir á sannprófuðu evidence lagi
 
 ## Áfangi 6: Pilot Readiness
 
@@ -71,3 +78,4 @@ Grunnur fyrir mission-critical launakerfi með compliance-first hugsun.
 - export batches
 - audit reconstruction
 - pilot tenant onboarding
+- fyrsta `compute_with_review` flæði með raunverulegum launaseðlum og tímaskráningum
