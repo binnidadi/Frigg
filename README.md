@@ -23,6 +23,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - fyrsta coverage matrix fyrir studd, review-skyld og blokkuð research-svið
 - fyrsti sýnilegi trust boundary pakkinn fyrir `VR retail + staðgreiðsla + tryggingagjald + LIVE routing`
 - fyrsta line-item niðurbrotið sem sýnir hvað er vottað, review-skylt og blokkað innan trust boundary pakkans
+- fyrsta evidence-lagið sem tengir launaseðil, launalínu og sönnunarfærslur inn í featured trust boundary pakkann
 - uppfærða category-afstöðu: Frigg er ekki bara launakerfi heldur labour/payroll compliance operating system
 
 Nánari staða er í `docs/STATUS.md`.
@@ -98,8 +99,8 @@ db/           SQL-skema, migrations og seed gögnum
 
 ## Næstu skref
 
-1. Dýpka fyrsta trust boundary pakkann með `PayslipEvidenceRecord`, sannprófun og frávikagreiningu á launalínu-stigi.
-2. Festa fyrstu payroll-native gögnin: nafnlausa launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
-3. Byggja samningssviðsgreiningu svo kerfið geti valið rétt kjarasamningssvið áður en flóknari útreikningar eru vottaðir.
+1. Festa fyrsta payroll-native private corpus pakkann: nafnlausa launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
+2. Byggja samningssviðsgreiningu svo kerfið geti valið rétt kjarasamningssvið áður en flóknari útreikningar eru vottaðir.
+3. Bæta contract-vs-timesheet-vs-pay frávikagreiningu ofan á nýja evidence-lagið.
 4. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
 5. Búa til `pnpm-lock.yaml` í fyrsta `pnpm install` umhverfi og festa hana í repo.

@@ -67,6 +67,30 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
   const statutoryParameterSets = snapshot.statutoryParameterSets ?? []
   const pensionRoutingRules = snapshot.pensionRoutingRules ?? []
   const unionRoutingRules = snapshot.unionRoutingRules ?? []
+  const payslips = snapshot.payslips ?? []
+  const payslipEvidenceRecords = snapshot.payslipEvidenceRecords ?? []
+
+  const relatedPayslips = payslips.filter((entry) =>
+    payslipEvidenceRecords.some(
+      (record) =>
+        record.payslipId === entry.id &&
+        (featuredEntry.lineItemBoundaries ?? []).some((boundary) => boundary.code === record.lineItemCode)
+    )
+  )
+
+  const evidenceByLineItem = (featuredEntry.lineItemBoundaries ?? []).map((boundary) => {
+    const records = payslipEvidenceRecords.filter((record) => record.lineItemCode === boundary.code)
+
+    return {
+      code: boundary.code,
+      label: boundary.label,
+      status: boundary.status,
+      evidenceCount: records.length,
+      payslipIds: [...new Set(records.map((entry) => entry.payslipId))],
+      sourceReferenceIds: [...new Set(records.flatMap((entry) => entry.sourceReferenceIds ?? []))],
+      narratives: records.map((entry) => entry.narrative)
+    }
+  })
 
   return {
     ...clone(featuredEntry),
@@ -81,7 +105,9 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
       .filter(Boolean),
     ruleSetVersions: (featuredEntry.sampleRuleSetVersionIds ?? [])
       .map((id) => ruleSetVersions.find((entry) => entry.id === id))
-      .filter(Boolean)
+      .filter(Boolean),
+    payslips: relatedPayslips,
+    evidenceByLineItem
   }
 }
 
@@ -172,6 +198,8 @@ function buildRepositoryApi({
         employerCount: snapshot.employers.length,
         payrollRunCount: snapshot.payrollRuns.length,
         validationResultCount: snapshot.validationResults.length,
+        payslipCount: snapshot.payslips?.length ?? 0,
+        payslipEvidenceRecordCount: snapshot.payslipEvidenceRecords?.length ?? 0,
         researchWorkstreamCount: researchSummary.workstreamCount,
         legalObligationCount: researchSummary.legalObligationCount,
         coverageMatrixCount: researchSummary.coverageMatrixCount

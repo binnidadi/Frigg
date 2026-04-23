@@ -51,12 +51,14 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Fyrsti samsetti pakkinn `VR retail + staðgreiðsla + tryggingagjald + LIVE routing` er nú sýnilegur sem fyrsta raunverulega `compute_with_review` sviðið.
 - Sami pakki er nú tengdur við raunverulegt demo-reglusett, statutory parameter set og routing-reglur svo trust boundary sé lesanlegt í vöruyfirborði.
 - Nú liggur einnig fyrir fyrsta line-item niðurbrotið fyrir þennan pakka, með skýrum mörkum milli `certified`, `review_required` og `blocked`.
+- Fyrsta `PayslipEvidenceRecord` lagið er nú tengt sama pakka svo sýnilegt sé hvaða launalínur hafa raunverulegar sönnunarfærslur og hvaða línur eru enn aðeins policy-boundary.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 
 1. Tengja source acquisition records við public registry og síðar private corpus intake.
 2. Fá inn fyrsta payroll-native private corpus pakkann fyrir launaseðla, tímaskráningu, ráðningarsamninga, routing og skil.
 3. Byggja samningssviðsgreiningu og fyrstu clause-to-rule mapping lotuna fyrir þröngt kjarasamningssvið.
-4. Stækka coverage matrix yfir allan markaðinn með eiginlegum certified marksviðum.
-5. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar sem raunverulegar hegðunarprófanir.
-6. Trust Center gagnalíkan og certified coverage reporting.
+4. Bæta contract-vs-timesheet-vs-pay frávikagreiningu ofan á nýja evidence-lagið.
+5. Stækka coverage matrix yfir allan markaðinn með eiginlegum certified marksviðum.
+6. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar sem raunverulegar hegðunarprófanir.
+7. Trust Center gagnalíkan og certified coverage reporting.

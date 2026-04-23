@@ -39,6 +39,7 @@ Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-
 - tax credit allocation og multi-payer checks
 - A1 og routing logic fyrir sjóði og félög
 - payslip evidence records og contract-vs-timesheet-vs-pay frávikagreining
+- runtime notkun á evidence records í pay run review og frávikagreiningu
 
 ## Áfangi 4: Agreement Intelligence
 

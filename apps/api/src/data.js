@@ -245,6 +245,87 @@ export const validationResults = [
   }
 ]
 
+export const payslips = [
+  {
+    id: 'payslip_gudrun_2026_04',
+    employeeId: 'employee_gudrun',
+    payrollRunId: 'payroll_run_2026_04',
+    issuedAt: '2026-04-30T10:00:00Z',
+    grossPay: { currency: 'ISK', amount: 612000 },
+    netPay: { currency: 'ISK', amount: 433148 },
+    evidenceRecordIds: [
+      'evidence_base_gudrun_2026_04',
+      'evidence_evening_gudrun_2026_04',
+      'evidence_pension_gudrun_2026_04',
+      'evidence_union_gudrun_2026_04',
+      'evidence_levy_gudrun_2026_04'
+    ]
+  }
+]
+
+export const payslipEvidenceRecords = [
+  {
+    id: 'evidence_base_gudrun_2026_04',
+    employeeId: 'employee_gudrun',
+    payrollRunId: 'payroll_run_2026_04',
+    payslipId: 'payslip_gudrun_2026_04',
+    lineItemCode: 'BASE',
+    ruleSetVersionIds: ['rule_set_vr_2026_2'],
+    sourceReferenceIds: ['source_statutory_2026', 'source_vr_collective_2026'],
+    narrative:
+      'Grunnlaun byggja á pinned VR retail reglusetti, ráðningarsamningi Guðrúnar og samþykktri aprílkeyrslu fyrir fullt starf.',
+    calculatedAt: '2026-04-30T09:22:00Z'
+  },
+  {
+    id: 'evidence_evening_gudrun_2026_04',
+    employeeId: 'employee_gudrun',
+    payrollRunId: 'payroll_run_2026_04',
+    payslipId: 'payslip_gudrun_2026_04',
+    lineItemCode: 'EVENING_PREMIUM',
+    ruleSetVersionIds: ['rule_set_vr_2026_2'],
+    sourceReferenceIds: ['source_vr_collective_2026'],
+    narrative:
+      'Kvöldálag var reiknað út frá 18 skráðum kvöldstundum, en private timesheet sannleiksgögn vantar enn til að votta line item án review.',
+    calculatedAt: '2026-04-30T09:24:00Z'
+  },
+  {
+    id: 'evidence_pension_gudrun_2026_04',
+    employeeId: 'employee_gudrun',
+    payrollRunId: 'payroll_run_2026_04',
+    payslipId: 'payslip_gudrun_2026_04',
+    lineItemCode: 'PENSION_EMPLOYEE',
+    ruleSetVersionIds: ['rule_set_vr_2026_2'],
+    sourceReferenceIds: ['source-althingi-129-1997', 'source-live-launagreidendur'],
+    narrative:
+      'Lífeyrissjóðsiðgjald var dregið með 4% starfsmannsframlagi, en membership og employer-specific routing eru enn í review.',
+    calculatedAt: '2026-04-30T09:25:00Z'
+  },
+  {
+    id: 'evidence_union_gudrun_2026_04',
+    employeeId: 'employee_gudrun',
+    payrollRunId: 'payroll_run_2026_04',
+    payslipId: 'payslip_gudrun_2026_04',
+    lineItemCode: 'UNION_FEE',
+    ruleSetVersionIds: ['rule_set_vr_2026_2'],
+    sourceReferenceIds: ['source-vr-kjarasamningar'],
+    narrative:
+      'Stéttarfélagsgjald fylgir VR retail pakkanum, en landfræðileg aðild og möguleg frávik frá almennri grunnleið krefjast enn review.',
+    calculatedAt: '2026-04-30T09:25:30Z'
+  },
+  {
+    id: 'evidence_levy_gudrun_2026_04',
+    employeeId: 'employee_gudrun',
+    payrollRunId: 'payroll_run_2026_04',
+    payslipId: 'payslip_gudrun_2026_04',
+    lineItemCode: 'INSURANCE_LEVY',
+    ruleSetVersionIds: ['rule_set_vr_2026_2'],
+    sourceReferenceIds: ['source-althingi-113-1990', 'source_a1_2026'],
+    narrative:
+      'Tryggingagjald var reiknað með staðlaðri álagningu, en sami run inniheldur A1 review task sem heldur employer charges í compute_with_review stöðu.',
+    calculatedAt: '2026-04-30T09:27:00Z'
+  }
+]
+
 export const reviewTasks = [
   {
     id: 'review_task_a1',
@@ -327,6 +408,8 @@ export const payrollDomainSnapshot = {
   coverageMatrixEntries,
   payrollRuns,
   validationResults,
+  payslips,
+  payslipEvidenceRecords,
   reviewTasks,
   complianceDeadlines,
   auditEvents

@@ -20,6 +20,14 @@ if (payrollDomainSnapshot.statutoryParameterSets.length === 0) {
   throw new Error('Vantar statutory parameter set.')
 }
 
+if ((payrollDomainSnapshot.payslips ?? []).length === 0) {
+  throw new Error('Vantar payslip gögn í snapshot.')
+}
+
+if ((payrollDomainSnapshot.payslipEvidenceRecords ?? []).length < 4) {
+  throw new Error('Vantar nægileg payslip evidence records í snapshot.')
+}
+
 if (getAIHealthSnapshot().providers.length < 4) {
   throw new Error('AI health snapshot vantar veitendur.')
 }
@@ -108,6 +116,18 @@ if (
 
 if (!featuredCoveragePack.lineItemBoundaries?.some((entry) => entry.status === 'blocked')) {
   throw new Error('Featured coverage pack vantar blokkaða launalínu.')
+}
+
+if ((featuredCoveragePack.evidenceByLineItem ?? []).length < 4) {
+  throw new Error('Featured coverage pack vantar evidence niðurbrot á launalínum.')
+}
+
+if (
+  !featuredCoveragePack.evidenceByLineItem?.some(
+    (entry) => entry.code === 'BASE' && entry.evidenceCount > 0
+  )
+) {
+  throw new Error('Featured coverage pack vantar evidence fyrir grunnlaun.')
 }
 
 if (repositoryStatus.driver !== 'memory') {

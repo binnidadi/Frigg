@@ -26,6 +26,8 @@ export const apiApp = {
   ],
   goldenScenarioCount: scenarios.length,
   employerCount: snapshot.employers.length,
+  payslipCount: snapshot.payslips?.length ?? 0,
+  payslipEvidenceRecordCount: snapshot.payslipEvidenceRecords?.length ?? 0,
   repository: repository.getRepositoryStatus(),
   research: repository.getResearchSummary(),
   ai: {

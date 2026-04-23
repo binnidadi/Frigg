@@ -237,6 +237,21 @@ async function loadResearchWorkspace() {
         }`
       })
     )
+
+    setList(
+      'featured-evidence-list',
+      featuredCoverage.evidenceByLineItem ?? [],
+      (entry) => ({
+        strong: `${entry.label} · ${entry.evidenceCount} sönnunarfærslur`,
+        span: `${entry.status}. ${
+          entry.narratives?.[0] ?? 'Engin skýring komin.'
+        }${
+          entry.sourceReferenceIds?.length
+            ? ` Heimildir: ${entry.sourceReferenceIds.join(', ')}.`
+            : ''
+        }`
+      })
+    )
   }
 }
 
@@ -382,6 +397,7 @@ async function main() {
     setText('featured-coverage-summary', message)
     setList('featured-coverage-details', [], () => '')
     setList('featured-line-item-boundaries', [], () => '')
+    setList('featured-evidence-list', [], () => '')
   }
 }
 
