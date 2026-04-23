@@ -277,7 +277,12 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     receivedCount: privateCorpusReadiness.filter((entry) => entry.status === 'received').length,
     reviewRequiredCount: privateCorpusReadiness.filter((entry) => entry.status === 'review_required')
       .length,
-    missingCount: privateCorpusReadiness.filter((entry) => entry.status === 'missing').length
+    missingCount: privateCorpusReadiness.filter((entry) => entry.status === 'missing').length,
+    realSubmissionCount: privateCorpusSubmissions.filter(
+      (entry) =>
+        entry.dataOrigin !== 'demo_seed' &&
+        (!entry.relatedAgreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId))
+    ).length
   }
 
   const privateCorpusIntakePackage =
@@ -285,6 +290,23 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
       (entry) =>
         !entry.agreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.agreementPackId)
     ) ?? null
+
+  const privateCorpusProvenance = {
+    demoSubmissionCount: privateCorpusSubmissions.filter(
+      (entry) =>
+        entry.dataOrigin === 'demo_seed' &&
+        (!entry.relatedAgreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId))
+    ).length,
+    customerSubmissionCount: privateCorpusSubmissions.filter(
+      (entry) =>
+        entry.dataOrigin !== 'demo_seed' &&
+        (!entry.relatedAgreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId))
+    ).length,
+    anonymizedCount: privateCorpusSubmissions.filter(
+      (entry) =>
+        entry.anonymizationStatus === 'anonymized' || entry.anonymizationStatus === 'validated'
+    ).length
+  }
 
   return {
     ...clone(featuredEntry),
@@ -305,6 +327,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     privateCorpusReadiness,
     privateCorpusReadinessSummary,
     privateCorpusIntakePackage,
+    privateCorpusProvenance,
     payslips: relatedPayslips,
     evidenceByLineItem,
     varianceFindings

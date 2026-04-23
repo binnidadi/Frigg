@@ -194,6 +194,14 @@ if ((featuredCoveragePack.privateCorpusIntakePackage.blockers ?? []).length === 
   throw new Error('Featured coverage pack intake pakki vantar skýra blokkara.')
 }
 
+if (featuredCoveragePack.privateCorpusIntakePackage.dataOrigin !== 'demo_seed') {
+  throw new Error('Demo intake pakki á að vera merktur sem demo_seed þar til raunveruleg gögn hafa borist.')
+}
+
+if (featuredCoveragePack.privateCorpusIntakePackage.runtimeReadiness !== 'demo_only') {
+  throw new Error('Demo intake pakki má ekki líta út fyrir að vera runtime-ready.')
+}
+
 if (repositoryStatus.driver !== 'memory') {
   throw new Error('Repository driver er ekki skilgreindur rétt.')
 }

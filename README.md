@@ -28,6 +28,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - fyrsta samningssviðsgreiningarlagið sem sýnir af hverju starfsmaður fellur innan samningspakka eða þarf yfirferð
 - fyrsta payroll-native intake/readiness lagið sem sýnir hvaða gögn hafa borist, hvað hefur verið sannreynt og hvað vantar enn fyrir featured pakkann
 - fyrsti payroll-native intake pakkinn sem sýnir scope, blockers og næsta skref fyrir `VR retail` pakka
+- intake lagið merkir nú skýrt hvað er demóinntak og hvað telst raunveruleg nafnlaus innsending
 - uppfærða category-afstöðu: Frigg er ekki bara launakerfi heldur labour/payroll compliance operating system
 - formlega afstöðu um að `AI Foundry` sé tvískipt lag: bæði innri vél og sýnilegt enterprise/advisor yfirborð
 

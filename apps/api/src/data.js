@@ -476,6 +476,8 @@ export const privateCorpusSubmissions = [
     relatedAgreementPackId: 'agreement_pack_vr_retail',
     status: 'validated',
     sourceType: 'customer_upload',
+    dataOrigin: 'demo_seed',
+    anonymizationStatus: 'validated',
     receivedAt: '2026-04-29T14:10:00Z',
     validatedAt: '2026-04-29T15:00:00Z',
     summary: 'Launaseðill Guðrúnar fyrir apríl hefur borist og verið staðfestur gegn demo-keyrslu.'
@@ -488,6 +490,8 @@ export const privateCorpusSubmissions = [
     relatedAgreementPackId: 'agreement_pack_vr_retail',
     status: 'validated',
     sourceType: 'customer_upload',
+    dataOrigin: 'demo_seed',
+    anonymizationStatus: 'validated',
     receivedAt: '2026-04-29T14:20:00Z',
     validatedAt: '2026-04-29T15:05:00Z',
     summary: 'Ráðningarsamningur Guðrúnar hefur verið nafnlausgerður og tengdur við samningssviðsmat.'
@@ -500,6 +504,8 @@ export const privateCorpusSubmissions = [
     relatedAgreementPackId: 'agreement_pack_vr_retail',
     status: 'received',
     sourceType: 'customer_upload',
+    dataOrigin: 'demo_seed',
+    anonymizationStatus: 'anonymized',
     receivedAt: '2026-04-29T16:10:00Z',
     validatedAt: null,
     summary: 'Tímaskrá Guðrúnar hefur borist, en hún hefur ekki enn verið sannreynd gegn kvöldálagslínu.'
@@ -512,6 +518,8 @@ export const privateCorpusSubmissions = [
     relatedAgreementPackId: 'agreement_pack_vr_retail',
     status: 'received',
     sourceType: 'customer_upload',
+    dataOrigin: 'demo_seed',
+    anonymizationStatus: 'anonymized',
     receivedAt: '2026-04-29T16:20:00Z',
     validatedAt: null,
     summary: 'Ráðningarsamningur Jóns hefur borist, en flokkun vaktstjóra er enn í yfirferð.'
@@ -524,6 +532,8 @@ export const privateCorpusSubmissions = [
     relatedAgreementPackId: 'agreement_pack_vr_retail',
     status: 'review_required',
     sourceType: 'manual_entry',
+    dataOrigin: 'demo_seed',
+    anonymizationStatus: 'not_applicable',
     receivedAt: '2026-04-29T17:00:00Z',
     validatedAt: null,
     summary: 'Routing tafla fyrir VR og LIVE hefur verið skráð handvirkt, en vantar staðfestingu per starfsmann.'
@@ -536,6 +546,8 @@ export const privateCorpusSubmissions = [
     relatedAgreementPackId: 'agreement_pack_vr_retail',
     status: 'missing',
     sourceType: 'system_seed',
+    dataOrigin: 'demo_seed',
+    anonymizationStatus: 'not_applicable',
     receivedAt: null,
     validatedAt: null,
     summary: 'Engin raunveruleg skilagrein eða skilastaðfesting hefur enn borist fyrir aprílkeyrslu.'
@@ -572,6 +584,10 @@ export const privateCorpusIntakePackages = [
     ],
     nextStep:
       'Tengja raunverulegar nafnlausar tímaskrár, routing sannleiksgögn og fyrstu skilagrein við intake pakkann.',
+    dataOrigin: 'demo_seed',
+    runtimeReadiness: 'demo_only',
+    runtimeReadinessReason:
+      'Pakkinn byggir enn á handsmíðuðu demóinntaki og má ekki túlka sem raunverulega viðskiptavinainnslátt eða certified runtime grunn.',
     updatedAt: '2026-04-30T17:30:00Z'
   }
 ]

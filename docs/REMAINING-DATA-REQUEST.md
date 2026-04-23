@@ -49,6 +49,12 @@ Síðast uppfært: 2026-04-22
 4. `5-10` ráðningarsamningar eða staðlaðar ráðningarforsendur í nafnlausri mynd.
 5. Listi yfir hvaða stéttarfélög og lífeyrissjóði fyrstu viðskiptavinirnir nota í raun.
 
+## Núverandi intake-staða í repo
+
+- Intake pakkinn fyrir `VR retail` er nú til sem demógrunnur í repo og sýnir hvaða afhending telst hluti af fyrsta payroll-native pakkanum.
+- Sá pakki er enn merktur `demo_only` og má ekki túlka sem raunverulega viðskiptavinainnslátt eða certified runtime grunn.
+- Næsta raunverulega framför er að skipta einstökum demófærslum út fyrir nafnlaus customer uploads með skýrri nafnlausnar- og sannprófunarstöðu.
+
 ## Athugasemd um HREIN_GOGN
 
 - Núverandi innihald í `HREIN_GOGN` er mjög verðmætt fyrir bókhald, afstemmingu og framtalsrekjanleika.

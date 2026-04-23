@@ -63,6 +63,38 @@ function badgeClass(level) {
   return 'status-badge status-badge-danger'
 }
 
+function formatDataOrigin(value) {
+  if (value === 'demo_seed') {
+    return 'Demóinntak'
+  }
+
+  if (value === 'anonymous_customer_upload') {
+    return 'Nafnlaus viðskiptavinainnslátt'
+  }
+
+  if (value === 'manual_customer_entry') {
+    return 'Handvirk viðskiptavinaskráning'
+  }
+
+  return value ?? 'Óþekktur uppruni'
+}
+
+function formatRuntimeReadiness(value) {
+  if (value === 'demo_only') {
+    return 'Aðeins demógrunnur'
+  }
+
+  if (value === 'not_ready') {
+    return 'Ekki tilbúið fyrir runtime'
+  }
+
+  if (value === 'ready_for_review_runtime') {
+    return 'Tilbúið fyrir review-runtime'
+  }
+
+  return value ?? 'Óþekkt runtime-staða'
+}
+
 async function fetchJson(path) {
   const response = await fetch(`${API_BASE_URL}${path}`)
   if (!response.ok) {
@@ -214,7 +246,9 @@ async function loadResearchWorkspace() {
         featuredCoverage.privateCorpusReadinessSummary?.reviewRequiredCount ?? 0
       } eru í yfirferð og ${
         featuredCoverage.privateCorpusReadinessSummary?.missingCount ?? 0
-      } vantar enn fyrir pakkann.`
+      } vantar enn fyrir pakkann. ${
+        featuredCoverage.privateCorpusReadinessSummary?.realSubmissionCount ?? 0
+      } raunverulegar innsendingar hafa borist hingað til.`
     )
     setText(
       'featured-intake-package-title',
@@ -271,6 +305,10 @@ async function loadResearchWorkspace() {
             {
               strong: `Staða · ${featuredCoverage.privateCorpusIntakePackage.status}`,
               span: `${featuredCoverage.privateCorpusIntakePackage.targetScopeSummary} Næsta skref: ${featuredCoverage.privateCorpusIntakePackage.nextStep}`
+            },
+            {
+              strong: `Uppruni · ${formatDataOrigin(featuredCoverage.privateCorpusIntakePackage.dataOrigin)}`,
+              span: `${formatRuntimeReadiness(featuredCoverage.privateCorpusIntakePackage.runtimeReadiness)}. ${featuredCoverage.privateCorpusIntakePackage.runtimeReadinessReason}`
             },
             ...featuredCoverage.privateCorpusIntakePackage.blockers.map((blocker) => ({
               strong: 'Blokkun',

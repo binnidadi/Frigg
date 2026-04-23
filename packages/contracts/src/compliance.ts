@@ -283,6 +283,8 @@ export interface PrivateCorpusSubmission {
   relatedAgreementPackId: Identifier | null
   status: 'missing' | 'received' | 'validated' | 'review_required'
   sourceType: 'customer_upload' | 'manual_entry' | 'system_seed'
+  dataOrigin: 'demo_seed' | 'anonymous_customer_upload' | 'manual_customer_entry'
+  anonymizationStatus: 'not_applicable' | 'pending' | 'anonymized' | 'validated'
   receivedAt: string | null
   validatedAt: string | null
   summary: string
@@ -301,5 +303,8 @@ export interface PrivateCorpusIntakePackage {
   outstandingSubmissionCodes: string[]
   blockers: string[]
   nextStep: string
+  dataOrigin: 'demo_seed' | 'anonymous_customer_upload' | 'mixed'
+  runtimeReadiness: 'demo_only' | 'not_ready' | 'ready_for_review_runtime'
+  runtimeReadinessReason: string
   updatedAt: string
 }
