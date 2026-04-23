@@ -62,6 +62,7 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
             '/research/coverage-matrix',
             '/research/featured-coverage',
             '/research/private-corpus',
+            '/research/private-corpus-intake-blueprints',
             '/ai/health',
             '/ai/parse-preview',
             '/ai/knowledge-preview'
@@ -132,6 +133,14 @@ export function startServer(port = Number(process.env.FRIGG_API_PORT ?? 4310)) {
         return
       }
       response.end(JSON.stringify(repository.getCriticalPrivateCorpus()))
+      return
+    }
+
+    if (pathname === '/research/private-corpus-intake-blueprints') {
+      if (!allowGetOnly()) {
+        return
+      }
+      response.end(JSON.stringify(repository.getPrivateCorpusIntakeBlueprints()))
       return
     }
 

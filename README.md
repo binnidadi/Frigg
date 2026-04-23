@@ -29,6 +29,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - fyrsta payroll-native intake/readiness lagið sem sýnir hvaða gögn hafa borist, hvað hefur verið sannreynt og hvað vantar enn fyrir featured pakkann
 - fyrsti payroll-native intake pakkinn sem sýnir scope, blockers og næsta skref fyrir `VR retail` pakka
 - intake lagið merkir nú skýrt hvað er demóinntak og hvað telst raunveruleg nafnlaus innsending
+- fyrsta afhendingarsniðið segir nú nákvæmlega hvaða gögn, hvaða nafnlausn og hvaða sannprófun þarf fyrir fyrsta raunverulega `VR retail` gagnapakkann
 - uppfærða category-afstöðu: Frigg er ekki bara launakerfi heldur labour/payroll compliance operating system
 - formlega afstöðu um að `AI Foundry` sé tvískipt lag: bæði innri vél og sýnilegt enterprise/advisor yfirborð
 
@@ -106,8 +107,8 @@ db/           SQL-skema, migrations og seed gögnum
 
 ## Næstu skref
 
-1. Festa fyrsta payroll-native private corpus pakkann: nafnlausa launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
-2. Byggja samningssviðsgreiningu svo kerfið geti valið rétt kjarasamningssvið áður en flóknari útreikningar eru vottaðir.
-3. Festa fyrsta payroll-native private corpus pakkann inn í samningssviðsgreiningu, frávikagreiningu og review workflow.
+1. Fá fyrsta raunverulega payroll-native gagnapakkann afhentan samkvæmt nýja afhendingarsniðinu: nafnlausa launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
+2. Festa þennan fyrsta gagnapakka inn í samningssviðsgreiningu, frávikagreiningu og review workflow.
+3. Dýpka samningssviðsgreiningu svo kerfið geti valið rétt kjarasamningssvið áður en flóknari útreikningar eru vottaðir á fleiri sviðum.
 4. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
 5. Búa til `pnpm-lock.yaml` í fyrsta `pnpm install` umhverfi og festa hana í repo.

@@ -39,6 +39,10 @@ writeFileSync(
   JSON.stringify(repository.getCriticalPrivateCorpus(), null, 2)
 )
 writeFileSync(
+  resolve(dist, 'research-private-corpus-intake-blueprints.json'),
+  JSON.stringify(repository.getPrivateCorpusIntakeBlueprints(), null, 2)
+)
+writeFileSync(
   resolve(dist, 'repository-file-status.json'),
   JSON.stringify(fileRepository.getRepositoryStatus(), null, 2)
 )

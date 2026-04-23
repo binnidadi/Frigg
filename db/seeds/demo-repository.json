@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-23T21:04:23.041Z",
+  "generatedAt": "2026-04-23T21:11:10.970Z",
   "snapshot": {
     "employers": [
       {
@@ -328,6 +328,70 @@
         "runtimeReadiness": "demo_only",
         "runtimeReadinessReason": "Pakkinn byggir enn á handsmíðuðu demóinntaki og má ekki túlka sem raunverulega viðskiptavinainnslátt eða certified runtime grunn.",
         "updatedAt": "2026-04-30T17:30:00Z"
+      }
+    ],
+    "privateCorpusIntakeBlueprints": [
+      {
+        "id": "intake_blueprint_vr_retail_v1",
+        "agreementPackId": "agreement_pack_vr_retail",
+        "code": "vr-retail-payroll-native-v1",
+        "title": "Afhendingarsnið fyrir fyrsta VR retail gagnapakkann",
+        "purpose": "Tryggja að fyrsta nafnlausa payroll-native innsendingin innihaldi lágmarksgögn fyrir samningssvið, launalínur, frávik og skilareconciliation.",
+        "deliverySteps": [
+          "Safna saman nafnlausum launaseðlum, tímaskrám, ráðningarsamningum, routing gögnum og skilagrein fyrir sömu aprílkeyrslu.",
+          "Merkja hvert skjal eða gagnasafn með starfsmannakenni, keyrslutímabili og tengdu samningssviði.",
+          "Staðfesta að kennitölur, nöfn og aðrar persónugreinanlegar upplýsingar hafi verið fjarlægðar eða dulnefndar áður en innsending fer í review.",
+          "Senda pakkann sem eina afhendingu svo Frigg geti tengt samningssvið, evidence, frávik og skil í sömu yfirferð."
+        ],
+        "checklist": [
+          {
+            "code": "payslips_corpus",
+            "title": "Launaseðlar",
+            "recommendedFormat": "PDF eða útflutningur úr launakerfi",
+            "minimumTarget": "Að lágmarki 3 launaseðlar fyrir sömu keyrslu",
+            "anonymizationRequirement": "Nafn, kennitala, bankaupplýsingar og heimilisfang fjarlægð eða dulnefnd",
+            "validationRequirement": "Launaseðlar verða tengdir við line-item evidence og verða að passa við útgreidda keyrslu"
+          },
+          {
+            "code": "timesheets_and_work_patterns",
+            "title": "Tímaskráningar og vinnumynstur",
+            "recommendedFormat": "CSV, XLSX eða PDF með dagsetningum og tímum",
+            "minimumTarget": "Heill mánuður fyrir sömu starfsmenn og launaseðlana",
+            "anonymizationRequirement": "Starfsmenn auðkenndir með sama dulnefnda lykli og í launaseðlum",
+            "validationRequirement": "Kvöld-, helgar- og yfirvinnustundir þurfa að vera aðgreindar eða útskýrðar"
+          },
+          {
+            "code": "employment_contracts_and_terms",
+            "title": "Ráðningarsamningar og kjör",
+            "recommendedFormat": "PDF eða textaútdráttur",
+            "minimumTarget": "Samningur eða staðfest kjör fyrir alla starfsmenn í pakkanum",
+            "anonymizationRequirement": "Persónuauðkenni fjarlægð, en starf, starfshlutfall og grunnkjör varðveitt",
+            "validationRequirement": "Samningur þarf að sýna lágmark grunnlauna, starfshlutfall og viðeigandi sérkjör"
+          },
+          {
+            "code": "routing_truth",
+            "title": "Routing sannleiksgögn",
+            "recommendedFormat": "CSV, XLSX eða tafla í texta",
+            "minimumTarget": "Eitt mapping per starfsmann fyrir stéttarfélag og lífeyrissjóð",
+            "anonymizationRequirement": "Notast við dulnefnd starfsmannakenni í stað nafna eða kennitalna",
+            "validationRequirement": "Hver færsla þarf að segja hvaða félag/sjóður gildir og á hvaða forsendu"
+          },
+          {
+            "code": "remittance_truth",
+            "title": "Skilagrein eða skilastaðfesting",
+            "recommendedFormat": "PDF, CSV eða skjáskot með lykiluplýsingum",
+            "minimumTarget": "Að minnsta kosti ein skilagrein fyrir sama tímabil og launaseðlarnir",
+            "anonymizationRequirement": "Fela viðkvæmar auðkenningarupplýsingar sem ekki skipta máli fyrir reconciliation",
+            "validationRequirement": "Skil þurfa að vera tengjanleg við sömu keyrslu og routing gögnin"
+          }
+        ],
+        "acceptanceCriteria": [
+          "Öll gögn vísa í sama keyrslutímabil og sama samningssvið.",
+          "Sömu dulnefndu starfsmannakenni eru notuð í launaseðlum, tímaskrám og ráðningargögnum.",
+          "Að minnsta kosti einn launaseðill, ein tímaskrá og einn ráðningarsamningur eru komin í `validated` stöðu áður en pakkinn má færast í review-runtime.",
+          "Routing og skilagrein eru komin í það minnsta í `received` stöðu svo reconciliation sé ekki ósýnilegt."
+        ],
+        "nextPackageAfterThis": "Næsta pakki á að bæta við öðru félagssviði eða annarri álagsgerð, ekki bara fleiri afbrigðum af sama VR retail grunnflæði."
       }
     ],
     "agreementVersions": [

@@ -57,6 +57,7 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Fyrsta intake/readiness lagið sýnir nú hvaða payroll-native gögn hafa þegar borist fyrir `VR retail` pakkann, hvað hefur verið sannreynt og hvaða gagnabil halda review opnu.
 - Fyrsti intake pakkinn sýnir nú hvaða afhending telst hluti af `VR retail` pakkanum, hvaða blockers halda honum í review og hvert næsta inntaksskref er.
 - Intake submissions og intake pakkinn eru nú merkt sem `demo_seed` þar til raunveruleg nafnlaus viðskiptavinagögn hafa borist, svo review yfirborðið blandi ekki saman demói og raunverulegri tenant readiness.
+- Fyrsta afhendingarsniðið fyrir `VR retail` pakkann skilgreinir nú lágmarksgögn, nafnlausnarkröfur og samþykkisskilyrði fyrir fyrstu raunverulegu innsendinguna.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 

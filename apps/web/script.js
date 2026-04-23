@@ -254,6 +254,10 @@ async function loadResearchWorkspace() {
       'featured-intake-package-title',
       featuredCoverage.privateCorpusIntakePackage?.title ?? 'Intake pakki ekki tiltækur'
     )
+    setText(
+      'featured-intake-blueprint-title',
+      featuredCoverage.privateCorpusIntakeBlueprint?.title ?? 'Afhendingarsnið ekki tiltækt'
+    )
 
     setList(
       'featured-coverage-details',
@@ -314,6 +318,35 @@ async function loadResearchWorkspace() {
               strong: 'Blokkun',
               span: blocker
             }))
+          ]
+        : [],
+      (entry) => entry
+    )
+
+    setList(
+      'featured-intake-blueprint-list',
+      featuredCoverage.privateCorpusIntakeBlueprint
+        ? [
+            {
+              strong: 'Tilgangur',
+              span: featuredCoverage.privateCorpusIntakeBlueprint.purpose
+            },
+            ...featuredCoverage.privateCorpusIntakeBlueprint.deliverySteps.map((step, index) => ({
+              strong: `Skref ${index + 1}`,
+              span: step
+            })),
+            ...featuredCoverage.privateCorpusIntakeBlueprint.checklist.map((item) => ({
+              strong: `${item.title} · ${item.minimumTarget}`,
+              span: `${item.recommendedFormat}. Nafnlausn: ${item.anonymizationRequirement}. Sannprófun: ${item.validationRequirement}.`
+            })),
+            ...featuredCoverage.privateCorpusIntakeBlueprint.acceptanceCriteria.map((criterion) => ({
+              strong: 'Samþykkisskilyrði',
+              span: criterion
+            })),
+            {
+              strong: 'Næsti pakki',
+              span: featuredCoverage.privateCorpusIntakeBlueprint.nextPackageAfterThis
+            }
           ]
         : [],
       (entry) => entry

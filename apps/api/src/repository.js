@@ -71,6 +71,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
   const agreementScopeAssessments = snapshot.agreementScopeAssessments ?? []
   const privateCorpusSubmissions = snapshot.privateCorpusSubmissions ?? []
   const privateCorpusIntakePackages = snapshot.privateCorpusIntakePackages ?? []
+  const privateCorpusIntakeBlueprints = snapshot.privateCorpusIntakeBlueprints ?? []
   const contracts = snapshot.contracts ?? []
   const payslips = snapshot.payslips ?? []
   const payslipEvidenceRecords = snapshot.payslipEvidenceRecords ?? []
@@ -291,6 +292,12 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
         !entry.agreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.agreementPackId)
     ) ?? null
 
+  const privateCorpusIntakeBlueprint =
+    privateCorpusIntakeBlueprints.find(
+      (entry) =>
+        !entry.agreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.agreementPackId)
+    ) ?? null
+
   const privateCorpusProvenance = {
     demoSubmissionCount: privateCorpusSubmissions.filter(
       (entry) =>
@@ -327,6 +334,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     privateCorpusReadiness,
     privateCorpusReadinessSummary,
     privateCorpusIntakePackage,
+    privateCorpusIntakeBlueprint,
     privateCorpusProvenance,
     payslips: relatedPayslips,
     evidenceByLineItem,
@@ -397,6 +405,14 @@ function buildRepositoryApi({
       )
     },
 
+    getPrivateCorpusIntakeBlueprints() {
+      return clone(
+        [...(snapshot.privateCorpusIntakeBlueprints ?? [])].sort((left, right) =>
+          left.code.localeCompare(right.code)
+        )
+      )
+    },
+
     getCoverageMatrix() {
       return clone(
         [...(researchWorkspace.coverageMatrixEntries ?? [])].sort((left, right) =>
@@ -426,6 +442,7 @@ function buildRepositoryApi({
         agreementScopeAssessmentCount: snapshot.agreementScopeAssessments?.length ?? 0,
         privateCorpusSubmissionCount: snapshot.privateCorpusSubmissions?.length ?? 0,
         privateCorpusIntakePackageCount: snapshot.privateCorpusIntakePackages?.length ?? 0,
+        privateCorpusIntakeBlueprintCount: snapshot.privateCorpusIntakeBlueprints?.length ?? 0,
         researchWorkstreamCount: researchSummary.workstreamCount,
         legalObligationCount: researchSummary.legalObligationCount,
         coverageMatrixCount: researchSummary.coverageMatrixCount

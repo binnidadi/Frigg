@@ -308,3 +308,24 @@ export interface PrivateCorpusIntakePackage {
   runtimeReadinessReason: string
   updatedAt: string
 }
+
+export interface PrivateCorpusIntakeBlueprintItem {
+  code: string
+  title: string
+  recommendedFormat: string
+  minimumTarget: string
+  anonymizationRequirement: string
+  validationRequirement: string
+}
+
+export interface PrivateCorpusIntakeBlueprint {
+  id: Identifier
+  agreementPackId: Identifier | null
+  code: string
+  title: string
+  purpose: string
+  deliverySteps: string[]
+  checklist: PrivateCorpusIntakeBlueprintItem[]
+  acceptanceCriteria: string[]
+  nextPackageAfterThis: string
+}

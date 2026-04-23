@@ -26,6 +26,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta payroll-native intake/readiness lagið sýnir nú hvaða gögn hafa borist inn fyrir featured pakkann, hvað hefur verið sannreynt og hvaða gagnabil halda pakkanum í review.
 - Fyrsti payroll-native intake pakkinn sýnir nú skýrt hvaða afhending tilheyrir `VR retail` pakkanum, hvaða blockers eru opnir og hvert næsta skref er.
 - Intake og private corpus submissions eru nú merkt með uppruna og nafnlausnarstöðu svo demóinntak líti ekki út sem raunverulegt tenant-gagnalag.
+- Fyrsta afhendingarsniðið fyrir raunverulegan payroll-native gagnapakka liggur nú fyrir með lágmarkskröfum, nafnlausnarskilyrðum og samþykkisskilyrðum.
 - Notendatexti í forsíðu, innskráningu, mælaborði og AI-forsýningum hefur verið hertur til að vera skýrari, íslenskari og faglegri.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
@@ -63,6 +64,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta private corpus intake/readiness samantektin í API og mælaborði fyrir `VR retail` pakka
 - Fyrsti intake pakkinn með blockers og næsta skref fyrir `VR retail` pakka
 - Skýr merking á demóinntaki gegn raunverulegum nafnlausum innsendingum
+- Fyrsta afhendingarsnið fyrir nafnlausan `VR retail` gagnapakka
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 - Formleg afstaða um vörumerki, category og `AI Foundry` lag í source-of-truth skjölum
 
@@ -82,8 +84,8 @@ Síðast uppfært: 2026-04-23
 
 ## Hvað er næst
 
-1. Skipta fyrsta payroll-native intake pakkanum út úr demóinntaki yfir í raunverulegar nafnlausar innsendingar.
-2. Dýpka samningssviðsgreiningu með payroll-native gögnum svo merki og yfirferðarstaða byggi ekki lengur eingöngu á demo-snapshot.
+1. Fá fyrsta raunverulega nafnlausa `VR retail` gagnapakkann afhentan samkvæmt nýja afhendingarsniðinu.
+2. Dýpka samningssviðsgreiningu með þessum payroll-native gögnum svo merki og yfirferðarstaða byggi ekki lengur eingöngu á demo-snapshot.
 3. Festa fyrsta payroll-native private corpus pakkann inn í frávikagreiningu og review workflow.
 4. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
 5. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
@@ -100,4 +102,5 @@ Síðast uppfært: 2026-04-23
 - Núverandi intake/readiness lag er enn demo-drifið og sýnir aðeins fyrstu mynd af móttöku og sannprófun payroll-native gagna.
 - Núverandi intake pakki er enn handsmíðað demótilvik og þarf raunveruleg nafnlaus skjöl áður en hann getur stýrt certified runtime flæði.
 - Núverandi featured pakki sýnir enn `0` raunverulegar customer submissions og er því aðeins undirbúningslag fyrir komandi tenant-inntak.
+- Afhendingarsniðið er nú skýrt, en engin raunveruleg viðskiptavinagögn hafa enn verið móttekin samkvæmt því.
 - Núverandi checks verja foundation og research readiness, en ekki enn raunverulega payroll hegðun eða golden scenarios.

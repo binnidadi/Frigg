@@ -40,6 +40,10 @@ if ((payrollDomainSnapshot.privateCorpusIntakePackages ?? []).length === 0) {
   throw new Error('Vantar private corpus intake pakka í snapshot.')
 }
 
+if ((payrollDomainSnapshot.privateCorpusIntakeBlueprints ?? []).length === 0) {
+  throw new Error('Vantar private corpus intake bláprent í snapshot.')
+}
+
 if (getAIHealthSnapshot().providers.length < 4) {
   throw new Error('AI health snapshot vantar veitendur.')
 }
@@ -192,6 +196,18 @@ if (!featuredCoveragePack.privateCorpusIntakePackage) {
 
 if ((featuredCoveragePack.privateCorpusIntakePackage.blockers ?? []).length === 0) {
   throw new Error('Featured coverage pack intake pakki vantar skýra blokkara.')
+}
+
+if (!featuredCoveragePack.privateCorpusIntakeBlueprint) {
+  throw new Error('Featured coverage pack vantar intake bláprent fyrir raunveruleg gögn.')
+}
+
+if ((featuredCoveragePack.privateCorpusIntakeBlueprint.checklist ?? []).length < 4) {
+  throw new Error('Featured coverage pack intake bláprent er of grunnt.')
+}
+
+if ((featuredCoveragePack.privateCorpusIntakeBlueprint.acceptanceCriteria ?? []).length < 3) {
+  throw new Error('Featured coverage pack intake bláprent vantar samþykkisskilyrði.')
 }
 
 if (featuredCoveragePack.privateCorpusIntakePackage.dataOrigin !== 'demo_seed') {

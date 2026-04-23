@@ -54,6 +54,23 @@ Síðast uppfært: 2026-04-22
 - Intake pakkinn fyrir `VR retail` er nú til sem demógrunnur í repo og sýnir hvaða afhending telst hluti af fyrsta payroll-native pakkanum.
 - Sá pakki er enn merktur `demo_only` og má ekki túlka sem raunverulega viðskiptavinainnslátt eða certified runtime grunn.
 - Næsta raunverulega framför er að skipta einstökum demófærslum út fyrir nafnlaus customer uploads með skýrri nafnlausnar- og sannprófunarstöðu.
+- Fyrsta afhendingarsniðið segir nú nákvæmlega hvaða fimm gagnategundir þurfa að koma saman fyrir fyrsta raunverulega `VR retail` pakka, í hvaða formi og með hvaða lágmarki.
+
+## Fyrsta afhendingarsniðið sem við viljum fá næst
+
+Safnið einum samhangandi pakka fyrir sama tímabil og sama samningssvið:
+
+1. `3+` nafnlausir launaseðlar fyrir sömu keyrslu.
+2. Heill mánuður af tímaskrám eða vaktaplani fyrir sömu starfsmenn.
+3. Ráðningarsamningur eða staðfest kjör fyrir alla í pakkanum.
+4. Routing tafla sem segir hvaða stéttarfélag og lífeyrissjóður gildir fyrir hvern starfsmann.
+5. Að minnsta kosti ein skilagrein eða skilastaðfesting fyrir sama tímabil.
+
+Lágmarksskilyrði:
+
+- Sömu dulnefndu starfsmannakenni verða að vera notuð í launaseðlum, tímaskrám og ráðningargögnum.
+- Sama keyrslutímabil þarf að liggja undir öllum skjölum í pakkanum.
+- Persónugreinanlegar upplýsingar skulu fjarlægðar eða dulnefndar áður en gögn eru send inn.
 
 ## Athugasemd um HREIN_GOGN
 

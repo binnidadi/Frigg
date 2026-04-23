@@ -60,6 +60,7 @@ Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-
 - coverage matrix og residual risk reporting
 - public corpus registry fyrir lög, Skattinn, sjóði og félög
 - private corpus onboarding fyrir payroll-native gögn
+- fyrsta afhendingarsnið fyrir raunverulegan nafnlausan `VR retail` gagnapakka
 - samanburður milli kjarasamninga og issue spotting fyrir rangt samningssvið
 - innri `AI Foundry` vél fyrir extraction, regulatory diff og reviewer artifacts
 
