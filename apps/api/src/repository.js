@@ -68,6 +68,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
   const pensionRoutingRules = snapshot.pensionRoutingRules ?? []
   const unionRoutingRules = snapshot.unionRoutingRules ?? []
   const payrollInputs = snapshot.payrollInputs ?? []
+  const agreementScopeAssessments = snapshot.agreementScopeAssessments ?? []
   const contracts = snapshot.contracts ?? []
   const payslips = snapshot.payslips ?? []
   const payslipEvidenceRecords = snapshot.payslipEvidenceRecords ?? []
@@ -193,6 +194,38 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     return findings
   })
 
+  const scopeAssessments = agreementScopeAssessments.map((assessment) => {
+    const contract = contracts.find((entry) => entry.id === assessment.contractId) ?? null
+
+    if (
+      assessment.proposedAgreementPackId !== featuredEntry.relatedAgreementPackIds?.[0] &&
+      !featuredEntry.relatedAgreementPackIds?.includes(assessment.proposedAgreementPackId)
+    ) {
+      return null
+    }
+
+    const relatedAgreementPack =
+      (workspace.collectiveAgreementPacks ?? []).find(
+        (entry) => entry.id === assessment.proposedAgreementPackId
+      ) ?? null
+
+    return {
+      ...assessment,
+      employeeName:
+        snapshot.employees?.find((entry) => entry.id === assessment.employeeId)?.fullName ??
+        assessment.employeeId,
+      jobTitle: contract?.jobTitle ?? 'Óþekkt starf',
+      agreementPackTitle: relatedAgreementPack?.title ?? 'Óþekktur samningspakki'
+    }
+  }).filter(Boolean)
+
+  const scopeAssessmentSummary = {
+    totalCount: scopeAssessments.length,
+    matchedCount: scopeAssessments.filter((entry) => entry.status === 'matched').length,
+    reviewRequiredCount: scopeAssessments.filter((entry) => entry.status === 'review_required').length,
+    blockedCount: scopeAssessments.filter((entry) => entry.status === 'blocked').length
+  }
+
   return {
     ...clone(featuredEntry),
     statutoryParameterSets: (featuredEntry.statutoryParameterSetIds ?? [])
@@ -207,6 +240,8 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     ruleSetVersions: (featuredEntry.sampleRuleSetVersionIds ?? [])
       .map((id) => ruleSetVersions.find((entry) => entry.id === id))
       .filter(Boolean),
+    agreementScopeAssessments: scopeAssessments,
+    agreementScopeSummary: scopeAssessmentSummary,
     payslips: relatedPayslips,
     evidenceByLineItem,
     varianceFindings
@@ -302,6 +337,7 @@ function buildRepositoryApi({
         validationResultCount: snapshot.validationResults.length,
         payslipCount: snapshot.payslips?.length ?? 0,
         payslipEvidenceRecordCount: snapshot.payslipEvidenceRecords?.length ?? 0,
+        agreementScopeAssessmentCount: snapshot.agreementScopeAssessments?.length ?? 0,
         researchWorkstreamCount: researchSummary.workstreamCount,
         legalObligationCount: researchSummary.legalObligationCount,
         coverageMatrixCount: researchSummary.coverageMatrixCount

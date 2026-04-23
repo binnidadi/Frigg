@@ -96,6 +96,26 @@ export interface PayrollVarianceFinding {
   requiredPrivateCorpusCodes: string[]
 }
 
+export interface AgreementScopeAssessment {
+  id: Identifier
+  employeeId: Identifier
+  contractId: Identifier
+  payrollInputEmployeeId: Identifier
+  proposedAgreementPackId: Identifier | null
+  proposedAgreementScopeCode: string | null
+  status: 'matched' | 'review_required' | 'blocked'
+  confidence: 'high' | 'medium' | 'low'
+  assessedAt: string
+  rationale: string
+  evaluatedSignals: Array<{
+    label: string
+    value: string
+    outcome: 'supports_match' | 'supports_review' | 'missing'
+  }>
+  unresolvedQuestions: string[]
+  requiredPrivateCorpusCodes: string[]
+}
+
 export interface PayrollRun {
   id: Identifier
   employerId: Identifier

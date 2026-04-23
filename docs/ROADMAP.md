@@ -34,6 +34,7 @@ Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-
 - effective-dated rule sets
 - line item model
 - agreement scope resolver fyrir rétt samningssvið
+- agreement scope resolver tengdur við merki, óleystar spurningar og private corpus kröfur
 - independent validation engine
 - retro calculation batches
 - tax credit allocation og multi-payer checks

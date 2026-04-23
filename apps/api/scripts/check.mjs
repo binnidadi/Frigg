@@ -28,6 +28,10 @@ if ((payrollDomainSnapshot.payslipEvidenceRecords ?? []).length < 4) {
   throw new Error('Vantar nægileg payslip evidence records í snapshot.')
 }
 
+if ((payrollDomainSnapshot.agreementScopeAssessments ?? []).length < 2) {
+  throw new Error('Vantar nægilega samningssviðsgreiningu í snapshot.')
+}
+
 if (getAIHealthSnapshot().providers.length < 4) {
   throw new Error('AI health snapshot vantar veitendur.')
 }
@@ -138,6 +142,24 @@ if (
   !featuredCoveragePack.varianceFindings?.some((entry) => entry.status === 'review_required')
 ) {
   throw new Error('Featured coverage pack vantar review-skylt frávik.')
+}
+
+if ((featuredCoveragePack.agreementScopeAssessments ?? []).length < 2) {
+  throw new Error('Featured coverage pack vantar nægilega samningssviðsgreiningu.')
+}
+
+if (
+  !featuredCoveragePack.agreementScopeAssessments?.some((entry) => entry.status === 'matched')
+) {
+  throw new Error('Featured coverage pack vantar samningssvið sem fellur sjálfkrafa innan pakkans.')
+}
+
+if (
+  !featuredCoveragePack.agreementScopeAssessments?.some(
+    (entry) => entry.status === 'review_required'
+  )
+) {
+  throw new Error('Featured coverage pack vantar review-skylda samningssviðsgreiningu.')
 }
 
 if (repositoryStatus.driver !== 'memory') {

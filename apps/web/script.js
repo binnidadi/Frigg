@@ -198,6 +198,14 @@ async function loadResearchWorkspace() {
       'featured-coverage-summary',
       `${featuredCoverage.operationalStatus} · ${featuredCoverage.coverageStatus} · afgangsáhætta ${featuredCoverage.residualRisk}. Þetta er fyrsti pakkinn sem tengir saman samning, lagaleg viðmið og routing í einni lesanlegri vöruafmörkun.`
     )
+    setText(
+      'featured-scope-summary',
+      `${featuredCoverage.agreementScopeSummary?.matchedCount ?? 0} starfsmenn falla nú sjálfkrafa innan pakkans, ${
+        featuredCoverage.agreementScopeSummary?.reviewRequiredCount ?? 0
+      } eru enn í yfirferð og ${
+        featuredCoverage.agreementScopeSummary?.blockedCount ?? 0
+      } eru blokkaðir þar til samningssvið er skýrt.`
+    )
 
     setList(
       'featured-coverage-details',
@@ -222,6 +230,23 @@ async function loadResearchWorkspace() {
       (entry) => ({
         strong: entry.label,
         span: entry.value
+      })
+    )
+
+    setList(
+      'featured-scope-list',
+      featuredCoverage.agreementScopeAssessments ?? [],
+      (entry) => ({
+        strong: `${entry.employeeName} · ${entry.jobTitle} · ${entry.status}`,
+        span: `${entry.rationale} Samningspakki: ${entry.agreementPackTitle}${
+          entry.requiredPrivateCorpusCodes?.length
+            ? ` Vantar: ${entry.requiredPrivateCorpusCodes.join(', ')}.`
+            : ''
+        }${
+          entry.unresolvedQuestions?.[0]
+            ? ` Óleyst: ${entry.unresolvedQuestions[0]}`
+            : ''
+        }`
       })
     )
 
@@ -412,7 +437,10 @@ async function main() {
     setList('coverage-matrix-list', [], () => '')
     setText('featured-coverage-title', 'Traustmörk ekki tiltæk')
     setText('featured-coverage-summary', message)
+    setText('featured-scope-title', 'Samningssvið ekki tiltækt')
+    setText('featured-scope-summary', message)
     setList('featured-coverage-details', [], () => '')
+    setList('featured-scope-list', [], () => '')
     setList('featured-line-item-boundaries', [], () => '')
     setList('featured-evidence-list', [], () => '')
     setList('featured-variance-list', [], () => '')

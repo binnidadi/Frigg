@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-21T21:02:53.791Z",
+  "generatedAt": "2026-04-23T20:33:33.660Z",
   "snapshot": {
     "employers": [
       {
@@ -125,6 +125,86 @@
         "leaveEvents": [],
         "pensionRoutingRuleId": "pension_route_live_retail",
         "unionRoutingRuleId": "union_route_vr_retail"
+      }
+    ],
+    "agreementScopeAssessments": [
+      {
+        "id": "scope_gudrun_2026_04",
+        "employeeId": "employee_gudrun",
+        "contractId": "contract_gudrun_001",
+        "payrollInputEmployeeId": "employee_gudrun",
+        "proposedAgreementPackId": "agreement_pack_vr_retail",
+        "proposedAgreementScopeCode": "vr-retail-store",
+        "status": "matched",
+        "confidence": "high",
+        "assessedAt": "2026-04-30T08:55:00Z",
+        "rationale": "Starfsheiti, starfskóði, vinnustaður og routing styðja öll almennt retail samningssvið VR án ósamræmis í þessu demótilviki.",
+        "evaluatedSignals": [
+          {
+            "label": "Starfsheiti",
+            "value": "Verslunarfulltrúi",
+            "outcome": "supports_match"
+          },
+          {
+            "label": "Starfskóði",
+            "value": "store_assistant",
+            "outcome": "supports_match"
+          },
+          {
+            "label": "Samningskóði í ráðningarsamningi",
+            "value": "vr-retail-store",
+            "outcome": "supports_match"
+          },
+          {
+            "label": "Stéttarfélagsrouting",
+            "value": "union_route_vr_retail",
+            "outcome": "supports_match"
+          }
+        ],
+        "unresolvedQuestions": [],
+        "requiredPrivateCorpusCodes": []
+      },
+      {
+        "id": "scope_jon_2026_04",
+        "employeeId": "employee_jon",
+        "contractId": "contract_jon_001",
+        "payrollInputEmployeeId": "employee_jon",
+        "proposedAgreementPackId": "agreement_pack_vr_retail",
+        "proposedAgreementScopeCode": "vr-retail-shift",
+        "status": "review_required",
+        "confidence": "medium",
+        "assessedAt": "2026-04-30T08:57:00Z",
+        "rationale": "Jón líkist retail vaktstjóra innan VR sviðs, en vaktastjórnarhlutverk, erlendur A1 starfsmaður og ófull private sannleiksgögn halda samningssviðinu í yfirferð.",
+        "evaluatedSignals": [
+          {
+            "label": "Starfsheiti",
+            "value": "Vaktstjóri",
+            "outcome": "supports_review"
+          },
+          {
+            "label": "Starfskóði",
+            "value": "shift_lead",
+            "outcome": "supports_review"
+          },
+          {
+            "label": "Samningskóði í ráðningarsamningi",
+            "value": "vr-retail-shift",
+            "outcome": "supports_match"
+          },
+          {
+            "label": "Launa-nátengd tímaskrárgögn",
+            "value": "vantar",
+            "outcome": "missing"
+          }
+        ],
+        "unresolvedQuestions": [
+          "Staðfesta þarf hvort vaktstjórnarhlutverkið fylgi alveg sama retail pakka eða kalli á sérsniðna túlkun fyrir álags- og yfirvinnureglur.",
+          "Vantar payroll-native tímaskrárgögn sem sýna raunverulegt vaktafyrirkomulag og verkstjórnarhlutverk."
+        ],
+        "requiredPrivateCorpusCodes": [
+          "timesheets_and_work_patterns",
+          "employment_contracts_and_terms"
+        ]
       }
     ],
     "agreementVersions": [

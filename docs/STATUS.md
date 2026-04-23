@@ -22,6 +22,7 @@ Síðast uppfært: 2026-04-23
 - Trust boundary pakkinn er nú brotinn niður í launalínumörk sem sýna hvað er vottað, hvað er review-skylt og hvað er blokkað.
 - Fyrsta evidence-lagið tengir nú launaseðil, evidence records og line-item trust mörk í featured coverage pakkanum.
 - Fyrsta frávikagreiningarlagið ber nú saman ráðningarkjör, skráðar stundir og launaseðil í sama featured pakka.
+- Fyrsta samningssviðsgreiningarlagið sýnir nú hvaða starfsmenn falla innan featured pakkans, hvaða merki styðja valið og hvar yfirferð er enn nauðsynleg.
 - Notendatexti í forsíðu, innskráningu, mælaborði og AI-forsýningum hefur verið hertur til að vera skýrari, íslenskari og faglegri.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
@@ -54,6 +55,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta line-item skýringarlagið fyrir trust boundary pakkann
 - Fyrsta sönnunarlagið sem sýnir hvaða launalínur hafa raunverulegar evidence færslur í demo-snapshot
 - Fyrsta contract-vs-timesheet-vs-pay frávikagreiningin í API og mælaborði
+- Fyrsta samningssviðsgreiningin í API og mælaborði fyrir `VR retail` pakka
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 
 ## Hvað er í vinnslu
@@ -67,11 +69,12 @@ Síðast uppfært: 2026-04-23
 - Trust Center yfirborð sem sýnir coverage og residual risk
 - Samningssviðsgreining fyrir rétta flokkun starfa, starfstöðva og kjarasamningsumhverfis
 - Evidence lag fyrir launaseðla, tímaskráningar, ráðningarsamninga og frávikagreiningu
+- Samningssviðsgreining tengd við featured trust boundary pakkann og review merki
 
 ## Hvað er næst
 
 1. Fá inn fyrsta payroll-native private corpus pakkann: launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
-2. Byggja samningssviðsgreiningu fyrir rétta flokkun starfa og samningsumhverfis.
+2. Dýpka samningssviðsgreiningu með payroll-native gögnum svo merki og yfirferðarstaða byggi ekki lengur eingöngu á demo-snapshot.
 3. Festa fyrsta payroll-native private corpus pakkann inn í frávikagreiningu og review workflow.
 4. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
 5. Búa til og festa `pnpm-lock.yaml` í fyrsta umhverfi þar sem `pnpm` er tiltækt.
@@ -84,4 +87,5 @@ Síðast uppfært: 2026-04-23
 - Private corpus fyrir launaseðla, tímaskráningu, skilagreinar og routing vantar enn.
 - AI provider layer er enn án lifandi tenginga við ytri veitendur og án raunverulegra health mælinga.
 - Samningssviðsgreining og samanburður milli kjarasamninga eru ekki komin í keyrsluhæft lag enn.
+- Núverandi samningssviðsgreining er enn bundin við featured demo-pakka og þarf payroll-native sannleiksgögn áður en hún getur orðið certified.
 - Núverandi checks verja foundation og research readiness, en ekki enn raunverulega payroll hegðun eða golden scenarios.

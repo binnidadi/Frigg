@@ -53,13 +53,14 @@ Að festa þær rannsóknarniðurstöður sem ráða því hvort Frigg geti orð
 - Nú liggur einnig fyrir fyrsta line-item niðurbrotið fyrir þennan pakka, með skýrum mörkum milli `certified`, `review_required` og `blocked`.
 - Fyrsta `PayslipEvidenceRecord` lagið er nú tengt sama pakka svo sýnilegt sé hvaða launalínur hafa raunverulegar sönnunarfærslur og hvaða línur eru enn aðeins policy-boundary.
 - Fyrsta contract-vs-timesheet-vs-pay frávikagreiningin sýnir nú hvort ráðningarkjör, skráðar stundir og útgefinn launaseðill passi saman eða fari í review.
+- Fyrsta samningssviðsgreiningarlagið sýnir nú af hverju starfsmaður lendir í `VR retail` pakkanum, hvaða merki styðja flokkunina og hvaða private gögn vantar áður en samningssviðið verður vottað.
 
 ## Næsta vinna sem þessi rannsókn kallar á
 
 1. Tengja source acquisition records við public registry og síðar private corpus intake.
 2. Fá inn fyrsta payroll-native private corpus pakkann fyrir launaseðla, tímaskráningu, ráðningarsamninga, routing og skil.
-3. Byggja samningssviðsgreiningu og fyrstu clause-to-rule mapping lotuna fyrir þröngt kjarasamningssvið.
-4. Festa fyrsta payroll-native private corpus pakkann inn í nýja frávikagreiningu og review workflow.
+3. Dýpka samningssviðsgreiningu og fyrstu clause-to-rule mapping lotuna fyrir þröngt kjarasamningssvið með payroll-native gögnum.
+4. Festa fyrsta payroll-native private corpus pakkann inn í samningssviðsgreiningu, nýja frávikagreiningu og review workflow.
 5. Stækka coverage matrix yfir allan markaðinn með eiginlegum certified marksviðum.
 6. Golden scenarios fyrir fjölgreiðendur, A1, veikindi, fæðingarorlof og afturvirkar leiðréttingar sem raunverulegar hegðunarprófanir.
 7. Trust Center gagnalíkan og certified coverage reporting.
