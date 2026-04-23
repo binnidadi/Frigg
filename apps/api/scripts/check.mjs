@@ -44,6 +44,10 @@ if ((payrollDomainSnapshot.privateCorpusIntakeBlueprints ?? []).length === 0) {
   throw new Error('Vantar private corpus intake bláprent í snapshot.')
 }
 
+if ((payrollDomainSnapshot.payrollRunReviewPackages ?? []).length === 0) {
+  throw new Error('Vantar signoff/review pakka fyrir launakeyrslu í snapshot.')
+}
+
 if (getAIHealthSnapshot().providers.length < 4) {
   throw new Error('AI health snapshot vantar veitendur.')
 }
@@ -220,6 +224,22 @@ if (featuredCoveragePack.privateCorpusIntakeAcceptance.status !== 'demo_only') {
 
 if ((featuredCoveragePack.privateCorpusIntakeAcceptance.unmetRequirements ?? []).length < 2) {
   throw new Error('Demo intake acceptance á að sýna óuppfyllt móttökuskilyrði.')
+}
+
+const currentRunReviewPackage = (payrollDomainSnapshot.payrollRunReviewPackages ?? []).find(
+  (entry) => entry.payrollRunId === payrollDomainSnapshot.payrollRuns?.[0]?.id
+)
+
+if (!currentRunReviewPackage) {
+  throw new Error('Vantar signoff pakka fyrir núverandi launakeyrslu.')
+}
+
+if ((currentRunReviewPackage.requiredRoles ?? []).length < 3) {
+  throw new Error('Signoff pakki vantar lykilhlutverk í yfirferð.')
+}
+
+if ((currentRunReviewPackage.blockers ?? []).length === 0) {
+  throw new Error('Signoff pakki má ekki vera blocker-laus á meðan keyrsla er í review_required.')
 }
 
 if (featuredCoveragePack.privateCorpusIntakePackage.dataOrigin !== 'demo_seed') {

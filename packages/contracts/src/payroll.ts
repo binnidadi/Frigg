@@ -128,6 +128,24 @@ export interface PayrollRun {
   reviewTaskIds: Identifier[]
 }
 
+export interface PayrollRunReviewPackage {
+  id: Identifier
+  payrollRunId: Identifier
+  status: 'awaiting_review' | 'partially_approved' | 'ready_for_signoff' | 'blocked'
+  signoffReadiness: 'not_ready' | 'review_ready' | 'signoff_ready'
+  summary: string
+  blockers: string[]
+  nextStep: string
+  completionRatio: string
+  linkedTaskIds: Identifier[]
+  requiredRoles: Array<{
+    role: 'payroll_specialist' | 'compliance_reviewer' | 'employer_approver'
+    status: 'pending' | 'approved' | 'blocked'
+    decisionAt: string | null
+    note: string
+  }>
+}
+
 export interface PayrollRunSnapshot {
   runId: Identifier
   status: PayrollRunStatus

@@ -682,6 +682,46 @@ export const reviewTasks = [
   }
 ]
 
+export const payrollRunReviewPackages = [
+  {
+    id: 'review_package_payroll_run_2026_04',
+    payrollRunId: 'payroll_run_2026_04',
+    status: 'blocked',
+    signoffReadiness: 'not_ready',
+    summary:
+      'Aprílkeyrslan er komin með fyrsta yfirferðarpakkann, en hún má ekki fara í lokasamþykki fyrr en A1 frávik, samningssvið Jóns og payroll-native skilagögn hafa verið yfirfarin.',
+    blockers: [
+      'A1 frávik í tryggingagjaldi er enn opið og heldur employer charges í review stöðu.',
+      'Samningssvið Jóns er enn í yfirferð og því er ekki hægt að staðfesta allan pakkann sem rétt flokkaðan.',
+      'Routing og skilagrein eru ekki komin á það stig að reconciliation og signoff verði sýnileg end-to-end.'
+    ],
+    nextStep:
+      'Ljúka A1 yfirferð, tengja fyrstu raunverulegu nafnlausu routing- og skilagögnin við pakkann og fá compliance reviewer yfirferð áður en employer approver sér lokasamþykki.',
+    completionRatio: '1/3',
+    linkedTaskIds: ['review_task_a1', 'review_task_parental'],
+    requiredRoles: [
+      {
+        role: 'payroll_specialist',
+        status: 'approved',
+        decisionAt: '2026-04-30T10:45:00Z',
+        note: 'Grunnkeyrsla og evidence samantekt hafa verið yfirfarin af launafulltrúa.'
+      },
+      {
+        role: 'compliance_reviewer',
+        status: 'pending',
+        decisionAt: null,
+        note: 'Bíður eftir niðurstöðu á A1 fráviki, routing sannleiksgögnum og skilagrein.'
+      },
+      {
+        role: 'employer_approver',
+        status: 'blocked',
+        decisionAt: null,
+        note: 'Lokasamþykki er lokað þar til compliance reviewer hefur samþykkt pakkann.'
+      }
+    ]
+  }
+]
+
 export const complianceDeadlines = [
   {
     id: 'deadline_withholding_2026_05_15',
@@ -749,6 +789,7 @@ export const payrollDomainSnapshot = {
   payslips,
   payslipEvidenceRecords,
   reviewTasks,
+  payrollRunReviewPackages,
   complianceDeadlines,
   auditEvents
 }

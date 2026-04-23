@@ -95,6 +95,74 @@ function formatRuntimeReadiness(value) {
   return value ?? 'Óþekkt runtime-staða'
 }
 
+function formatRoleStatus(value) {
+  if (value === 'approved') {
+    return 'Samþykkt'
+  }
+
+  if (value === 'pending') {
+    return 'Í bið'
+  }
+
+  if (value === 'blocked') {
+    return 'Blokkað'
+  }
+
+  return value ?? 'Óþekkt staða'
+}
+
+function formatSignoffReadiness(value) {
+  if (value === 'not_ready') {
+    return 'Ekki tilbúið fyrir signoff'
+  }
+
+  if (value === 'review_ready') {
+    return 'Tilbúið fyrir yfirferð'
+  }
+
+  if (value === 'signoff_ready') {
+    return 'Tilbúið fyrir lokasamþykki'
+  }
+
+  return value ?? 'Óþekkt signoff-staða'
+}
+
+function formatReviewRole(value) {
+  if (value === 'payroll_specialist') {
+    return 'Launafulltrúi'
+  }
+
+  if (value === 'compliance_reviewer') {
+    return 'Compliance yfirferð'
+  }
+
+  if (value === 'employer_approver') {
+    return 'Samþykkjandi fyrirtækis'
+  }
+
+  return value ?? 'Óþekkt hlutverk'
+}
+
+function formatReviewPackageStatus(value) {
+  if (value === 'awaiting_review') {
+    return 'Bíður yfirferðar'
+  }
+
+  if (value === 'partially_approved') {
+    return 'Samþykkt að hluta'
+  }
+
+  if (value === 'ready_for_signoff') {
+    return 'Tilbúið fyrir signoff'
+  }
+
+  if (value === 'blocked') {
+    return 'Blokkað'
+  }
+
+  return value ?? 'Óþekkt staða'
+}
+
 async function fetchJson(path) {
   const response = await fetch(`${API_BASE_URL}${path}`)
   if (!response.ok) {
@@ -474,6 +542,9 @@ async function loadDashboardSnapshot() {
     (entry) => entry.payrollRunId === currentRun?.id
   )
   const activeRuleSet = snapshot.ruleSetVersions?.[0]
+  const currentRunReviewPackage = snapshot.payrollRunReviewPackages?.find(
+    (entry) => entry.payrollRunId === currentRun?.id
+  )
   const activeAgreement = snapshot.agreementVersions?.find(
     (entry) => entry.id === activeRuleSet?.agreementVersionId
   )
@@ -540,6 +611,38 @@ async function loadDashboardSnapshot() {
     strong: mismatch.lineItemCode,
     span: `${mismatch.employeeId} · ${mismatch.message}`
   }))
+
+  if (currentRunReviewPackage) {
+    setText(
+      'signoff-title',
+      `Signoff pakki · ${currentRunReviewPackage.completionRatio}`
+    )
+    setText(
+      'signoff-summary',
+      `${formatSignoffReadiness(currentRunReviewPackage.signoffReadiness)}. ${currentRunReviewPackage.summary}`
+    )
+  }
+
+  setList(
+    'signoff-list',
+    currentRunReviewPackage
+      ? [
+          {
+            strong: `Næsta skref · ${formatReviewPackageStatus(currentRunReviewPackage.status)}`,
+            span: currentRunReviewPackage.nextStep
+          },
+          ...currentRunReviewPackage.requiredRoles.map((role) => ({
+            strong: `${formatReviewRole(role.role)} · ${formatRoleStatus(role.status)}`,
+            span: role.note
+          })),
+          ...currentRunReviewPackage.blockers.map((blocker) => ({
+            strong: 'Blokkun',
+            span: blocker
+          }))
+        ]
+      : [],
+    (entry) => entry
+  )
 
   setList('scenario-list', scenarios.slice(0, 4), (scenario) => ({
     strong: `${scenario.id} · ${scenario.title}`,

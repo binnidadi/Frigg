@@ -70,6 +70,7 @@ Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-
 - innskráning
 - dashboard
 - pay run review
+- fyrsta signoff pakka fyrir launakeyrslu með hlutverkum, blockers og lokasamþykkisskrefi
 - payslip explanation view
 - Trust Center
 - advisor mode

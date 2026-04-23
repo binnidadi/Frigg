@@ -28,6 +28,7 @@ Síðast uppfært: 2026-04-23
 - Intake og private corpus submissions eru nú merkt með uppruna og nafnlausnarstöðu svo demóinntak líti ekki út sem raunverulegt tenant-gagnalag.
 - Fyrsta afhendingarsniðið fyrir raunverulegan payroll-native gagnapakka liggur nú fyrir með lágmarkskröfum, nafnlausnarskilyrðum og samþykkisskilyrðum.
 - Intake-lagið reiknar nú út formlegt móttökumat sem sýnir hvað er uppfyllt og hvaða skilyrði halda pakkanum enn utan review-runtime.
+- Fyrsti review/signoff pakkinn fyrir launakeyrslu sýnir nú hlutverk, blockers og næsta skref áður en lokasamþykki verður mögulegt.
 - Notendatexti í forsíðu, innskráningu, mælaborði og AI-forsýningum hefur verið hertur til að vera skýrari, íslenskari og faglegri.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
@@ -67,6 +68,7 @@ Síðast uppfært: 2026-04-23
 - Skýr merking á demóinntaki gegn raunverulegum nafnlausum innsendingum
 - Fyrsta afhendingarsnið fyrir nafnlausan `VR retail` gagnapakka
 - Fyrsta intake acceptance matið fyrir `VR retail` gagnapakka
+- Fyrsta review/signoff matið fyrir `payroll_run_2026_04`
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 - Formleg afstaða um vörumerki, category og `AI Foundry` lag í source-of-truth skjölum
 
@@ -106,4 +108,5 @@ Síðast uppfært: 2026-04-23
 - Núverandi featured pakki sýnir enn `0` raunverulegar customer submissions og er því aðeins undirbúningslag fyrir komandi tenant-inntak.
 - Afhendingarsniðið er nú skýrt, en engin raunveruleg viðskiptavinagögn hafa enn verið móttekin samkvæmt því.
 - Intake acceptance sýnir því enn `demo_only` stöðu og óuppfyllt skilyrði þar til fyrsta raunverulega innsendingin berst.
+- Signoff pakki er enn blokkaður og sýnir því ekki lokasamþykki sem mögulegt fyrr en review, routing og skil eru komin á nægilegt stig.
 - Núverandi checks verja foundation og research readiness, en ekki enn raunverulega payroll hegðun eða golden scenarios.
