@@ -104,6 +104,7 @@ db/           SQL-skema, migrations og seed gögnum
 - `docs/PUBLIC-SOURCE-REGISTRY.md`
 - `docs/RESEARCH-OPERATING-SYSTEM.md`
 - `docs/REMAINING-DATA-REQUEST.md`
+- `docs/SOURCE-ARCHITECTURE.md`
 - `docs/HREIN-GOGN-INVENTORY.md`
 - `docs/COMPLIANCE-RESEARCH.md`
 - `docs/GAP-CLOSING-ANALYSIS.md`

@@ -30,6 +30,7 @@ Síðast uppfært: 2026-04-23
 - Intake-lagið reiknar nú út formlegt móttökumat sem sýnir hvað er uppfyllt og hvaða skilyrði halda pakkanum enn utan review-runtime.
 - Fyrsti review/signoff pakkinn fyrir launakeyrslu sýnir nú hlutverk, blockers og næsta skref áður en lokasamþykki verður mögulegt.
 - Markviss gap-closing greining hefur nú verið fest í sérskjali með `critical now`, `high value next` og `later` forgangsröðun.
+- Source architecture fyrir heimildir, knowledge lag, evidence trail og versioning hefur nú verið fest í sérskjali.
 - Notendatexti í forsíðu, innskráningu, mælaborði og AI-forsýningum hefur verið hertur til að vera skýrari, íslenskari og faglegri.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
@@ -71,6 +72,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta intake acceptance matið fyrir `VR retail` gagnapakka
 - Fyrsta review/signoff matið fyrir `payroll_run_2026_04`
 - Fyrsta formlega gap-closing greiningin á repo og vefyfirborði
+- Fyrsta formlega source architecture skjalið fyrir heimildir, gögn og evidence trail
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 - Formleg afstaða um vörumerki, category og `AI Foundry` lag í source-of-truth skjölum
 
@@ -95,6 +97,7 @@ Síðast uppfært: 2026-04-23
 3. Herða `packages/*` checks svo workspace placeholdarar líti ekki út eins og raunveruleg staðfesting.
 4. Dýpka samningssviðsgreiningu með þessum payroll-native gögnum svo merki og yfirferðarstaða byggi ekki lengur eingöngu á demo-snapshot.
 5. Festa fyrsta payroll-native private corpus pakkann inn í frávikagreiningu og review workflow.
+6. Umbreyta public source registry og research workspace í canonical source records og normalized knowledge records.
 
 ## Áhætta núna
 
@@ -114,3 +117,4 @@ Síðast uppfært: 2026-04-23
 - Núverandi checks verja foundation og research readiness, en ekki enn raunverulega payroll hegðun eða golden scenarios.
 - `packages/ai`, `packages/contracts` og `packages/engine` eru enn með placeholder checks og valda ósamræmi milli ambition og tooling-hörku.
 - Forsíða og hlutar af product surface eru enn sterkari sem sannfærandi demó en sem heiðarleg mynd af operational maturity.
+- Heimildalög og knowledge layer eru nú betur skilgreind í skjölum en ekki enn komin í normalized gagnalíkan í runtime.

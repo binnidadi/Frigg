@@ -6,6 +6,8 @@ Síðast uppfært: 2026-04-23
 
 Þetta skjal heldur utan um hvaða heimildir Frigg byggir á, á hvaða þroskastigi þær eru og hvernig þær tengjast research operating system, coverage matrix og síðar certified runtime.
 
+Formleg source architecture fyrir hvernig þessar heimildir eiga að þróast yfir í canonical source records, normalized knowledge lag, evidence trail og versioning er skilgreind í `docs/SOURCE-ARCHITECTURE.md`.
+
 Fyrsta opinbera söfnunarlotan er nú skráð í:
 
 - `docs/PUBLIC-SOURCE-REGISTRY.md`
@@ -33,6 +35,7 @@ Fyrsta opinbera söfnunarlotan er nú skráð í:
 ## Næstu skref
 
 - Umbreyta registry í versioned knowledge records í gagnalagi.
+- Umbreyta registry í canonical source records með trust level, runtime eligibility og fingerprint.
 - Tengja registry við `source acquisition records`, `legal obligations` og coverage matrix.
 - Merkja hvaða heimildir eru aðeins `mapped`, hvaða heimildir styðja `compute_with_review` og hvaða heimildir eru komnar í `validated_runtime`.
 - Bæta private corpus ofan á public corpus þegar notandi útvegar það efni sem vantar.
