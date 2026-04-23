@@ -36,6 +36,10 @@ if ((payrollDomainSnapshot.privateCorpusSubmissions ?? []).length < 4) {
   throw new Error('Vantar nægileg private corpus intake gögn í snapshot.')
 }
 
+if ((payrollDomainSnapshot.privateCorpusIntakePackages ?? []).length === 0) {
+  throw new Error('Vantar private corpus intake pakka í snapshot.')
+}
+
 if (getAIHealthSnapshot().providers.length < 4) {
   throw new Error('AI health snapshot vantar veitendur.')
 }
@@ -180,6 +184,14 @@ if (
   !featuredCoveragePack.privateCorpusReadiness?.some((entry) => entry.status === 'missing')
 ) {
   throw new Error('Featured coverage pack vantar skýrt vöntunarmerki í private corpus readiness.')
+}
+
+if (!featuredCoveragePack.privateCorpusIntakePackage) {
+  throw new Error('Featured coverage pack vantar intake pakka fyrir private corpus.')
+}
+
+if ((featuredCoveragePack.privateCorpusIntakePackage.blockers ?? []).length === 0) {
+  throw new Error('Featured coverage pack intake pakki vantar skýra blokkara.')
 }
 
 if (repositoryStatus.driver !== 'memory') {

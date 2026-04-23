@@ -216,6 +216,10 @@ async function loadResearchWorkspace() {
         featuredCoverage.privateCorpusReadinessSummary?.missingCount ?? 0
       } vantar enn fyrir pakkann.`
     )
+    setText(
+      'featured-intake-package-title',
+      featuredCoverage.privateCorpusIntakePackage?.title ?? 'Intake pakki ekki tiltækur'
+    )
 
     setList(
       'featured-coverage-details',
@@ -258,6 +262,23 @@ async function loadResearchWorkspace() {
             : ''
         }`
       })
+    )
+
+    setList(
+      'featured-intake-package-list',
+      featuredCoverage.privateCorpusIntakePackage
+        ? [
+            {
+              strong: `Staða · ${featuredCoverage.privateCorpusIntakePackage.status}`,
+              span: `${featuredCoverage.privateCorpusIntakePackage.targetScopeSummary} Næsta skref: ${featuredCoverage.privateCorpusIntakePackage.nextStep}`
+            },
+            ...featuredCoverage.privateCorpusIntakePackage.blockers.map((blocker) => ({
+              strong: 'Blokkun',
+              span: blocker
+            }))
+          ]
+        : [],
+      (entry) => entry
     )
 
     setList(
@@ -461,9 +482,11 @@ async function main() {
     setText('featured-scope-title', 'Samningssvið ekki tiltækt')
     setText('featured-scope-summary', message)
     setText('featured-private-corpus-title', 'Payroll-native gögn ekki tiltæk')
+    setText('featured-intake-package-title', 'Intake pakki ekki tiltækur')
     setText('featured-private-corpus-summary', message)
     setList('featured-coverage-details', [], () => '')
     setList('featured-scope-list', [], () => '')
+    setList('featured-intake-package-list', [], () => '')
     setList('featured-private-corpus-list', [], () => '')
     setList('featured-line-item-boundaries', [], () => '')
     setList('featured-evidence-list', [], () => '')

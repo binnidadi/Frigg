@@ -70,6 +70,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
   const payrollInputs = snapshot.payrollInputs ?? []
   const agreementScopeAssessments = snapshot.agreementScopeAssessments ?? []
   const privateCorpusSubmissions = snapshot.privateCorpusSubmissions ?? []
+  const privateCorpusIntakePackages = snapshot.privateCorpusIntakePackages ?? []
   const contracts = snapshot.contracts ?? []
   const payslips = snapshot.payslips ?? []
   const payslipEvidenceRecords = snapshot.payslipEvidenceRecords ?? []
@@ -279,6 +280,12 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     missingCount: privateCorpusReadiness.filter((entry) => entry.status === 'missing').length
   }
 
+  const privateCorpusIntakePackage =
+    privateCorpusIntakePackages.find(
+      (entry) =>
+        !entry.agreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.agreementPackId)
+    ) ?? null
+
   return {
     ...clone(featuredEntry),
     statutoryParameterSets: (featuredEntry.statutoryParameterSetIds ?? [])
@@ -297,6 +304,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     agreementScopeSummary: scopeAssessmentSummary,
     privateCorpusReadiness,
     privateCorpusReadinessSummary,
+    privateCorpusIntakePackage,
     payslips: relatedPayslips,
     evidenceByLineItem,
     varianceFindings
@@ -394,6 +402,7 @@ function buildRepositoryApi({
         payslipEvidenceRecordCount: snapshot.payslipEvidenceRecords?.length ?? 0,
         agreementScopeAssessmentCount: snapshot.agreementScopeAssessments?.length ?? 0,
         privateCorpusSubmissionCount: snapshot.privateCorpusSubmissions?.length ?? 0,
+        privateCorpusIntakePackageCount: snapshot.privateCorpusIntakePackages?.length ?? 0,
         researchWorkstreamCount: researchSummary.workstreamCount,
         legalObligationCount: researchSummary.legalObligationCount,
         coverageMatrixCount: researchSummary.coverageMatrixCount

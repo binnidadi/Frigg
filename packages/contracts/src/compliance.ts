@@ -287,3 +287,19 @@ export interface PrivateCorpusSubmission {
   validatedAt: string | null
   summary: string
 }
+
+export interface PrivateCorpusIntakePackage {
+  id: Identifier
+  employerId: Identifier
+  agreementPackId: Identifier | null
+  code: string
+  title: string
+  status: 'collecting' | 'review_required' | 'ready_for_runtime'
+  targetScopeSummary: string
+  requiredSubmissionCodes: string[]
+  completedSubmissionCodes: string[]
+  outstandingSubmissionCodes: string[]
+  blockers: string[]
+  nextStep: string
+  updatedAt: string
+}

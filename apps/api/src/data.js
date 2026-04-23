@@ -542,6 +542,40 @@ export const privateCorpusSubmissions = [
   }
 ]
 
+export const privateCorpusIntakePackages = [
+  {
+    id: 'intake_vr_retail_april_2026',
+    employerId: 'employer_frigg_demo',
+    agreementPackId: 'agreement_pack_vr_retail',
+    code: 'vr-retail-april-2026',
+    title: 'VR retail intake pakki fyrir apríl 2026',
+    status: 'review_required',
+    targetScopeSummary:
+      'Nær yfir retail starfsmenn, grunnlaun, kvöldálag, VR félagsgjöld, LIVE routing og skil fyrir aprílkeyrslu.',
+    requiredSubmissionCodes: [
+      'payslips_corpus',
+      'timesheets_and_work_patterns',
+      'employment_contracts_and_terms',
+      'routing_truth',
+      'remittance_truth'
+    ],
+    completedSubmissionCodes: ['payslips_corpus', 'employment_contracts_and_terms'],
+    outstandingSubmissionCodes: [
+      'timesheets_and_work_patterns',
+      'routing_truth',
+      'remittance_truth'
+    ],
+    blockers: [
+      'Kvöldálag er ekki vottað fyrr en tímaskrár eru sannreyndar gegn launalínum.',
+      'Routing er enn í yfirferð þar til aðild og sjóðstenging liggur fyrir per starfsmann.',
+      'Skilagrein vantar enn og því er reconciliation ekki lokið.'
+    ],
+    nextStep:
+      'Tengja raunverulegar nafnlausar tímaskrár, routing sannleiksgögn og fyrstu skilagrein við intake pakkann.',
+    updatedAt: '2026-04-30T17:30:00Z'
+  }
+]
+
 export const reviewTasks = [
   {
     id: 'review_task_a1',
@@ -616,6 +650,7 @@ export const payrollDomainSnapshot = {
   payrollInputs,
   agreementScopeAssessments,
   privateCorpusSubmissions,
+  privateCorpusIntakePackages,
   agreementVersions,
   ruleSetVersions,
   statutoryParameterSets,
