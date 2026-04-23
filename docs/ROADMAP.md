@@ -61,6 +61,7 @@ Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-
 - public corpus registry fyrir lög, Skattinn, sjóði og félög
 - private corpus onboarding fyrir payroll-native gögn
 - samanburður milli kjarasamninga og issue spotting fyrir rangt samningssvið
+- innri `AI Foundry` vél fyrir extraction, regulatory diff og reviewer artifacts
 
 ## Áfangi 5: Product Surface
 
@@ -73,6 +74,7 @@ Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-
 - advisor mode
 - employer compliance mode
 - employee rights mode sem byggir á sannprófuðu evidence lagi
+- sýnilegt `AI Foundry` lag fyrir enterprise og ráðgjafa með leit, review og analysis artifacts
 
 ## Áfangi 6: Pilot Readiness
 

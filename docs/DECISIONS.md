@@ -74,3 +74,13 @@
 
 - Staða: Samþykkt
 - Ástæða: Kerfið getur ekki orðið raunveruleg kjarasamninga launavél nema það geti fyrst flokkað rétt samningssvið eftir starfi, starfsaðstæðum, landfræðisvæði og félagaumhverfi.
+
+## D-016: Frigg er vörumerki, Kjarasamninga launavél er stefnumarkandi vörulýsing
+
+- Staða: Samþykkt
+- Ástæða: Repo, viðmót og skjöl þurfa samræmda línu milli vinnuheiti/vörumerkisins `Frigg` og stefnumarkandi lýsingarinnar `Kjarasamninga launavél`. Frigg helst sem stutt og markaðshæft vörumerki, en undirliggjandi category-afstaða verður skýrari með lýsandi heiti.
+
+## D-017: AI Foundry er tvískipt capability-lag
+
+- Staða: Samþykkt
+- Ástæða: `AI Foundry` á ekki að vera óljóst slagorð. Í Frigg merkir það annars vegar innri vél fyrir extraction, flokkun, regludrög, evidence-tengingu og regulatory greiningu, og hins vegar sýnilegt enterprise/advisor lag fyrir leit, review, analysis og síðar API aðgang. Það er margfaldari fyrir labour/payroll compliance operating systemið, ekki staðgengill deterministic kjarnans.

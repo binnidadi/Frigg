@@ -29,6 +29,7 @@ Síðast uppfært: 2026-04-23
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
 - Heildarúttekt á stefnu, product direction og heimildalandslagi hefur verið framkvæmd og category-afstaða hert: Frigg er labour/payroll compliance operating system, ekki bara launakerfi með AI lagi.
+- Naming og positioning hafa verið hert: Frigg er vörumerkið, Kjarasamninga launavél er stefnumarkandi vörulýsing, og `AI Foundry` er nú skilgreint sem tvískipt capability-lag.
 
 ## Hvað er lokið
 
@@ -61,6 +62,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta private corpus intake/readiness samantektin í API og mælaborði fyrir `VR retail` pakka
 - Fyrsti intake pakkinn með blockers og næsta skref fyrir `VR retail` pakka
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
+- Formleg afstaða um vörumerki, category og `AI Foundry` lag í source-of-truth skjölum
 
 ## Hvað er í vinnslu
 
@@ -74,6 +76,7 @@ Síðast uppfært: 2026-04-23
 - Samningssviðsgreining fyrir rétta flokkun starfa, starfstöðva og kjarasamningsumhverfis
 - Evidence lag fyrir launaseðla, tímaskráningar, ráðningarsamninga og frávikagreiningu
 - Samningssviðsgreining tengd við featured trust boundary pakkann og review merki
+- Skýrari tenging milli innri AI-vélar og sýnilegs enterprise/advisor lags
 
 ## Hvað er næst
 

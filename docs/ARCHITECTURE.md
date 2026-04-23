@@ -63,6 +63,15 @@ AI lagið hefur þrjú verkefni:
 
 AI lagið hefur ekki heimild til að reikna production laun eða sleppa yfirferð.
 
+## AI Foundry lag
+
+Frigg skilgreinir `AI Foundry` sem tvískipt lag ofan á kjarnakerfið:
+
+- innri vél sem sér um extraction, flokkun, regludrög, evidence-tengingu, regulatory diff og review-undirbúning
+- sýnilegt enterprise/advisor lag sem birtir leit, greiningu, review, skýringar og síðar API aðgang að þessum artifacts
+
+AI Foundry er því ekki sjálfstætt launakerfi og ekki sjálfstætt black-box ráðgjafalag. Það margfaldar virði compliance operating systemins en má aldrei fara fram úr deterministic runtime, evidence eða review controls.
+
 ## Næstu arkitektúrskref
 
 1. Tengja provider adapters við raunveruleg umhverfi, timeout stefnu og telemetry geymslu.

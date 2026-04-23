@@ -1,6 +1,6 @@
 # Frigg
 
-Frigg er compliance-first vinnuréttar-, kjarasamninga- og launavél fyrir íslenskan vinnumarkað. Markmiðið er að byggja traustasta, skýranlegasta og rekjanlegasta SaaS stýrikerfið á Íslandi fyrir laun, kjarasamninga og vinnuréttarlegt compliance.
+Frigg er vörumerki Kjarasamninga launavélarinnar: compliance-first vinnuréttar-, kjarasamninga- og launavélar fyrir íslenskan vinnumarkað. Markmiðið er að byggja traustasta, skýranlegasta og rekjanlegasta SaaS stýrikerfið á Íslandi fyrir laun, kjarasamninga og vinnuréttarlegt compliance.
 
 ## Staða
 
@@ -29,6 +29,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - fyrsta payroll-native intake/readiness lagið sem sýnir hvaða gögn hafa borist, hvað hefur verið sannreynt og hvað vantar enn fyrir featured pakkann
 - fyrsti payroll-native intake pakkinn sem sýnir scope, blockers og næsta skref fyrir `VR retail` pakka
 - uppfærða category-afstöðu: Frigg er ekki bara launakerfi heldur labour/payroll compliance operating system
+- formlega afstöðu um að `AI Foundry` sé tvískipt lag: bæði innri vél og sýnilegt enterprise/advisor yfirborð
 
 Nánari staða er í `docs/STATUS.md`.
 
@@ -45,6 +46,7 @@ Nánari staða er í `docs/STATUS.md`.
 - Fyrsta markaðssneið er atvinnurekendur, launafulltrúar, bókarar, ráðgjafar og HR teymi á almennum vinnumarkaði.
 - Starfsmannahamur og víðari réttindagátt eru mikilvæg framtíðarsvið, en ekki rétt fyrsta wedge.
 - Samkeppnisvörnin á að koma úr rekjanleika, skýringum, evidence-lagi, review-stýringum og coverage-sýnileika.
+- `AI Foundry` er tvískipt lag: innri vél fyrir extraction, flokkun og regludrög, og sýnilegt enterprise/advisor lag fyrir leit, review, analysis og síðar API-aðgang.
 
 ## Verkefnagrind
 
