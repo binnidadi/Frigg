@@ -107,8 +107,8 @@ async function loadHealthSnapshot() {
   setText(
     'home-ai-status-title',
     health.overallStatus === 'red'
-      ? 'AI veitendur eru ekki tengdir í þessari vél'
-      : 'AI trust lagið er komið í gegnum API'
+      ? 'AI-veitur eru ekki tengdar í þessari vél'
+      : 'Staða AI-veitna er sýnileg í viðmótinu'
   )
 
   setText(
@@ -119,8 +119,8 @@ async function loadHealthSnapshot() {
   setText(
     'login-workspace-status',
     health.overallStatus === 'red'
-      ? 'AI veitendalagið bíður eftir umhverfislyklum áður en lifandi köll verða virk.'
-      : 'AI veitendalagið er tengt og tilbúið fyrir forsýningar og yfirferð.'
+      ? 'AI-veitulagið bíður eftir umhverfislyklum áður en lifandi köll verða virk.'
+      : 'AI-veitulagið er tengt og tilbúið fyrir forsýningar og yfirferð.'
   )
 }
 
@@ -177,7 +177,7 @@ async function loadResearchWorkspace() {
     'research-summary',
     `${researchSummary.mappedWorkstreamCount} rannsóknarstraumar, ${researchSummary.sourceAcquisitionCount} skráðar heimildir, ${researchSummary.legalObligationCount} lagaskyldur og ${
       researchSummary.pensionFundProfileCount + researchSummary.unionProfileCount
-    } sjóða- og félagaprófílar eru nú kortlögð. ${researchSummary.computeWithReviewCount} svið eru komin í compute_with_review. ${researchSummary.criticalPrivateCorpusCount} forgangsgagnasöfn vantar enn.`
+    } sjóða- og félagaprófílar eru nú kortlögð. ${researchSummary.computeWithReviewCount} svið eru komin á stig þar sem reikna má með yfirferð. ${researchSummary.criticalPrivateCorpusCount} forgangsgagnasöfn vantar enn.`
   )
 
   setList('private-corpus-list', criticalPrivateCorpus, (entry) => ({
@@ -196,7 +196,7 @@ async function loadResearchWorkspace() {
     setText('featured-coverage-title', featuredCoverage.title)
     setText(
       'featured-coverage-summary',
-      `${featuredCoverage.operationalStatus} · ${featuredCoverage.coverageStatus} · residual risk ${featuredCoverage.residualRisk}. Þetta er fyrsti pakkinn sem tengir saman samning, statutory lag og routing í einni lesanlegri vöruafmörkun.`
+      `${featuredCoverage.operationalStatus} · ${featuredCoverage.coverageStatus} · afgangsáhætta ${featuredCoverage.residualRisk}. Þetta er fyrsti pakkinn sem tengir saman samning, lagaleg viðmið og routing í einni lesanlegri vöruafmörkun.`
     )
 
     setList(
@@ -207,7 +207,7 @@ async function loadResearchWorkspace() {
           value: `${entry.code} ${entry.version}`
         })),
         ...(featuredCoverage.statutoryParameterSets ?? []).map((entry) => ({
-          label: 'Statutory lag',
+          label: 'Lagaleg viðmið',
           value: `${entry.code} ${entry.version}`
         })),
         ...(featuredCoverage.pensionRoutingRules ?? []).map((entry) => ({
@@ -319,7 +319,7 @@ async function loadDashboardSnapshot() {
   if (currentRun) {
     setText(
       'dashboard-run-title',
-      `Keyrsla ${currentRun.id.replace('payroll_run_', '').replaceAll('_', ' ')} í stöðu ${currentRun.status}.`
+      `Launakeyrsla ${currentRun.id.replace('payroll_run_', '').replaceAll('_', ' ')} er í stöðu ${currentRun.status}.`
     )
     setText(
       'dashboard-status-title',
@@ -327,7 +327,7 @@ async function loadDashboardSnapshot() {
     )
     setText(
       'dashboard-status-summary',
-      `Launakeyrsla er pinnuð við ${currentRun.ruleSetVersionIds?.length ?? 0} reglusett og statutory útgáfu ${currentRun.statutoryParameterSetId}.`
+      `Launakeyrslan byggir á ${currentRun.ruleSetVersionIds?.length ?? 0} reglusettum og lagalegri útgáfu ${currentRun.statutoryParameterSetId}.`
     )
   }
 
@@ -404,7 +404,7 @@ async function main() {
     setText('home-ai-status-summary', message)
     setText('login-workspace-status', message)
     setText('dashboard-run-title', 'Stöðumynd úr API ekki tiltæk')
-    setText('dashboard-status-title', 'Ekki tókst að hlaða gögnum um keyrslulíkan')
+    setText('dashboard-status-title', 'Ekki tókst að hlaða gögnum um launakeyrsluna')
     setText('dashboard-status-summary', message)
     setText('research-title', 'Rannsóknargögn ekki tiltæk')
     setText('research-count', 'ÓTILTÆKT')

@@ -173,12 +173,12 @@ export function buildAgreementParsePreview(input = {}) {
 
   if (lines.some((line) => /starfsaldur|12 mánu|eitt ár/i.test(line))) {
     warnings.push(
-      'Starfsaldurstexti fannst, en parser skilur hann eftir í review þar sem frekari túlkun á launatöflu vantar.'
+      'Starfsaldurstexti fannst, en lestrarlagið skilur hann eftir í yfirferð þar sem frekari túlkun á launatöflu vantar.'
     )
   }
 
   if (extractedRules.length === 0) {
-    warnings.push('Engin skýr reglumynstur fundust sem parser gat umbreytt sjálfvirkt.')
+    warnings.push('Engin skýr reglumynstur fundust sem hægt var að umbreyta sjálfvirkt í regludrög.')
   }
 
   const sourceCoverage = extractedRules.length > 0 ? 0.72 : 0.45
@@ -198,14 +198,14 @@ export function buildAgreementParsePreview(input = {}) {
         label: 'Heimildaþekja',
         weight: 0.35,
         contribution: sourceCoverage,
-        rationale: 'Mælir hvort skýr samningsákvæði fundust sem hægt var að umbreyta í drög.'
+        rationale: 'Mælir hvort skýr samningsákvæði fundust sem hægt var að umbreyta í regludrög.'
       },
       {
         code: 'schema_fit',
         label: 'Samhæfi við canonical skema',
         weight: 0.25,
         contribution: schemaFit,
-        rationale: 'Mælir hversu hreint parser gat fært niðurstöðuna yfir í reglusnið Frigg.'
+        rationale: 'Mælir hversu hreint lestrarlagið gat fært niðurstöðuna yfir í reglusnið Frigg.'
       },
       {
         code: 'extraction_clarity',
@@ -219,7 +219,7 @@ export function buildAgreementParsePreview(input = {}) {
         label: 'Skýrleiki routing',
         weight: 0.15,
         contribution: Math.max(0, routingClarity - warningPenalty),
-        rationale: 'Parser metur routing aðeins að hluta á þessu stigi og skilur óvissu eftir til review.'
+        rationale: 'Lestrarlagið metur routing aðeins að hluta á þessu stigi og skilur óvissu eftir til yfirferðar.'
       }
     ]
   )
@@ -228,7 +228,7 @@ export function buildAgreementParsePreview(input = {}) {
     agreementId,
     agreementVersion,
     detectedLanguage: 'is',
-    summary: `Parser fann ${extractedRules.length} regludrög sem þarf að yfirfara áður en þau fara í rule-pack ferlið.`,
+    summary: `Lestrarlagið fann ${extractedRules.length} regludrög sem þarf að yfirfara áður en þau fara í reglusafnið.`,
     extractedRules,
     referencedSources: knowledgeSources.filter((source) => source.sourceType === 'collective_agreement').slice(0, 2),
     warnings,
@@ -250,13 +250,13 @@ export function buildAgreementParsePreview(input = {}) {
       {
         stage: 'normalize',
         status: warnings.length > 0 ? 'warning' : 'completed',
-        summary: 'Skýr ákvæði færð yfir í fyrstu review-hæfu reglu-drög.',
+        summary: 'Skýr ákvæði færð yfir í fyrstu regludrög sem þarf að yfirfara.',
         warnings
       },
       {
         stage: 'preview',
         status: 'completed',
-        summary: 'Forsýning útbúin fyrir agreement review workflow.',
+        summary: 'Forsýning útbúin fyrir yfirferðarferli samnings.',
         warnings: []
       },
       {

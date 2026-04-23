@@ -12,10 +12,10 @@
       <a class="brand" href="./index.html">Frigg</a>
       <nav class="sidebar-nav">
         <a class="active" href="./dashboard.html">Mælaborð</a>
-        <a href="#">Launakeyrslur</a>
-        <a href="#">Kjarasamningar</a>
-        <a href="#">Afturvirkar leiðréttingar</a>
-        <a href="#">Trust Center</a>
+        <a href="#">Launakeyrslur (kemur síðar)</a>
+        <a href="#">Kjarasamningar (kemur síðar)</a>
+        <a href="#">Afturvirkar leiðréttingar (kemur síðar)</a>
+        <a href="#">Traustyfirlit (kemur síðar)</a>
       </nav>
       <div class="sidebar-foot">
         <p class="small-label">Vinnusvæði</p>
@@ -27,11 +27,11 @@
       <header class="dashboard-header">
         <div>
           <p class="eyebrow">Athygli núna</p>
-          <h1 id="dashboard-run-title">Sæki stöðu keyrslu úr API.</h1>
+          <h1 id="dashboard-run-title">Sæki stöðu launakeyrslu.</h1>
         </div>
         <div class="header-actions">
           <a class="button button-secondary" href="./login.html">Skipta um notanda</a>
-          <a class="button button-primary" href="#">Samþykkja keyrslu</a>
+          <a class="button button-primary" href="#">Yfirfara og samþykkja</a>
         </div>
       </header>
 
@@ -47,7 +47,7 @@
               <p class="panel-label">Núverandi staða</p>
               <h2 id="dashboard-status-title">Sæki yfirlit yfir keyrslu.</h2>
               <p class="muted" id="dashboard-status-summary">
-                Snapshot gögn úr API munu birtast hér þegar tenging næst.
+                Yfirlit um keyrsluna birtist hér þegar tenging næst.
               </p>
             </div>
             <div class="run-stats">
@@ -98,7 +98,7 @@
             Frigg metur nú stöðu GitHub Models, Gemini, SambaNova og Mistral.
           </p>
           <ul class="compact-list" id="ai-health-list">
-            <li>Gögn um stöðu AI veitenda hafa ekki borist enn.</li>
+            <li>Gögn um stöðu AI-veitna hafa ekki borist enn.</li>
           </ul>
         </article>
 
@@ -121,7 +121,7 @@
             </thead>
             <tbody id="change-table-body">
               <tr>
-                <td colspan="4">Sæki breytingasýn úr snapshot gögnum.</td>
+                <td colspan="4">Sæki breytingasýn úr keyrslugögnum.</td>
               </tr>
             </tbody>
           </table>
@@ -136,8 +136,8 @@
           </div>
           <ul class="issue-list" id="validation-list">
             <li>
-              <strong>Engin validation gögn komin</strong>
-              <span>Snapshot API mun fylla þetta svæði.</span>
+              <strong>Engin sannprófunargögn komin</strong>
+              <span>Gögn um frávik og sannprófun birtast hér þegar tenging næst.</span>
             </li>
           </ul>
         </article>
@@ -166,13 +166,13 @@
               <p class="panel-label">Forsýning kjarasamnings</p>
               <h2>Drög að kjarasamningsreglum</h2>
             </div>
-            <a href="#">Opna yfirferðarferli</a>
+            <a href="#">Opna yfirferð (kemur síðar)</a>
           </div>
           <div class="preview-grid">
             <div class="preview-summary">
               <p class="small-label">Yfirlit úr lestri</p>
               <p class="muted" id="parse-preview-summary">
-                Sæki forsýningu úr lestri API áður en regludrög eru birt.
+                Sæki forsýningu áður en regludrög eru birt.
               </p>
               <div class="badge-row">
                 <span class="status-badge" id="parse-confidence-badge">Í bið</span>
@@ -199,7 +199,7 @@
             </div>
           </div>
           <p class="muted" id="knowledge-answer">
-            Sæki yfirlit úr knowledge layer fyrir fyrirspurn um staðgreiðslu og A1.
+            Sæki samantekt heimilda um staðgreiðslu og A1.
           </p>
           <ul class="compact-list" id="knowledge-source-list">
             <li>Engar heimildir birtar enn.</li>
@@ -240,16 +240,16 @@
           <div class="table-heading">
             <div>
               <p class="panel-label">Traustmörk pakkans</p>
-              <h2 id="featured-coverage-title">Sæki fyrsta review-pakka</h2>
+              <h2 id="featured-coverage-title">Sæki fyrsta yfirferðarpakka</h2>
             </div>
           </div>
           <p class="muted" id="featured-coverage-summary">
-            Yfirlit yfir reglusett, statutory lag og routing birtist hér þegar tenging næst.
+            Yfirlit yfir reglusett, lagaleg viðmið og routing birtist hér þegar tenging næst.
           </p>
           <ul class="issue-list compact-issues" id="featured-coverage-details">
             <li>
               <strong>Engin pakkagögn komin</strong>
-              <span>Fyrsti compute_with_review pakkinn birtist hér þegar tenging næst.</span>
+              <span>Fyrsti yfirferðarpakkinn birtist hér þegar tenging næst.</span>
             </li>
           </ul>
           <div class="table-heading">
@@ -261,7 +261,7 @@
           <ul class="issue-list compact-issues" id="featured-line-item-boundaries">
             <li>
               <strong>Engin launalínumörk komin</strong>
-              <span>Niðurbrot á line items birtist hér þegar tenging næst.</span>
+              <span>Niðurbrot á launalínum birtist hér þegar tenging næst.</span>
             </li>
           </ul>
           <div class="table-heading">
@@ -299,8 +299,8 @@
           </div>
           <ul class="issue-list compact-issues" id="scenario-list">
             <li>
-              <strong>Engin scenario gögn komin</strong>
-              <span>Scenarios úr API birtast hér þegar tenging næst.</span>
+              <strong>Engin sviðsmyndagögn komin</strong>
+              <span>Forgangssviðsmyndir birtast hér þegar tenging næst.</span>
             </li>
           </ul>
         </article>

@@ -22,6 +22,7 @@ Síðast uppfært: 2026-04-23
 - Trust boundary pakkinn er nú brotinn niður í launalínumörk sem sýna hvað er vottað, hvað er review-skylt og hvað er blokkað.
 - Fyrsta evidence-lagið tengir nú launaseðil, evidence records og line-item trust mörk í featured coverage pakkanum.
 - Fyrsta frávikagreiningarlagið ber nú saman ráðningarkjör, skráðar stundir og launaseðil í sama featured pakka.
+- Notendatexti í forsíðu, innskráningu, mælaborði og AI-forsýningum hefur verið hertur til að vera skýrari, íslenskari og faglegri.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
 - Heildarúttekt á stefnu, product direction og heimildalandslagi hefur verið framkvæmd og category-afstaða hert: Frigg er labour/payroll compliance operating system, ekki bara launakerfi með AI lagi.
