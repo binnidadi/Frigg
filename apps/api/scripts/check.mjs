@@ -210,6 +210,18 @@ if ((featuredCoveragePack.privateCorpusIntakeBlueprint.acceptanceCriteria ?? [])
   throw new Error('Featured coverage pack intake bláprent vantar samþykkisskilyrði.')
 }
 
+if (!featuredCoveragePack.privateCorpusIntakeAcceptance) {
+  throw new Error('Featured coverage pack vantar intake acceptance stöðu.')
+}
+
+if (featuredCoveragePack.privateCorpusIntakeAcceptance.status !== 'demo_only') {
+  throw new Error('Demo intake acceptance má ekki líta út fyrir að vera review-runtime-ready.')
+}
+
+if ((featuredCoveragePack.privateCorpusIntakeAcceptance.unmetRequirements ?? []).length < 2) {
+  throw new Error('Demo intake acceptance á að sýna óuppfyllt móttökuskilyrði.')
+}
+
 if (featuredCoveragePack.privateCorpusIntakePackage.dataOrigin !== 'demo_seed') {
   throw new Error('Demo intake pakki á að vera merktur sem demo_seed þar til raunveruleg gögn hafa borist.')
 }

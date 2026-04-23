@@ -258,6 +258,12 @@ async function loadResearchWorkspace() {
       'featured-intake-blueprint-title',
       featuredCoverage.privateCorpusIntakeBlueprint?.title ?? 'Afhendingarsnið ekki tiltækt'
     )
+    setText(
+      'featured-intake-acceptance-title',
+      featuredCoverage.privateCorpusIntakeAcceptance
+        ? `Móttökumat · ${featuredCoverage.privateCorpusIntakeAcceptance.completionRatio}`
+        : 'Móttökumat ekki tiltækt'
+    )
 
     setList(
       'featured-coverage-details',
@@ -347,6 +353,27 @@ async function loadResearchWorkspace() {
               strong: 'Næsti pakki',
               span: featuredCoverage.privateCorpusIntakeBlueprint.nextPackageAfterThis
             }
+          ]
+        : [],
+      (entry) => entry
+    )
+
+    setList(
+      'featured-intake-acceptance-list',
+      featuredCoverage.privateCorpusIntakeAcceptance
+        ? [
+            {
+              strong: `Staða · ${formatRuntimeReadiness(featuredCoverage.privateCorpusIntakeAcceptance.status)}`,
+              span: featuredCoverage.privateCorpusIntakeAcceptance.nextOperationalStep
+            },
+            ...featuredCoverage.privateCorpusIntakeAcceptance.satisfiedRequirements.map((item) => ({
+              strong: 'Uppfyllt',
+              span: item
+            })),
+            ...featuredCoverage.privateCorpusIntakeAcceptance.unmetRequirements.map((item) => ({
+              strong: 'Vantar enn',
+              span: item
+            }))
           ]
         : [],
       (entry) => entry

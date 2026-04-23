@@ -27,6 +27,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsti payroll-native intake pakkinn sýnir nú skýrt hvaða afhending tilheyrir `VR retail` pakkanum, hvaða blockers eru opnir og hvert næsta skref er.
 - Intake og private corpus submissions eru nú merkt með uppruna og nafnlausnarstöðu svo demóinntak líti ekki út sem raunverulegt tenant-gagnalag.
 - Fyrsta afhendingarsniðið fyrir raunverulegan payroll-native gagnapakka liggur nú fyrir með lágmarkskröfum, nafnlausnarskilyrðum og samþykkisskilyrðum.
+- Intake-lagið reiknar nú út formlegt móttökumat sem sýnir hvað er uppfyllt og hvaða skilyrði halda pakkanum enn utan review-runtime.
 - Notendatexti í forsíðu, innskráningu, mælaborði og AI-forsýningum hefur verið hertur til að vera skýrari, íslenskari og faglegri.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
@@ -65,6 +66,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsti intake pakkinn með blockers og næsta skref fyrir `VR retail` pakka
 - Skýr merking á demóinntaki gegn raunverulegum nafnlausum innsendingum
 - Fyrsta afhendingarsnið fyrir nafnlausan `VR retail` gagnapakka
+- Fyrsta intake acceptance matið fyrir `VR retail` gagnapakka
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 - Formleg afstaða um vörumerki, category og `AI Foundry` lag í source-of-truth skjölum
 
@@ -103,4 +105,5 @@ Síðast uppfært: 2026-04-23
 - Núverandi intake pakki er enn handsmíðað demótilvik og þarf raunveruleg nafnlaus skjöl áður en hann getur stýrt certified runtime flæði.
 - Núverandi featured pakki sýnir enn `0` raunverulegar customer submissions og er því aðeins undirbúningslag fyrir komandi tenant-inntak.
 - Afhendingarsniðið er nú skýrt, en engin raunveruleg viðskiptavinagögn hafa enn verið móttekin samkvæmt því.
+- Intake acceptance sýnir því enn `demo_only` stöðu og óuppfyllt skilyrði þar til fyrsta raunverulega innsendingin berst.
 - Núverandi checks verja foundation og research readiness, en ekki enn raunverulega payroll hegðun eða golden scenarios.

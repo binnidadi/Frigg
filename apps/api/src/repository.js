@@ -315,6 +315,108 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     ).length
   }
 
+  const intakeChecklist = privateCorpusIntakeBlueprint?.checklist ?? []
+  const intakeAcceptanceRequirements = [
+    ...intakeChecklist.map((item) => ({
+      code: item.code,
+      label: `${item.title} komið í móttöku`
+    })),
+    {
+      code: 'validated_evidence_triplet',
+      label: 'Launaseðill, tímaskrá og ráðningarsamningur eru öll komin í sannreynda stöðu'
+    },
+    {
+      code: 'routing_or_remittance_visible',
+      label: 'Routing og skil eru að minnsta kosti sýnileg í móttöku svo reconciliation sé ekki blindur blettur'
+    },
+    {
+      code: 'real_customer_submission',
+      label: 'Að minnsta kosti ein raunveruleg nafnlaus viðskiptavinainnsláttur hefur borist'
+    }
+  ]
+
+  const satisfiedRequirementCodes = new Set()
+
+  for (const item of intakeChecklist) {
+    const relatedSubmissions = privateCorpusSubmissions.filter(
+      (entry) =>
+        entry.code === item.code &&
+        (!entry.relatedAgreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId)) &&
+        entry.status !== 'missing'
+    )
+
+    if (relatedSubmissions.length > 0) {
+      satisfiedRequirementCodes.add(item.code)
+    }
+  }
+
+  const evidenceTripletCodes = ['payslips_corpus', 'timesheets_and_work_patterns', 'employment_contracts_and_terms']
+  if (
+    evidenceTripletCodes.every((code) =>
+      privateCorpusSubmissions.some(
+        (entry) =>
+          entry.code === code &&
+          (!entry.relatedAgreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId)) &&
+          entry.status === 'validated'
+      )
+    )
+  ) {
+    satisfiedRequirementCodes.add('validated_evidence_triplet')
+  }
+
+  if (
+    ['routing_truth', 'remittance_truth'].every((code) =>
+      privateCorpusSubmissions.some(
+        (entry) =>
+          entry.code === code &&
+          (!entry.relatedAgreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId)) &&
+          (entry.status === 'received' || entry.status === 'validated' || entry.status === 'review_required')
+      )
+    )
+  ) {
+    satisfiedRequirementCodes.add('routing_or_remittance_visible')
+  }
+
+  if (
+    privateCorpusSubmissions.some(
+      (entry) =>
+        entry.dataOrigin !== 'demo_seed' &&
+        (!entry.relatedAgreementPackId || featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId))
+    )
+  ) {
+    satisfiedRequirementCodes.add('real_customer_submission')
+  }
+
+  const satisfiedRequirements = intakeAcceptanceRequirements
+    .filter((entry) => satisfiedRequirementCodes.has(entry.code))
+    .map((entry) => entry.label)
+
+  const unmetRequirements = intakeAcceptanceRequirements
+    .filter((entry) => !satisfiedRequirementCodes.has(entry.code))
+    .map((entry) => entry.label)
+
+  const intakeAcceptanceStatus =
+    privateCorpusIntakePackage?.runtimeReadiness === 'ready_for_review_runtime' &&
+    unmetRequirements.length === 0
+      ? 'ready_for_review_runtime'
+      : privateCorpusIntakePackage?.runtimeReadiness === 'demo_only'
+        ? 'demo_only'
+        : 'collecting'
+
+  const privateCorpusIntakeAcceptance = privateCorpusIntakePackage
+    ? {
+        packageId: privateCorpusIntakePackage.id,
+        status: intakeAcceptanceStatus,
+        completionRatio: `${satisfiedRequirements.length}/${intakeAcceptanceRequirements.length}`,
+        unmetRequirements,
+        satisfiedRequirements,
+        nextOperationalStep:
+          intakeAcceptanceStatus === 'ready_for_review_runtime'
+            ? 'Pakkinn má færast yfir í review-runtime og tengjast virku samningssviði, evidence og frávikagreiningu.'
+            : 'Næsta skref er að skipta demóinntaki út fyrir raunverulegar nafnlausar innsendingar sem loka óuppfylltum móttökuskilyrðum.'
+      }
+    : null
+
   return {
     ...clone(featuredEntry),
     statutoryParameterSets: (featuredEntry.statutoryParameterSetIds ?? [])
@@ -335,6 +437,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     privateCorpusReadinessSummary,
     privateCorpusIntakePackage,
     privateCorpusIntakeBlueprint,
+    privateCorpusIntakeAcceptance,
     privateCorpusProvenance,
     payslips: relatedPayslips,
     evidenceByLineItem,

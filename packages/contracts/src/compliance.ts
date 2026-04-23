@@ -329,3 +329,12 @@ export interface PrivateCorpusIntakeBlueprint {
   acceptanceCriteria: string[]
   nextPackageAfterThis: string
 }
+
+export interface PrivateCorpusIntakeAcceptance {
+  packageId: Identifier
+  status: 'demo_only' | 'collecting' | 'ready_for_review_runtime'
+  completionRatio: string
+  unmetRequirements: string[]
+  satisfiedRequirements: string[]
+  nextOperationalStep: string
+}

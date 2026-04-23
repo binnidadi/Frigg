@@ -55,6 +55,7 @@ Síðast uppfært: 2026-04-22
 - Sá pakki er enn merktur `demo_only` og má ekki túlka sem raunverulega viðskiptavinainnslátt eða certified runtime grunn.
 - Næsta raunverulega framför er að skipta einstökum demófærslum út fyrir nafnlaus customer uploads með skýrri nafnlausnar- og sannprófunarstöðu.
 - Fyrsta afhendingarsniðið segir nú nákvæmlega hvaða fimm gagnategundir þurfa að koma saman fyrir fyrsta raunverulega `VR retail` pakka, í hvaða formi og með hvaða lágmarki.
+- Repo sýnir nú líka móttökumat sem verður ekki grænt fyrr en raunveruleg nafnlaus innsending hefur lokað þessum skilyrðum.
 
 ## Fyrsta afhendingarsniðið sem við viljum fá næst
 
