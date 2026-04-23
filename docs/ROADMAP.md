@@ -82,3 +82,4 @@ Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-
 - audit reconstruction
 - pilot tenant onboarding
 - fyrsta `compute_with_review` flæði með raunverulegum launaseðlum og tímaskráningum
+- payroll-native intake/readiness sýn sem skýrir hvaða innsendingar hafa verið sannreyndar og hvað heldur review opnu

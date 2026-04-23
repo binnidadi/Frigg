@@ -26,6 +26,7 @@ Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
 - fyrsta evidence-lagið sem tengir launaseðil, launalínu og sönnunarfærslur inn í featured trust boundary pakkann
 - fyrsta frávikagreiningarlagið sem ber saman ráðningarkjör, skráðar stundir og útgefinn launaseðil
 - fyrsta samningssviðsgreiningarlagið sem sýnir af hverju starfsmaður fellur innan samningspakka eða þarf yfirferð
+- fyrsta payroll-native intake/readiness lagið sem sýnir hvaða gögn hafa borist, hvað hefur verið sannreynt og hvað vantar enn fyrir featured pakkann
 - uppfærða category-afstöðu: Frigg er ekki bara launakerfi heldur labour/payroll compliance operating system
 
 Nánari staða er í `docs/STATUS.md`.

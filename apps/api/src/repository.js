@@ -69,6 +69,7 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
   const unionRoutingRules = snapshot.unionRoutingRules ?? []
   const payrollInputs = snapshot.payrollInputs ?? []
   const agreementScopeAssessments = snapshot.agreementScopeAssessments ?? []
+  const privateCorpusSubmissions = snapshot.privateCorpusSubmissions ?? []
   const contracts = snapshot.contracts ?? []
   const payslips = snapshot.payslips ?? []
   const payslipEvidenceRecords = snapshot.payslipEvidenceRecords ?? []
@@ -226,6 +227,58 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
     blockedCount: scopeAssessments.filter((entry) => entry.status === 'blocked').length
   }
 
+  const requiredPrivateCorpusCodes = [
+    ...new Set([
+      ...(featuredEntry.lineItemBoundaries ?? []).flatMap((entry) => entry.requiredPrivateCorpusCodes ?? []),
+      ...varianceFindings.flatMap((entry) => entry.requiredPrivateCorpusCodes ?? []),
+      ...scopeAssessments.flatMap((entry) => entry.requiredPrivateCorpusCodes ?? [])
+    ])
+  ]
+
+  const privateCorpusReadiness = requiredPrivateCorpusCodes.map((code) => {
+    const requirement =
+      (workspace.requiredPrivateCorpus ?? []).find((entry) => entry.code === code) ?? null
+    const relatedSubmissions = privateCorpusSubmissions.filter(
+      (entry) =>
+        entry.code === code &&
+        (!entry.relatedAgreementPackId ||
+          featuredEntry.relatedAgreementPackIds?.includes(entry.relatedAgreementPackId))
+    )
+
+    let status = 'missing'
+    if (relatedSubmissions.some((entry) => entry.status === 'validated')) {
+      status = 'validated'
+    } else if (relatedSubmissions.some((entry) => entry.status === 'received')) {
+      status = 'received'
+    } else if (relatedSubmissions.some((entry) => entry.status === 'review_required')) {
+      status = 'review_required'
+    }
+
+    return {
+      code,
+      title: requirement?.title ?? code,
+      priority: requirement?.priority ?? 'high',
+      minimumTarget: requirement?.minimumTarget ?? 'Óskilgreint',
+      whyItMatters: requirement?.whyItMatters ?? 'Skýring vantar.',
+      status,
+      submissionCount: relatedSubmissions.length,
+      validatedCount: relatedSubmissions.filter((entry) => entry.status === 'validated').length,
+      receivedCount: relatedSubmissions.filter((entry) => entry.status === 'received').length,
+      reviewRequiredCount: relatedSubmissions.filter((entry) => entry.status === 'review_required')
+        .length,
+      summaries: relatedSubmissions.map((entry) => entry.summary)
+    }
+  })
+
+  const privateCorpusReadinessSummary = {
+    totalCount: privateCorpusReadiness.length,
+    validatedCount: privateCorpusReadiness.filter((entry) => entry.status === 'validated').length,
+    receivedCount: privateCorpusReadiness.filter((entry) => entry.status === 'received').length,
+    reviewRequiredCount: privateCorpusReadiness.filter((entry) => entry.status === 'review_required')
+      .length,
+    missingCount: privateCorpusReadiness.filter((entry) => entry.status === 'missing').length
+  }
+
   return {
     ...clone(featuredEntry),
     statutoryParameterSets: (featuredEntry.statutoryParameterSetIds ?? [])
@@ -242,6 +295,8 @@ function buildFeaturedCoveragePack(workspace, snapshot) {
       .filter(Boolean),
     agreementScopeAssessments: scopeAssessments,
     agreementScopeSummary: scopeAssessmentSummary,
+    privateCorpusReadiness,
+    privateCorpusReadinessSummary,
     payslips: relatedPayslips,
     evidenceByLineItem,
     varianceFindings
@@ -338,6 +393,7 @@ function buildRepositoryApi({
         payslipCount: snapshot.payslips?.length ?? 0,
         payslipEvidenceRecordCount: snapshot.payslipEvidenceRecords?.length ?? 0,
         agreementScopeAssessmentCount: snapshot.agreementScopeAssessments?.length ?? 0,
+        privateCorpusSubmissionCount: snapshot.privateCorpusSubmissions?.length ?? 0,
         researchWorkstreamCount: researchSummary.workstreamCount,
         legalObligationCount: researchSummary.legalObligationCount,
         coverageMatrixCount: researchSummary.coverageMatrixCount

@@ -23,6 +23,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta evidence-lagið tengir nú launaseðil, evidence records og line-item trust mörk í featured coverage pakkanum.
 - Fyrsta frávikagreiningarlagið ber nú saman ráðningarkjör, skráðar stundir og launaseðil í sama featured pakka.
 - Fyrsta samningssviðsgreiningarlagið sýnir nú hvaða starfsmenn falla innan featured pakkans, hvaða merki styðja valið og hvar yfirferð er enn nauðsynleg.
+- Fyrsta payroll-native intake/readiness lagið sýnir nú hvaða gögn hafa borist inn fyrir featured pakkann, hvað hefur verið sannreynt og hvaða gagnabil halda pakkanum í review.
 - Notendatexti í forsíðu, innskráningu, mælaborði og AI-forsýningum hefur verið hertur til að vera skýrari, íslenskari og faglegri.
 - `HREIN_GOGN` hefur verið greint og staðfest sem bókhalds- og afstemmingalag fremur en payroll-native truth layer.
 - Grunnlag rannsóknarvinnusvæðis hefur verið bætt við í contracts, gagnamódeli, seed gögnum og source-of-truth skjölum.
@@ -56,6 +57,7 @@ Síðast uppfært: 2026-04-23
 - Fyrsta sönnunarlagið sem sýnir hvaða launalínur hafa raunverulegar evidence færslur í demo-snapshot
 - Fyrsta contract-vs-timesheet-vs-pay frávikagreiningin í API og mælaborði
 - Fyrsta samningssviðsgreiningin í API og mælaborði fyrir `VR retail` pakka
+- Fyrsta private corpus intake/readiness samantektin í API og mælaborði fyrir `VR retail` pakka
 - Skýrari stefnumynd um markaðssneið, category og forgangsröðun næstu capability-lotu
 
 ## Hvað er í vinnslu
@@ -73,7 +75,7 @@ Síðast uppfært: 2026-04-23
 
 ## Hvað er næst
 
-1. Fá inn fyrsta payroll-native private corpus pakkann: launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
+1. Skipta fyrsta payroll-native private corpus pakkanum út úr demóinntaki yfir í raunverulegar nafnlausar innsendingar.
 2. Dýpka samningssviðsgreiningu með payroll-native gögnum svo merki og yfirferðarstaða byggi ekki lengur eingöngu á demo-snapshot.
 3. Festa fyrsta payroll-native private corpus pakkann inn í frávikagreiningu og review workflow.
 4. Tengja repository layer við raunverulegan gagnagrunnsdrifara.
@@ -88,4 +90,5 @@ Síðast uppfært: 2026-04-23
 - AI provider layer er enn án lifandi tenginga við ytri veitendur og án raunverulegra health mælinga.
 - Samningssviðsgreining og samanburður milli kjarasamninga eru ekki komin í keyrsluhæft lag enn.
 - Núverandi samningssviðsgreining er enn bundin við featured demo-pakka og þarf payroll-native sannleiksgögn áður en hún getur orðið certified.
+- Núverandi intake/readiness lag er enn demo-drifið og sýnir aðeins fyrstu mynd af móttöku og sannprófun payroll-native gagna.
 - Núverandi checks verja foundation og research readiness, en ekki enn raunverulega payroll hegðun eða golden scenarios.

@@ -274,3 +274,16 @@ export interface ReviewTask {
   reason: string
   createdAt: string
 }
+
+export interface PrivateCorpusSubmission {
+  id: Identifier
+  code: string
+  employerId: Identifier
+  employeeId: Identifier | null
+  relatedAgreementPackId: Identifier | null
+  status: 'missing' | 'received' | 'validated' | 'review_required'
+  sourceType: 'customer_upload' | 'manual_entry' | 'system_seed'
+  receivedAt: string | null
+  validatedAt: string | null
+  summary: string
+}

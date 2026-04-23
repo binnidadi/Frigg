@@ -467,6 +467,81 @@ export const agreementScopeAssessments = [
   }
 ]
 
+export const privateCorpusSubmissions = [
+  {
+    id: 'private_payslip_gudrun_2026_04',
+    code: 'payslips_corpus',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_gudrun',
+    relatedAgreementPackId: 'agreement_pack_vr_retail',
+    status: 'validated',
+    sourceType: 'customer_upload',
+    receivedAt: '2026-04-29T14:10:00Z',
+    validatedAt: '2026-04-29T15:00:00Z',
+    summary: 'Launaseðill Guðrúnar fyrir apríl hefur borist og verið staðfestur gegn demo-keyrslu.'
+  },
+  {
+    id: 'private_contract_gudrun_001',
+    code: 'employment_contracts_and_terms',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_gudrun',
+    relatedAgreementPackId: 'agreement_pack_vr_retail',
+    status: 'validated',
+    sourceType: 'customer_upload',
+    receivedAt: '2026-04-29T14:20:00Z',
+    validatedAt: '2026-04-29T15:05:00Z',
+    summary: 'Ráðningarsamningur Guðrúnar hefur verið nafnlausgerður og tengdur við samningssviðsmat.'
+  },
+  {
+    id: 'private_timesheet_gudrun_2026_04',
+    code: 'timesheets_and_work_patterns',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_gudrun',
+    relatedAgreementPackId: 'agreement_pack_vr_retail',
+    status: 'received',
+    sourceType: 'customer_upload',
+    receivedAt: '2026-04-29T16:10:00Z',
+    validatedAt: null,
+    summary: 'Tímaskrá Guðrúnar hefur borist, en hún hefur ekki enn verið sannreynd gegn kvöldálagslínu.'
+  },
+  {
+    id: 'private_contract_jon_001',
+    code: 'employment_contracts_and_terms',
+    employerId: 'employer_frigg_demo',
+    employeeId: 'employee_jon',
+    relatedAgreementPackId: 'agreement_pack_vr_retail',
+    status: 'received',
+    sourceType: 'customer_upload',
+    receivedAt: '2026-04-29T16:20:00Z',
+    validatedAt: null,
+    summary: 'Ráðningarsamningur Jóns hefur borist, en flokkun vaktstjóra er enn í yfirferð.'
+  },
+  {
+    id: 'private_routing_vr_live',
+    code: 'routing_truth',
+    employerId: 'employer_frigg_demo',
+    employeeId: null,
+    relatedAgreementPackId: 'agreement_pack_vr_retail',
+    status: 'review_required',
+    sourceType: 'manual_entry',
+    receivedAt: '2026-04-29T17:00:00Z',
+    validatedAt: null,
+    summary: 'Routing tafla fyrir VR og LIVE hefur verið skráð handvirkt, en vantar staðfestingu per starfsmann.'
+  },
+  {
+    id: 'private_remittance_missing_2026_04',
+    code: 'remittance_truth',
+    employerId: 'employer_frigg_demo',
+    employeeId: null,
+    relatedAgreementPackId: 'agreement_pack_vr_retail',
+    status: 'missing',
+    sourceType: 'system_seed',
+    receivedAt: null,
+    validatedAt: null,
+    summary: 'Engin raunveruleg skilagrein eða skilastaðfesting hefur enn borist fyrir aprílkeyrslu.'
+  }
+]
+
 export const reviewTasks = [
   {
     id: 'review_task_a1',
@@ -540,6 +615,7 @@ export const payrollDomainSnapshot = {
   contracts,
   payrollInputs,
   agreementScopeAssessments,
+  privateCorpusSubmissions,
   agreementVersions,
   ruleSetVersions,
   statutoryParameterSets,

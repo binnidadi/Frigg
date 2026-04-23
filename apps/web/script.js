@@ -206,6 +206,16 @@ async function loadResearchWorkspace() {
         featuredCoverage.agreementScopeSummary?.blockedCount ?? 0
       } eru blokkaðir þar til samningssvið er skýrt.`
     )
+    setText(
+      'featured-private-corpus-summary',
+      `${featuredCoverage.privateCorpusReadinessSummary?.validatedCount ?? 0} gagnasöfn eru sannreynd, ${
+        featuredCoverage.privateCorpusReadinessSummary?.receivedCount ?? 0
+      } hafa borist en bíða staðfestingar, ${
+        featuredCoverage.privateCorpusReadinessSummary?.reviewRequiredCount ?? 0
+      } eru í yfirferð og ${
+        featuredCoverage.privateCorpusReadinessSummary?.missingCount ?? 0
+      } vantar enn fyrir pakkann.`
+    )
 
     setList(
       'featured-coverage-details',
@@ -247,6 +257,17 @@ async function loadResearchWorkspace() {
             ? ` Óleyst: ${entry.unresolvedQuestions[0]}`
             : ''
         }`
+      })
+    )
+
+    setList(
+      'featured-private-corpus-list',
+      featuredCoverage.privateCorpusReadiness ?? [],
+      (entry) => ({
+        strong: `${entry.title} · ${entry.status}`,
+        span: `${entry.whyItMatters} ${
+          entry.summaries?.[0] ?? 'Engin innsending eða sannprófun skráð enn.'
+        } Vænt lágmark: ${entry.minimumTarget}.`
       })
     )
 
@@ -439,8 +460,11 @@ async function main() {
     setText('featured-coverage-summary', message)
     setText('featured-scope-title', 'Samningssvið ekki tiltækt')
     setText('featured-scope-summary', message)
+    setText('featured-private-corpus-title', 'Payroll-native gögn ekki tiltæk')
+    setText('featured-private-corpus-summary', message)
     setList('featured-coverage-details', [], () => '')
     setList('featured-scope-list', [], () => '')
+    setList('featured-private-corpus-list', [], () => '')
     setList('featured-line-item-boundaries', [], () => '')
     setList('featured-evidence-list', [], () => '')
     setList('featured-variance-list', [], () => '')
