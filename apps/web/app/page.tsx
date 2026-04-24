@@ -11,7 +11,7 @@ const workflowSteps = [
   },
   {
     title: 'Reikna kostnað',
-    text: 'Reikna landað kostnaðarverð með determinískri reiknivél þegar schema og reglur liggja fyrir.'
+    text: 'Reikna landað kostnaðarverð með determinískri reiknivél, skýrum inntökum og review-skyldri niðurstöðu.'
   },
   {
     title: 'Undirbúa bókun',
@@ -47,8 +47,8 @@ export default function HomePage() {
       </section>
 
       <section className="status-strip" id="current-status" aria-label="Núverandi staða">
-        <span>Tæknigrunnur tilbúinn</span>
-        <span>Gagnalíkan næst</span>
+        <span>Tæknigrunnur og schema tilbúin</span>
+        <span>Reiknivél í grunni</span>
         <span>Engin production tollflokkun enn</span>
       </section>
 
@@ -81,10 +81,11 @@ export default function HomePage() {
 
         <article className="panel muted">
           <p className="eyebrow">Staða reiknivélar</p>
-          <h2>Landað kostnaðarverð er á áætlun.</h2>
+          <h2>Landað kostnaðarverð er komið í tæknigrunn.</h2>
           <p>
             Reiknivél fyrir landað kostnaðarverð er merkt sem {landedCostEngineBoundary.status} og
-            verður útfærð í {landedCostEngineBoundary.plannedFor}. Hún mun ekki byggja á LLM-köllum.
+            var sett upp í {landedCostEngineBoundary.plannedFor}. Hún byggir ekki á LLM-köllum og
+            niðurstöður þurfa áfram review áður en þær teljast samþykktar.
           </p>
         </article>
       </section>

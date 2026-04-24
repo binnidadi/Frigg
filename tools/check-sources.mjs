@@ -11,6 +11,15 @@ const allowedSourceTypes = new Set([
   'ai_governance',
   'vendor_reference'
 ])
+const domainSourceTypes = new Set([
+  'official_authority',
+  'machine_reference',
+  'international_standard',
+  'regulatory_guidance',
+  'ai_governance',
+  'vendor_reference',
+  'internal_policy'
+])
 const allowedTrustTiers = new Set(['primary', 'secondary', 'reference'])
 const allowedReviewStates = new Set(['draft', 'needs_review', 'approved', 'superseded'])
 const requiredPrimarySources = [
@@ -80,6 +89,10 @@ for (const source of sourceRegistry.sources ?? []) {
 
   if (!allowedSourceTypes.has(source.sourceType)) {
     findings.push(`${label}: óþekkt sourceType ${source.sourceType}.`)
+  }
+
+  if (!domainSourceTypes.has(source.sourceType)) {
+    findings.push(`${label}: sourceType ${source.sourceType} er ekki samræmt domain SourceType.`)
   }
 
   if (!allowedTrustTiers.has(source.trustTier)) {

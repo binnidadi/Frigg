@@ -10,7 +10,7 @@ Frigg skal vera domain-first, SaaS-first kerfi fyrir innflutning og tollafgreið
 - `packages/domain`: canonical TypeScript contracts, enums og síðar runtime validation.
 - `packages/engine`: boundary fyrir determiníska landed cost reiknivél og sannreynanleg skýringarlög.
 - `packages/ai`: provider abstraction fyrir LLM, embeddings og AI Foundry tengingar.
-- `prisma/schema.prisma`: canonical gagnalíkan fyrir Postgres/Supabase; domain models koma í Lotu 3.
+- `prisma/schema.prisma`: canonical gagnalíkan fyrir Postgres/Supabase, innflutningsmál, heimildir, review, audit, landed cost og samþættingar.
 - `docs`: source-of-truth skjöl, ADR og stöðumat.
 
 Sérstakt `apps/api` verður aðeins stofnað ef Next server layer dugar ekki fyrir domain API, integration jobs eða bakgrunnsvinnslu. Sjálfgefin stefna er að byrja með einfaldasta modular monolith grunni og bæta við aðskildu API appi þegar þörfin er skýr.

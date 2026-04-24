@@ -3,8 +3,10 @@ import type { ReviewState } from './review.js'
 
 export type SourceType =
   | 'official_authority'
+  | 'machine_reference'
   | 'international_standard'
   | 'regulatory_guidance'
+  | 'ai_governance'
   | 'vendor_reference'
   | 'internal_policy'
 

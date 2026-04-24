@@ -49,7 +49,9 @@ const requiredFragments = [
   '@@index([entityType, entityId])',
   '@@unique([sourceId, version, retrievedAt])',
   'sourceReferences',
-  'decisionState'
+  'decisionState',
+  'MACHINE_REFERENCE',
+  'AI_GOVERNANCE'
 ]
 
 const findings = []
