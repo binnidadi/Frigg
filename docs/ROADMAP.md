@@ -56,6 +56,7 @@
 - Skila skýringum með formúlum, inntökum, milliskrefum og rounding policy.
 - Bæta við unit tests og golden scenarios.
 - Fyrsti deterministic engine grunnur er kominn í `packages/engine` með synthetic golden scenario.
+- Engine býr til audit draft og review task draft fyrir útreikning án þess að staðfesta niðurstöðu sjálfkrafa.
 
 ## Lota 5: Ingestion, classification og AI boundary
 

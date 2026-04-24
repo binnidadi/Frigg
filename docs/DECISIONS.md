@@ -64,3 +64,8 @@
 
 - Staða: Samþykkt
 - Ástæða: Landað kostnaðarverð hefur fjárhagsleg áhrif og verður að vera endurkeyranlegt, útskýranlegt og prófanlegt. Reiknivélin má aðeins nota skýr inntök, formúlur og rounding policy; hún má ekki fela gjalda- eða skattarökfræði inni í LLM-kalli.
+
+## D-014: Landed cost útreikningur þarf audit og review áður en hann er samþykktur
+
+- Staða: Samþykkt
+- Ástæða: Útreiknuð niðurstaða er ekki sjálfkrafa samþykkt niðurstaða. Engine má búa til `computed` audit draft og review task draft, en staðfesting þarf síðar að fara í gegnum review workflow, heimildir og audit trail.

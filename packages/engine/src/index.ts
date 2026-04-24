@@ -1,4 +1,4 @@
-import type { CurrencyCode, Identifier, IsoDateTime } from '@frigg/domain'
+import type { AuditAction, CurrencyCode, Identifier, IsoDateTime, ReviewTaskType } from '@frigg/domain'
 
 export type RoundingMode = 'half_up'
 
@@ -97,6 +97,57 @@ export interface LandedCostResult {
   readonly taxComponents: TaxComponentResult[]
   readonly totalMinor: number
   readonly computedAt: IsoDateTime
+}
+
+export type LandedCostAuditEventKind = 'landed_cost_computed' | 'landed_cost_review_requested'
+
+export interface LandedCostAuditContext {
+  readonly importerId: Identifier | null
+  readonly actorId: Identifier | null
+  readonly createdAt: IsoDateTime
+}
+
+export interface LandedCostAuditDraft {
+  readonly action: AuditAction
+  readonly entityType: 'LandedCostCalculation'
+  readonly entityId: Identifier
+  readonly importerId: Identifier | null
+  readonly actorId: Identifier | null
+  readonly before: null
+  readonly after: Record<string, unknown>
+  readonly metadata: {
+    readonly eventKind: LandedCostAuditEventKind
+    readonly shipmentId: Identifier
+    readonly totalMinor: number
+    readonly currency: 'ISK'
+    readonly sourceReferences: string[]
+    readonly warningCount: number
+  }
+  readonly createdAt: IsoDateTime
+}
+
+export interface LandedCostReviewTaskContext {
+  readonly importerId: Identifier | null
+  readonly sourceSnapshotId: Identifier | null
+  readonly priority: number
+  readonly createdAt: IsoDateTime
+}
+
+export interface LandedCostReviewTaskDraft {
+  readonly taskType: ReviewTaskType
+  readonly status: 'open'
+  readonly importerId: Identifier | null
+  readonly sourceSnapshotId: Identifier | null
+  readonly entityType: 'LandedCostCalculation'
+  readonly entityId: Identifier
+  readonly title: string
+  readonly description: string
+  readonly priority: number
+  readonly assignedTo: null
+  readonly dueAt: null
+  readonly resolvedAt: null
+  readonly resolution: null
+  readonly createdAt: IsoDateTime
 }
 
 export interface LandedCostEngineBoundary {
@@ -242,6 +293,60 @@ export function calculateLandedCost(input: LandedCostInput, computedAt: IsoDateT
     taxComponents,
     totalMinor: toSafeNumber(totalMinor, 'heildarniðurstaða'),
     computedAt
+  }
+}
+
+export function createLandedCostComputedAuditDraft(
+  result: LandedCostResult,
+  context: LandedCostAuditContext
+): LandedCostAuditDraft {
+  return {
+    action: 'computed',
+    entityType: 'LandedCostCalculation',
+    entityId: result.calculationId,
+    importerId: context.importerId,
+    actorId: context.actorId,
+    before: null,
+    after: {
+      status: result.status,
+      totalMinor: result.totalMinor,
+      currency: result.currency,
+      computedAt: result.computedAt,
+      lineCount: result.lines.length,
+      taxComponentCount: result.taxComponents.length
+    },
+    metadata: {
+      eventKind: 'landed_cost_computed',
+      shipmentId: result.shipmentId,
+      totalMinor: result.totalMinor,
+      currency: result.currency,
+      sourceReferences: result.inputSnapshot.sourceReferences,
+      warningCount: result.explanation.warnings.length
+    },
+    createdAt: context.createdAt
+  }
+}
+
+export function createLandedCostReviewTaskDraft(
+  result: LandedCostResult,
+  context: LandedCostReviewTaskContext
+): LandedCostReviewTaskDraft {
+  return {
+    taskType: 'landed_cost_calculation',
+    status: 'open',
+    importerId: context.importerId,
+    sourceSnapshotId: context.sourceSnapshotId,
+    entityType: 'LandedCostCalculation',
+    entityId: result.calculationId,
+    title: 'Yfirfara landað kostnaðarverð',
+    description:
+      'Yfirfara þarf inntök, gengi, gjaldareglur, rounding policy og warnings áður en niðurstaða má teljast samþykkt.',
+    priority: context.priority,
+    assignedTo: null,
+    dueAt: null,
+    resolvedAt: null,
+    resolution: null,
+    createdAt: context.createdAt
   }
 }
 

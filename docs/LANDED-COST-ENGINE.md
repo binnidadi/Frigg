@@ -16,6 +16,8 @@ Lota 4 hefur sett upp fyrsta TypeScript grunn í `packages/engine`. Grunnurinn s
 - synthetic gjaldareglur sem prófunarinntak
 - úttak í ISK
 - formúlur, inntök, milliskref, warnings og rounding policy
+- audit draft fyrir `computed` atburð
+- review task draft fyrir mannlega yfirferð á útreikningi
 
 Þessi lota skilgreinir ekki production tolla, vörugjöld eða VSK. Öll gjaldahlutföll koma sem inntak og þurfa síðar að tengjast yfirfarinni heimild, reglu eða mannlegri staðfestingu.
 
@@ -44,5 +46,5 @@ Næsta costing-lota ætti að:
 
 1. Tengja engine input við domain contracts í `packages/domain`.
 2. Bæta við fleiri rounding-prófum og edge cases.
-3. Bæta við audit event fyrir útreikning.
+3. Tengja audit og review draft við persistence/service lag þegar það verður til.
 4. Undirbúa rule artifact format fyrir raunverulegar gjaldareglur með review state.

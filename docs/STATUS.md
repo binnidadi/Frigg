@@ -18,6 +18,7 @@ Síðast uppfært: 2026-04-24
 - Fixture stefna bannar raw `HREIN_GOGN` og önnur raunveruleg viðskiptavinagögn í Git.
 - Fyrsta synthetic import fixture er komið í `fixtures/synthetic/import-review-scenario.json` og er staðfest með `tools/check-fixtures.mjs`.
 - Fyrsti determiníski landed cost engine grunnur er kominn í `packages/engine` með synthetic golden prófi.
+- Landed cost engine býr nú til audit draft og review task draft svo niðurstaða sé rekjanleg án sjálfvirkrar samþykktar.
 - Engin tollflokkun, leyfisskylda, reglufylgni eða peningaleg reiknirökfræði hefur verið útfærð sem production logic enn.
 
 ## Lokið
@@ -31,14 +32,15 @@ Síðast uppfært: 2026-04-24
 - Vöruheiti samræmt: Frigg er canonical heiti í vöru, skjölum og notendaviðmóti.
 - Knowledge registry lota: machine-readable source registry og snapshot-stubbar án raw ytri gagna.
 - Lota 4 grunnur: determinísk landed cost reiknivél með synthetic golden scenario.
+- Audit/review costing lota: audit draft og review task draft fyrir computed landed cost niðurstöður.
 
 ## Í vinnslu
 
-- Undirbúningur fyrir næstu lotu: tengja landed cost engine við domain workflow, audit og UI demo.
+- Undirbúningur fyrir næstu lotu: styrkja rounding edge cases og hanna read-only UI demo.
 
 ## Næst
 
-1. Tengja landed cost engine við review workflow og audit event taxonomy.
-2. Bæta við fleiri rounding edge cases og validation fyrir óstuddar gjaldmiðlasamsetningar.
-3. Hanna read-only UI demo fyrir synthetic import-review mál og landed cost útreikning.
+1. Bæta við fleiri rounding edge cases og validation fyrir óstuddar gjaldmiðlasamsetningar.
+2. Hanna read-only UI demo fyrir synthetic import-review mál og landed cost útreikning.
+3. Tengja audit/review draft við persistence/service lag þegar domain service lag verður útfært.
 4. Uppfæra skjöl samhliða hverri lotu svo staða og næstu skref haldist skýr.

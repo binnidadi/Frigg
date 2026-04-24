@@ -1,5 +1,11 @@
 import { strict as assert } from 'node:assert'
-import { calculateLandedCost, landedCostEngineBoundary, type LandedCostInput } from './index.js'
+import {
+  calculateLandedCost,
+  createLandedCostComputedAuditDraft,
+  createLandedCostReviewTaskDraft,
+  landedCostEngineBoundary,
+  type LandedCostInput
+} from './index.js'
 
 const goldenInput: LandedCostInput = {
   calculationId: 'calc_synthetic_landed_cost_001',
@@ -89,6 +95,31 @@ assert.equal(result.taxComponents[1]?.amountMinor, 59865)
 assert.equal(result.totalMinor, 309302)
 assert.match(result.taxComponents[0]?.formula ?? '', /round/)
 assert.match(result.explanation.warnings.join(' '), /ekki staðfest/)
+
+const auditDraft = createLandedCostComputedAuditDraft(result, {
+  importerId: 'imp_synthetic_nordurljos',
+  actorId: 'system_landed_cost_engine',
+  createdAt: '2026-04-24T00:00:00.000Z'
+})
+
+assert.equal(auditDraft.action, 'computed')
+assert.equal(auditDraft.entityType, 'LandedCostCalculation')
+assert.equal(auditDraft.entityId, result.calculationId)
+assert.equal(auditDraft.metadata.eventKind, 'landed_cost_computed')
+assert.equal(auditDraft.metadata.totalMinor, 309302)
+assert.deepEqual(auditDraft.metadata.sourceReferences, goldenInput.sourceReferences)
+
+const reviewTask = createLandedCostReviewTaskDraft(result, {
+  importerId: 'imp_synthetic_nordurljos',
+  sourceSnapshotId: 'snap_skatturinn_tollskrarlyklar_2026_04_24',
+  priority: 40,
+  createdAt: '2026-04-24T00:00:00.000Z'
+})
+
+assert.equal(reviewTask.taskType, 'landed_cost_calculation')
+assert.equal(reviewTask.status, 'open')
+assert.equal(reviewTask.entityId, result.calculationId)
+assert.match(reviewTask.description, /Yfirfara/)
 
 assert.throws(
   () =>
