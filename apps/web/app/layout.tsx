@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './styles.css'
 
 export const metadata: Metadata = {
-  title: 'Tollvörð Pro',
+  title: 'Frigg',
   description: 'SaaS-first grunnur fyrir innflutningsumsýslu og tollafgreiðslu.'
 }
 

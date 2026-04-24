@@ -1,8 +1,8 @@
-# Arkitektúr Tollvarðar Pro
+# Arkitektúr Frigg
 
 ## Markmið
 
-Tollvörð Pro skal vera domain-first, SaaS-first kerfi fyrir innflutning og tollafgreiðslu. Fyrsta hönnun miðar að modular monolith með skýrum mörkum milli innlesturs, tollflokkunar, regluviðvarana, landaðs kostnaðarverðs, audit og samþættinga.
+Frigg skal vera domain-first, SaaS-first kerfi fyrir innflutning og tollafgreiðslu. Fyrsta hönnun miðar að modular monolith með skýrum mörkum milli innlesturs, tollflokkunar, regluviðvarana, landaðs kostnaðarverðs, audit og samþættinga.
 
 ## Verkefnastrúktúr
 

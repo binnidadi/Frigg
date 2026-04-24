@@ -1,10 +1,10 @@
-# UX-greining Tollvarðar Pro
+# UX-greining Frigg
 
 Síðast uppfært: 2026-04-24
 
 ## A. Heildarmat
 
-Tollvörð Pro er nú skýrari sem snemmstigs SaaS vara fyrir innflutning og tollafgreiðslu, en undirliggjandi virkni er enn á tæknigrunni. Upplifunin á því að vera heiðarleg: hún má sýna sterka framtíðarsýn og traustmörk, en má ekki gefa í skyn að tollflokkun, leyfisskylda eða landað kostnaðarverð séu komin í production virkni.
+Frigg er nú skýrari sem snemmstigs SaaS vara fyrir innflutning og tollafgreiðslu, en undirliggjandi virkni er enn á tæknigrunni. Upplifunin á því að vera heiðarleg: hún má sýna sterka framtíðarsýn og traustmörk, en má ekki gefa í skyn að tollflokkun, leyfisskylda eða landað kostnaðarverð séu komin í production virkni.
 
 Sterkustu gæðin eru skýr afstaða um rekjanleika, AI sem tillögulag og determiníska reiknirökfræði. Veikasti hluti upplifunarinnar er enn skortur á raunverulegu workflow: notandi getur ekki hlaðið inn skjölum, séð review queue, prófað útreikning eða skoðað export.
 
@@ -44,7 +44,7 @@ Sterkustu gæðin eru skýr afstaða um rekjanleika, AI sem tillögulag og deter
 
 Hero texti:
 
-„Tollvörð Pro hjálpar innflytjendum og ráðgjöfum að lesa fylgiskjöl, rekja tollflokkunartillögur, undirbúa landað kostnaðarverð og flytja niðurstöður í bókhald án þess að fela óvissu.“
+„Frigg hjálpar innflytjendum og ráðgjöfum að lesa fylgiskjöl, rekja tollflokkunartillögur, undirbúa landað kostnaðarverð og flytja niðurstöður í bókhald án þess að fela óvissu.“
 
 Trauststexti:
 

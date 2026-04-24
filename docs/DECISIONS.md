@@ -1,6 +1,6 @@
 # Lykilákvarðanir
 
-## D-001: Tollvörð Pro er SaaS-first innflutningskerfi
+## D-001: Frigg er SaaS-first innflutningskerfi
 
 - Staða: Samþykkt
 - Ástæða: Kjarnavirði vörunnar liggur í stýrðu innflutningsferli, rekjanleika, audit, samþættingum og determinískri reiknirökfræði.
@@ -28,7 +28,7 @@
 ## D-006: Vandað íslenskt málfar er vörukrafa
 
 - Staða: Samþykkt
-- Ástæða: Tollvörð Pro vinnur fyrir íslenskan markað. Skýr, nákvæm og fagleg íslenska eykur traust og minnkar hættu á misskilningi.
+- Ástæða: Frigg vinnur fyrir íslenskan markað. Skýr, nákvæm og fagleg íslenska eykur traust og minnkar hættu á misskilningi.
 
 ## D-007: Tæknigrunnur kemur á undan business logic
 
@@ -49,3 +49,8 @@
 
 - Staða: Samþykkt
 - Ástæða: Gögn eins og bankayfirlit, framtöl, skjöl og bókhaldsgögn geta innihaldið viðkvæmar upplýsingar. Repo skal aðeins nota synthetic eða samþykkt hreinsuð fixtures.
+
+## D-011: Vöruheiti kerfisins er Frigg
+
+- Staða: Samþykkt
+- Ástæða: Frigg er heiti hugbúnaðarins í vöru, skjölum og notendaviðmóti. Eldra heiti skal ekki nota nema sérstaklega sé verið að ræða sögulega texta sem þarf að flytja.

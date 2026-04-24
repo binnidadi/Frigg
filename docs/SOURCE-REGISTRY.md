@@ -1,10 +1,10 @@
-# Heimildaskrá Tollvarðar Pro
+# Heimildaskrá Frigg
 
 Síðast uppfært: 2026-04-24
 
 ## Markmið
 
-Heimildaskráin heldur utan um þær opinberu og viðurkenndu heimildir sem Tollvörð Pro má nota til að styðja tillögur, viðvaranir, reglur og review. Hún er ekki sjálfvirk regluniðurstaða. Hver heimild þarf útgáfu, sóttan dag, checksum eða varðveisluvísun og review state áður en hún er notuð í production workflow.
+Heimildaskráin heldur utan um þær opinberu og viðurkenndu heimildir sem Frigg má nota til að styðja tillögur, viðvaranir, reglur og review. Hún er ekki sjálfvirk regluniðurstaða. Hver heimild þarf útgáfu, sóttan dag, checksum eða varðveisluvísun og review state áður en hún er notuð í production workflow.
 
 ## Forgangsröðun heimilda
 

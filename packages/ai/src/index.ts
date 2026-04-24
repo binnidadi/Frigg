@@ -1,4 +1,4 @@
-import type { Identifier, IsoDateTime } from '@tollvord/domain'
+import type { Identifier, IsoDateTime } from '@frigg/domain'
 
 export type AiCapability =
   | 'document_extraction'

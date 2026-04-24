@@ -1,14 +1,14 @@
 {
-  "name": "tollvord-pro",
+  "name": "frigg",
   "private": true,
   "version": "0.1.0",
   "packageManager": "pnpm@10.0.0",
   "type": "module",
   "scripts": {
     "build": "corepack pnpm -r build",
-    "dev": "corepack pnpm --filter @tollvord/web dev",
+    "dev": "corepack pnpm --filter @frigg/web dev",
     "lint": "corepack pnpm -r lint && node tools/check-docs.mjs",
-    "prisma:validate": "DATABASE_URL=postgresql://user:password@localhost:5432/tollvord_pro corepack pnpm exec prisma validate --schema prisma/schema.prisma",
+    "prisma:validate": "DATABASE_URL=postgresql://user:password@localhost:5432/frigg_core corepack pnpm exec prisma validate --schema prisma/schema.prisma",
     "test": "corepack pnpm -r test && node tools/check-schema.mjs && node tools/check-fixtures.mjs",
     "typecheck": "corepack pnpm -r typecheck"
   },

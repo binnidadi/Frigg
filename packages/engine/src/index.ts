@@ -1,4 +1,4 @@
-import type { Identifier, IsoDateTime } from '@tollvord/domain'
+import type { Identifier, IsoDateTime } from '@frigg/domain'
 
 export interface LandedCostEngineBoundary {
   readonly module: 'landed_cost'
@@ -13,5 +13,5 @@ export const landedCostEngineBoundary: LandedCostEngineBoundary = {
   status: 'planned',
   plannedFor: 'lota_4',
   definedAt: '2026-04-24T00:00:00.000Z',
-  owner: 'tollvord-core'
+  owner: 'frigg-core'
 }

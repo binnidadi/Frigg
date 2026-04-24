@@ -1,10 +1,10 @@
-# Staða Tollvarðar Pro
+# Staða Frigg
 
 Síðast uppfært: 2026-04-24
 
 ## Núverandi staða
 
-- Repository hefur verið hreinsað og endurræst fyrir Tollvörð Pro.
+- Repository hefur verið hreinsað og endurræst fyrir Frigg.
 - Source-of-truth skjöl eru komin fyrir arkitektúr, ákvarðanir, vegvísi, gagnalíkan, orðasafn og AI Foundry mörk.
 - TypeScript/Next.js/Prisma tæknigrunnur er kominn í repo.
 - Workspace inniheldur `apps/web`, `packages/domain`, `packages/engine`, `packages/ai` og `prisma/schema.prisma`.
@@ -26,6 +26,7 @@ Síðast uppfært: 2026-04-24
 - Lota 3 grunnur: Prisma schema, domain contracts og schema-yfirferð fyrir innflytjanda, birgja, sendingar, skjöl, flokkunartillögur, reglur, landed cost metadata, audit og samþættingar.
 - Source registry og review foundation: heimildaskrá, source snapshots, review tasks, decision records og fixture policy.
 - Synthetic fixture lota: öruggt import-review dæmi án raw viðskiptavinagagna.
+- Vöruheiti samræmt: Frigg er canonical heiti í vöru, skjölum og notendaviðmóti.
 
 ## Í vinnslu
 

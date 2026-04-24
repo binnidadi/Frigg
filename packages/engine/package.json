@@ -1,5 +1,5 @@
 {
-  "name": "@tollvord/engine",
+  "name": "@frigg/engine",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -14,6 +14,6 @@
     "typecheck": "tsc -b tsconfig.json --pretty false"
   },
   "dependencies": {
-    "@tollvord/domain": "workspace:*"
+    "@frigg/domain": "workspace:*"
   }
 }

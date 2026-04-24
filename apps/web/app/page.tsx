@@ -1,4 +1,4 @@
-import { landedCostEngineBoundary } from '@tollvord/engine'
+import { landedCostEngineBoundary } from '@frigg/engine'
 
 const workflowSteps = [
   {
@@ -29,10 +29,10 @@ export default function HomePage() {
   return (
     <main className="shell">
       <section className="hero">
-        <p className="eyebrow">Tollvörð Pro</p>
+        <p className="eyebrow">Frigg</p>
         <h1>Rekjanlegt vinnukerfi fyrir innflutning og tollafgreiðslu.</h1>
         <p className="lead">
-          Tollvörð Pro hjálpar innflytjendum og ráðgjöfum að lesa fylgiskjöl, rekja
+          Frigg hjálpar innflytjendum og ráðgjöfum að lesa fylgiskjöl, rekja
           tollflokkunartillögur, undirbúa landað kostnaðarverð og flytja niðurstöður í bókhald
           án þess að fela óvissu.
         </p>

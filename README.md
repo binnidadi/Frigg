@@ -1,6 +1,6 @@
-# Tollvörð Pro
+# Frigg
 
-Tollvörð Pro er SaaS-first hugbúnaður fyrir innflutningsumsýslu, tollafgreiðslu og rekjanlega ákvörðunartöku á íslenskum markaði.
+Frigg er SaaS-first hugbúnaður fyrir innflutningsumsýslu, tollafgreiðslu og rekjanlega ákvörðunartöku á íslenskum markaði.
 
 Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfisskylduviðvaranir, landað kostnaðarverð, samþættingar og audit trail eru hluti af sama stýrða ferli. Kerfið á að styðja sjálfvirkni þar sem hún er raunhæf, en án þess að fela óvissu eða setja fram óstaðfestar niðurstöður sem staðreyndir.
 
@@ -14,7 +14,7 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 
 ## Núverandi staða
 
-Þetta repository var hreinsað og endurræst fyrir Tollvörð Pro. Fyrsta lota var skjala- og arkitektúrgrunnur. Önnur lota setur upp TypeScript/Next.js/Prisma tæknigrunn án þess að útfæra tollflokkun, reglufylgni eða peningalega reiknirökfræði.
+Þetta repository var hreinsað og endurræst fyrir Frigg. Fyrsta lota var skjala- og arkitektúrgrunnur. Önnur lota setur upp TypeScript/Next.js/Prisma tæknigrunn án þess að útfæra tollflokkun, reglufylgni eða peningalega reiknirökfræði.
 
 ## Tæknigrunnur
 

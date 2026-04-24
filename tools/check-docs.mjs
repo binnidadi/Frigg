@@ -7,7 +7,11 @@ const bannedTerms = [
   /\bemployer\b/i,
   /\bemployee\b/i,
   /kjarasam/i,
-  /laun/i
+  /laun/i,
+  /Tollvörð Pro/i,
+  /Tollvörður Pro/i,
+  /Tollvord Pro/i,
+  /Tollvordur Pro/i
 ]
 
 function listMarkdownFiles(path) {
@@ -28,7 +32,7 @@ for (const file of files) {
 
   for (const pattern of bannedTerms) {
     if (pattern.test(content)) {
-      findings.push(`${file}: fann eldra domain-hugtak sem á ekki heima í Tollverði Pro (${pattern}).`)
+      findings.push(`${file}: fann eldra domain-hugtak sem á ekki heima í Frigg (${pattern}).`)
     }
   }
 }

@@ -1,4 +1,4 @@
-# Vegvísir Tollvarðar Pro
+# Vegvísir Frigg
 
 ## Lota 1: Hreinn grunnur og source of truth
 

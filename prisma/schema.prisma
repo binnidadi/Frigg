@@ -1,4 +1,4 @@
-// Canonical Prisma schema fyrir Tollvörð Pro.
+// Canonical Prisma schema fyrir Frigg.
 // Schema heldur utan um rekjanlegt innflutningsferli, ekki endanlegar regluniðurstöður án review state.
 
 generator client {

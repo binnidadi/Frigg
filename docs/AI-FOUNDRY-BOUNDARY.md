@@ -2,7 +2,7 @@
 
 ## Hlutverk AI-lags
 
-AI Foundry og önnur AI þjónusta má nýtast sem afmarkað capability layer ofan á Tollvörð Pro. AI-lagið á að auka hraða og gæði í úrvinnslu, en ekki taka yfir domain core.
+AI Foundry og önnur AI þjónusta má nýtast sem afmarkað capability layer ofan á Frigg. AI-lagið á að auka hraða og gæði í úrvinnslu, en ekki taka yfir domain core.
 
 Leyfileg verkefni:
 

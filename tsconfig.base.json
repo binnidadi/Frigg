@@ -6,9 +6,9 @@
     "moduleResolution": "Bundler",
     "baseUrl": ".",
     "paths": {
-      "@tollvord/ai": ["packages/ai/src/index.ts"],
-      "@tollvord/domain": ["packages/domain/src/index.ts"],
-      "@tollvord/engine": ["packages/engine/src/index.ts"]
+      "@frigg/ai": ["packages/ai/src/index.ts"],
+      "@frigg/domain": ["packages/domain/src/index.ts"],
+      "@frigg/engine": ["packages/engine/src/index.ts"]
     },
     "strict": true,
     "declaration": true,

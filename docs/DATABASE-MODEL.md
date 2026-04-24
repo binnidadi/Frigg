@@ -1,4 +1,4 @@
-# Gagnalíkan Tollvarðar Pro
+# Gagnalíkan Frigg
 
 ## Markmið
 

@@ -26,13 +26,13 @@ importers:
 
   apps/web:
     dependencies:
-      '@tollvord/ai':
+      '@frigg/ai':
         specifier: workspace:*
         version: link:../../packages/ai
-      '@tollvord/domain':
+      '@frigg/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@tollvord/engine':
+      '@frigg/engine':
         specifier: workspace:*
         version: link:../../packages/engine
       next:
@@ -54,7 +54,7 @@ importers:
 
   packages/ai:
     dependencies:
-      '@tollvord/domain':
+      '@frigg/domain':
         specifier: workspace:*
         version: link:../domain
 
@@ -62,7 +62,7 @@ importers:
 
   packages/engine:
     dependencies:
-      '@tollvord/domain':
+      '@frigg/domain':
         specifier: workspace:*
         version: link:../domain
 

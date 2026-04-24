@@ -16,7 +16,7 @@ Slóð sem var skoðuð:
 - Skráargerðir: 41 `.xlsx`, 2 `.xlsm`, 1 `.pdf`.
 - Helstu möppur: `Banki`, `Framtöl`, `Hreyfingalistar`, `Prófjöfnuðir`.
 - Gögnin virðast fyrst og fremst vera bókhalds-, banka-, framtals-, skatta- og afstemmingargögn.
-- Gögnin virðast ekki vera fyrsta hreina toll-/innflutningsgagnasafnið fyrir Tollvörð Pro.
+- Gögnin virðast ekki vera fyrsta hreina toll-/innflutningsgagnasafnið fyrir Frigg.
 
 ## Flokkun
 
@@ -44,7 +44,7 @@ Slóð sem var skoðuð:
 
 ## Næsta gagnaskref
 
-Fyrir Tollvörð Pro vantar frekar innflutningsmiðuð sýnigögn:
+Fyrir Frigg vantar frekar innflutningsmiðuð sýnigögn:
 
 - vörureikning
 - farmbréf
