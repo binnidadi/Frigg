@@ -28,6 +28,7 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 - `docs/SOURCE-REGISTRY.md`: forgangsröðuð heimildaskrá fyrir opinberar og viðurkenndar heimildir.
 - `docs/FIXTURE-POLICY.md`: reglur um örugg fixture gögn og bann við raw viðskiptavinagögnum í Git.
 - `fixtures/synthetic`: tilbúin prófunargögn sem innihalda ekki raw viðskiptavinagögn.
+- `knowledge/sources`: vélrænn metadata-grunnur fyrir heimildir og snapshot-stubba án raw gagna.
 
 ## Keyrsla
 

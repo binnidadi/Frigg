@@ -35,6 +35,9 @@
 
 - Staða: Lokið í grunni.
 - Heimildaskrá skráð í `docs/SOURCE-REGISTRY.md`.
+- Vélrænn heimildagrunnur skráður í `knowledge/sources/regulatory-sources.json`.
+- Snapshot-stubbar skráðir í `knowledge/sources/source-snapshots.json` án raw ytri gagna.
+- Heimildayfirferð keyrir með `pnpm test` í `tools/check-sources.mjs`.
 - Fixture stefna skráð í `docs/FIXTURE-POLICY.md`.
 - Prisma schema bætt með `RegulatorySource`, `SourceSnapshot`, `ReviewTask` og `DecisionRecord`.
 
@@ -47,6 +50,7 @@
 
 ## Lota 4: Determinísk landed cost reiknivél
 
+- Staða: Næst.
 - Útfæra typed input og output contracts.
 - Reikna vöruverð, flutning, tryggingar, gengi, tolla, vörugjöld, VSK og önnur gjöld út frá skýrum inntökum.
 - Skila skýringum með formúlum, inntökum, milliskrefum og rounding policy.

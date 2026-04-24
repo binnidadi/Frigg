@@ -9,7 +9,7 @@
     "dev": "corepack pnpm --filter @frigg/web dev",
     "lint": "corepack pnpm -r lint && node tools/check-docs.mjs",
     "prisma:validate": "DATABASE_URL=postgresql://user:password@localhost:5432/frigg_core corepack pnpm exec prisma validate --schema prisma/schema.prisma",
-    "test": "corepack pnpm -r test && node tools/check-schema.mjs && node tools/check-fixtures.mjs",
+    "test": "corepack pnpm -r test && node tools/check-schema.mjs && node tools/check-fixtures.mjs && node tools/check-sources.mjs",
     "typecheck": "corepack pnpm -r typecheck"
   },
   "engines": {

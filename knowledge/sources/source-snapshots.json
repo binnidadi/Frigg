@@ -1,0 +1,51 @@
+{
+  "snapshotRegistryKind": "frigg_source_snapshot_stubs",
+  "snapshotRegistryVersion": "2026-04-24.1",
+  "containsRawExternalData": false,
+  "notes": [
+    "Þessi skrá inniheldur aðeins metadata-stubba fyrir heimildir.",
+    "Engin raw gögn, PDF, Excel, textaskrár eða afrit af ytri heimildum eru vistuð hér."
+  ],
+  "snapshots": [
+    {
+      "sourceCode": "skatturinn-tollskrarlyklar",
+      "version": "metadata-stub-2026-04-24",
+      "retrievedAt": "2026-04-24T00:00:00.000Z",
+      "checksum": "not-downloaded",
+      "storageUri": null,
+      "reviewState": "needs_review"
+    },
+    {
+      "sourceCode": "skatturinn-tollskra",
+      "version": "metadata-stub-2026-04-24",
+      "retrievedAt": "2026-04-24T00:00:00.000Z",
+      "checksum": "not-downloaded",
+      "storageUri": null,
+      "reviewState": "needs_review"
+    },
+    {
+      "sourceCode": "mast-plontur",
+      "version": "metadata-stub-2026-04-24",
+      "retrievedAt": "2026-04-24T00:00:00.000Z",
+      "checksum": "not-downloaded",
+      "storageUri": null,
+      "reviewState": "needs_review"
+    },
+    {
+      "sourceCode": "lyfjastofnun-avanaefni",
+      "version": "metadata-stub-2026-04-24",
+      "retrievedAt": "2026-04-24T00:00:00.000Z",
+      "checksum": "not-downloaded",
+      "storageUri": null,
+      "reviewState": "needs_review"
+    },
+    {
+      "sourceCode": "wco-hs",
+      "version": "metadata-stub-2026-04-24",
+      "retrievedAt": "2026-04-24T00:00:00.000Z",
+      "checksum": "not-downloaded",
+      "storageUri": null,
+      "reviewState": "needs_review"
+    }
+  ]
+}

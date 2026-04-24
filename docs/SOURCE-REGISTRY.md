@@ -6,6 +6,8 @@ Síðast uppfært: 2026-04-24
 
 Heimildaskráin heldur utan um þær opinberu og viðurkenndu heimildir sem Frigg má nota til að styðja tillögur, viðvaranir, reglur og review. Hún er ekki sjálfvirk regluniðurstaða. Hver heimild þarf útgáfu, sóttan dag, checksum eða varðveisluvísun og review state áður en hún er notuð í production workflow.
 
+Vélrænn grunnur heimildaskrárinnar er í `knowledge/sources/regulatory-sources.json`. Snapshot-stubbar eru í `knowledge/sources/source-snapshots.json`. Þessar skrár innihalda aðeins metadata og engin raw ytri gögn.
+
 ## Forgangsröðun heimilda
 
 | Kóði | Heimild | Eigandi | Flokkur | Trust tier | Notkun |
@@ -36,3 +38,4 @@ Heimildaskráin heldur utan um þær opinberu og viðurkenndu heimildir sem Frig
 - Production regla þarf að vísa í `SourceSnapshot` með útgáfu, sóttum tíma og review state.
 - Ef heimildir rekast á skal opinber íslensk frumheimild ganga framar erlendu viðmiði.
 - Vendor lausnir og bloggfærslur mega aðeins styðja product/UX/architecture viðmið, ekki íslenska reglufylgni.
+- `tools/check-sources.mjs` staðfestir að vélræna registry-ið sé samræmt, innihaldi skylduheimildir og vísi ekki í raw skjalasnið.

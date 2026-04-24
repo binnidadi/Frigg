@@ -54,3 +54,8 @@
 
 - Staða: Samþykkt
 - Ástæða: Frigg er heiti hugbúnaðarins í vöru, skjölum og notendaviðmóti. Eldra heiti skal ekki nota nema sérstaklega sé verið að ræða sögulega texta sem þarf að flytja.
+
+## D-012: Heimildir eru vélrænt registry, ekki aðeins Markdown
+
+- Staða: Samþykkt
+- Ástæða: Tollflokkunartillögur, leyfisskylduviðvaranir, reglur og útreikningar þurfa endurnýtanlegar, prófanlegar og rekjanlegar heimildavísanir. Markdown má útskýra stefnu, en canonical heimildagrunnur þarf að vera vélrænn og staðfestur með prófi.

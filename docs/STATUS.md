@@ -14,6 +14,7 @@ Síðast uppfært: 2026-04-24
 - Prisma schema og TypeScript domain contracts eru komin fyrir fyrstu import/customs einingar.
 - Fyrsta schema-yfirferð er komin í `tools/check-schema.mjs` og keyrir með `pnpm test`.
 - Heimildaskrá, source snapshots, review tasks og decision records eru komin í schema og domain contracts.
+- Vélrænn metadata-grunnur fyrir heimildir er kominn í `knowledge/sources` og er staðfestur með `tools/check-sources.mjs`.
 - Fixture stefna bannar raw `HREIN_GOGN` og önnur raunveruleg viðskiptavinagögn í Git.
 - Fyrsta synthetic import fixture er komið í `fixtures/synthetic/import-review-scenario.json` og er staðfest með `tools/check-fixtures.mjs`.
 - Engin tollflokkun, leyfisskylda, reglufylgni eða peningaleg reiknirökfræði hefur verið útfærð sem production logic enn.
@@ -27,14 +28,15 @@ Síðast uppfært: 2026-04-24
 - Source registry og review foundation: heimildaskrá, source snapshots, review tasks, decision records og fixture policy.
 - Synthetic fixture lota: öruggt import-review dæmi án raw viðskiptavinagagna.
 - Vöruheiti samræmt: Frigg er canonical heiti í vöru, skjölum og notendaviðmóti.
+- Knowledge registry lota: machine-readable source registry og snapshot-stubbar án raw ytri gagna.
 
 ## Í vinnslu
 
-- Undirbúningur fyrir næstu lotu: determinísk landed cost reiknivél ofan á öruggum fixture grunni.
+- Undirbúningur fyrir næstu lotu: determinísk landed cost reiknivél ofan á öruggum fixture- og heimildagrunni.
 
 ## Næst
 
-1. Hefja Lotu 4 með determinískri landed cost reiknivél ofan á synthetic fixture.
+1. Hefja Lotu 4 með determinískri landed cost reiknivél ofan á synthetic fixture og vélrænum heimildagrunni.
 2. Skilgreina rounding policy og money arithmetic fyrir ISK/minor units.
-3. Bæta við golden scenario fyrir landed cost útreikning.
+3. Bæta við golden scenario fyrir landed cost útreikning með skýrum source references.
 4. Uppfæra skjöl samhliða hverri lotu svo staða og næstu skref haldist skýr.
