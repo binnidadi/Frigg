@@ -23,6 +23,8 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 - `packages/engine`: boundary fyrir framtíðar landed cost reiknivél.
 - `packages/ai`: boundary fyrir framtíðar AI provider lag.
 - `prisma/schema.prisma`: Prisma datasource og generator; domain models koma í næstu lotu.
+- `docs/UX-REVIEW.md`: mat á vefupplifun, skýrleika og trausti.
+- `docs/DATA-INVENTORY.md`: inventory yfir ytri gögn sem hafa verið skoðuð án þess að afrita þau í repo.
 
 ## Keyrsla
 
@@ -43,3 +45,5 @@ pnpm test
 - [Orðasafn](docs/DOMAIN-GLOSSARY.md)
 - [AI Foundry mörk](docs/AI-FOUNDRY-BOUNDARY.md)
 - [Staða](docs/STATUS.md)
+- [UX-greining](docs/UX-REVIEW.md)
+- [Gagnainventory](docs/DATA-INVENTORY.md)

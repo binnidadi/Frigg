@@ -21,6 +21,14 @@
 - Hanna schema fyrir importer, supplier, shipment, shipment item, document, extracted field, HS code, classification candidate, regulatory rule, permit requirement, exchange rate, landed cost calculation, landed cost line, tax component, audit log, integration job og accounting export.
 - Skilgreina enums fyrir review state, confidence, document type, calculation status, audit action, integration status og export status.
 - Bæta við indexes og constraints fyrir tenant readiness, rekjanleika og idempotency.
+- Halda raw `HREIN_GOGN` gögnum utan repo og nota aðeins hreinsuð, samþykkt fixtures þegar gagnanotkun hefst.
+
+## UX- og gagnainventory lota
+
+- Staða: Lokið.
+- Skýrari forsíða með vörugildi, vinnuferli, traustmörkum og heiðarlegri stöðu.
+- UX-review skráð í `docs/UX-REVIEW.md`.
+- Ytra gagnasafn kortlagt í `docs/DATA-INVENTORY.md` án þess að afrita raw gögn í Git.
 
 ## Lota 4: Determinísk landed cost reiknivél
 

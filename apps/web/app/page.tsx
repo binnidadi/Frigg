@@ -1,9 +1,28 @@
 import { landedCostEngineBoundary } from '@tollvord/engine'
 
-const principles = [
-  'SaaS-kjarni fyrst, AI sem útskiptanlegt capability-lag.',
-  'Engin óstudd staðfesta í tollflokkun, leyfisskyldu eða reglufylgni.',
-  'Peningaleg rökfræði verður determinísk, prófanleg og útskýranleg.'
+const workflowSteps = [
+  {
+    title: 'Lesa fylgiskjöl',
+    text: 'Safna reikningum, farmbréfum og öðrum fylgigögnum í rekjanlegt innflutningsmál.'
+  },
+  {
+    title: 'Stinga upp á flokkun',
+    text: 'Birta tollflokkunartillögur sem tillögur, með heimildum, confidence og yfirferðarstöðu.'
+  },
+  {
+    title: 'Reikna kostnað',
+    text: 'Reikna landað kostnaðarverð með determinískri reiknivél þegar schema og reglur liggja fyrir.'
+  },
+  {
+    title: 'Undirbúa bókun',
+    text: 'Halda utan um samþættingar, audit trail og export án þess að fela óvissu eða milliskref.'
+  }
+]
+
+const trustStates = [
+  'AI niðurstaða byrjar sem tillaga.',
+  'Óvissa er merkt með review state.',
+  'Staðfest niðurstaða þarf heimild, reglu eða yfirferð.'
 ]
 
 export default function HomePage() {
@@ -11,28 +30,63 @@ export default function HomePage() {
     <main className="shell">
       <section className="hero">
         <p className="eyebrow">Tollvörð Pro</p>
-        <h1>Rekjanlegt stýrikerfi fyrir innflutning og tollafgreiðslu.</h1>
+        <h1>Rekjanlegt vinnukerfi fyrir innflutning og tollafgreiðslu.</h1>
         <p className="lead">
-          Fyrsti tæknigrunnur er kominn á hreint: Next.js, TypeScript, Prisma boundary og
-          skýr pakkaskipan fyrir domain, engine og AI.
+          Tollvörð Pro hjálpar innflytjendum og ráðgjöfum að lesa fylgiskjöl, rekja
+          tollflokkunartillögur, undirbúa landað kostnaðarverð og flytja niðurstöður í bókhald
+          án þess að fela óvissu.
         </p>
+        <div className="cta-row" aria-label="Næstu aðgerðir">
+          <a className="primary-link" href="#workflow-heading">
+            Skoða vinnuflæði
+          </a>
+          <a className="secondary-link" href="#current-status">
+            Skoða stöðu
+          </a>
+        </div>
       </section>
 
-      <section className="panel" aria-labelledby="principles-heading">
-        <h2 id="principles-heading">Grunnreglur</h2>
-        <ul>
-          {principles.map((principle) => (
-            <li key={principle}>{principle}</li>
+      <section className="status-strip" id="current-status" aria-label="Núverandi staða">
+        <span>Tæknigrunnur tilbúinn</span>
+        <span>Gagnalíkan næst</span>
+        <span>Engin production tollflokkun enn</span>
+      </section>
+
+      <section className="grid" aria-labelledby="workflow-heading">
+        <div className="section-heading">
+          <p className="eyebrow">Vinnuflæði</p>
+          <h2 id="workflow-heading">Frá skjölum til rekjanlegrar niðurstöðu.</h2>
+        </div>
+        <div className="cards">
+          {workflowSteps.map((step, index) => (
+            <article className="card" key={step.title}>
+              <span className="step-number">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
 
-      <section className="panel muted" aria-labelledby="engine-heading">
-        <h2 id="engine-heading">Engine boundary</h2>
-        <p>
-          `{landedCostEngineBoundary.module}` er merkt sem `{landedCostEngineBoundary.status}` og
-          verður útfært í `{landedCostEngineBoundary.plannedFor}`.
-        </p>
+      <section className="split">
+        <article className="panel">
+          <p className="eyebrow">Traust</p>
+          <h2>Tillaga er ekki staðfesting.</h2>
+          <ul>
+            {trustStates.map((state) => (
+              <li key={state}>{state}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="panel muted">
+          <p className="eyebrow">Staða reiknivélar</p>
+          <h2>Landað kostnaðarverð er á áætlun.</h2>
+          <p>
+            Reiknivél fyrir landað kostnaðarverð er merkt sem {landedCostEngineBoundary.status} og
+            verður útfærð í {landedCostEngineBoundary.plannedFor}. Hún mun ekki byggja á LLM-köllum.
+          </p>
+        </article>
       </section>
     </main>
   )
