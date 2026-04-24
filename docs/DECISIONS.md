@@ -1,86 +1,31 @@
 # Lykilákvarðanir
 
-## D-001: Frigg er compliance-first launakerfi
+## D-001: Tollvörð Pro er SaaS-first innflutningskerfi
 
 - Staða: Samþykkt
-- Ástæða: Samkeppnisvörnin verður nákvæmni, audit og trust fremur en flashy AI automation.
+- Ástæða: Kjarnavirði vörunnar liggur í stýrðu innflutningsferli, rekjanleika, audit, samþættingum og determinískri reiknirökfræði.
 
-## D-002: AI er hjálparlag, ekki production útreikningsvél
-
-- Staða: Samþykkt
-- Ástæða: Laun verða að vera deterministic, sannprófanleg og endurkeyranleg.
-
-## D-003: Hver króna skal vera útskýrð
+## D-002: AI Foundry er capability layer, ekki kjarni vörunnar
 
 - Staða: Samþykkt
-- Ástæða: Þetta er kjarninn í adoption, retention og compliance trausti.
+- Ástæða: Foundry getur aukið virði í skjalalestri, retrieval og tillögum, en domain core verður að vera eign kerfisins og útskiptanlegur frá AI-laginu.
 
-## D-004: Vandað íslenskt málfar er hluti af vörugæðum
-
-- Staða: Samþykkt
-- Ástæða: Frigg vinnur íslenskan markað og verður að tala skýrt, rétt og faglega á íslensku.
-
-## D-005: Eftir hverja uppfærslu skal samræma skjöl
+## D-003: Engin fake certainty í tollflokkun eða reglufylgni
 
 - Staða: Samþykkt
-- Ástæða: Repo á alltaf að sýna núverandi stöðu, stefnu og næstu skref án gloppna.
+- Ástæða: Tollflokkun, leyfisskylda og reglufylgni geta haft fjárhagslegar og lagalegar afleiðingar. Kerfið skal sýna tillögur, óvissu, heimildir og review state skýrt.
 
-## D-006: Almennur vinnumarkaður með A1 er sjálfgefin lagaleg afmörkun
-
-- Staða: Samþykkt
-- Ástæða: Nær raunverulegum SME edge cases með sterku markaðsgildi án þess að teygja fyrstu útgáfur yfir í alla sérheima vinnumarkaðarins.
-
-## D-007: Compliance birtist sem software + review workflow
+## D-004: Peningaleg rökfræði er determinísk
 
 - Staða: Samþykkt
-- Ástæða: Skalar betur en þjónustudrifið líkan og verður trust moat með skýringum, audit trail og mannlegri yfirferð þar sem óvissa er til staðar.
+- Ástæða: Landað kostnaðarverð, skattar, gjöld, tollar og VSK verða að vera prófanleg, endurkeyranleg og útskýrð með formúlum og milliskrefum.
 
-## D-008: AI veitendur skulu keyrðir í failover röð með telemetry og cooldown
-
-- Staða: Samþykkt
-- Ástæða: AI lagið má ekki velta á einum veitanda og verður að skýra hvaða módel svaraði og hvenær fallback var notað.
-
-## D-009: Kjarasamningslestur skal fara í gegnum staged parser pipeline
+## D-005: Skjöl og staða uppfærast í hverri lotu
 
 - Staða: Samþykkt
-- Ástæða: `detect`, `parse`, `normalize`, `preview` og `warnings` gera review workflow, explainability og bilanagreiningu skýrari en eitt svart parse skref.
+- Ástæða: Repository á alltaf að sýna hvar verkefnið er statt, hvert það stefnir og hvaða ákvarðanir hafa verið teknar.
 
-## D-010: Confidence skal vera samsett úr deterministic og AI merkjum
-
-- Staða: Samþykkt
-- Ástæða: Sjálfsmat líkans eitt og sér er ekki nægilega traust fyrir payroll og compliance.
-
-## D-011: Public corpus og private corpus skulu haldin aðskilin
+## D-006: Vandað íslenskt málfar er vörukrafa
 
 - Staða: Samþykkt
-- Ástæða: Opið efni má skrá og útgáfustýra sjálfstætt, en viðskiptavinagögn og innskráningarvarið efni þurfa sérmeðferð, strangari aðgangsstýringu og skýra rekjanleika.
-
-## D-012: Runtime apps haldast JS-first þar til foundation-lagið er hert
-
-- Staða: Samþykkt
-- Ástæða: `apps/api` og `apps/web` eru enn á grunnstigi með einföldum `node` skriftum, seed gögnum og léttum checks. Á þessu stigi er skýrara og öruggara að halda runtime-lögunum JS-first, herða config, CI, lock-skrá og afhendanleika fyrst, og fara síðan í samræmda TypeScript build-keðju í einni markvissri lotu.
-
-## D-013: Frigg er labour/payroll compliance operating system
-
-- Staða: Samþykkt
-- Ástæða: Núverandi ambition, research landslag og markaðstækifæri kalla á breiðari category en hreint launakerfi. Frigg á að sameina kjarasamninga, payroll compliance, evidence, review og aðgerðir í einni SaaS platformu.
-
-## D-014: Fyrsta wedge er employer/advisor workflow, ekki employee self-service
-
-- Staða: Samþykkt
-- Ástæða: Sterkasta og skýrasta leiðin að markaði er að leysa employer-, payroll-, HR- og advisor-verðmæti fyrst. Employee mode á að byggjast ofan á sannprófuðu evidence- og skýringarlagi, ekki koma á undan því.
-
-## D-015: Samningssviðsgreining er nauðsynlegt kjarnalag
-
-- Staða: Samþykkt
-- Ástæða: Kerfið getur ekki orðið raunveruleg kjarasamninga launavél nema það geti fyrst flokkað rétt samningssvið eftir starfi, starfsaðstæðum, landfræðisvæði og félagaumhverfi.
-
-## D-016: Frigg er vörumerki, Kjarasamninga launavél er stefnumarkandi vörulýsing
-
-- Staða: Samþykkt
-- Ástæða: Repo, viðmót og skjöl þurfa samræmda línu milli vinnuheiti/vörumerkisins `Frigg` og stefnumarkandi lýsingarinnar `Kjarasamninga launavél`. Frigg helst sem stutt og markaðshæft vörumerki, en undirliggjandi category-afstaða verður skýrari með lýsandi heiti.
-
-## D-017: AI Foundry er tvískipt capability-lag
-
-- Staða: Samþykkt
-- Ástæða: `AI Foundry` á ekki að vera óljóst slagorð. Í Frigg merkir það annars vegar innri vél fyrir extraction, flokkun, regludrög, evidence-tengingu og regulatory greiningu, og hins vegar sýnilegt enterprise/advisor lag fyrir leit, review, analysis og síðar API aðgang. Það er margfaldari fyrir labour/payroll compliance operating systemið, ekki staðgengill deterministic kjarnans.
+- Ástæða: Tollvörð Pro vinnur fyrir íslenskan markað. Skýr, nákvæm og fagleg íslenska eykur traust og minnkar hættu á misskilningi.

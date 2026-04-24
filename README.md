@@ -1,119 +1,26 @@
-# Frigg
+# Tollvörð Pro
 
-Frigg er vörumerki Kjarasamninga launavélarinnar: compliance-first vinnuréttar-, kjarasamninga- og launavélar fyrir íslenskan vinnumarkað. Markmiðið er að byggja traustasta, skýranlegasta og rekjanlegasta SaaS stýrikerfið á Íslandi fyrir laun, kjarasamninga og vinnuréttarlegt compliance.
+Tollvörð Pro er SaaS-first hugbúnaður fyrir innflutningsumsýslu, tollafgreiðslu og rekjanlega ákvörðunartöku á íslenskum markaði.
 
-## Staða
+Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfisskylduviðvaranir, landað kostnaðarverð, samþættingar og audit trail eru hluti af sama stýrða ferli. Kerfið á að styðja sjálfvirkni þar sem hún er raunhæf, en án þess að fela óvissu eða setja fram óstaðfestar niðurstöður sem staðreyndir.
 
-Verkefnið er á grunnstigi. Núverandi áhersla er að festa:
+## Kjarnaafstaða
 
-- monorepo-grind
-- source-of-truth skjöl
-- canonical domain contracts
-- trust-first arkitektúr
-- fyrsta product surface fyrir forsíðu, innskráningu og mælaborð
-- compliance- og knowledge-lag fyrir íslenskan vinnumarkað
-- database-first gagnamódel og fyrsta API snapshot lag
-- AI failover grunn, parser pipeline og composite confidence lag
-- repository lag og migration runner ofan á `db/schema.sql`
-- `memory` og `file` repository driver með seed workflow fyrir varanleg demo-gögn
-- opinbert source registry fyrir lög, Skattinn, lífeyrissjóði og stéttarfélög
-- rannsóknarvinnusvæði með grunnlagi fyrir rannsóknarstrauma, lagaskyldur og readiness á einkagagnasafni
-- grunnlag fyrir afhendanleika með `.env.example`, stillanlegu API grunnslóði í vefnum og CI keyrslu
-- fyrsta raunverulega research-kortlagning fyrir skattaskyldur, routing, VR, Eflingu, SGS og valda lífeyrissjóði
-- fyrsta coverage matrix fyrir studd, review-skyld og blokkuð research-svið
-- fyrsti sýnilegi trust boundary pakkinn fyrir `VR retail + staðgreiðsla + tryggingagjald + LIVE routing`
-- fyrsta line-item niðurbrotið sem sýnir hvað er vottað, review-skylt og blokkað innan trust boundary pakkans
-- fyrsta evidence-lagið sem tengir launaseðil, launalínu og sönnunarfærslur inn í featured trust boundary pakkann
-- fyrsta frávikagreiningarlagið sem ber saman ráðningarkjör, skráðar stundir og útgefinn launaseðil
-- fyrsta samningssviðsgreiningarlagið sem sýnir af hverju starfsmaður fellur innan samningspakka eða þarf yfirferð
-- fyrsta payroll-native intake/readiness lagið sem sýnir hvaða gögn hafa borist, hvað hefur verið sannreynt og hvað vantar enn fyrir featured pakkann
-- fyrsti payroll-native intake pakkinn sem sýnir scope, blockers og næsta skref fyrir `VR retail` pakka
-- intake lagið merkir nú skýrt hvað er demóinntak og hvað telst raunveruleg nafnlaus innsending
-- fyrsta afhendingarsniðið segir nú nákvæmlega hvaða gögn, hvaða nafnlausn og hvaða sannprófun þarf fyrir fyrsta raunverulega `VR retail` gagnapakkann
-- intake-lagið sýnir nú líka móttökumat sem segir hvaða skilyrði eru uppfyllt og hvað vantar áður en pakki má færast í review-runtime
-- fyrsta review/signoff pakkann fyrir launakeyrslu sýnir nú hlutverk, blockers og næsta skref áður en lokasamþykki verður mögulegt
-- uppfærða category-afstöðu: Frigg er ekki bara launakerfi heldur labour/payroll compliance operating system
-- formlega afstöðu um að `AI Foundry` sé tvískipt lag: bæði innri vél og sýnilegt enterprise/advisor yfirborð
+- SaaS-kjarni fyrst: innflutningsferli, review state, audit log, permissions, landed cost og samþættingar verða í eigin domain-lagi.
+- AI er capability layer: skjalalestur, retrieval, tillögur, samantektir og workflow-stuðningur fara í gegnum afmarkað provider-lag.
+- Fjárhagsleg og tolltengd reiknirökfræði verður determinísk, prófanleg og útskýrð með inntökum, formúlum og milliskrefum.
+- Tollflokkun, leyfisskylda og reglufylgni verða ekki sett fram sem staðreyndir nema heimild, regla eða review state styðji niðurstöðuna.
+- Íslenskt málfar í skjölum, villum, skýringum og notendaviðmóti er hluti af vörugæðum.
 
-Nánari staða er í `docs/STATUS.md`.
-Markviss gap-closing greining er í `docs/GAP-CLOSING-ANALYSIS.md`.
+## Núverandi staða
 
-## Kjarnaforsendur
+Þetta repository var hreinsað og endurræst fyrir Tollvörð Pro. Fyrsta lota er skjala- og arkitektúrgrunnur; runtime-kóði, Prisma schema og reiknivél koma í næstu lotum.
 
-- AI má aðstoða við lestur, flokkun og tillögur að reglum.
-- Production laun skulu alltaf reiknuð með deterministic regluvél.
-- Hver niðurstaða á að vera útskýrð niður í heimild, reglu og reikniskref.
-- Öll notendamiðuð skjöl og viðmót skulu vera á vandaðri íslensku.
+## Source of truth
 
-## Núverandi stefna
-
-- Frigg er byggt sem `software + review workflow`, ekki sem þjónustuteymi falið á bak við viðmót.
-- Fyrsta markaðssneið er atvinnurekendur, launafulltrúar, bókarar, ráðgjafar og HR teymi á almennum vinnumarkaði.
-- Starfsmannahamur og víðari réttindagátt eru mikilvæg framtíðarsvið, en ekki rétt fyrsta wedge.
-- Samkeppnisvörnin á að koma úr rekjanleika, skýringum, evidence-lagi, review-stýringum og coverage-sýnileika.
-- `AI Foundry` er tvískipt lag: innri vél fyrir extraction, flokkun og regludrög, og sýnilegt enterprise/advisor lag fyrir leit, review, analysis og síðar API-aðgang.
-
-## Verkefnagrind
-
-```text
-apps/
-  api/        Bakendi og útgáfa API
-  web/        Framendi og stjórnborð
-packages/
-  ai/         AI provider failover, parser pipeline, confidence og knowledge retrieval
-  contracts/  Sameiginleg TypeScript contracts
-  engine/     Deterministic launavél og sannprófun
-docs/         Source-of-truth skjöl fyrir stöðu, stefnu og ákvarðanir
-db/           SQL-skema, migrations og seed gögnum
-```
-
-## Ubuntu ræsileið
-
-1. Virkja `corepack` og setja upp workspace:
-   ```bash
-   corepack enable
-   pnpm install
-   ```
-2. Afrita umhverfisgrunn:
-   ```bash
-   cp .env.example .env
-   ```
-3. Ræsa API:
-   ```bash
-   pnpm --filter @frigg/api dev
-   ```
-4. Opna vefskrárnar úr `apps/web/` eða keyra build:
-   ```bash
-   pnpm --filter @frigg/web build
-   ```
-
-## Núverandi runtime-afstaða
-
-- `apps/api` og `apps/web` eru nú JS-first runtime lög með einföldum `node` skriftum.
-- `packages/contracts`, `packages/ai` og `packages/engine` bera áfram TypeScript domain- og arkitektúrgrunn.
-- Næsta skref er að herða tooling og checks áður en runtime apps fara í fulla TypeScript build-keðju.
-
-## Source of Truth
-
-- `docs/STATUS.md`
-- `docs/ROADMAP.md`
-- `docs/DECISIONS.md`
-- `docs/ARCHITECTURE.md`
-- `docs/PRODUCT-PRINCIPLES.md`
-- `docs/KNOWLEDGE-SOURCES.md`
-- `docs/PUBLIC-SOURCE-REGISTRY.md`
-- `docs/RESEARCH-OPERATING-SYSTEM.md`
-- `docs/REMAINING-DATA-REQUEST.md`
-- `docs/SOURCE-ARCHITECTURE.md`
-- `docs/HREIN-GOGN-INVENTORY.md`
-- `docs/COMPLIANCE-RESEARCH.md`
-- `docs/GAP-CLOSING-ANALYSIS.md`
-- `docs/GLOSSARY.md`
-
-## Næstu skref
-
-1. Fá fyrsta raunverulega payroll-native gagnapakkann afhentan samkvæmt nýja afhendingarsniðinu: nafnlausa launaseðla, tímaskráningar, ráðningarsamninga, routing gögn og skilagreinar.
-2. Festa fyrstu 1-2 golden scenarios sem raunverulegar hegðunarprófanir í stað aðeins docs-backlog.
-3. Herða `packages/*` checks svo workspace scripts segi ekki lengur falskt að capability sé staðfest.
-4. Festa fyrsta gagnapakkann inn í samningssviðsgreiningu, frávikagreiningu og review workflow.
-5. Tengja repository layer við raunverulegan gagnagrunnsdrifara í stað file seed drivers.
+- [Arkitektúr](docs/ARCHITECTURE.md)
+- [Ákvarðanir](docs/DECISIONS.md)
+- [Vegvísir](docs/ROADMAP.md)
+- [Gagnalíkan](docs/DATABASE-MODEL.md)
+- [Orðasafn](docs/DOMAIN-GLOSSARY.md)
+- [AI Foundry mörk](docs/AI-FOUNDRY-BOUNDARY.md)

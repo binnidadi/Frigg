@@ -1,113 +1,42 @@
-# Vegvísir Frigg
+# Vegvísir Tollvarðar Pro
 
-## Núverandi áfangi
+## Lota 1: Hreinn grunnur og source of truth
 
-Grunnur fyrir mission-critical labour/payroll compliance stýrikerfi með trust-first hugsun.
+- Hreinsa eldra verkefni úr repo.
+- Stofna nýjan skjala- og arkitektúrgrunn.
+- Festa SaaS-first afstöðu og AI Foundry mörk.
+- Skilgreina fyrsta gagnalíkansramma og domain orðasafn.
 
-## Næsta forgangsröð samkvæmt gap-closing greiningu
+## Lota 2: Tæknigrunnur
 
-### Critical now
+- Setja upp Next.js 14+ og TypeScript.
+- Setja upp Prisma, Supabase/Postgres stefnu og grunnstillingar.
+- Skilgreina `packages/domain`, `packages/engine` og `packages/ai`.
+- Bæta við lint, typecheck og test grunnskipan.
 
-- fyrsti raunverulegi `VR retail` private corpus pakkinn
-- fyrstu behavioral golden scenario prófanirnar
-- hörðun á `packages/*` checks
-- samningssviðsgreining á raungögnum
+## Lota 3: Prisma schema og domain contracts
 
-### High value next
+- Hanna schema fyrir importer, supplier, shipment, shipment item, document, extracted field, HS code, classification candidate, regulatory rule, permit requirement, exchange rate, landed cost calculation, landed cost line, tax component, audit log, integration job og accounting export.
+- Skilgreina enums fyrir review state, confidence, document type, calculation status, audit action, integration status og export status.
+- Bæta við indexes og constraints fyrir tenant readiness, rekjanleika og idempotency.
 
-- signoff workflow tengt intake acceptance og coverage blockers
-- fyrsta Trust Center view fyrir featured pakka
-- normalized knowledge records fyrir public corpus
-- niðurbrot á `repository.js` í minni ábyrgðarsvæði
+## Lota 4: Determinísk landed cost reiknivél
 
-### Later
+- Útfæra typed input og output contracts.
+- Reikna vöruverð, flutning, tryggingar, gengi, tolla, vörugjöld, VSK og önnur gjöld út frá skýrum inntökum.
+- Skila skýringum með formúlum, inntökum, milliskrefum og rounding policy.
+- Bæta við unit tests og golden scenarios.
 
-- employee mode
-- opinber markaður
-- sérgreinar
-- víðara advisor/partner API lag
+## Lota 5: Ingestion, classification og AI boundary
 
-## Áfangi 1: Foundation
+- Útfæra document ingestion metadata.
+- Útfæra extracted fields með confidence og source mapping.
+- Útfæra HS classification foundation með tillögum, rökstuðningi og review state.
+- Útfæra AI provider abstraction og Foundry adapter án provider lock-in.
 
-- monorepo
-- source-of-truth skjöl
-- contracts og domain language
-- architecture baseline
-- product principles baseline
-- database-first schema baseline
-- golden scenarios baseline
-- public corpus registry baseline
-- research operating system baseline
-- `.env.example`, CI baseline og stillanleg runtime config fyrir API tengingu í vef
+## Lota 6: Audit, samþættingar og export
 
-## Áfangi 2: Research Operating System
-
-- research workstreams fyrir lög, sjóði, félög og markaðssvið
-- source acquisition records og provenance
-- legal obligations registry
-- collective agreement packs
-- pension fund og union profiles
-- coverage matrix með operational status og source depth
-- private corpus readiness scoring
-- mandatory data request program
-
-## Áfangi 3: Core Engine
-
-- deterministic payroll engine
-- effective-dated rule sets
-- line item model
-- agreement scope resolver fyrir rétt samningssvið
-- agreement scope resolver tengdur við merki, óleystar spurningar og private corpus kröfur
-- independent validation engine
-- retro calculation batches
-- tax credit allocation og multi-payer checks
-- A1 og routing logic fyrir sjóði og félög
-- payslip evidence records og contract-vs-timesheet-vs-pay frávikagreining
-- runtime notkun á evidence records í pay run review og frávikagreiningu
-- fyrsta frávikasýn fyrir starfsmann sem sýnir gross-to-net og review merki
-
-## Áfangi 4: Agreement Intelligence
-
-- document ingestion
-- clause chunking og provenance
-- clause-to-rule mapping
-- AI structured extraction
-- provider failover og cooldown orchestration
-- provider adapterar fyrir raunveruleg módel
-- parser pipeline með staged outputs
-- deterministic parser adapter fyrir review-hæf regludrög
-- confidence engine og review flags
-- reviewer workflow
-- certified rule packs
-- versioned knowledge records
-- coverage matrix og residual risk reporting
-- public corpus registry fyrir lög, Skattinn, sjóði og félög
-- private corpus onboarding fyrir payroll-native gögn
-- fyrsta afhendingarsnið fyrir raunverulegan nafnlausan `VR retail` gagnapakka
-- samanburður milli kjarasamninga og issue spotting fyrir rangt samningssvið
-- innri `AI Foundry` vél fyrir extraction, regulatory diff og reviewer artifacts
-
-## Áfangi 5: Product Surface
-
-- homepage
-- innskráning
-- dashboard
-- pay run review
-- fyrsta signoff pakka fyrir launakeyrslu með hlutverkum, blockers og lokasamþykkisskrefi
-- payslip explanation view
-- Trust Center
-- advisor mode
-- employer compliance mode
-- employee rights mode sem byggir á sannprófuðu evidence lagi
-- sýnilegt `AI Foundry` lag fyrir enterprise og ráðgjafa með leit, review og analysis artifacts
-
-## Áfangi 6: Pilot Readiness
-
-- VR/Efling class coverage
-- tax, pension og union deduction support
-- export batches
-- audit reconstruction
-- pilot tenant onboarding
-- fyrsta `compute_with_review` flæði með raunverulegum launaseðlum og tímaskráningum
-- payroll-native intake/readiness sýn sem skýrir hvaða innsendingar hafa verið sannreyndar og hvað heldur review opnu
-- intake pakkar með blockers, næstu skrefum og skýrri samningssviðstengingu
+- Útfæra audit log grunn.
+- Útfæra integration job lifecycle með retry og idempotency.
+- Útfæra accounting export grunn fyrir bókhaldskerfi.
+- Tengja lykilaðgerðir við audit trail.

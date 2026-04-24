@@ -1,80 +1,43 @@
-# Arkitektúr Frigg
+# Arkitektúr Tollvarðar Pro
 
 ## Markmið
 
-Arkitektúr Frigg þarf að þjóna þremur ófrávíkjanlegum kröfum:
+Tollvörð Pro skal vera domain-first, SaaS-first kerfi fyrir innflutning og tollafgreiðslu. Fyrsta hönnun miðar að modular monolith með skýrum mörkum milli innlesturs, tollflokkunar, regluviðvarana, landaðs kostnaðarverðs, audit og samþættinga.
 
-- nákvæmni í production launum
-- fullum rekjanleika fyrir audit og skýringar
-- sveigjanlegri innleiðingu nýrra kjarasamninga
+## Framtíðarverkefnastrúktúr
 
-## Yfirsýn
+- `apps/web`: Next.js framendi fyrir innflutningsmál, review workflow, skýringar og stjórnborð.
+- `apps/api`: API lag eða Next server layer fyrir domain services og samþættingar.
+- `packages/domain`: canonical TypeScript contracts, enums og runtime validation.
+- `packages/engine`: determinísk landed cost reiknivél og sannreynanleg skýringarlög.
+- `packages/ai`: provider abstraction fyrir LLM, embeddings og AI Foundry tengingar.
+- `prisma/schema.prisma`: canonical gagnalíkan fyrir Postgres/Supabase.
+- `docs`: source-of-truth skjöl, ADR og stöðumat.
 
-Frigg er byggt sem monorepo með skýra aðgreiningu milli vörulaga:
+## Domain mörk
 
-- `apps/web`: framendi fyrir homepage, innskráningu, dashboard, pay runs og Trust Center
-- `apps/api`: API-first bakendi fyrir launainput, keyrslur, review workflows og exports
-- `packages/contracts`: canonical schemas og domain contracts
-- `packages/engine`: deterministic launavél og sannprófunarvél
-- `packages/ai`: AI provider failover, parser pipeline, confidence engine og deterministic knowledge retrieval
-- `db`: SQL-skema, migrations og seed gögn
+Kerfið skiptist í eftirfarandi ábyrgðarsvið:
 
-## Meginflæði
+- Snjall-innlestur: móttaka skjala, metadata, OCR/útdráttur, source mapping, confidence og review state.
+- Tollskrárvél: HS-kóðar, leit, flokkunartillögur, rökstuðningur, heimildir og mannleg staðfesting.
+- Regluvörður: versioned reglur, leyfisskylduviðvaranir og rekjanleg tenging við heimildir.
+- Landað kostnaðarverð: determinísk reiknivél fyrir verð, flutning, tryggingar, gengi, tolla, gjöld og VSK.
+- Audit og review: append-only audit log fyrir lykilákvarðanir, AI tillögur, staðfestingar og export.
+- Samþættingar: adapter-lög fyrir bókhald, banka, birgðakerfi og sendingaraðila með idempotency og retry stefnu.
 
-1. Notandi eða samþætting skilar inn launainputum.
-2. API normalíserar input og festir snapshot.
-3. Payroll engine sækir gildandi statutory parameters og approved rule set.
-4. Aðalvél reiknar niðurstöðu.
-5. Sannprófunarvél endurreiknar sömu keyrslu.
-6. Frávik blokkar samþykki.
-7. Úttak birtist með skýringum á launalínum.
-8. Export batches og audit metadata eru vistuð með hash og útgáfum.
+## AI og Foundry
 
-## Trust-by-design
+AI Foundry má styðja við skjalalestur, retrieval, tillögur, samantektir og agent workflow. Foundry má ekki stjórna domain-líkaninu, reikna fjárhagslegar niðurstöður eða staðfesta tollflokkun án review state.
 
-- Allar reglur eru effective-dated.
-- Engar reglur eru uppfærðar in-place; ný útgáfa er búin til.
-- Allar niðurstöður geyma rule set version IDs.
-- Hver launalína heldur utan um explanation og source rule IDs.
-- AI output verður aðeins að draft artifact sem þarf mannlega yfirferð.
+Allar AI niðurstöður skulu vera merktar sem tillögur með confidence, provider metadata, source mapping og audit trail. Provider-lagið skal vera útskiptanlegt svo hægt sé að bæta við eða skipta út AI þjónustu síðar.
 
-## Knowledge-by-design
+## Rekjanleiki
 
-- Public corpus er skráð í `db/seeds/public-source-registry.json`.
-- Public corpus geymir opnar heimildir frá Alþingi, Skattinum, lífeyrissjóðum, stéttarfélögum og túlkunarsíðum.
-- Private corpus geymir raunveruleg launagögn, skilagreinar, innskráningarvarið efni og fyrirtækjabundið mapping.
-- `HREIN_GOGN` telst nú bókhalds- og afstemmingalag en ekki fullkomið payroll truth layer.
+Allar lykilniðurstöður þurfa að vera endurbyggjanlegar út frá vistuðum inntökum, útgáfum, reglum og audit log. Þetta á sérstaklega við um:
 
-## Compliance-by-design
-
-- `StatutoryParameterSet` heldur utan um skattþrep, persónuafslátt og tryggingagjald út frá gildistíma.
-- `PensionRoutingRule` og `UnionRoutingRule` stýra í hvaða sjóð eða félag greiðslur fara og hvenær þarf yfirferð.
-- `A1CertificateStatus` er sértækt lag fyrir erlenda starfsmenn sem geta borið lægra tryggingagjald.
-- `TaxCreditAllocation` er geymd sérstaklega svo kerfið geti skýrt og sannreynt nýtingu persónuafsláttar yfir fleiri en einn greiðanda.
-- `PayslipEvidenceRecord` tryggir að launaseðill sé ekki bara úttak heldur einnig rekjanlegt sönnunargagn.
-
-## AI lag
-
-AI lagið hefur þrjú verkefni:
-
-- lesa og skipta niður kjarasamningum
-- stinga upp á structured rules
-- svara spurningum um þekkingargögn
-
-AI lagið hefur ekki heimild til að reikna production laun eða sleppa yfirferð.
-
-## AI Foundry lag
-
-Frigg skilgreinir `AI Foundry` sem tvískipt lag ofan á kjarnakerfið:
-
-- innri vél sem sér um extraction, flokkun, regludrög, evidence-tengingu, regulatory diff og review-undirbúning
-- sýnilegt enterprise/advisor lag sem birtir leit, greiningu, review, skýringar og síðar API aðgang að þessum artifacts
-
-AI Foundry er því ekki sjálfstætt launakerfi og ekki sjálfstætt black-box ráðgjafalag. Það margfaldar virði compliance operating systemins en má aldrei fara fram úr deterministic runtime, evidence eða review controls.
-
-## Næstu arkitektúrskref
-
-1. Tengja provider adapters við raunveruleg umhverfi, timeout stefnu og telemetry geymslu.
-2. Færa public source registry inn í gagnalíkan sem versioned knowledge records.
-3. Bæta private corpus við með launaseðlum, tímaskráningu, skilagreinum og routing gögnum.
-4. Hanna event log, audit reconstruction model og review queues.
+- staðfesta tollflokkun
+- leyfisskylduviðvaranir
+- gengi og gengisdag
+- landed cost calculation
+- accounting export
+- AI tillögur og review ákvarðanir
