@@ -1,0 +1,49 @@
+{
+  "fixtureKind": "synthetic_landed_cost_golden_scenario",
+  "fixtureVersion": "2026-04-24.1",
+  "classification": "synthetic_only",
+  "containsRawCustomerData": false,
+  "notes": [
+    "Þessi fixture er aðeins prófunarsviðsmynd fyrir determiníska reiknivél.",
+    "Synthetic tollur og synthetic VSK eru ekki íslensk gjalda- eða skattaniðurstaða."
+  ],
+  "input": {
+    "calculationId": "calc_synthetic_landed_cost_001",
+    "shipmentId": "shp_synthetic_2026_0001",
+    "outputCurrency": "ISK",
+    "exchangeRate": {
+      "id": "fx_synthetic_eur_isk_2026_04_24",
+      "baseCurrency": "EUR",
+      "quoteCurrency": "ISK",
+      "rate": "150.25",
+      "rateDate": "2026-04-24",
+      "sourceReference": "synthetic-exchange-rate"
+    },
+    "roundingPolicy": {
+      "mode": "half_up",
+      "scale": 0,
+      "description": "Rúnnað í heilar ISK með half-up reglu í synthetic prófi."
+    },
+    "sourceReferences": [
+      "skatturinn-tollskrarlyklar",
+      "synthetic-exchange-rate",
+      "synthetic-duty-rule",
+      "synthetic-vat-rule"
+    ]
+  },
+  "expected": {
+    "customsValueMinor": 241002,
+    "taxComponents": [
+      {
+        "code": "synthetic_customs_duty",
+        "amountMinor": 8435
+      },
+      {
+        "code": "synthetic_vat",
+        "amountMinor": 59865
+      }
+    ],
+    "totalMinor": 309302,
+    "currency": "ISK"
+  }
+}

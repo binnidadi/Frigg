@@ -50,11 +50,12 @@
 
 ## Lota 4: Determinísk landed cost reiknivél
 
-- Staða: Næst.
+- Staða: Grunnur kominn.
 - Útfæra typed input og output contracts.
 - Reikna vöruverð, flutning, tryggingar, gengi, tolla, vörugjöld, VSK og önnur gjöld út frá skýrum inntökum.
 - Skila skýringum með formúlum, inntökum, milliskrefum og rounding policy.
 - Bæta við unit tests og golden scenarios.
+- Fyrsti deterministic engine grunnur er kominn í `packages/engine` með synthetic golden scenario.
 
 ## Lota 5: Ingestion, classification og AI boundary
 

@@ -45,6 +45,8 @@ for (const file of files) {
 
 const scenarioFile = 'fixtures/synthetic/import-review-scenario.json'
 const scenario = JSON.parse(readFileSync(scenarioFile, 'utf8'))
+const landedCostScenarioFile = 'fixtures/synthetic/landed-cost-golden-scenario.json'
+const landedCostScenario = JSON.parse(readFileSync(landedCostScenarioFile, 'utf8'))
 
 for (const key of requiredTopLevelKeys) {
   if (!(key in scenario)) {
@@ -82,6 +84,30 @@ const hasResolvedDecision = scenario.decisionRecords?.some(
 
 if (hasResolvedDecision) {
   findings.push(`${scenarioFile}: fixture má ekki innihalda samþykkta ákvörðun í þessari lotu.`)
+}
+
+if (landedCostScenario.containsRawCustomerData !== false) {
+  findings.push(`${landedCostScenarioFile}: containsRawCustomerData verður að vera false.`)
+}
+
+if (landedCostScenario.classification !== 'synthetic_only') {
+  findings.push(`${landedCostScenarioFile}: classification verður að vera synthetic_only.`)
+}
+
+if (landedCostScenario.expected?.currency !== 'ISK') {
+  findings.push(`${landedCostScenarioFile}: expected.currency verður að vera ISK í þessari lotu.`)
+}
+
+if (!landedCostScenario.input?.roundingPolicy?.description?.includes('synthetic')) {
+  findings.push(`${landedCostScenarioFile}: rounding policy þarf að merkja prófið sem synthetic.`)
+}
+
+const hasSyntheticTaxComponents = landedCostScenario.expected?.taxComponents?.every((component) =>
+  component.code?.startsWith('synthetic_')
+)
+
+if (!hasSyntheticTaxComponents) {
+  findings.push(`${landedCostScenarioFile}: gjaldaliðir í golden fixture þurfa að vera synthetic.`)
 }
 
 if (findings.length > 0) {

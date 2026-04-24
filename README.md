@@ -20,7 +20,7 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 
 - `apps/web`: lágmarks Next.js app og íslenskt upphafsyfirborð.
 - `packages/domain`: sameiginleg grunnheiti og types.
-- `packages/engine`: boundary fyrir framtíðar landed cost reiknivél.
+- `packages/engine`: determinískur grunnur fyrir landed cost reiknivél.
 - `packages/ai`: boundary fyrir framtíðar AI provider lag.
 - `prisma/schema.prisma`: Prisma datasource og generator; domain models koma í næstu lotu.
 - `docs/UX-REVIEW.md`: mat á vefupplifun, skýrleika og trausti.
@@ -29,6 +29,7 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 - `docs/FIXTURE-POLICY.md`: reglur um örugg fixture gögn og bann við raw viðskiptavinagögnum í Git.
 - `fixtures/synthetic`: tilbúin prófunargögn sem innihalda ekki raw viðskiptavinagögn.
 - `knowledge/sources`: vélrænn metadata-grunnur fyrir heimildir og snapshot-stubba án raw gagna.
+- `docs/LANDED-COST-ENGINE.md`: mörk, rounding policy og golden scenario fyrir determiníska reiknivél.
 
 ## Keyrsla
 
@@ -49,6 +50,7 @@ pnpm test
 - [Gagnalíkan](docs/DATABASE-MODEL.md)
 - [Orðasafn](docs/DOMAIN-GLOSSARY.md)
 - [AI Foundry mörk](docs/AI-FOUNDRY-BOUNDARY.md)
+- [Landað kostnaðarverð](docs/LANDED-COST-ENGINE.md)
 - [Staða](docs/STATUS.md)
 - [UX-greining](docs/UX-REVIEW.md)
 - [Gagnainventory](docs/DATA-INVENTORY.md)

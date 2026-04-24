@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.json",
     "lint": "tsc -b tsconfig.json --pretty false",
-    "test": "node -e \"console.log('engine: landed cost próf koma í Lotu 4')\"",
+    "test": "tsc -b tsconfig.json && node dist/landed-cost.test.js",
     "typecheck": "tsc -b tsconfig.json --pretty false"
   },
   "dependencies": {

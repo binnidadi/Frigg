@@ -1,0 +1,105 @@
+import { strict as assert } from 'node:assert'
+import { calculateLandedCost, landedCostEngineBoundary, type LandedCostInput } from './index.js'
+
+const goldenInput: LandedCostInput = {
+  calculationId: 'calc_synthetic_landed_cost_001',
+  shipmentId: 'shp_synthetic_2026_0001',
+  outputCurrency: 'ISK',
+  exchangeRate: {
+    id: 'fx_synthetic_eur_isk_2026_04_24',
+    baseCurrency: 'EUR',
+    quoteCurrency: 'ISK',
+    rate: '150.25',
+    rateDate: '2026-04-24',
+    sourceReference: 'synthetic-exchange-rate'
+  },
+  roundingPolicy: {
+    mode: 'half_up',
+    scale: 0,
+    description: 'Rúnnað í heilar ISK með half-up reglu í synthetic prófi.'
+  },
+  items: [
+    {
+      shipmentItemId: 'item_synthetic_001',
+      lineNumber: 1,
+      description: 'Rafknúinn garðklippari fyrir heimilisnotkun',
+      quantity: '12.000000',
+      unitPriceMinor: 8950,
+      currency: 'EUR'
+    },
+    {
+      shipmentItemId: 'item_synthetic_002',
+      lineNumber: 2,
+      description: 'Lifandi kryddjurt í potti til endursölu',
+      quantity: '80.000000',
+      unitPriceMinor: 225,
+      currency: 'EUR'
+    }
+  ],
+  adjustments: [
+    {
+      code: 'freight',
+      label: 'Flutningur',
+      amountMinor: 30000,
+      currency: 'EUR',
+      sourceReference: 'synthetic-freight-input'
+    },
+    {
+      code: 'insurance',
+      label: 'Trygging',
+      amountMinor: 5000,
+      currency: 'EUR',
+      sourceReference: 'synthetic-insurance-input'
+    }
+  ],
+  taxRules: [
+    {
+      code: 'synthetic_customs_duty',
+      label: 'Synthetic tollur til prófunar',
+      rate: '0.035',
+      base: 'customs_value',
+      sourceReference: 'synthetic-duty-rule'
+    },
+    {
+      code: 'synthetic_vat',
+      label: 'Synthetic VSK til prófunar',
+      rate: '0.24',
+      base: 'customs_value_plus_prior_taxes',
+      sourceReference: 'synthetic-vat-rule'
+    }
+  ],
+  sourceReferences: [
+    'skatturinn-tollskrarlyklar',
+    'synthetic-exchange-rate',
+    'synthetic-duty-rule',
+    'synthetic-vat-rule'
+  ]
+}
+
+const result = calculateLandedCost(goldenInput, '2026-04-24T00:00:00.000Z')
+
+assert.equal(landedCostEngineBoundary.status, 'implemented')
+assert.equal(result.status, 'computed')
+assert.equal(result.currency, 'ISK')
+assert.equal(result.lines.length, 4)
+assert.equal(result.taxComponents.length, 2)
+assert.equal(result.explanation.customsValueMinor, 241002)
+assert.equal(result.taxComponents[0]?.amountMinor, 8435)
+assert.equal(result.taxComponents[1]?.amountMinor, 59865)
+assert.equal(result.totalMinor, 309302)
+assert.match(result.taxComponents[0]?.formula ?? '', /round/)
+assert.match(result.explanation.warnings.join(' '), /ekki staðfest/)
+
+assert.throws(
+  () =>
+    calculateLandedCost(
+      {
+        ...goldenInput,
+        outputCurrency: 'USD' as 'ISK'
+      },
+      '2026-04-24T00:00:00.000Z'
+    ),
+  /styður aðeins ISK/
+)
+
+console.log('Landed cost golden próf stóðst: útreikningur er determinískur og útskýrður.')

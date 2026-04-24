@@ -59,3 +59,8 @@
 
 - Staða: Samþykkt
 - Ástæða: Tollflokkunartillögur, leyfisskylduviðvaranir, reglur og útreikningar þurfa endurnýtanlegar, prófanlegar og rekjanlegar heimildavísanir. Markdown má útskýra stefnu, en canonical heimildagrunnur þarf að vera vélrænn og staðfestur með prófi.
+
+## D-013: Landed cost reiknivél er determinísk og input-drifin
+
+- Staða: Samþykkt
+- Ástæða: Landað kostnaðarverð hefur fjárhagsleg áhrif og verður að vera endurkeyranlegt, útskýranlegt og prófanlegt. Reiknivélin má aðeins nota skýr inntök, formúlur og rounding policy; hún má ekki fela gjalda- eða skattarökfræði inni í LLM-kalli.
