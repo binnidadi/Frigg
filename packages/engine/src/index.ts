@@ -404,6 +404,12 @@ function validateInput(input: LandedCostInput) {
       throw new Error(`Kostnaðarlínan ${adjustment.code} má ekki vera neikvæð.`)
     }
   }
+
+  for (const taxRule of input.taxRules) {
+    if (!isPositiveDecimal(taxRule.rate)) {
+      throw new Error(`Skattaregla ${taxRule.code} þarf að vera með jákvætt rate-gildi.`)
+    }
+  }
 }
 
 function multiplyQuantityByUnitPrice(quantity: string, unitPriceMinor: number, roundingPolicy: RoundingPolicy): bigint {

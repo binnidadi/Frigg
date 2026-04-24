@@ -207,4 +207,21 @@ assert.throws(
   /Gengi þarf að vera jákvætt tugabrot/
 )
 
+assert.throws(
+  () =>
+    calculateLandedCost(
+      {
+        ...goldenInput,
+        taxRules: [
+          {
+            ...goldenInput.taxRules[0]!,
+            rate: '0'
+          }
+        ]
+      },
+      '2026-04-24T00:00:00.000Z'
+    ),
+  /þarf að vera með jákvætt rate-gildi/
+)
+
 console.log('Landed cost golden próf stóðst: útreikningur er determinískur og útskýrður.')
