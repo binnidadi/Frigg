@@ -57,6 +57,7 @@
 - Bæta við unit tests og golden scenarios.
 - Fyrsti deterministic engine grunnur er kominn í `packages/engine` með synthetic golden scenario.
 - Engine býr til audit draft og review task draft fyrir útreikning án þess að staðfesta niðurstöðu sjálfkrafa.
+- Rounding edge cases og validation fyrir óstuttan gjaldmiðil, gjaldmiðlamisræmi og ójákvætt gengi eru komin í engine-próf.
 
 ## Lota 5: Ingestion, classification og AI boundary
 

@@ -83,6 +83,27 @@ const goldenInput: LandedCostInput = {
 }
 
 const result = calculateLandedCost(goldenInput, '2026-04-24T00:00:00.000Z')
+const halfUpRoundingInput: LandedCostInput = {
+  ...goldenInput,
+  calculationId: 'calc_synthetic_rounding_half_up',
+  exchangeRate: {
+    ...goldenInput.exchangeRate,
+    rate: '1.00'
+  },
+  items: [
+    {
+      shipmentItemId: 'item_synthetic_rounding_001',
+      lineNumber: 1,
+      description: 'Synthetic rounding próf',
+      quantity: '1.000000',
+      unitPriceMinor: 150,
+      currency: 'EUR'
+    }
+  ],
+  adjustments: [],
+  taxRules: []
+}
+const halfUpRoundingResult = calculateLandedCost(halfUpRoundingInput, '2026-04-24T00:00:00.000Z')
 
 assert.equal(landedCostEngineBoundary.status, 'implemented')
 assert.equal(result.status, 'computed')
@@ -95,6 +116,8 @@ assert.equal(result.taxComponents[1]?.amountMinor, 59865)
 assert.equal(result.totalMinor, 309302)
 assert.match(result.taxComponents[0]?.formula ?? '', /round/)
 assert.match(result.explanation.warnings.join(' '), /ekki staðfest/)
+assert.equal(halfUpRoundingResult.totalMinor, 2)
+assert.equal(halfUpRoundingResult.explanation.customsValueMinor, 2)
 
 const auditDraft = createLandedCostComputedAuditDraft(result, {
   importerId: 'imp_synthetic_nordurljos',
@@ -131,6 +154,57 @@ assert.throws(
       '2026-04-24T00:00:00.000Z'
     ),
   /styður aðeins ISK/
+)
+
+assert.throws(
+  () =>
+    calculateLandedCost(
+      {
+        ...goldenInput,
+        exchangeRate: {
+          ...goldenInput.exchangeRate,
+          baseCurrency: 'CHF'
+        }
+      },
+      '2026-04-24T00:00:00.000Z'
+    ),
+  /Óstuddur grunngjaldmiðill/
+)
+
+assert.throws(
+  () =>
+    calculateLandedCost(
+      {
+        ...goldenInput,
+        items: [
+          {
+            shipmentItemId: 'item_synthetic_currency_mismatch',
+            lineNumber: 1,
+            description: 'Synthetic currency mismatch próf',
+            quantity: '1.000000',
+            unitPriceMinor: 100,
+            currency: 'USD'
+          }
+        ]
+      },
+      '2026-04-24T00:00:00.000Z'
+    ),
+  /gengi er fyrir EUR/
+)
+
+assert.throws(
+  () =>
+    calculateLandedCost(
+      {
+        ...goldenInput,
+        exchangeRate: {
+          ...goldenInput.exchangeRate,
+          rate: '0'
+        }
+      },
+      '2026-04-24T00:00:00.000Z'
+    ),
+  /Gengi þarf að vera jákvætt tugabrot/
 )
 
 console.log('Landed cost golden próf stóðst: útreikningur er determinískur og útskýrður.')

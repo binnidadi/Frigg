@@ -174,6 +174,8 @@ const currencyMinorFactor: Record<string, bigint> = {
   SEK: 100n
 }
 
+const supportedInputCurrencies = new Set(Object.keys(currencyMinorFactor))
+
 export const landedCostEngineBoundary: LandedCostEngineBoundary = {
   module: 'landed_cost',
   status: 'implemented',
@@ -359,6 +361,14 @@ function validateInput(input: LandedCostInput) {
     throw new Error('Gengi þarf að vera skráð gagnvart úttaksgjaldmiðli útreiknings.')
   }
 
+  if (!supportedInputCurrencies.has(input.exchangeRate.baseCurrency)) {
+    throw new Error(`Óstuddur grunngjaldmiðill í gengi: ${input.exchangeRate.baseCurrency}.`)
+  }
+
+  if (!isPositiveDecimal(input.exchangeRate.rate)) {
+    throw new Error('Gengi þarf að vera jákvætt tugabrot.')
+  }
+
   if (input.roundingPolicy.mode !== 'half_up' || input.roundingPolicy.scale !== 0) {
     throw new Error('Óstudd rounding policy. Lota 4 styður aðeins half_up í heilum ISK.')
   }
@@ -368,6 +378,10 @@ function validateInput(input: LandedCostInput) {
   }
 
   for (const item of input.items) {
+    if (!supportedInputCurrencies.has(item.currency)) {
+      throw new Error(`Vörulína ${item.lineNumber} notar óstuddan gjaldmiðil: ${item.currency}.`)
+    }
+
     if (item.currency !== input.exchangeRate.baseCurrency) {
       throw new Error(`Vörulína ${item.lineNumber} er í ${item.currency}, en gengi er fyrir ${input.exchangeRate.baseCurrency}.`)
     }
@@ -378,6 +392,10 @@ function validateInput(input: LandedCostInput) {
   }
 
   for (const adjustment of input.adjustments) {
+    if (!supportedInputCurrencies.has(adjustment.currency)) {
+      throw new Error(`Kostnaðarlínan ${adjustment.code} notar óstuddan gjaldmiðil: ${adjustment.currency}.`)
+    }
+
     if (adjustment.currency !== input.exchangeRate.baseCurrency) {
       throw new Error(`Kostnaðarlínan ${adjustment.code} er í ${adjustment.currency}, en gengi er fyrir ${input.exchangeRate.baseCurrency}.`)
     }
@@ -400,7 +418,12 @@ function convertToOutputCurrency(
   roundingPolicy: RoundingPolicy
 ): bigint {
   const rate = parseDecimal(exchangeRate.rate)
-  const minorFactor = currencyMinorFactor[sourceCurrency] ?? 100n
+  const minorFactor = currencyMinorFactor[sourceCurrency]
+
+  if (!minorFactor) {
+    throw new Error(`Óstuddur gjaldmiðill: ${sourceCurrency}.`)
+  }
+
   return roundRational(sourceAmountMinor * rate.numerator, rate.denominator * minorFactor, roundingPolicy)
 }
 
@@ -422,6 +445,14 @@ function parseDecimal(value: string): Rational {
     numerator,
     denominator
   }
+}
+
+function isPositiveDecimal(value: string): boolean {
+  if (!/^\d+(?:\.\d+)?$/.test(value)) {
+    return false
+  }
+
+  return parseDecimal(value).numerator > 0n
 }
 
 function roundRational(numerator: bigint, denominator: bigint, roundingPolicy: RoundingPolicy): bigint {

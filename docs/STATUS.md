@@ -19,6 +19,7 @@ Síðast uppfært: 2026-04-24
 - Fyrsta synthetic import fixture er komið í `fixtures/synthetic/import-review-scenario.json` og er staðfest með `tools/check-fixtures.mjs`.
 - Fyrsti determiníski landed cost engine grunnur er kominn í `packages/engine` með synthetic golden prófi.
 - Landed cost engine býr nú til audit draft og review task draft svo niðurstaða sé rekjanleg án sjálfvirkrar samþykktar.
+- Landed cost engine hefur nú edge-case próf fyrir `half_up` rounding, óstuttan gjaldmiðil, gjaldmiðlamisræmi og ójákvætt gengi.
 - Engin tollflokkun, leyfisskylda, reglufylgni eða peningaleg reiknirökfræði hefur verið útfærð sem production logic enn.
 
 ## Lokið
@@ -33,14 +34,15 @@ Síðast uppfært: 2026-04-24
 - Knowledge registry lota: machine-readable source registry og snapshot-stubbar án raw ytri gagna.
 - Lota 4 grunnur: determinísk landed cost reiknivél með synthetic golden scenario.
 - Audit/review costing lota: audit draft og review task draft fyrir computed landed cost niðurstöður.
+- Costing validation lota: rounding edge cases og strangari gjaldmiðla-/gengisvalidation.
 
 ## Í vinnslu
 
-- Undirbúningur fyrir næstu lotu: styrkja rounding edge cases og hanna read-only UI demo.
+- Undirbúningur fyrir næstu lotu: hanna read-only UI demo og domain service mapping fyrir synthetic costing.
 
 ## Næst
 
-1. Bæta við fleiri rounding edge cases og validation fyrir óstuddar gjaldmiðlasamsetningar.
-2. Hanna read-only UI demo fyrir synthetic import-review mál og landed cost útreikning.
+1. Hanna read-only UI demo fyrir synthetic import-review mál og landed cost útreikning.
+2. Bæta við domain service mapping sem breytir fixture/import data í `LandedCostInput`.
 3. Tengja audit/review draft við persistence/service lag þegar domain service lag verður útfært.
 4. Uppfæra skjöl samhliða hverri lotu svo staða og næstu skref haldist skýr.
