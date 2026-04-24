@@ -18,6 +18,10 @@ const requiredModels = [
   'LandedCostLine',
   'TaxComponent',
   'AuditLog',
+  'RegulatorySource',
+  'SourceSnapshot',
+  'ReviewTask',
+  'DecisionRecord',
   'IntegrationJob',
   'AccountingExport'
 ]
@@ -29,7 +33,11 @@ const requiredEnums = [
   'ShipmentStatus',
   'CalculationStatus',
   'AuditAction',
-  'IntegrationStatus'
+  'IntegrationStatus',
+  'SourceType',
+  'TrustTier',
+  'ReviewTaskType',
+  'ReviewTaskStatus'
 ]
 
 const requiredFragments = [
@@ -38,7 +46,10 @@ const requiredFragments = [
   'roundingPolicy',
   'idempotencyKey',
   '@@unique([provider, idempotencyKey])',
-  '@@index([entityType, entityId])'
+  '@@index([entityType, entityId])',
+  '@@unique([sourceId, version, retrievedAt])',
+  'sourceReferences',
+  'decisionState'
 ]
 
 const findings = []

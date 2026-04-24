@@ -25,10 +25,17 @@
 
 ## Lota 3b: Schema tests og örugg fixtures
 
-- Staða: Að hluta lokið.
+- Staða: Grunnur kominn.
 - Bæta við fyrstu schema/type tests fyrir review state, enum mapping og audit invariants.
 - Skilgreina fixture policy fyrir hreinsuð sýnigögn.
 - Undirbúa örugg seed drög án raw fjárhags- eða viðskiptavinagagna.
+
+## Source registry og review foundation
+
+- Staða: Lokið í grunni.
+- Heimildaskrá skráð í `docs/SOURCE-REGISTRY.md`.
+- Fixture stefna skráð í `docs/FIXTURE-POLICY.md`.
+- Prisma schema bætt með `RegulatorySource`, `SourceSnapshot`, `ReviewTask` og `DecisionRecord`.
 
 ## UX- og gagnainventory lota
 

@@ -87,6 +87,36 @@ enum PermitRequirementStatus {
   DISMISSED
 }
 
+enum SourceType {
+  OFFICIAL_AUTHORITY
+  INTERNATIONAL_STANDARD
+  REGULATORY_GUIDANCE
+  VENDOR_REFERENCE
+  INTERNAL_POLICY
+}
+
+enum TrustTier {
+  PRIMARY
+  SECONDARY
+  REFERENCE
+}
+
+enum ReviewTaskType {
+  DOCUMENT_FIELD
+  CLASSIFICATION_CANDIDATE
+  PERMIT_REQUIREMENT
+  LANDED_COST_CALCULATION
+  SOURCE_SNAPSHOT
+}
+
+enum ReviewTaskStatus {
+  OPEN
+  IN_REVIEW
+  BLOCKED
+  RESOLVED
+  CANCELLED
+}
+
 model Importer {
   id                String             @id @default(cuid())
   name              String
@@ -100,9 +130,52 @@ model Importer {
   auditLogs         AuditLog[]
   integrationJobs   IntegrationJob[]
   accountingExports AccountingExport[]
+  reviewTasks       ReviewTask[]
+  decisionRecords   DecisionRecord[]
 
   @@index([countryCode])
   @@index([createdAt])
+}
+
+model RegulatorySource {
+  id              String           @id @default(cuid())
+  code            String           @unique
+  title           String
+  owner           String
+  jurisdiction    String
+  sourceType      SourceType
+  trustTier       TrustTier
+  url             String
+  notes           String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  snapshots       SourceSnapshot[]
+  decisionRecords DecisionRecord[]
+
+  @@index([jurisdiction])
+  @@index([sourceType])
+  @@index([trustTier])
+}
+
+model SourceSnapshot {
+  id              String           @id @default(cuid())
+  sourceId        String
+  version         String
+  retrievedAt     DateTime
+  checksum        String?
+  effectiveFrom   DateTime?
+  effectiveTo     DateTime?
+  storageUri      String?
+  reviewState     ReviewState      @default(NEEDS_REVIEW)
+  createdAt       DateTime         @default(now())
+  source          RegulatorySource @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+  reviewTasks     ReviewTask[]
+  decisionRecords DecisionRecord[]
+
+  @@unique([sourceId, version, retrievedAt])
+  @@index([sourceId])
+  @@index([reviewState])
+  @@index([effectiveFrom, effectiveTo])
 }
 
 model Supplier {
@@ -401,6 +474,61 @@ model AuditLog {
   @@index([entityType, entityId])
   @@index([action])
   @@index([createdAt])
+}
+
+model ReviewTask {
+  id               String           @id @default(cuid())
+  importerId       String?
+  sourceSnapshotId String?
+  taskType         ReviewTaskType
+  status           ReviewTaskStatus @default(OPEN)
+  entityType       String
+  entityId         String
+  title            String
+  description      String
+  priority         Int              @default(100)
+  assignedTo       String?
+  dueAt            DateTime?
+  resolvedAt       DateTime?
+  resolution       String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  importer         Importer?        @relation(fields: [importerId], references: [id], onDelete: SetNull)
+  sourceSnapshot   SourceSnapshot?  @relation(fields: [sourceSnapshotId], references: [id], onDelete: SetNull)
+
+  @@index([importerId])
+  @@index([sourceSnapshotId])
+  @@index([taskType])
+  @@index([status])
+  @@index([entityType, entityId])
+  @@index([priority, createdAt])
+}
+
+model DecisionRecord {
+  id               String            @id @default(cuid())
+  importerId       String?
+  sourceId         String?
+  sourceSnapshotId String?
+  entityType       String
+  entityId         String
+  decisionType     String
+  decisionState    ReviewState
+  rationale        String
+  sourceReferences Json
+  decidedBy        String
+  decidedAt        DateTime          @default(now())
+  createdAt        DateTime          @default(now())
+  importer         Importer?         @relation(fields: [importerId], references: [id], onDelete: SetNull)
+  source           RegulatorySource? @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  sourceSnapshot   SourceSnapshot?   @relation(fields: [sourceSnapshotId], references: [id], onDelete: SetNull)
+
+  @@index([importerId])
+  @@index([sourceId])
+  @@index([sourceSnapshotId])
+  @@index([entityType, entityId])
+  @@index([decisionType])
+  @@index([decisionState])
+  @@index([decidedAt])
 }
 
 model IntegrationJob {

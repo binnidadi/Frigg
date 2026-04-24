@@ -39,3 +39,13 @@
 
 - Staða: Samþykkt
 - Ástæða: Sérstakt API app er ekki nauðsynlegt fyrr en samþættingar, bakgrunnsvinnsla eða deployment mörk kalla á það. Þetta heldur fyrstu útfærslu einfaldri og PR-vænni.
+
+## D-009: Heimildir eru versioned domain artifacts
+
+- Staða: Samþykkt
+- Ástæða: Tollflokkunartillögur, leyfisskylduviðvaranir og reglur þurfa að vísa í skýrar heimildir með útgáfu, sóttum tíma, checksum eða varðveisluvísun og review state. Heimildaskrá er því domain-lag, ekki aðeins skjölun.
+
+## D-010: Raw viðskiptavinagögn fara ekki í Git
+
+- Staða: Samþykkt
+- Ástæða: Gögn eins og bankayfirlit, framtöl, skjöl og bókhaldsgögn geta innihaldið viðkvæmar upplýsingar. Repo skal aðeins nota synthetic eða samþykkt hreinsuð fixtures.

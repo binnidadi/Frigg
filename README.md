@@ -25,6 +25,8 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 - `prisma/schema.prisma`: Prisma datasource og generator; domain models koma í næstu lotu.
 - `docs/UX-REVIEW.md`: mat á vefupplifun, skýrleika og trausti.
 - `docs/DATA-INVENTORY.md`: inventory yfir ytri gögn sem hafa verið skoðuð án þess að afrita þau í repo.
+- `docs/SOURCE-REGISTRY.md`: forgangsröðuð heimildaskrá fyrir opinberar og viðurkenndar heimildir.
+- `docs/FIXTURE-POLICY.md`: reglur um örugg fixture gögn og bann við raw viðskiptavinagögnum í Git.
 
 ## Keyrsla
 
@@ -48,3 +50,5 @@ pnpm test
 - [Staða](docs/STATUS.md)
 - [UX-greining](docs/UX-REVIEW.md)
 - [Gagnainventory](docs/DATA-INVENTORY.md)
+- [Heimildaskrá](docs/SOURCE-REGISTRY.md)
+- [Fixture stefna](docs/FIXTURE-POLICY.md)
