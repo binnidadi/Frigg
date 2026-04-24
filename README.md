@@ -27,6 +27,7 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 - `docs/DATA-INVENTORY.md`: inventory yfir ytri gögn sem hafa verið skoðuð án þess að afrita þau í repo.
 - `docs/SOURCE-REGISTRY.md`: forgangsröðuð heimildaskrá fyrir opinberar og viðurkenndar heimildir.
 - `docs/FIXTURE-POLICY.md`: reglur um örugg fixture gögn og bann við raw viðskiptavinagögnum í Git.
+- `fixtures/synthetic`: tilbúin prófunargögn sem innihalda ekki raw viðskiptavinagögn.
 
 ## Keyrsla
 

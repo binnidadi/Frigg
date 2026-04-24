@@ -25,10 +25,11 @@
 
 ## Lota 3b: Schema tests og örugg fixtures
 
-- Staða: Grunnur kominn.
+- Staða: Lokið í grunni.
 - Bæta við fyrstu schema/type tests fyrir review state, enum mapping og audit invariants.
 - Skilgreina fixture policy fyrir hreinsuð sýnigögn.
 - Undirbúa örugg seed drög án raw fjárhags- eða viðskiptavinagagna.
+- Fyrsta synthetic import-review fixture er komið í `fixtures/synthetic/import-review-scenario.json`.
 
 ## Source registry og review foundation
 

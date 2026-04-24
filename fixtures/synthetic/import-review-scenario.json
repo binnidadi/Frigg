@@ -1,0 +1,280 @@
+{
+  "fixtureKind": "synthetic_import_review_scenario",
+  "fixtureVersion": "2026-04-24.1",
+  "classification": "synthetic_only",
+  "containsRawCustomerData": false,
+  "notes": [
+    "Þessi fixture er tilbúin frá grunni og má nota í prófum.",
+    "Hún má ekki túlka sem staðfest tollflokkun, leyfisskyldu eða gjaldareikning."
+  ],
+  "sources": [
+    {
+      "id": "src_skatturinn_tollskrarlyklar",
+      "code": "skatturinn-tollskrarlyklar",
+      "title": "Tollskrárlyklar",
+      "owner": "Skatturinn",
+      "jurisdiction": "IS",
+      "sourceType": "official_authority",
+      "trustTier": "primary",
+      "url": "https://www.skatturinn.is/fagadilar/tollamal/hugbunadarhus/tollskrarlyklar/",
+      "snapshot": {
+        "id": "snap_skatturinn_tollskrarlyklar_2026_04_24",
+        "version": "synthetic-reference-2026-04-24",
+        "retrievedAt": "2026-04-24T00:00:00.000Z",
+        "checksum": "synthetic-no-raw-download",
+        "effectiveFrom": null,
+        "effectiveTo": null,
+        "storageUri": null,
+        "reviewState": "needs_review"
+      }
+    },
+    {
+      "id": "src_mast_plontur",
+      "code": "mast-plontur",
+      "title": "Innflutningur plantna og plöntuafurða",
+      "owner": "Matvælastofnun",
+      "jurisdiction": "IS",
+      "sourceType": "official_authority",
+      "trustTier": "primary",
+      "url": "https://www.mast.is/is/annad/plontur/innflutningur",
+      "snapshot": {
+        "id": "snap_mast_plontur_2026_04_24",
+        "version": "synthetic-reference-2026-04-24",
+        "retrievedAt": "2026-04-24T00:00:00.000Z",
+        "checksum": "synthetic-no-raw-download",
+        "effectiveFrom": null,
+        "effectiveTo": null,
+        "storageUri": null,
+        "reviewState": "needs_review"
+      }
+    }
+  ],
+  "importer": {
+    "id": "imp_synthetic_nordurljos",
+    "name": "Norðurljós Innflutningur ehf.",
+    "registrationId": "000000-0000",
+    "countryCode": "IS"
+  },
+  "supplier": {
+    "id": "sup_synthetic_green_tools",
+    "importerId": "imp_synthetic_nordurljos",
+    "name": "Green Tools Example GmbH",
+    "countryCode": "DE",
+    "externalRef": "SUP-SYN-001"
+  },
+  "shipment": {
+    "id": "shp_synthetic_2026_0001",
+    "importerId": "imp_synthetic_nordurljos",
+    "supplierId": "sup_synthetic_green_tools",
+    "reference": "SYN-IMP-2026-0001",
+    "status": "classification_review",
+    "originCountry": "DE",
+    "destinationCountry": "IS",
+    "currency": "EUR",
+    "expectedArrival": "2026-05-04T00:00:00.000Z"
+  },
+  "shipmentItems": [
+    {
+      "id": "item_synthetic_001",
+      "shipmentId": "shp_synthetic_2026_0001",
+      "lineNumber": 1,
+      "description": "Rafknúinn garðklippari fyrir heimilisnotkun",
+      "quantity": "12.000000",
+      "unitOfMeasure": "stk",
+      "unitPriceMinor": 8950,
+      "currency": "EUR",
+      "originCountry": "DE",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "item_synthetic_002",
+      "shipmentId": "shp_synthetic_2026_0001",
+      "lineNumber": 2,
+      "description": "Lifandi kryddjurt í potti til endursölu",
+      "quantity": "80.000000",
+      "unitOfMeasure": "stk",
+      "unitPriceMinor": 225,
+      "currency": "EUR",
+      "originCountry": "NL",
+      "reviewState": "needs_review"
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc_synthetic_invoice_001",
+      "shipmentId": "shp_synthetic_2026_0001",
+      "type": "invoice",
+      "fileName": "synthetic-commercial-invoice.json",
+      "storageUri": "synthetic://documents/commercial-invoice-001",
+      "checksum": "synthetic-document-no-raw-file",
+      "sourceReceivedAt": "2026-04-24T00:00:00.000Z",
+      "reviewState": "needs_review"
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": "field_synthetic_invoice_number",
+      "documentId": "doc_synthetic_invoice_001",
+      "shipmentItemId": null,
+      "fieldKey": "invoice_number",
+      "rawValue": "INV-SYN-2026-0001",
+      "normalizedValue": "INV-SYN-2026-0001",
+      "confidence": "high",
+      "confidenceScore": 0.98,
+      "source": {
+        "page": 1,
+        "boundingBox": {
+          "x": 120,
+          "y": 80,
+          "width": 180,
+          "height": 24
+        }
+      },
+      "providerName": "synthetic-fixture",
+      "reviewState": "suggested"
+    },
+    {
+      "id": "field_synthetic_item_001_description",
+      "documentId": "doc_synthetic_invoice_001",
+      "shipmentItemId": "item_synthetic_001",
+      "fieldKey": "item_description",
+      "rawValue": "Electric garden trimmer for household use",
+      "normalizedValue": "Rafknúinn garðklippari fyrir heimilisnotkun",
+      "confidence": "medium",
+      "confidenceScore": 0.82,
+      "source": {
+        "page": 1,
+        "boundingBox": {
+          "x": 64,
+          "y": 260,
+          "width": 420,
+          "height": 24
+        }
+      },
+      "providerName": "synthetic-fixture",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "field_synthetic_item_002_description",
+      "documentId": "doc_synthetic_invoice_001",
+      "shipmentItemId": "item_synthetic_002",
+      "fieldKey": "item_description",
+      "rawValue": "Live herb plant in pot for resale",
+      "normalizedValue": "Lifandi kryddjurt í potti til endursölu",
+      "confidence": "medium",
+      "confidenceScore": 0.8,
+      "source": {
+        "page": 1,
+        "boundingBox": {
+          "x": 64,
+          "y": 292,
+          "width": 390,
+          "height": 24
+        }
+      },
+      "providerName": "synthetic-fixture",
+      "reviewState": "needs_review"
+    }
+  ],
+  "hsCodes": [
+    {
+      "id": "hs_synthetic_846729",
+      "code": "8467.29",
+      "version": "synthetic-2026",
+      "description": "Synthetic dæmi: verkfæri með innbyggðum rafmótor",
+      "validFrom": "2026-01-01T00:00:00.000Z",
+      "validTo": null,
+      "sourceReference": "src_skatturinn_tollskrarlyklar"
+    },
+    {
+      "id": "hs_synthetic_060290",
+      "code": "0602.90",
+      "version": "synthetic-2026",
+      "description": "Synthetic dæmi: lifandi plöntur",
+      "validFrom": "2026-01-01T00:00:00.000Z",
+      "validTo": null,
+      "sourceReference": "src_skatturinn_tollskrarlyklar"
+    }
+  ],
+  "classificationCandidates": [
+    {
+      "id": "class_synthetic_item_001",
+      "shipmentItemId": "item_synthetic_001",
+      "hsCodeId": "hs_synthetic_846729",
+      "rationale": "Synthetic tillaga byggð á vörulýsingu. Þarfnast yfirferðar áður en hún má teljast staðfest tollflokkun.",
+      "evidence": {
+        "matchedDescription": "Electric garden trimmer",
+        "sourceFieldId": "field_synthetic_item_001_description"
+      },
+      "confidence": "medium",
+      "confidenceScore": 0.74,
+      "sourceReference": "src_skatturinn_tollskrarlyklar",
+      "providerName": "synthetic-fixture",
+      "reviewState": "suggested"
+    },
+    {
+      "id": "class_synthetic_item_002",
+      "shipmentItemId": "item_synthetic_002",
+      "hsCodeId": "hs_synthetic_060290",
+      "rationale": "Synthetic tillaga byggð á því að vörulína lýsir lifandi plöntu. Þarfnast yfirferðar og leyfisskyldumats.",
+      "evidence": {
+        "matchedDescription": "Live herb plant",
+        "sourceFieldId": "field_synthetic_item_002_description"
+      },
+      "confidence": "medium",
+      "confidenceScore": 0.78,
+      "sourceReference": "src_skatturinn_tollskrarlyklar",
+      "providerName": "synthetic-fixture",
+      "reviewState": "suggested"
+    }
+  ],
+  "permitRequirements": [
+    {
+      "id": "permit_synthetic_plants_review",
+      "shipmentId": "shp_synthetic_2026_0001",
+      "shipmentItemId": "item_synthetic_002",
+      "regulatoryRuleId": null,
+      "status": "warning",
+      "title": "Möguleg leyfisskylda vegna lifandi plöntu",
+      "rationale": "Synthetic viðvörun: lifandi planta getur kallað á plöntuheilbrigðisvottorð eða aðra yfirferð. Þetta er ekki staðfest leyfiskrafa.",
+      "authority": "Matvælastofnun",
+      "sourceReference": "src_mast_plontur",
+      "reviewState": "needs_review"
+    }
+  ],
+  "reviewTasks": [
+    {
+      "id": "review_synthetic_class_item_001",
+      "importerId": "imp_synthetic_nordurljos",
+      "sourceSnapshotId": "snap_skatturinn_tollskrarlyklar_2026_04_24",
+      "taskType": "classification_candidate",
+      "status": "open",
+      "entityType": "ClassificationCandidate",
+      "entityId": "class_synthetic_item_001",
+      "title": "Yfirfara tollflokkunartillögu fyrir garðklippara",
+      "description": "Staðfesta þarf hvort synthetic tollflokkunartillaga eigi við áður en hún má teljast samþykkt.",
+      "priority": 50,
+      "assignedTo": null,
+      "dueAt": null,
+      "resolvedAt": null,
+      "resolution": null
+    },
+    {
+      "id": "review_synthetic_permit_plants",
+      "importerId": "imp_synthetic_nordurljos",
+      "sourceSnapshotId": "snap_mast_plontur_2026_04_24",
+      "taskType": "permit_requirement",
+      "status": "open",
+      "entityType": "PermitRequirement",
+      "entityId": "permit_synthetic_plants_review",
+      "title": "Yfirfara leyfisskylduviðvörun fyrir lifandi plöntu",
+      "description": "Athuga þarf hvort varan krefjist vottorðs, leyfis eða annarrar meðferðar áður en tollafgreiðsla fer áfram.",
+      "priority": 25,
+      "assignedTo": null,
+      "dueAt": null,
+      "resolvedAt": null,
+      "resolution": null
+    }
+  ],
+  "decisionRecords": []
+}

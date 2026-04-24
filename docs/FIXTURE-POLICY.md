@@ -43,3 +43,18 @@ Fyrsta fixture lota skal búa til lítið synthetic import scenario:
 - eina permit warning sem er merkt `suggested`
 
 Þessi fixture lota skal ekki nota raunveruleg raw skjöl.
+
+## Núverandi fixture
+
+`fixtures/synthetic/import-review-scenario.json` inniheldur fyrstu tilbúnu import-sviðsmyndina:
+
+- tilbúinn innflytjanda og birgi
+- eina sendingu með tveimur vörulínum
+- synthetic invoice metadata án raunverulegs skjals
+- extracted fields með tilbúnu source mapping
+- tollflokkunartillögur merktar sem `suggested`
+- leyfisskylduviðvörun merkt sem `needs_review`
+- review tasks fyrir flokkun og leyfisskyldu
+- engar samþykktar ákvarðanir
+
+`tools/check-fixtures.mjs` keyrir með `pnpm test` og staðfestir að fixture sé synthetic, innihaldi ekki raw skjöl og setji ekki fram samþykktar niðurstöður.

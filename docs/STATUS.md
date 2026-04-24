@@ -15,6 +15,7 @@ Síðast uppfært: 2026-04-24
 - Fyrsta schema-yfirferð er komin í `tools/check-schema.mjs` og keyrir með `pnpm test`.
 - Heimildaskrá, source snapshots, review tasks og decision records eru komin í schema og domain contracts.
 - Fixture stefna bannar raw `HREIN_GOGN` og önnur raunveruleg viðskiptavinagögn í Git.
+- Fyrsta synthetic import fixture er komið í `fixtures/synthetic/import-review-scenario.json` og er staðfest með `tools/check-fixtures.mjs`.
 - Engin tollflokkun, leyfisskylda, reglufylgni eða peningaleg reiknirökfræði hefur verið útfærð sem production logic enn.
 
 ## Lokið
@@ -24,14 +25,15 @@ Síðast uppfært: 2026-04-24
 - UX- og gagnainventory lota: skýrari forsíða, UX-review og flokkun á ytra gagnasafni án innflutnings í Git.
 - Lota 3 grunnur: Prisma schema, domain contracts og schema-yfirferð fyrir innflytjanda, birgja, sendingar, skjöl, flokkunartillögur, reglur, landed cost metadata, audit og samþættingar.
 - Source registry og review foundation: heimildaskrá, source snapshots, review tasks, decision records og fixture policy.
+- Synthetic fixture lota: öruggt import-review dæmi án raw viðskiptavinagagna.
 
 ## Í vinnslu
 
-- Undirbúningur fyrir næstu lotu: fyrstu synthetic fixtures og síðar determinísk landed cost reiknivél.
+- Undirbúningur fyrir næstu lotu: determinísk landed cost reiknivél ofan á öruggum fixture grunni.
 
 ## Næst
 
-1. Bæta við fyrstu synthetic seed eða fixture drögum án raw viðskiptavinagagna.
-2. Tengja fixture gögn við source registry og review state.
-3. Hefja Lotu 4 með determinískri landed cost reiknivél þegar fixture-grunnurinn er kominn.
+1. Hefja Lotu 4 með determinískri landed cost reiknivél ofan á synthetic fixture.
+2. Skilgreina rounding policy og money arithmetic fyrir ISK/minor units.
+3. Bæta við golden scenario fyrir landed cost útreikning.
 4. Uppfæra skjöl samhliða hverri lotu svo staða og næstu skref haldist skýr.
