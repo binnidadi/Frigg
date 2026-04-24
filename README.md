@@ -14,7 +14,25 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 
 ## Núverandi staða
 
-Þetta repository var hreinsað og endurræst fyrir Tollvörð Pro. Fyrsta lota er skjala- og arkitektúrgrunnur; runtime-kóði, Prisma schema og reiknivél koma í næstu lotum.
+Þetta repository var hreinsað og endurræst fyrir Tollvörð Pro. Fyrsta lota var skjala- og arkitektúrgrunnur. Önnur lota setur upp TypeScript/Next.js/Prisma tæknigrunn án þess að útfæra tollflokkun, reglufylgni eða peningalega reiknirökfræði.
+
+## Tæknigrunnur
+
+- `apps/web`: lágmarks Next.js app og íslenskt upphafsyfirborð.
+- `packages/domain`: sameiginleg grunnheiti og types.
+- `packages/engine`: boundary fyrir framtíðar landed cost reiknivél.
+- `packages/ai`: boundary fyrir framtíðar AI provider lag.
+- `prisma/schema.prisma`: Prisma datasource og generator; domain models koma í næstu lotu.
+
+## Keyrsla
+
+```bash
+pnpm install
+pnpm typecheck
+pnpm build
+pnpm lint
+pnpm test
+```
 
 ## Source of truth
 
@@ -24,3 +42,4 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 - [Gagnalíkan](docs/DATABASE-MODEL.md)
 - [Orðasafn](docs/DOMAIN-GLOSSARY.md)
 - [AI Foundry mörk](docs/AI-FOUNDRY-BOUNDARY.md)
+- [Staða](docs/STATUS.md)

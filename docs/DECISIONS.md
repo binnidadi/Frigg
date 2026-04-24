@@ -29,3 +29,13 @@
 
 - Staða: Samþykkt
 - Ástæða: Tollvörð Pro vinnur fyrir íslenskan markað. Skýr, nákvæm og fagleg íslenska eykur traust og minnkar hættu á misskilningi.
+
+## D-007: Tæknigrunnur kemur á undan business logic
+
+- Staða: Samþykkt
+- Ástæða: Prisma schema, domain contracts og landed cost reiknivél eiga að byggja á stöðugri TypeScript, workspace og check keðju. Lota 2 stofnar því tæknigrunn án þess að falsa tollflokkun, reglufylgni eða fjárhagslega útreikninga.
+
+## D-008: Next server layer er sjálfgefið API lag í fyrstu
+
+- Staða: Samþykkt
+- Ástæða: Sérstakt API app er ekki nauðsynlegt fyrr en samþættingar, bakgrunnsvinnsla eða deployment mörk kalla á það. Þetta heldur fyrstu útfærslu einfaldri og PR-vænni.

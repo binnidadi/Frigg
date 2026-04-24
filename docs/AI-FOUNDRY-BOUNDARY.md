@@ -25,6 +25,8 @@ Leyfileg verkefni:
 
 Allar AI tengingar skulu fara í gegnum provider/service lag. Domain services mega ekki kalla beint í Foundry, LLM eða embedding þjónustu.
 
+Raunveruleg provider leyndarmál skulu aldrei fara í Git. Þau eiga heima í `.env.local`, deployment secrets eða sérhæfðri leyndarmálageymslu. `.env.example` má aðeins innihalda heiti breyta og tóm placeholder gildi.
+
 Provider contract skal síðar halda utan um:
 
 - provider name

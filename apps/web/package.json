@@ -1,0 +1,25 @@
+{
+  "name": "@tollvord/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node -e \"console.log('web: UI próf koma eftir fyrsta viðmót')\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@tollvord/ai": "workspace:*",
+    "@tollvord/domain": "workspace:*",
+    "@tollvord/engine": "workspace:*",
+    "next": "14.2.23",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.17",
+    "@types/react-dom": "18.3.5"
+  }
+}

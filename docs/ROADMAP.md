@@ -9,6 +9,7 @@
 
 ## Lota 2: Tæknigrunnur
 
+- Staða: Lokið í tæknigrunni.
 - Setja upp Next.js 14+ og TypeScript.
 - Setja upp Prisma, Supabase/Postgres stefnu og grunnstillingar.
 - Skilgreina `packages/domain`, `packages/engine` og `packages/ai`.
@@ -16,6 +17,7 @@
 
 ## Lota 3: Prisma schema og domain contracts
 
+- Staða: Næst.
 - Hanna schema fyrir importer, supplier, shipment, shipment item, document, extracted field, HS code, classification candidate, regulatory rule, permit requirement, exchange rate, landed cost calculation, landed cost line, tax component, audit log, integration job og accounting export.
 - Skilgreina enums fyrir review state, confidence, document type, calculation status, audit action, integration status og export status.
 - Bæta við indexes og constraints fyrir tenant readiness, rekjanleika og idempotency.

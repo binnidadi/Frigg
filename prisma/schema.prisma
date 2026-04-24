@@ -1,0 +1,11 @@
+// Canonical Prisma schema fyrir Tollvörð Pro.
+// Domain models verða skilgreind í Lotu 3 þegar gagnalíkanið er læst í kóða.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}

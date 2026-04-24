@@ -1,0 +1,19 @@
+{
+  "name": "@tollvord/engine",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "lint": "tsc -b tsconfig.json --pretty false",
+    "test": "node -e \"console.log('engine: landed cost próf koma í Lotu 4')\"",
+    "typecheck": "tsc -b tsconfig.json --pretty false"
+  },
+  "dependencies": {
+    "@tollvord/domain": "workspace:*"
+  }
+}
