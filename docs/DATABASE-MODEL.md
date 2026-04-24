@@ -2,7 +2,7 @@
 
 ## Markmið
 
-Gagnalíkanið skal styðja innflutningsferli frá skjalamóttöku til bókunar og audit. Prisma schema verður canonical þegar tæknigrunnur er settur upp, en þessi skrá skilgreinir fyrstu hönnun áður en kóði er skrifaður.
+Gagnalíkanið skal styðja innflutningsferli frá skjalamóttöku til bókunar og audit. Prisma schema er nú canonical grunnur í `prisma/schema.prisma`, en business logic og production útreikningar eru ekki komin inn.
 
 ## Fyrstu kjarnalíkön
 
@@ -24,6 +24,8 @@ Gagnalíkanið skal styðja innflutningsferli frá skjalamóttöku til bókunar 
 - `IntegrationJob`: samþættingarverk með stöðu, idempotency lykli, retry upplýsingum og niðurstöðu.
 - `AccountingExport`: bókunar- eða ERP export með stöðu, tengdum útreikningum og audit slóð.
 
+Þessi líkön eru komin í fyrsta Prisma schema. Útfærslan er vísvitandi metadata- og rekjanleikamiðuð: hún skráir tillögur, review state, source reference, input snapshot og audit tengingar án þess að gefa í skyn að tollflokkun eða leyfisskylda sé staðfest sjálfkrafa.
+
 ## Lykil enums
 
 - `ReviewState`: `draft`, `suggested`, `needs_review`, `approved`, `rejected`, `superseded`.
@@ -44,9 +46,22 @@ Fyrsta Prisma schema skal hannað með:
 - version og validity reitum á reglum, HS kóðum og gengisskráningu
 - audit tengingu við actor, entity type, entity id og action
 
+Fyrsta schema notar `Importer` sem tenant-ready scope fyrir viðskiptatengdar töflur. Þetta heldur multi-tenant readiness opnu án þess að bæta við fullu permissions- eða identity-lagi of snemma.
+
 ## Ófrávíkjanlegar reglur
 
 - AI tillaga má aldrei yfirskrifa staðfesta niðurstöðu án review.
 - Landed cost calculation skal geyma input snapshot svo hægt sé að endurbyggja útreikning.
 - Tax component skal geyma formúlu, inntök og rounding policy.
 - Permit requirement skal sýna hvort um sé að ræða tillögu, viðvörun eða staðfesta kröfu.
+
+## Domain contracts
+
+`packages/domain` speglar fyrstu schema-hugtökin í TypeScript:
+
+- `imports.ts`: innflytjandi, birgir, sending og vörulína.
+- `documents.ts`: skjöl, útdregin gagnastök, confidence og source mapping.
+- `classification.ts`: HS-kóðar, tollflokkunartillögur, reglur og leyfisskylduviðvaranir.
+- `costing.ts`: gengi, landed cost calculation, kostnaðarlínur og gjaldaliðir.
+- `audit.ts`: audit log, integration jobs og accounting exports.
+- `review.ts`: review state og confidence.

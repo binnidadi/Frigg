@@ -17,11 +17,18 @@
 
 ## Lota 3: Prisma schema og domain contracts
 
-- Staða: Næst.
+- Staða: Grunnur kominn.
 - Hanna schema fyrir importer, supplier, shipment, shipment item, document, extracted field, HS code, classification candidate, regulatory rule, permit requirement, exchange rate, landed cost calculation, landed cost line, tax component, audit log, integration job og accounting export.
 - Skilgreina enums fyrir review state, confidence, document type, calculation status, audit action, integration status og export status.
 - Bæta við indexes og constraints fyrir tenant readiness, rekjanleika og idempotency.
 - Halda raw `HREIN_GOGN` gögnum utan repo og nota aðeins hreinsuð, samþykkt fixtures þegar gagnanotkun hefst.
+
+## Lota 3b: Schema tests og örugg fixtures
+
+- Staða: Að hluta lokið.
+- Bæta við fyrstu schema/type tests fyrir review state, enum mapping og audit invariants.
+- Skilgreina fixture policy fyrir hreinsuð sýnigögn.
+- Undirbúa örugg seed drög án raw fjárhags- eða viðskiptavinagagna.
 
 ## UX- og gagnainventory lota
 

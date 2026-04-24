@@ -31,6 +31,7 @@ Markmiðið er að byggja kerfi þar sem skjöl, tollflokkunartillögur, leyfiss
 ```bash
 pnpm install
 pnpm typecheck
+pnpm prisma:validate
 pnpm build
 pnpm lint
 pnpm test

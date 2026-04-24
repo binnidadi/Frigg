@@ -1,5 +1,5 @@
 // Canonical Prisma schema fyrir Tollvörð Pro.
-// Domain models verða skilgreind í Lotu 3 þegar gagnalíkanið er læst í kóða.
+// Schema heldur utan um rekjanlegt innflutningsferli, ekki endanlegar regluniðurstöður án review state.
 
 generator client {
   provider = "prisma-client-js"
@@ -8,4 +8,445 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+enum ReviewState {
+  DRAFT
+  SUGGESTED
+  NEEDS_REVIEW
+  APPROVED
+  REJECTED
+  SUPERSEDED
+}
+
+enum ConfidenceLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum DocumentType {
+  INVOICE
+  BILL_OF_LADING
+  PACKING_LIST
+  CERTIFICATE_OF_ORIGIN
+  PERMIT
+  OTHER
+}
+
+enum ShipmentStatus {
+  DRAFT
+  DOCUMENTS_RECEIVED
+  CLASSIFICATION_REVIEW
+  COSTING_REVIEW
+  READY_FOR_EXPORT
+  EXPORTED
+  ARCHIVED
+}
+
+enum CalculationStatus {
+  DRAFT
+  COMPUTED
+  NEEDS_REVIEW
+  APPROVED
+  VOIDED
+}
+
+enum AuditAction {
+  CREATED
+  UPDATED
+  SUGGESTED
+  REVIEWED
+  APPROVED
+  REJECTED
+  COMPUTED
+  EXPORTED
+}
+
+enum IntegrationStatus {
+  PENDING
+  RUNNING
+  SUCCEEDED
+  FAILED
+  RETRYING
+  CANCELLED
+}
+
+enum AccountingExportStatus {
+  DRAFT
+  READY
+  EXPORTED
+  FAILED
+  VOIDED
+}
+
+enum PermitRequirementStatus {
+  SUGGESTED
+  WARNING
+  CONFIRMED
+  DISMISSED
+}
+
+model Importer {
+  id                String             @id @default(cuid())
+  name              String
+  registrationId    String?            @unique
+  countryCode       String             @default("IS")
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  archivedAt        DateTime?
+  suppliers         Supplier[]
+  shipments         Shipment[]
+  auditLogs         AuditLog[]
+  integrationJobs   IntegrationJob[]
+  accountingExports AccountingExport[]
+
+  @@index([countryCode])
+  @@index([createdAt])
+}
+
+model Supplier {
+  id          String     @id @default(cuid())
+  importerId  String
+  name        String
+  countryCode String
+  externalRef String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  importer    Importer   @relation(fields: [importerId], references: [id], onDelete: Restrict)
+  shipments   Shipment[]
+
+  @@unique([importerId, externalRef])
+  @@index([importerId])
+  @@index([countryCode])
+}
+
+model Shipment {
+  id                     String                  @id @default(cuid())
+  importerId             String
+  supplierId             String?
+  reference              String
+  status                 ShipmentStatus          @default(DRAFT)
+  originCountry          String?
+  destinationCountry     String                  @default("IS")
+  currency               String
+  expectedArrival        DateTime?
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+  importer               Importer                @relation(fields: [importerId], references: [id], onDelete: Restrict)
+  supplier               Supplier?               @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  items                  ShipmentItem[]
+  documents              Document[]
+  landedCostCalculations LandedCostCalculation[]
+  permitRequirements     PermitRequirement[]
+  integrationJobs        IntegrationJob[]
+  accountingExports      AccountingExport[]
+
+  @@unique([importerId, reference])
+  @@index([importerId, status])
+  @@index([supplierId])
+  @@index([createdAt])
+}
+
+model ShipmentItem {
+  id                       String                    @id @default(cuid())
+  shipmentId               String
+  lineNumber               Int
+  description              String
+  quantity                 Decimal                   @db.Decimal(18, 6)
+  unitOfMeasure            String?
+  unitPriceMinor           BigInt
+  currency                 String
+  originCountry            String?
+  reviewState              ReviewState               @default(DRAFT)
+  createdAt                DateTime                  @default(now())
+  updatedAt                DateTime                  @updatedAt
+  shipment                 Shipment                  @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  extractedFields          ExtractedField[]
+  classificationCandidates ClassificationCandidate[]
+  permitRequirements       PermitRequirement[]
+  landedCostLines          LandedCostLine[]
+
+  @@unique([shipmentId, lineNumber])
+  @@index([shipmentId])
+  @@index([reviewState])
+}
+
+model Document {
+  id               String           @id @default(cuid())
+  shipmentId       String
+  type             DocumentType
+  fileName         String
+  storageUri       String
+  checksum         String?
+  sourceReceivedAt DateTime?
+  reviewState      ReviewState      @default(DRAFT)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  shipment         Shipment         @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  extractedFields  ExtractedField[]
+
+  @@index([shipmentId])
+  @@index([type])
+  @@index([reviewState])
+  @@index([createdAt])
+}
+
+model ExtractedField {
+  id                String          @id @default(cuid())
+  documentId        String
+  shipmentItemId    String?
+  fieldKey          String
+  rawValue          String
+  normalizedValue   String?
+  confidence        ConfidenceLevel @default(LOW)
+  confidenceScore   Decimal?        @db.Decimal(5, 4)
+  sourcePage        Int?
+  sourceBoundingBox Json?
+  providerName      String?
+  providerTraceId   String?
+  reviewState       ReviewState     @default(SUGGESTED)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  document          Document        @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  shipmentItem      ShipmentItem?   @relation(fields: [shipmentItemId], references: [id], onDelete: SetNull)
+
+  @@index([documentId])
+  @@index([shipmentItemId])
+  @@index([fieldKey])
+  @@index([reviewState])
+}
+
+model HsCode {
+  id              String                    @id @default(cuid())
+  code            String
+  version         String
+  description     String
+  validFrom       DateTime
+  validTo         DateTime?
+  sourceReference String?
+  createdAt       DateTime                  @default(now())
+  candidates      ClassificationCandidate[]
+  regulatoryRules RegulatoryRule[]
+
+  @@unique([code, version])
+  @@index([code])
+  @@index([validFrom, validTo])
+}
+
+model ClassificationCandidate {
+  id              String          @id @default(cuid())
+  shipmentItemId  String
+  hsCodeId        String
+  rationale       String
+  evidence        Json?
+  confidence      ConfidenceLevel @default(LOW)
+  confidenceScore Decimal?        @db.Decimal(5, 4)
+  sourceReference String?
+  providerName    String?
+  reviewState     ReviewState     @default(SUGGESTED)
+  reviewedAt      DateTime?
+  reviewedBy      String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  shipmentItem    ShipmentItem    @relation(fields: [shipmentItemId], references: [id], onDelete: Cascade)
+  hsCode          HsCode          @relation(fields: [hsCodeId], references: [id], onDelete: Restrict)
+
+  @@index([shipmentItemId])
+  @@index([hsCodeId])
+  @@index([reviewState])
+  @@index([createdAt])
+}
+
+model RegulatoryRule {
+  id                 String              @id @default(cuid())
+  code               String
+  version            String
+  title              String
+  description        String
+  authority          String?
+  hsCodeId           String?
+  rulePayload        Json
+  validFrom          DateTime
+  validTo            DateTime?
+  reviewState        ReviewState         @default(DRAFT)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  hsCode             HsCode?             @relation(fields: [hsCodeId], references: [id], onDelete: SetNull)
+  permitRequirements PermitRequirement[]
+
+  @@unique([code, version])
+  @@index([hsCodeId])
+  @@index([reviewState])
+  @@index([validFrom, validTo])
+}
+
+model PermitRequirement {
+  id               String                  @id @default(cuid())
+  shipmentId       String
+  shipmentItemId   String?
+  regulatoryRuleId String?
+  status           PermitRequirementStatus @default(SUGGESTED)
+  title            String
+  rationale        String
+  authority        String?
+  sourceReference  String?
+  reviewState      ReviewState             @default(SUGGESTED)
+  createdAt        DateTime                @default(now())
+  updatedAt        DateTime                @updatedAt
+  shipment         Shipment                @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  shipmentItem     ShipmentItem?           @relation(fields: [shipmentItemId], references: [id], onDelete: SetNull)
+  regulatoryRule   RegulatoryRule?         @relation(fields: [regulatoryRuleId], references: [id], onDelete: SetNull)
+
+  @@index([shipmentId])
+  @@index([shipmentItemId])
+  @@index([regulatoryRuleId])
+  @@index([status])
+  @@index([reviewState])
+}
+
+model ExchangeRate {
+  id              String                  @id @default(cuid())
+  baseCurrency    String
+  quoteCurrency   String                  @default("ISK")
+  rate            Decimal                 @db.Decimal(20, 8)
+  rateDate        DateTime
+  source          String
+  sourceReference String?
+  createdAt       DateTime                @default(now())
+  calculations    LandedCostCalculation[]
+
+  @@unique([baseCurrency, quoteCurrency, rateDate, source])
+  @@index([rateDate])
+}
+
+model LandedCostCalculation {
+  id                String             @id @default(cuid())
+  shipmentId        String
+  exchangeRateId    String?
+  status            CalculationStatus  @default(DRAFT)
+  inputSnapshot     Json
+  explanation       Json?
+  totalMinor        BigInt?
+  currency          String             @default("ISK")
+  computedAt        DateTime?
+  reviewedAt        DateTime?
+  reviewedBy        String?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  shipment          Shipment           @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  exchangeRate      ExchangeRate?      @relation(fields: [exchangeRateId], references: [id], onDelete: SetNull)
+  lines             LandedCostLine[]
+  taxComponents     TaxComponent[]
+  accountingExports AccountingExport[]
+
+  @@index([shipmentId])
+  @@index([exchangeRateId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model LandedCostLine {
+  id             String                @id @default(cuid())
+  calculationId  String
+  shipmentItemId String?
+  code           String
+  label          String
+  amountMinor    BigInt
+  currency       String                @default("ISK")
+  formula        String
+  inputs         Json
+  sortOrder      Int                   @default(0)
+  createdAt      DateTime              @default(now())
+  calculation    LandedCostCalculation @relation(fields: [calculationId], references: [id], onDelete: Cascade)
+  shipmentItem   ShipmentItem?         @relation(fields: [shipmentItemId], references: [id], onDelete: SetNull)
+
+  @@index([calculationId])
+  @@index([shipmentItemId])
+  @@index([code])
+}
+
+model TaxComponent {
+  id              String                @id @default(cuid())
+  calculationId   String
+  code            String
+  label           String
+  amountMinor     BigInt
+  currency        String                @default("ISK")
+  formula         String
+  inputs          Json
+  roundingPolicy  String
+  sourceReference String?
+  createdAt       DateTime              @default(now())
+  calculation     LandedCostCalculation @relation(fields: [calculationId], references: [id], onDelete: Cascade)
+
+  @@index([calculationId])
+  @@index([code])
+}
+
+model AuditLog {
+  id         String      @id @default(cuid())
+  importerId String?
+  actorId    String?
+  action     AuditAction
+  entityType String
+  entityId   String
+  before     Json?
+  after      Json?
+  metadata   Json?
+  createdAt  DateTime    @default(now())
+  importer   Importer?   @relation(fields: [importerId], references: [id], onDelete: SetNull)
+
+  @@index([importerId])
+  @@index([entityType, entityId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+model IntegrationJob {
+  id             String            @id @default(cuid())
+  importerId     String
+  shipmentId     String?
+  provider       String
+  jobType        String
+  status         IntegrationStatus @default(PENDING)
+  idempotencyKey String
+  attempts       Int               @default(0)
+  nextRunAt      DateTime?
+  payload        Json
+  result         Json?
+  lastError      String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  importer       Importer          @relation(fields: [importerId], references: [id], onDelete: Restrict)
+  shipment       Shipment?         @relation(fields: [shipmentId], references: [id], onDelete: SetNull)
+
+  @@unique([provider, idempotencyKey])
+  @@index([importerId])
+  @@index([shipmentId])
+  @@index([status])
+  @@index([nextRunAt])
+}
+
+model AccountingExport {
+  id            String                 @id @default(cuid())
+  importerId    String
+  shipmentId    String?
+  calculationId String?
+  provider      String
+  status        AccountingExportStatus @default(DRAFT)
+  exportPayload Json
+  externalRef   String?
+  exportedAt    DateTime?
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
+  importer      Importer               @relation(fields: [importerId], references: [id], onDelete: Restrict)
+  shipment      Shipment?              @relation(fields: [shipmentId], references: [id], onDelete: SetNull)
+  calculation   LandedCostCalculation? @relation(fields: [calculationId], references: [id], onDelete: SetNull)
+
+  @@index([importerId])
+  @@index([shipmentId])
+  @@index([calculationId])
+  @@index([status])
+  @@index([createdAt])
 }

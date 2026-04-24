@@ -8,7 +8,8 @@
     "build": "corepack pnpm -r build",
     "dev": "corepack pnpm --filter @tollvord/web dev",
     "lint": "corepack pnpm -r lint && node tools/check-docs.mjs",
-    "test": "corepack pnpm -r test",
+    "prisma:validate": "DATABASE_URL=postgresql://user:password@localhost:5432/tollvord_pro corepack pnpm exec prisma validate --schema prisma/schema.prisma",
+    "test": "corepack pnpm -r test && node tools/check-schema.mjs",
     "typecheck": "corepack pnpm -r typecheck"
   },
   "engines": {
