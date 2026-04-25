@@ -1,6 +1,6 @@
 # Staða Frigg
 
-Síðast uppfært: 2026-04-24
+Síðast uppfært: 2026-04-25
 
 ## Núverandi staða
 
@@ -20,6 +20,7 @@ Síðast uppfært: 2026-04-24
 - Fyrsti determiníski landed cost engine grunnur er kominn í `packages/engine` með synthetic golden prófi.
 - Landed cost engine býr nú til audit draft og review task draft svo niðurstaða sé rekjanleg án sjálfvirkrar samþykktar.
 - Landed cost engine hefur nú edge-case próf fyrir `half_up` rounding, óstuttan gjaldmiðil, gjaldmiðlamisræmi og ójákvætt gengi.
+- AI workflow, agent leiðbeiningar, prompt banki og project context hafa verið innleidd og aðlöguð að Frigg án þess að yfirskrifa núverandi source-of-truth skjöl.
 - Engin tollflokkun, leyfisskylda, reglufylgni eða peningaleg reiknirökfræði hefur verið útfærð sem production logic enn.
 
 ## Lokið
@@ -35,6 +36,7 @@ Síðast uppfært: 2026-04-24
 - Lota 4 grunnur: determinísk landed cost reiknivél með synthetic golden scenario.
 - Audit/review costing lota: audit draft og review task draft fyrir computed landed cost niðurstöður.
 - Costing validation lota: rounding edge cases og strangari gjaldmiðla-/gengisvalidation.
+- AI workflow lota: `AGENTS.md`, `PROMPT_BANK_MEMORY.md`, `docs/AI_WORKFLOW.md` og `docs/PROJECT_CONTEXT.md` sett inn sem samræmd vinnuregluskrá fyrir AI coding sessions.
 
 ## Í vinnslu
 

@@ -46,6 +46,8 @@ pnpm test
 
 - [Arkitektúr](docs/ARCHITECTURE.md)
 - [Ákvarðanir](docs/DECISIONS.md)
+- [Project context](docs/PROJECT_CONTEXT.md)
+- [AI workflow](docs/AI_WORKFLOW.md)
 - [Vegvísir](docs/ROADMAP.md)
 - [Gagnalíkan](docs/DATABASE-MODEL.md)
 - [Orðasafn](docs/DOMAIN-GLOSSARY.md)
