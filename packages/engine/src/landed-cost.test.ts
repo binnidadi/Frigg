@@ -2,6 +2,7 @@ import { strict as assert } from 'node:assert'
 import {
   calculateLandedCost,
   createLandedCostComputedAuditDraft,
+  createLandedCostInputFromImportReviewScenario,
   createLandedCostReviewTaskDraft,
   landedCostEngineBoundary,
   type LandedCostInput
@@ -83,6 +84,40 @@ const goldenInput: LandedCostInput = {
 }
 
 const result = calculateLandedCost(goldenInput, '2026-04-24T00:00:00.000Z')
+const mappedInput = createLandedCostInputFromImportReviewScenario(
+  {
+    shipment: {
+      id: 'shp_synthetic_2026_0001'
+    },
+    shipmentItems: [
+      {
+        id: 'item_synthetic_001',
+        lineNumber: 1,
+        description: 'Rafknúinn garðklippari fyrir heimilisnotkun',
+        quantity: '12.000000',
+        unitPriceMinor: 8950,
+        currency: 'EUR'
+      },
+      {
+        id: 'item_synthetic_002',
+        lineNumber: 2,
+        description: 'Lifandi kryddjurt í potti til endursölu',
+        quantity: '80.000000',
+        unitPriceMinor: 225,
+        currency: 'EUR'
+      }
+    ]
+  },
+  {
+    calculationId: goldenInput.calculationId,
+    outputCurrency: goldenInput.outputCurrency,
+    exchangeRate: goldenInput.exchangeRate,
+    roundingPolicy: goldenInput.roundingPolicy,
+    adjustments: goldenInput.adjustments,
+    taxRules: goldenInput.taxRules,
+    sourceReferences: goldenInput.sourceReferences
+  }
+)
 const halfUpRoundingInput: LandedCostInput = {
   ...goldenInput,
   calculationId: 'calc_synthetic_rounding_half_up',
@@ -106,6 +141,7 @@ const halfUpRoundingInput: LandedCostInput = {
 const halfUpRoundingResult = calculateLandedCost(halfUpRoundingInput, '2026-04-24T00:00:00.000Z')
 
 assert.equal(landedCostEngineBoundary.status, 'implemented')
+assert.deepEqual(mappedInput, goldenInput)
 assert.equal(result.status, 'computed')
 assert.equal(result.currency, 'ISK')
 assert.equal(result.lines.length, 4)

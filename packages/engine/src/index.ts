@@ -56,6 +56,30 @@ export interface LandedCostInput {
   readonly sourceReferences: string[]
 }
 
+export interface ImportReviewScenarioForCosting {
+  readonly shipment: {
+    readonly id: Identifier
+  }
+  readonly shipmentItems: ReadonlyArray<{
+    readonly id: Identifier
+    readonly lineNumber: number
+    readonly description: string
+    readonly quantity: string
+    readonly unitPriceMinor: number
+    readonly currency: CurrencyCode
+  }>
+}
+
+export interface LandedCostScenarioAssumptions {
+  readonly calculationId: Identifier
+  readonly outputCurrency: 'ISK'
+  readonly exchangeRate: ExchangeRateInput
+  readonly roundingPolicy: RoundingPolicy
+  readonly adjustments: LandedCostAdjustmentInput[]
+  readonly taxRules: LandedCostTaxRuleInput[]
+  readonly sourceReferences: string[]
+}
+
 export interface LandedCostLineResult {
   readonly code: string
   readonly label: string
@@ -187,6 +211,30 @@ export const landedCostEngineBoundary: LandedCostEngineBoundary = {
     'Gjöld og skattar eru aðeins reiknuð út frá input-reglum.',
     'Úttak inniheldur formúlur, inntök, milliskref og rounding policy.'
   ]
+}
+
+export function createLandedCostInputFromImportReviewScenario(
+  scenario: ImportReviewScenarioForCosting,
+  assumptions: LandedCostScenarioAssumptions
+): LandedCostInput {
+  return {
+    calculationId: assumptions.calculationId,
+    shipmentId: scenario.shipment.id,
+    outputCurrency: assumptions.outputCurrency,
+    exchangeRate: assumptions.exchangeRate,
+    roundingPolicy: assumptions.roundingPolicy,
+    items: scenario.shipmentItems.map((item) => ({
+      shipmentItemId: item.id,
+      lineNumber: item.lineNumber,
+      description: item.description,
+      quantity: item.quantity,
+      unitPriceMinor: item.unitPriceMinor,
+      currency: item.currency
+    })),
+    adjustments: assumptions.adjustments,
+    taxRules: assumptions.taxRules,
+    sourceReferences: assumptions.sourceReferences
+  }
 }
 
 export function calculateLandedCost(input: LandedCostInput, computedAt: IsoDateTime): LandedCostResult {

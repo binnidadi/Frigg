@@ -21,6 +21,7 @@ Síðast uppfært: 2026-04-25
 - Landed cost engine býr nú til audit draft og review task draft svo niðurstaða sé rekjanleg án sjálfvirkrar samþykktar.
 - Landed cost engine hefur nú edge-case próf fyrir `half_up` rounding, óstuttan gjaldmiðil, gjaldmiðlamisræmi og ójákvætt gengi.
 - AI workflow, agent leiðbeiningar, prompt banki og project context hafa verið innleidd og aðlöguð að Frigg án þess að yfirskrifa núverandi source-of-truth skjöl.
+- Read-only internal prototype flæði sýnir nú synthetic innflutningsmál, document extraction metadata, tollflokkunartillögur, leyfisskylduviðvörun, landed cost útreikning og audit/review draft í einu samhengi.
 - Engin tollflokkun, leyfisskylda, reglufylgni eða peningaleg reiknirökfræði hefur verið útfærð sem production logic enn.
 
 ## Lokið
@@ -37,14 +38,15 @@ Síðast uppfært: 2026-04-25
 - Audit/review costing lota: audit draft og review task draft fyrir computed landed cost niðurstöður.
 - Costing validation lota: rounding edge cases og strangari gjaldmiðla-/gengisvalidation.
 - AI workflow lota: `AGENTS.md`, `PROMPT_BANK_MEMORY.md`, `docs/AI_WORKFLOW.md` og `docs/PROJECT_CONTEXT.md` sett inn sem samræmd vinnuregluskrá fyrir AI coding sessions.
+- Read-only prototype lota: synthetic import-review gögn eru tengd við landed cost engine og birt í vefviðmóti með skýrum review/trust mörkum.
 
 ## Í vinnslu
 
-- Undirbúningur fyrir næstu lotu: hanna read-only UI demo og domain service mapping fyrir synthetic costing.
+- Undirbúningur fyrir næstu lotu: styrkja domain service boundary fyrir import workflow og skilgreina fyrsta persistence/API lag.
 
 ## Næst
 
-1. Hanna read-only UI demo fyrir synthetic import-review mál og landed cost útreikning.
-2. Bæta við domain service mapping sem breytir fixture/import data í `LandedCostInput`.
-3. Tengja audit/review draft við persistence/service lag þegar domain service lag verður útfært.
+1. Skilgreina Next server action eða service boundary fyrir read-only import case gögn.
+2. Tengja audit/review draft við persistence/service lag þegar domain service lag verður útfært.
+3. Bæta við UI smoke eða component-level prófun þegar prófunarumgjörð fyrir vef er valin.
 4. Uppfæra skjöl samhliða hverri lotu svo staða og næstu skref haldist skýr.

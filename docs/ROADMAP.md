@@ -58,9 +58,12 @@
 - Fyrsti deterministic engine grunnur er kominn í `packages/engine` með synthetic golden scenario.
 - Engine býr til audit draft og review task draft fyrir útreikning án þess að staðfesta niðurstöðu sjálfkrafa.
 - Rounding edge cases og validation fyrir óstuttan gjaldmiðil, gjaldmiðlamisræmi og ójákvætt gengi eru komin í engine-próf.
+- Read-only prototype tengir synthetic import-review fixture við landed cost input mapping og birtir útreikning, skýringar, review verkefni og audit draft í vefviðmóti.
 
 ## Lota 5: Ingestion, classification og AI boundary
 
+- Staða: Næst.
+- Skilgreina read-only service/API boundary fyrir import case áður en persistence eða mutation flæði bætast við.
 - Útfæra document ingestion metadata.
 - Útfæra extracted fields með confidence og source mapping.
 - Útfæra HS classification foundation með tillögum, rökstuðningi og review state.
