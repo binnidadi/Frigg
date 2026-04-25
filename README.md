@@ -48,6 +48,7 @@ pnpm test
 - [Ákvarðanir](docs/DECISIONS.md)
 - [Project context](docs/PROJECT_CONTEXT.md)
 - [AI workflow](docs/AI_WORKFLOW.md)
+- [Næsta session](docs/NEXT-SESSION.md)
 - [Vegvísir](docs/ROADMAP.md)
 - [Gagnalíkan](docs/DATABASE-MODEL.md)
 - [Orðasafn](docs/DOMAIN-GLOSSARY.md)

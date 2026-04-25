@@ -22,6 +22,7 @@ Síðast uppfært: 2026-04-25
 - Landed cost engine hefur nú edge-case próf fyrir `half_up` rounding, óstuttan gjaldmiðil, gjaldmiðlamisræmi og ójákvætt gengi.
 - AI workflow, agent leiðbeiningar, prompt banki og project context hafa verið innleidd og aðlöguð að Frigg án þess að yfirskrifa núverandi source-of-truth skjöl.
 - Read-only internal prototype flæði sýnir nú synthetic innflutningsmál, document extraction metadata, tollflokkunartillögur, leyfisskylduviðvörun, landed cost útreikning og audit/review draft í einu samhengi.
+- Næsta session hefur verið skilgreint í `docs/NEXT-SESSION.md` með scope, áhættu, mæltu skráaskipulagi, prófunum og startup prompt.
 - Engin tollflokkun, leyfisskylda, reglufylgni eða peningaleg reiknirökfræði hefur verið útfærð sem production logic enn.
 
 ## Lokið
@@ -39,6 +40,7 @@ Síðast uppfært: 2026-04-25
 - Costing validation lota: rounding edge cases og strangari gjaldmiðla-/gengisvalidation.
 - AI workflow lota: `AGENTS.md`, `PROMPT_BANK_MEMORY.md`, `docs/AI_WORKFLOW.md` og `docs/PROJECT_CONTEXT.md` sett inn sem samræmd vinnuregluskrá fyrir AI coding sessions.
 - Read-only prototype lota: synthetic import-review gögn eru tengd við landed cost engine og birt í vefviðmóti með skýrum review/trust mörkum.
+- Session handoff lota: `docs/NEXT-SESSION.md` skráir næsta rétta skref og startup prompt fyrir framhaldsvinnu.
 
 ## Í vinnslu
 
